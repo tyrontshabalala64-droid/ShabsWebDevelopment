@@ -139,26 +139,89 @@
             font-size: 1rem;
         }
 
-        /* ===== SPECIAL OFFER BANNER ===== */
+        /* ========================================================= */
+        /* ===== SPECIAL OFFER BANNER WITH ONCE-ONLY SPIN ===== */
+        /* ========================================================= */
         .special-offer {
             background: linear-gradient(135deg, #1a2a4a, #0a1a2a);
-            border: 2px solid #22c55e;
             border-radius: 16px;
             padding: 30px 40px;
             text-align: center;
             margin: 40px 0 20px;
             position: relative;
             overflow: hidden;
+            border: 3px solid transparent;
+            background-clip: padding-box;
         }
 
+        /* The animated border effect - spins ONCE on load */
         .special-offer::before {
-            content: '🎉';
+            content: '';
             position: absolute;
-            top: -20px;
-            left: -20px;
-            font-size: 6rem;
-            opacity: 0.1;
-            transform: rotate(-15deg);
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            border-radius: 16px;
+            background: conic-gradient(
+                from 0deg,
+                #ff6b6b,
+                #ffd93d,
+                #6bcb77,
+                #4d96ff,
+                #9b59b6,
+                #ff6b6b
+            );
+            z-index: -1;
+            animation: borderSpinOnce 1.5s ease-out forwards;
+        }
+
+        /* Glow effect - spins once too */
+        .special-offer::after {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
+            border-radius: 19px;
+            background: conic-gradient(
+                from 0deg,
+                rgba(255, 107, 107, 0.3),
+                rgba(255, 217, 61, 0.3),
+                rgba(107, 203, 119, 0.3),
+                rgba(77, 150, 255, 0.3),
+                rgba(155, 89, 182, 0.3),
+                rgba(255, 107, 107, 0.3)
+            );
+            z-index: -2;
+            filter: blur(15px);
+            animation: borderSpinOnce 1.5s ease-out forwards;
+        }
+
+        /* Spin once animation */
+        @keyframes borderSpinOnce {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* OPTIONAL: Spin again on hover - comment out if you don't want it */
+        .special-offer:hover::before,
+        .special-offer:hover::after {
+            animation: borderSpinOnce 0.8s ease-out forwards;
+        }
+
+        /* Inner content - sits on top */
+        .special-offer .offer-content {
+            position: relative;
+            z-index: 2;
+            background: linear-gradient(135deg, #1a2a4a, #0a1a2a);
+            border-radius: 13px;
+            padding: 20px;
         }
 
         .special-offer .badge {
@@ -172,6 +235,16 @@
             letter-spacing: 1px;
             text-transform: uppercase;
             margin-bottom: 12px;
+            animation: pulseBadge 0.8s ease-in-out 3;
+        }
+
+        @keyframes pulseBadge {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.08);
+            }
         }
 
         .special-offer h3 {
@@ -182,6 +255,7 @@
 
         .special-offer h3 span {
             color: #22c55e;
+            text-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
         }
 
         .special-offer .pricing-comparison {
@@ -204,6 +278,16 @@
             font-size: 2.8rem;
             color: #22c55e;
             font-weight: 800;
+            animation: pricePulse 0.6s ease-in-out 3;
+        }
+
+        @keyframes pricePulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.08);
+            }
         }
 
         .special-offer .arrow {
@@ -299,7 +383,10 @@
                 margin-right: auto;
             }
             .special-offer {
-                padding: 20px;
+                padding: 15px;
+            }
+            .special-offer .offer-content {
+                padding: 15px;
             }
             .special-offer h3 {
                 font-size: 1.5rem;
@@ -333,6 +420,12 @@
             }
             .included-grid {
                 grid-template-columns: 1fr;
+            }
+            .special-offer {
+                padding: 10px;
+            }
+            .special-offer .offer-content {
+                padding: 12px;
             }
         }
     </style>
@@ -378,20 +471,22 @@
     <section style="padding:60px 0 40px; background:#0a0e17;">
         <div class="container">
 
-            <!-- ===== SPECIAL OFFER BANNER ===== -->
+            <!-- ===== SPECIAL OFFER BANNER WITH ANIMATED BORDER ===== -->
             <div class="special-offer">
-                <span class="badge">🔥 Limited Time Special Offer</span>
-                <h3>Website Creation <span>On Sale!</span></h3>
-                <div class="pricing-comparison">
-                    <span class="old-price">R6,000</span>
-                    <span class="arrow">➜</span>
-                    <span class="new-price">R2,500</span>
-                </div>
-                <p style="color:#94a3b8; font-size:1rem;">
-                    Full website creation — includes hosting, domain, design, and more!
-                </p>
-                <div class="countdown">
-                    <i class="fas fa-clock"></i> Offer valid until <strong>1st November 2026</strong>
+                <div class="offer-content">
+                    <span class="badge">🔥 Limited Time Special Offer</span>
+                    <h3>Website Creation <span>On Sale!</span></h3>
+                    <div class="pricing-comparison">
+                        <span class="old-price">R6,000</span>
+                        <span class="arrow">➜</span>
+                        <span class="new-price">R2,500</span>
+                    </div>
+                    <p style="color:#94a3b8; font-size:1rem;">
+                        Full website creation — includes hosting, domain, design, and more!
+                    </p>
+                    <div class="countdown">
+                        <i class="fas fa-clock"></i> Offer valid until <strong>1st November 2026</strong>
+                    </div>
                 </div>
             </div>
 

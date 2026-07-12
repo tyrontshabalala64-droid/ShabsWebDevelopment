@@ -1253,3 +1253,231 @@ footer .footer-social .social-icons a:hover {
         grid-template-columns: 1fr;
     }
 }
+
+/* ===== EXTRA MOBILE FIXES ===== */
+
+/* Fix for ALL phone screens - portrait mode */
+@media screen and (max-width: 480px) {
+    /* Make sure containers don't overflow */
+    .container {
+        padding: 0 15px;
+        overflow: hidden;
+    }
+
+    /* Fix hero section */
+    .hero h2 {
+        font-size: 1.6rem !important;
+        word-wrap: break-word;
+    }
+    
+    .hero p {
+        font-size: 1rem !important;
+        padding: 0 10px;
+    }
+
+    /* Fix all industry sections */
+    .industry-section {
+        padding: 40px 0;
+        min-height: auto;
+    }
+
+    .industry-section .industry-description {
+        font-size: 0.95rem;
+        padding: 0 10px;
+    }
+
+    /* Fix all grid items - force them to stack */
+    .demo-row,
+    .demo-menu-grid,
+    .demo-services,
+    .demo-services-grid,
+    .demo-products,
+    .demo-restaurants,
+    .demo-properties,
+    .demo-classes,
+    .demo-destinations {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+    }
+
+    /* Fix demo items */
+    .demo-item,
+    .demo-menu-item,
+    .demo-service,
+    .demo-service-card,
+    .demo-product,
+    .demo-restaurant,
+    .demo-property,
+    .demo-class,
+    .demo-destination {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 12px !important;
+    }
+
+    /* Fix demo preview containers */
+    .demo-preview {
+        padding: 15px !important;
+        margin: 0 5px;
+    }
+
+    /* Fix carousel */
+    .demo-carousel {
+        padding: 10px 0 !important;
+    }
+    
+    .demo-carousel .carousel-slide {
+        padding: 5px 15px !important;
+    }
+
+    /* Fix demo hero sections */
+    .demo-food .demo-hero,
+    .demo-salon .demo-hero,
+    .demo-delivery .demo-search,
+    .demo-travel .demo-search-big,
+    .demo-clothing .demo-hero,
+    .demo-realestate .demo-hero {
+        flex-direction: column !important;
+        padding: 15px !important;
+        text-align: center !important;
+    }
+
+    .demo-electrical .demo-hero,
+    .demo-fitness .demo-hero {
+        flex-direction: column !important;
+        padding: 15px !important;
+        text-align: center !important;
+    }
+
+    .demo-travel .demo-search-big input {
+        width: 100% !important;
+        margin-top: 10px;
+    }
+
+    .demo-delivery .demo-search {
+        flex-direction: column;
+    }
+    
+    .demo-delivery .demo-search input {
+        width: 100% !important;
+    }
+
+    /* Fix any images */
+    img {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+
+    /* Fix buttons on mobile */
+    .btn {
+        padding: 12px 25px !important;
+        font-size: 0.9rem !important;
+        display: inline-block;
+        width: auto;
+    }
+
+    .cta-final .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cta-final .cta-buttons .btn {
+        width: 80%;
+        margin: 5px 0;
+    }
+
+    .btn-outline {
+        margin-left: 0 !important;
+        margin-top: 8px;
+    }
+
+    /* Fix section titles */
+    .section-title {
+        font-size: 1.6rem !important;
+        padding: 0 10px;
+    }
+
+    .section-sub {
+        font-size: 0.95rem !important;
+        padding: 0 15px;
+    }
+
+    /* Fix CTA section */
+    .cta-final {
+        padding: 60px 0;
+    }
+    
+    .cta-final h2 {
+        font-size: 1.6rem !important;
+        padding: 0 15px;
+    }
+    
+    .cta-final p {
+        font-size: 1rem !important;
+        padding: 0 15px;
+    }
+
+    /* Fix footer */
+    footer .container {
+        padding: 0 15px;
+    }
+    
+    footer .footer-brand p {
+        max-width: 100%;
+    }
+
+    /* Fix navigation on mobile */
+    nav ul {
+        gap: 8px !important;
+    }
+    
+    nav ul li a {
+        font-size: 0.85rem !important;
+        padding: 5px 0;
+        display: block;
+    }
+
+    /* Fix logo on mobile */
+    .logo h1 {
+        font-size: 1.2rem !important;
+    }
+    
+    .logo p {
+        font-size: 0.6rem !important;
+    }
+
+    /* Fix scroll indicator */
+    .scroll-indicator {
+        display: none;
+    }
+
+    /* Fix any absolute positioned elements */
+    .hero::before,
+    .cta-final::before {
+        display: none;
+    }
+
+    /* Fix WhatsApp button on mobile */
+    .whatsapp-float {
+        width: 50px !important;
+        height: 50px !important;
+        font-size: 1.6rem !important;
+        bottom: 15px !important;
+        right: 15px !important;
+    }
+}
+
+/* Extra fix for very small phones (320px and below) */
+@media screen and (max-width: 360px) {
+    .hero h2 {
+        font-size: 1.3rem !important;
+    }
+    
+    .container {
+        padding: 0 10px !important;
+    }
+    
+    .section-title {
+        font-size: 1.3rem !important;
+    }
+}
