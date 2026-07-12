@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shabs Web Development | Portfolio</title>
+    <title>Shabs Web Development | Services</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link rel="stylesheet" href="css/style.css" />
     <style>
@@ -207,190 +207,6 @@
             }
         }
 
-        /* ===== PORTFOLIO CARDS ===== */
-        .portfolio-card .img-placeholder {
-            height: 220px;
-            background: linear-gradient(145deg, #1a2a4a, #0a0e17);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 3rem;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .portfolio-card .img-placeholder i {
-            opacity: 0.2;
-            font-size: 4rem;
-        }
-
-        .portfolio-card .img-placeholder img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
-
-        .portfolio-card {
-            background: #0f172a;
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid rgba(0, 212, 255, 0.05);
-            transition: all 0.3s ease;
-        }
-
-        .portfolio-card:hover {
-            transform: translateY(-8px);
-            border-color: #00d4ff;
-            box-shadow: 0 12px 40px rgba(0, 212, 255, 0.05);
-        }
-
-        .portfolio-card .portfolio-info {
-            padding: 20px;
-        }
-
-        .portfolio-card .portfolio-info h4 {
-            font-size: 1.1rem;
-            margin-bottom: 6px;
-            color: #fff;
-        }
-
-        .portfolio-card .portfolio-info p {
-            color: #94a3b8;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-            line-height: 1.6;
-        }
-
-        .portfolio-card .tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-        }
-
-        .portfolio-card .tech-tags span {
-            background: rgba(0, 212, 255, 0.08);
-            color: #00d4ff;
-            padding: 3px 12px;
-            border-radius: 12px;
-            font-size: 0.7rem;
-        }
-
-        .portfolio-card .view-btn {
-            display: inline-block;
-            margin-top: 12px;
-            padding: 6px 20px;
-            border: 1px solid #00d4ff;
-            border-radius: 30px;
-            color: #00d4ff;
-            font-size: 0.8rem;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-
-        .portfolio-card .view-btn:hover {
-            background: #00d4ff;
-            color: #0a0e17;
-        }
-
-        /* ===== COMING SOON CARD ===== */
-        .portfolio-card.coming-soon {
-            opacity: 0.7;
-        }
-
-        .portfolio-card.coming-soon .img-placeholder {
-            background: linear-gradient(145deg, #0a0e17, #0a0e17);
-        }
-
-        .portfolio-card.coming-soon .img-placeholder i {
-            opacity: 0.1;
-        }
-
-        .coming-badge {
-            display: inline-block;
-            background: #f59e0b;
-            color: #0a0e17;
-            padding: 2px 12px;
-            border-radius: 12px;
-            font-size: 0.65rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 8px;
-        }
-
-        /* ===== RESPONSIVE GRID ===== */
-        @media (max-width: 768px) {
-            .portfolio-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 15px;
-            }
-
-            .portfolio-card .img-placeholder {
-                height: 160px;
-            }
-
-            .portfolio-card .img-placeholder i {
-                font-size: 3rem;
-            }
-
-            .portfolio-card .portfolio-info {
-                padding: 15px;
-            }
-
-            .portfolio-card .portfolio-info h4 {
-                font-size: 1rem;
-            }
-
-            .portfolio-card .portfolio-info p {
-                font-size: 0.8rem;
-            }
-
-            .portfolio-card .tech-tags span {
-                font-size: 0.6rem;
-                padding: 2px 10px;
-            }
-
-            .portfolio-card .view-btn {
-                font-size: 0.75rem;
-                padding: 5px 16px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .portfolio-card .img-placeholder {
-                height: 180px;
-            }
-
-            .portfolio-card .img-placeholder i {
-                font-size: 3.5rem;
-            }
-
-            .portfolio-card .portfolio-info {
-                padding: 18px;
-            }
-
-            .portfolio-card .portfolio-info h4 {
-                font-size: 1.1rem;
-            }
-
-            .portfolio-card .portfolio-info p {
-                font-size: 0.85rem;
-            }
-        }
-
         /* ===== PAGE HEADER ===== */
         .page-header {
             padding: 120px 0 50px;
@@ -445,21 +261,423 @@
             }
         }
 
-        /* ===== PORTFOLIO SECTION ===== */
-        .portfolio-section {
-            padding: 50px 0 80px;
+        /* ===== SERVICES SECTION ===== */
+        .services-section {
+            padding: 60px 0 80px;
             background: #0a0e17;
         }
 
         @media (max-width: 768px) {
-            .portfolio-section {
-                padding: 30px 0 60px;
+            .services-section {
+                padding: 40px 0 60px;
             }
         }
 
         @media (max-width: 480px) {
-            .portfolio-section {
-                padding: 20px 0 40px;
+            .services-section {
+                padding: 30px 0 40px;
+            }
+        }
+
+        /* ===== INTRO TEXT ===== */
+        .services-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+
+        .services-intro h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .services-intro h2 span {
+            color: #00d4ff;
+        }
+
+        .services-intro p {
+            color: #94a3b8;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 768px) {
+            .services-intro h2 {
+                font-size: 1.8rem;
+            }
+            .services-intro p {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .services-intro h2 {
+                font-size: 1.4rem;
+            }
+            .services-intro p {
+                font-size: 0.85rem;
+            }
+        }
+
+        /* ===== PRICING TABLE ===== */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin: 40px 0 60px;
+        }
+
+        .pricing-card {
+            background: #0f172a;
+            border-radius: 16px;
+            padding: 35px 25px;
+            border: 1px solid rgba(0, 212, 255, 0.08);
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            border-color: #00d4ff;
+            box-shadow: 0 20px 60px rgba(0, 212, 255, 0.08);
+        }
+
+        .pricing-card.popular {
+            border-color: #00d4ff;
+            background: linear-gradient(145deg, #0f172a, #1a2a4a);
+            transform: scale(1.02);
+        }
+
+        .pricing-card.popular:hover {
+            transform: scale(1.02) translateY(-10px);
+        }
+
+        .pricing-card .popular-badge {
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background: #00d4ff;
+            color: #0a0e17;
+            padding: 6px 40px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            transform: rotate(45deg);
+            letter-spacing: 1px;
+        }
+
+        .pricing-card .special-badge {
+            display: inline-block;
+            background: #f59e0b;
+            color: #0a0e17;
+            padding: 4px 18px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 10px rgba(245, 158, 11, 0.2); }
+            50% { box-shadow: 0 0 25px rgba(245, 158, 11, 0.4); }
+        }
+
+        .pricing-card .icon {
+            font-size: 2.5rem;
+            color: #00d4ff;
+            margin-bottom: 15px;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .pricing-card .price {
+            margin: 15px 0;
+        }
+
+        .pricing-card .price .original {
+            font-size: 1.2rem;
+            color: #64748b;
+            text-decoration: line-through;
+            display: block;
+        }
+
+        .pricing-card .price .current {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #00d4ff;
+        }
+
+        .pricing-card .price .current span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #94a3b8;
+        }
+
+        .pricing-card.popular .price .current {
+            color: #f59e0b;
+        }
+
+        .pricing-card .price .saving {
+            display: inline-block;
+            background: rgba(245, 158, 11, 0.15);
+            color: #f59e0b;
+            padding: 2px 14px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+
+        .pricing-card .features {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            margin: 20px 0;
+        }
+
+        .pricing-card .features li {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pricing-card .features li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-card .features li i {
+            color: #00d4ff;
+            font-size: 0.8rem;
+            width: 18px;
+        }
+
+        .pricing-card .btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 12px 40px;
+            background: #00d4ff;
+            color: #0a0e17;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .pricing-card .btn:hover {
+            background: #00b8d4;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .pricing-card.popular .btn {
+            background: #f59e0b;
+            color: #0a0e17;
+        }
+
+        .pricing-card.popular .btn:hover {
+            background: #d97706;
+            box-shadow: 0 8px 30px rgba(245, 158, 11, 0.3);
+        }
+
+        @media (max-width: 992px) {
+            .pricing-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+
+            .pricing-card.popular {
+                transform: scale(1);
+            }
+
+            .pricing-card.popular:hover {
+                transform: translateY(-10px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                max-width: 450px;
+                margin: 30px auto 50px;
+            }
+
+            .pricing-card .price .current {
+                font-size: 2rem;
+            }
+
+            .pricing-card .features li {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .pricing-card {
+                padding: 25px 18px;
+            }
+
+            .pricing-card .price .current {
+                font-size: 1.8rem;
+            }
+
+            .pricing-card h3 {
+                font-size: 1.1rem;
+            }
+
+            .pricing-card .features li {
+                font-size: 0.8rem;
+                padding: 6px 0;
+            }
+
+            .pricing-card .btn {
+                padding: 10px 20px;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* ===== OTHER SERVICES ===== */
+        .other-services-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 60px 0 10px;
+        }
+
+        .other-services-title span {
+            color: #00d4ff;
+        }
+
+        .other-services-subtitle {
+            text-align: center;
+            color: #94a3b8;
+            max-width: 500px;
+            margin: 0 auto 40px;
+            font-size: 1.05rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .service-card {
+            background: #0f172a;
+            border-radius: 16px;
+            padding: 30px 25px;
+            border: 1px solid rgba(0, 212, 255, 0.05);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: #00d4ff;
+            box-shadow: 0 12px 40px rgba(0, 212, 255, 0.05);
+        }
+
+        .service-card .icon {
+            width: 65px;
+            height: 65px;
+            background: rgba(0, 212, 255, 0.08);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 1.8rem;
+            color: #00d4ff;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .icon {
+            background: #00d4ff;
+            color: #0a0e17;
+            transform: scale(1.05);
+        }
+
+        .service-card h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .service-card p {
+            color: #94a3b8;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .service-card .service-price {
+            color: #00d4ff;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .service-card .btn-small {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 8px 28px;
+            background: transparent;
+            color: #00d4ff;
+            border: 1px solid #00d4ff;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-card .btn-small:hover {
+            background: #00d4ff;
+            color: #0a0e17;
+        }
+
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 15px;
+            }
+
+            .other-services-title {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .other-services-title {
+                font-size: 1.3rem;
+            }
+
+            .other-services-subtitle {
+                font-size: 0.85rem;
+            }
+
+            .service-card {
+                padding: 22px 18px;
             }
         }
 
@@ -741,8 +959,8 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                    <li><a href="services.html" class="active">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
@@ -752,102 +970,174 @@
     <!-- ===== PAGE HEADER ===== -->
     <section class="page-header">
         <div class="container">
-            <h1>My <span>Portfolio</span></h1>
-            <p>Check out some of my recent web development projects.</p>
+            <h1>Our <span>Services</span></h1>
+            <p>We build, maintain &amp; grow websites that transform businesses.</p>
         </div>
     </section>
 
-    <!-- ===== PORTFOLIO CONTENT ===== -->
-    <section class="portfolio-section">
+    <!-- ===== SERVICES SECTION ===== -->
+    <section class="services-section">
         <div class="container">
 
-            <div class="portfolio-grid">
+            <!-- ===== INTRO ===== -->
+            <div class="services-intro">
+                <h2>Choose Your <span>Perfect Plan</span></h2>
+                <p>Limited time special offers — get your dream website at an unbeatable price. All plans include free maintenance for the first month!</p>
+            </div>
 
-                <!-- PROJECT 1: Zoe Zion Projects -->
-                <div class="portfolio-card">
-                    <div class="img-placeholder">
-                        <i class="fas fa-bolt"></i>
+            <!-- ===== PRICING TABLE ===== -->
+            <div class="pricing-grid">
+
+                <!-- BASIC PLAN -->
+                <div class="pricing-card">
+                    <span class="special-badge">🔥 SPECIAL OFFER</span>
+                    <div class="icon">
+                        <i class="fas fa-file-code"></i>
                     </div>
-                    <div class="portfolio-info">
-                        <h4>⚡ Zoe Zion Projects</h4>
-                        <p>Complete electrical and solar company website with contact form, project gallery, and WhatsApp integration.</p>
-                        <div class="tech-tags">
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>JavaScript</span>
-                            <span>Responsive</span>
-                            <span>Formspree</span>
-                        </div>
-                        <a href="https://zoezionproject.co.za" target="_blank" rel="noopener noreferrer" class="view-btn">View Project</a>
+                    <h3>Basic Website</h3>
+                    <div class="price">
+                        <span class="original">R6,000</span>
+                        <div class="current">R2,500 <span>once-off</span></div>
+                        <span class="saving">Save R3,500</span>
                     </div>
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> 5 Pages (Home, About, Services, Contact, Gallery)</li>
+                        <li><i class="fas fa-check"></i> Mobile-responsive design</li>
+                        <li><i class="fas fa-check"></i> Contact form with email integration</li>
+                        <li><i class="fas fa-check"></i> 1 Month FREE maintenance</li>
+                        <li><i class="fas fa-check"></i> Basic SEO setup</li>
+                        <li><i class="fas fa-check"></i> WhatsApp integration</li>
+                    </ul>
+                    <a href="contact.html" class="btn">Get Started</a>
                 </div>
 
-                <!-- PROJECT 2: Nwa Zeme Electrical -->
-                <div class="portfolio-card">
-                    <div class="img-placeholder">
-                        <i class="fas fa-lightbulb"></i>
+                <!-- POPULAR PLAN -->
+                <div class="pricing-card popular">
+                    <span class="popular-badge">⭐ MOST POPULAR</span>
+                    <span class="special-badge">🔥 BEST VALUE</span>
+                    <div class="icon">
+                        <i class="fas fa-building"></i>
                     </div>
-                    <div class="portfolio-info">
-                        <h4>🔌 Nwa Zeme Electrical</h4>
-                        <p>Professional electrical services website with service listings, compliance certificates, and quote request system.</p>
-                        <div class="tech-tags">
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>JavaScript</span>
-                            <span>SEO</span>
-                            <span>WhatsApp API</span>
-                        </div>
-                        <a href="https://nwazemeelectrical.co.za" target="_blank" rel="noopener noreferrer" class="view-btn">View Project</a>
+                    <h3>Business Website</h3>
+                    <div class="price">
+                        <span class="original">R8,000</span>
+                        <div class="current">R4,500 <span>once-off</span></div>
+                        <span class="saving">Save R3,500</span>
                     </div>
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> 10+ Pages</li>
+                        <li><i class="fas fa-check"></i> Custom design tailored to your brand</li>
+                        <li><i class="fas fa-check"></i> Service &amp; product pages</li>
+                        <li><i class="fas fa-check"></i> Contact forms &amp; lead capture</li>
+                        <li><i class="fas fa-check"></i> Google Maps integration</li>
+                        <li><i class="fas fa-check"></i> 2 Months FREE maintenance</li>
+                        <li><i class="fas fa-check"></i> Advanced SEO setup</li>
+                        <li><i class="fas fa-check"></i> WhatsApp Business integration</li>
+                    </ul>
+                    <a href="contact.html" class="btn">Get Started</a>
                 </div>
 
-                <!-- PROJECT 3: Shabs Web Development -->
-                <div class="portfolio-card">
-                    <div class="img-placeholder">
-                        <i class="fas fa-code"></i>
+                <!-- PREMIUM PLAN -->
+                <div class="pricing-card">
+                    <span class="special-badge">🔥 SPECIAL OFFER</span>
+                    <div class="icon">
+                        <i class="fas fa-crown"></i>
                     </div>
-                    <div class="portfolio-info">
-                        <h4>💻 Shabs Web Development</h4>
-                        <p>My personal web development agency website showcasing services, pricing, and a dynamic industry showcase.</p>
-                        <div class="tech-tags">
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>JavaScript</span>
-                            <span>Responsive</span>
-                            <span>Interactive</span>
-                        </div>
-                        <a href="index.html" class="view-btn">View Project</a>
+                    <h3>Premium Website</h3>
+                    <div class="price">
+                        <span class="original">R12,500</span>
+                        <div class="current">R7,500 <span>once-off</span></div>
+                        <span class="saving">Save R5,000</span>
                     </div>
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> Unlimited Pages</li>
+                        <li><i class="fas fa-check"></i> Full custom design &amp; development</li>
+                        <li><i class="fas fa-check"></i> E-commerce ready</li>
+                        <li><i class="fas fa-check"></i> Payment gateway integration</li>
+                        <li><i class="fas fa-check"></i> Advanced SEO package</li>
+                        <li><i class="fas fa-check"></i> 3 Months FREE maintenance</li>
+                        <li><i class="fas fa-check"></i> Priority support</li>
+                        <li><i class="fas fa-check"></i> Social media integration</li>
+                    </ul>
+                    <a href="contact.html" class="btn">Get Started</a>
                 </div>
 
-                <!-- PROJECT 4: Coming Soon -->
-                <div class="portfolio-card coming-soon">
-                    <div class="img-placeholder">
-                        <i class="fas fa-rocket"></i>
+            </div>
+
+            <!-- ===== OTHER SERVICES TITLE ===== -->
+            <h3 class="other-services-title">Additional <span>Services</span></h3>
+            <p class="other-services-subtitle">Need something extra? We've got you covered with these additional services.</p>
+
+            <!-- ===== OTHER SERVICES GRID ===== -->
+            <div class="services-grid">
+
+                <div class="service-card">
+                    <div class="icon">
+                        <i class="fas fa-tools"></i>
                     </div>
-                    <div class="portfolio-info">
-                        <span class="coming-badge">🚀 Coming Soon</span>
-                        <h4>Your Project Here</h4>
-                        <p>I'm ready to build your dream website. Let's create something amazing together!</p>
-                        <div class="tech-tags">
-                            <span>Your</span>
-                            <span>Idea</span>
-                            <span>+</span>
-                            <span>My Code</span>
-                        </div>
-                        <a href="contact.html" class="view-btn" style="border-color:#f59e0b; color:#f59e0b;">Let's Build Yours</a>
+                    <h4>Website Maintenance</h4>
+                    <p>Keep your website secure, up-to-date, and performing at its best with our ongoing maintenance packages.</p>
+                    <span class="service-price">From R800/month</span>
+                    <a href="contact.html" class="btn-small">Get a Quote</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="icon">
+                        <i class="fas fa-search"></i>
                     </div>
+                    <h4>SEO Optimization</h4>
+                    <p>Get your business found on Google with our proven SEO strategies. Drive organic traffic and convert visitors into customers.</p>
+                    <span class="service-price">From R1,500</span>
+                    <a href="contact.html" class="btn-small">Get a Quote</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="icon">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <h4>Branding &amp; Logo Design</h4>
+                    <p>Professional logo design and complete branding package to establish your business identity and stand out from the competition.</p>
+                    <span class="service-price">From R1,200</span>
+                    <a href="contact.html" class="btn-small">Get a Quote</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="icon">
+                        <i class="fas fa-hashtag"></i>
+                    </div>
+                    <h4>Social Media Management</h4>
+                    <p>Grow your online presence with professional social media management. Content creation, scheduling, and engagement.</p>
+                    <span class="service-price">From R1,500/month</span>
+                    <a href="contact.html" class="btn-small">Get a Quote</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="icon">
+                        <i class="fas fa-mail-bulk"></i>
+                    </div>
+                    <h4>Email Marketing Setup</h4>
+                    <p>Get started with professional email marketing. Newsletter templates, automation, and subscriber management.</p>
+                    <span class="service-price">From R900</span>
+                    <a href="contact.html" class="btn-small">Get a Quote</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4>Website Security &amp; Backup</h4>
+                    <p>Protect your website with advanced security features, regular backups, and malware scanning to keep your data safe.</p>
+                    <span class="service-price">From R400/month</span>
+                    <a href="contact.html" class="btn-small">Get a Quote</a>
                 </div>
 
             </div>
 
             <!-- ===== CTA SECTION ===== -->
             <div class="cta-box">
-                <h2>
-                    Want to Be <span>Next</span>?
-                </h2>
+                <h2>Ready to Build Your <span>Dream Website</span>?</h2>
                 <p>
-                    Let's build your website together. I'll create something that perfectly represents your brand.
+                    Let's bring your vision to life. Whether you need a new website or want to revamp an existing one, we're here to help.
                 </p>
                 <a href="contact.html" class="btn">
                     <i class="fas fa-paper-plane"></i> Get a Free Quote
