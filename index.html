@@ -1,0 +1,1309 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shabs Web Development | Build Your Dream Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <!-- ===== HEADER WITH LOGO ===== -->
+<header>
+    <div class="container">
+        <div class="logo">
+            <a href="index.html" style="display:flex; align-items:center; gap:15px; text-decoration:none;">
+                <img src="pictures/shabs_web_development_Logo.jpg" alt="Shabs Web Development Logo" style="height:50px; width:auto; border-radius:8px;" onerror="this.style.display='none'" />
+                <div>
+                    <h1>Shabs <span>Web</span> Dev</h1>
+                    <p>Web Development &amp; Maintenance</p>
+                </div>
+            </a>
+        </div>
+        <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav>
+            <ul id="navMenu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="home">
+        <div class="container">
+            <p class="tagline">🚀 We Build and mantain Websites That Transform Businesses</p>
+            <h2>Your Website <span>Speaks</span> For You</h2>
+            <p>
+                Whether you own a restaurant, salon, electrical company, or tutoring business — 
+                we create custom websites that perfectly match your brand and industry.
+            </p>
+            <div>
+                <a href="#industries" class="btn">See How We Do It</a>
+                <a href="contact.html" class="btn btn-outline">Get Started</a>
+            </div>
+            <div class="code-symbols">
+                &lt; / &gt; { } ( ) ; &lt; / &gt; { } ( ) ;
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll to explore 20+ industries</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- ===== INDUSTRY 1: FOOD ===== -->
+    <!-- ============================================================ -->
+    <section class="industry-section industry-food" id="industries">
+        <div class="container">
+            <div style="text-align:center;">
+                <span class="industry-label"><i class="fas fa-utensils"></i> Fast Food &amp; Restaurant</span>
+                <i class="fas fa-utensils industry-icon"></i>
+                <h2 class="section-title">A Website That <span>Makes You Hungry</span></h2>
+                <p class="industry-description">From mouth-watering menus to online ordering — your restaurant deserves a website that looks as good as your food tastes.</p>
+                
+                <div class="demo-carousel" id="carousel-food">
+                    <div class="carousel-track" id="track-food">
+                        <div class="carousel-slide demo-food">
+                            <div class="demo-hero">
+                                <h2>🔥 Crispy &amp; Crunchy</h2>
+                                <p>NEW Bone In Chicken has arrived! Perfect for sharing.</p>
+                                <button class="btn" style="background:#e85d04;color:#fff;margin-top:10px;">View More</button>
+                            </div>
+                            <div class="demo-menu-grid">
+                                <div class="demo-menu-item"><i class="fas fa-hamburger"></i><h4>Burgers</h4><p>8 varieties</p></div>
+                                <div class="demo-menu-item"><i class="fas fa-pizza-slice"></i><h4>Pizza</h4><p>12 varieties</p></div>
+                                <div class="demo-menu-item"><i class="fas fa-coffee"></i><h4>Beverages</h4><p>15 varieties</p></div>
+                                <div class="demo-menu-item"><i class="fas fa-ice-cream"></i><h4>Desserts</h4><p>6 varieties</p></div>
+                                <div class="demo-menu-item"><i class="fas fa-utensils"></i><h4>Combos</h4><p>5 varieties</p></div>
+                                <div class="demo-menu-item"><i class="fas fa-clock"></i><h4>Breakfast</h4><p>7am - 11am</p></div>
+                            </div>
+                        </div>
+                        <div class="carousel-slide demo-food">
+                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:20px;">
+                                <div style="background:rgba(232,93,4,0.1);border-radius:12px;padding:30px;text-align:center;">
+                                    <i class="fas fa-utensils" style="font-size:3rem;color:#e85d04;margin-bottom:10px;"></i>
+                                    <h4>Bone In Chicken</h4>
+                                    <p style="opacity:0.8;">NEW! Crispy, crunchy, and delicious.</p>
+                                    <button class="btn" style="background:#e85d04;color:#fff;margin-top:15px;font-size:0.85rem;">Order Now</button>
+                                </div>
+                                <div style="background:rgba(232,93,4,0.1);border-radius:12px;padding:30px;text-align:center;">
+                                    <i class="fas fa-coffee" style="font-size:3rem;color:#e85d04;margin-bottom:10px;"></i>
+                                    <h4>BK Café</h4>
+                                    <p style="opacity:0.8;">Freshly brewed coffee to start your day.</p>
+                                    <button class="btn" style="background:#e85d04;color:#fff;margin-top:15px;font-size:0.85rem;">View Menu</button>
+                                </div>
+                            </div>
+                            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:15px;padding:0 20px;">
+                                <div style="background:rgba(232,93,4,0.05);border-radius:10px;padding:15px;text-align:center;"><h4>🍔 Stacked</h4><p style="opacity:0.7;">Limited Time</p></div>
+                                <div style="background:rgba(232,93,4,0.05);border-radius:10px;padding:15px;text-align:center;"><h4>🍗 Chicken</h4><p style="opacity:0.7;">NEW!</p></div>
+                                <div style="background:rgba(232,93,4,0.05);border-radius:10px;padding:15px;text-align:center;"><h4>🍰 Desserts</h4><p style="opacity:0.7;">Sweet Treats</p></div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-nav prev" onclick="prevSlide('food')">‹</button>
+                    <button class="carousel-nav next" onclick="nextSlide('food')">›</button>
+                    <div class="carousel-indicators" id="indicators-food">
+                        <button class="active" onclick="goToSlide('food', 0)"></button>
+                        <button onclick="goToSlide('food', 1)"></button>
+                    </div>
+                </div>
+                
+                <div style="margin-top:30px;">
+                    <a href="contact.html" class="btn">Build My Restaurant Website</a>
+                    <a href="#industries-2" class="btn btn-outline">See Next</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- ===== INDUSTRY 2: ELECTRICAL ===== -->
+    <!-- ============================================================ -->
+    <section class="industry-section industry-electrical" id="industries-2">
+        <div class="container">
+            <div style="text-align:center;">
+                <span class="industry-label"><i class="fas fa-bolt"></i> Electrical &amp; Solar</span>
+                <i class="fas fa-bolt industry-icon"></i>
+                <h2 class="section-title">A Website That <span>Electrifies</span></h2>
+                <p class="industry-description">Showcase your services, certifications, and completed projects with a professional website that builds trust.</p>
+                
+                <div class="demo-carousel" id="carousel-electrical">
+                    <div class="carousel-track" id="track-electrical">
+                        <div class="carousel-slide demo-electrical">
+                            <div class="demo-hero">
+                                <i class="fas fa-bolt icon"></i>
+                                <div style="flex:1;">
+                                    <h3>Powering Your World with Excellence</h3>
+                                    <p style="opacity:0.8;">Reliable, Safe &amp; Professional Electrical Installations</p>
+                                    <button class="btn" style="background:#00d4ff;color:#0a0e17;margin-top:10px;">REQUEST A FREE QUOTE</button>
+                                </div>
+                            </div>
+                            <div class="demo-services">
+                                <div class="demo-service"><i class="fas fa-home"></i><br/>Residential</div>
+                                <div class="demo-service"><i class="fas fa-building"></i><br/>Commercial</div>
+                                <div class="demo-service"><i class="fas fa-industry"></i><br/>Industrial</div>
+                                <div class="demo-service"><i class="fas fa-solar-panel"></i><br/>Solar</div>
+                                <div class="demo-service"><i class="fas fa-tools"></i><br/>Maintenance</div>
+                                <div class="demo-service"><i class="fas fa-file-certificate"></i><br/>COC</div>
+                            </div>
+                        </div>
+                        <div class="carousel-slide demo-electrical">
+                            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:15px;padding:20px;">
+                                <div style="background:rgba(0,212,255,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(0,212,255,0.1);">
+                                    <i class="fas fa-check-circle" style="font-size:2.5rem;color:#00d4ff;margin-bottom:10px;"></i>
+                                    <h4>Certified</h4>
+                                    <p style="opacity:0.7;">ECSA Registered</p>
+                                </div>
+                                <div style="background:rgba(0,212,255,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(0,212,255,0.1);">
+                                    <i class="fas fa-star" style="font-size:2.5rem;color:#00d4ff;margin-bottom:10px;"></i>
+                                    <h4>5-Star Service</h4>
+                                    <p style="opacity:0.7;">100+ Reviews</p>
+                                </div>
+                                <div style="background:rgba(0,212,255,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(0,212,255,0.1);">
+                                    <i class="fas fa-clock" style="font-size:2.5rem;color:#00d4ff;margin-bottom:10px;"></i>
+                                    <h4>24/7 Support</h4>
+                                    <p style="opacity:0.7;">Emergency Services</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-nav prev" onclick="prevSlide('electrical')">‹</button>
+                    <button class="carousel-nav next" onclick="nextSlide('electrical')">›</button>
+                    <div class="carousel-indicators" id="indicators-electrical">
+                        <button class="active" onclick="goToSlide('electrical', 0)"></button>
+                        <button onclick="goToSlide('electrical', 1)"></button>
+                    </div>
+                </div>
+                
+                <div style="margin-top:30px;">
+                    <a href="contact.html" class="btn">Build My Electrical Website</a>
+                    <a href="#industries-3" class="btn btn-outline">See Next</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- ===== INDUSTRY 3: SALON ===== -->
+    <!-- ============================================================ -->
+    <section class="industry-section industry-salon" id="industries-3">
+        <div class="container">
+            <div style="text-align:center;">
+                <span class="industry-label"><i class="fas fa-cut"></i> Salon &amp; Beauty</span>
+                <i class="fas fa-cut industry-icon"></i>
+                <h2 class="section-title">A Website That <span>Shines</span></h2>
+                <p class="industry-description">Elegant, sophisticated, and beautiful — your salon website should reflect the artistry and care you bring to every client.</p>
+                
+                <div class="demo-carousel" id="carousel-salon">
+                    <div class="carousel-track" id="track-salon">
+                        <div class="carousel-slide demo-salon">
+                            <div class="demo-hero">
+                                <h2 style="font-family:Georgia,serif;">✨ glow.</h2>
+                                <p>EXPERIENCE THE GLOW</p>
+                                <button class="btn" style="background:#d946ef;color:#fff;margin-top:10px;">Make a Booking</button>
+                            </div>
+                            <div class="demo-services-grid">
+                                <div class="demo-service-card"><i class="fas fa-cut" style="font-size:2rem;color:#d946ef;"></i><h4>Hair Styling</h4><p style="opacity:0.7;">From R150</p></div>
+                                <div class="demo-service-card"><i class="fas fa-paint-brush" style="font-size:2rem;color:#d946ef;"></i><h4>Makeup</h4><p style="opacity:0.7;">From R200</p></div>
+                                <div class="demo-service-card"><i class="fas fa-spa" style="font-size:2rem;color:#d946ef;"></i><h4>Spa Treatments</h4><p style="opacity:0.7;">From R300</p></div>
+                                <div class="demo-service-card"><i class="fas fa-hand-sparkles" style="font-size:2rem;color:#d946ef;"></i><h4>Nail Art</h4><p style="opacity:0.7;">From R100</p></div>
+                            </div>
+                        </div>
+                        <div class="carousel-slide demo-salon">
+                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:20px;">
+                                <div style="background:rgba(217,70,239,0.08);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(217,70,239,0.1);">
+                                    <i class="fas fa-star" style="font-size:2.5rem;color:#d946ef;margin-bottom:10px;"></i>
+                                    <h4>Wedding Packages</h4>
+                                    <p style="opacity:0.7;">Special occasion looks</p>
+                                    <button class="btn" style="background:#d946ef;color:#fff;font-size:0.85rem;margin-top:10px;">View Details</button>
+                                </div>
+                                <div style="background:rgba(217,70,239,0.08);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(217,70,239,0.1);">
+                                    <i class="fas fa-gift" style="font-size:2.5rem;color:#d946ef;margin-bottom:10px;"></i>
+                                    <h4>Gift Vouchers</h4>
+                                    <p style="opacity:0.7;">The perfect gift</p>
+                                    <button class="btn" style="background:#d946ef;color:#fff;font-size:0.85rem;margin-top:10px;">Buy Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-nav prev" onclick="prevSlide('salon')">‹</button>
+                    <button class="carousel-nav next" onclick="nextSlide('salon')">›</button>
+                    <div class="carousel-indicators" id="indicators-salon">
+                        <button class="active" onclick="goToSlide('salon', 0)"></button>
+                        <button onclick="goToSlide('salon', 1)"></button>
+                    </div>
+                </div>
+                
+                <div style="margin-top:30px;">
+                    <a href="contact.html" class="btn">Build My Salon Website</a>
+                    <a href="#industries-4" class="btn btn-outline">See Next</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- ===== INDUSTRY 4: MECHANIC ===== -->
+    <!-- ============================================================ -->
+    <section class="industry-section industry-mechanic" id="industries-4">
+        <div class="container">
+            <div style="text-align:center;">
+                <span class="industry-label"><i class="fas fa-wrench"></i> Auto &amp; Mechanic</span>
+                <i class="fas fa-wrench industry-icon"></i>
+                <h2 class="section-title">A Website That <span>Drives Trust</span></h2>
+                <p class="industry-description">Build credibility with a professional website that showcases your expertise, services, and customer reviews.</p>
+                
+                <div class="demo-carousel" id="carousel-mechanic">
+                    <div class="carousel-track" id="track-mechanic">
+                        <div class="carousel-slide demo-mechanic">
+                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(239,68,68,0.05);border-radius:12px;border-left:4px solid #ef4444;margin-bottom:20px;">
+                                <i class="fas fa-car" style="font-size:3rem;color:#ef4444;"></i>
+                                <div style="flex:1;"><h3>Your Trusted Auto Repair Shop</h3><p style="opacity:0.8;">Quality service you can depend on</p></div>
+                                <button class="btn" style="background:#ef4444;color:#fff;">Book Now</button>
+                            </div>
+                            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-oil-can" style="color:#ef4444;font-size:1.5rem;"></i><br/>Oil Change</div>
+                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-car-crash" style="color:#ef4444;font-size:1.5rem;"></i><br/>Collision Repair</div>
+                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-tachometer-alt" style="color:#ef4444;font-size:1.5rem;"></i><br/>Diagnostics</div>
+                            </div>
+                        </div>
+                        <div class="carousel-slide demo-mechanic">
+                            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:15px;padding:20px;">
+                                <div style="background:rgba(239,68,68,0.05);border-radius:12px;padding:20px;text-align:center;border:1px solid rgba(239,68,68,0.1);">
+                                    <i class="fas fa-star" style="font-size:2rem;color:#ef4444;"></i>
+                                    <h4>4.9/5</h4>
+                                    <p style="opacity:0.7;">Customer Rating</p>
+                                </div>
+                                <div style="background:rgba(239,68,68,0.05);border-radius:12px;padding:20px;text-align:center;border:1px solid rgba(239,68,68,0.1);">
+                                    <i class="fas fa-clock" style="font-size:2rem;color:#ef4444;"></i>
+                                    <h4>15+ Years</h4>
+                                    <p style="opacity:0.7;">Experience</p>
+                                </div>
+                                <div style="background:rgba(239,68,68,0.05);border-radius:12px;padding:20px;text-align:center;border:1px solid rgba(239,68,68,0.1);">
+                                    <i class="fas fa-shield-alt" style="font-size:2rem;color:#ef4444;"></i>
+                                    <h4>100%</h4>
+                                    <p style="opacity:0.7;">Guaranteed</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-nav prev" onclick="prevSlide('mechanic')">‹</button>
+                    <button class="carousel-nav next" onclick="nextSlide('mechanic')">›</button>
+                    <div class="carousel-indicators" id="indicators-mechanic">
+                        <button class="active" onclick="goToSlide('mechanic', 0)"></button>
+                        <button onclick="goToSlide('mechanic', 1)"></button>
+                    </div>
+                </div>
+                
+                <div style="margin-top:30px;">
+                    <a href="contact.html" class="btn">Build My Mechanic Website</a>
+                    <a href="#industries-5" class="btn btn-outline">See Next</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- ===== INDUSTRY 5: TUTORING ===== -->
+    <!-- ============================================================ -->
+    <section class="industry-section industry-tutoring" id="industries-5">
+        <div class="container">
+            <div style="text-align:center;">
+                <span class="industry-label"><i class="fas fa-graduation-cap"></i> Tutoring &amp; Education</span>
+                <i class="fas fa-graduation-cap industry-icon"></i>
+                <h2 class="section-title">A Website That <span>Inspires Learning</span></h2>
+                <p class="industry-description">Connect with students and parents through a professional website that showcases your subjects, experience, and success stories.</p>
+                
+                <div class="demo-carousel" id="carousel-tutoring">
+                    <div class="carousel-track" id="track-tutoring">
+                        <div class="carousel-slide demo-tutoring">
+                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(34,211,238,0.05);border-radius:12px;border-left:4px solid #22d3ee;margin-bottom:20px;">
+                                <i class="fas fa-graduation-cap" style="font-size:3rem;color:#22d3ee;"></i>
+                                <div style="flex:1;"><h3>📚 Learn with Confidence</h3><p style="opacity:0.8;">Expert tutoring for all subjects</p></div>
+                                <button class="btn" style="background:#22d3ee;color:#0a1a0a;">Book a Lesson</button>
+                            </div>
+                            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-calculator" style="color:#22d3ee;font-size:1.5rem;"></i><br/>Mathematics</div>
+                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-atom" style="color:#22d3ee;font-size:1.5rem;"></i><br/>Science</div>
+                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-language" style="color:#22d3ee;font-size:1.5rem;"></i><br/>Languages</div>
+                            </div>
+                        </div>
+                        <div class="carousel-slide demo-tutoring">
+                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:20px;">
+                                <div style="background:rgba(34,211,238,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(34,211,238,0.1);">
+                                    <i class="fas fa-users" style="font-size:2.5rem;color:#22d3ee;margin-bottom:10px;"></i>
+                                    <h4>Group Classes</h4>
+                                    <p style="opacity:0.7;">Interactive learning</p>
+                                    <button class="btn" style="background:#22d3ee;color:#0a1a0a;font-size:0.85rem;margin-top:10px;">Join Now</button>
+                                </div>
+                                <div style="background:rgba(34,211,238,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(34,211,238,0.1);">
+                                    <i class="fas fa-user-graduate" style="font-size:2.5rem;color:#22d3ee;margin-bottom:10px;"></i>
+                                    <h4>1-on-1 Tutoring</h4>
+                                    <p style="opacity:0.7;">Personalized attention</p>
+                                    <button class="btn" style="background:#22d3ee;color:#0a1a0a;font-size:0.85rem;margin-top:10px;">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-nav prev" onclick="prevSlide('tutoring')">‹</button>
+                    <button class="carousel-nav next" onclick="nextSlide('tutoring')">›</button>
+                    <div class="carousel-indicators" id="indicators-tutoring">
+                        <button class="active" onclick="goToSlide('tutoring', 0)"></button>
+                        <button onclick="goToSlide('tutoring', 1)"></button>
+                    </div>
+                </div>
+                
+                <div style="margin-top:30px;">
+                    <a href="contact.html" class="btn">Build My Tutoring Website</a>
+                    <a href="#industries-6" class="btn btn-outline">See Next</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- ===== INDUSTRY 6: CLEANING ===== -->
+    <!-- ============================================================ -->
+    <section class="industry-section industry-cleaning" id="industries-6">
+        <div class="container">
+            <div style="text-align:center;">
+                <span class="industry-label"><i class="fas fa-broom"></i> Cleaning Services</span>
+                <i class="fas fa-broom industry-icon"></i>
+                <h2 class="section-title">A Website That <span>Sparkles</span></h2>
+                <p class="industry-description">Show your professionalism with a clean, fresh website that makes it easy for clients to book your cleaning services.</p>
+                
+                <div class="demo-carousel" id="carousel-cleaning">
+                    <div class="carousel-track" id="track-cleaning">
+                        <div class="carousel-slide demo-cleaning">
+                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(52,211,153,0.05);border-radius:12px;border-left:4px solid #34d399;margin-bottom:20px;">
+                                <i class="fas fa-broom" style="font-size:3rem;color:#34d399;"></i>
+                                <div style="flex:1;"><h3>✨ Sparkling Clean Every Time</h3><p style="opacity:0.8;">Professional cleaning services you can trust</p></div>
+                                <button class="btn" style="background:#34d399;color:#0a1a1a;">Book Now</button>
+                            </div>
+                            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-home" style="color:#34d399;font-size:1.5rem;"></i><br/>Home Cleaning</div>
+                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-building" style="color:#34d399;font-size:1.5rem;"></i><br/>Office Cleaning</div>
+                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-window-maximize" style="color:#34d399;font-size:1.5rem;"></i><br/>Window Cleaning</div>
+                            </div>
+                        </div>
+                        <div class="carousel-slide demo-cleaning">
+                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:20px;">
+                                <div style="background:rgba(52,211,153,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(52,211,153,0.1);">
+                                    <i class="fas fa-star" style="font-size:2.5rem;color:#34d399;margin-bottom:10px;"></i>
+                                    <h4>5-Star Service</h4>
+                                    <p style="opacity:0.7;">200+ happy clients</p>
+                                </div>
+                                <div style="background:rgba(52,211,153,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(52,211,153,0.1);">
+                                    <i class="fas fa-shield-alt" style="font-size:2.5rem;color:#34d399;margin-bottom:10px;"></i>
+                                    <h4>100% Satisfaction</h4>
+                                    <p style="opacity:0.7;">Guaranteed</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-nav prev" onclick="prevSlide('cleaning')">‹</button>
+                    <button class="carousel-nav next" onclick="nextSlide('cleaning')">›</button>
+                    <div class="carousel-indicators" id="indicators-cleaning">
+                        <button class="active" onclick="goToSlide('cleaning', 0)"></button>
+                        <button onclick="goToSlide('cleaning', 1)"></button>
+                    </div>
+                </div>
+                
+                <div style="margin-top:30px;">
+                    <a href="contact.html" class="btn">Build My Cleaning Website</a>
+                    <a href="#industries-7" class="btn btn-outline">See Next</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- ===== INDUSTRY 7: CLOTHING ===== -->
+    <!-- ============================================================ -->
+    <section class="industry-section industry-clothing" id="industries-7">
+        <div class="container">
+            <div style="text-align:center;">
+                <span class="industry-label"><i class="fas fa-tshirt"></i> Clothing &amp; Fashion</span>
+                <i class="fas fa-tshirt industry-icon"></i>
+                <h2 class="section-title">A Website That <span>Looks Good</span></h2>
+                <p class="industry-description">Showcase your collections with a stylish, visually stunning website that makes your products look irresistible.</p>
+                
+                <div class="demo-carousel" id="carousel-clothing">
+                    <div class="carousel-track" id="track-clothing">
+                        <div class="carousel-slide demo-clothing">
+                            <div class="demo-hero">
+                                <div style="text-align:left;"><h3 style="color:#f472b6;">New Collection</h3><h2>Spring/Summer 2025</h2><p style="opacity:0.7;">Discover the latest trends</p></div>
+                                <div style="text-align:right;"><span class="featured">✨</span><p style="opacity:0.7;">Up to 50% off</p></div>
+                            </div>
+                            <div class="demo-products">
+                                <div class="demo-product"><i class="fas fa-tshirt" style="font-size:2rem;color:#f472b6;"></i><h4>T-Shirts</h4><p style="opacity:0.7;">R200-R400</p></div>
+                                <div class="demo-product"><i class="fas fa-tshirt" style="font-size:2rem;color:#f472b6;"></i><h4>Dresses</h4><p style="opacity:0.7;">R400-R800</p></div>
+                                <div class="demo-product"><i class="fas fa-socks" style="font-size:2rem;color:#f472b6;"></i><h4>Accessories</h4><p style="opacity:0.7;">R100-R300</p></div>
+                                <div class="demo-product"><i class="fas fa-user-tie" style="font-size:2rem;color:#f472b6;"></i><h4>Suits</h4><p style="opacity:0.7;">R800-R2000</p></div>
+                            </div>
+                        </div>
+                        <div class="carousel-slide demo-clothing">
+                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:20px;">
+                                <div style="background:rgba(244,114,182,0.08);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(244,114,182,0.1);">
+                                    <i class="fas fa-tag" style="font-size:2.5rem;color:#f472b6;margin-bottom:10px;"></i>
+                                    <h4>Sale</h4>
+                                    <p style="opacity:0.7;">Up to 60% off</p>
+                                    <button class="btn" style="background:#f472b6;color:#1a0a14;font-size:0.85rem;margin-top:10px;">Shop Now</button>
+                                </div>
+                                <div style="background:rgba(244,114,182,0.08);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(244,114,182,0.1);">
+                                    <i class="fas fa-star" style="font-size:2.5rem;color:#f472b6;margin-bottom:10px;"></i>
+                                    <h4>Bestsellers</h4>
+                                    <p style="opacity:0.7;">Most popular items</p>
+                                    <button class="btn" style="background:#f472b6;color:#1a0a14;font-size:0.85rem;margin-top:10px;">View Collection</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-nav prev" onclick="prevSlide('clothing')">‹</button>
+                    <button class="carousel-nav next" onclick="nextSlide('clothing')">›</button>
+                    <div class="carousel-indicators" id="indicators-clothing">
+                        <button class="active" onclick="goToSlide('clothing', 0)"></button>
+                        <button onclick="goToSlide('clothing', 1)"></button>
+                    </div>
+                </div>
+                
+                <div style="margin-top:30px;">
+                    <a href="contact.html" class="btn">Build My Clothing Website</a>
+                    <a href="#industries-8" class="btn btn-outline">See Next</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- ===== INDUSTRY 8: DELIVERY ===== -->
+    <!-- ============================================================ -->
+    <section class="industry-section industry-delivery" id="industries-8">
+        <div class="container">
+            <div style="text-align:center;">
+                <span class="industry-label"><i class="fas fa-truck"></i> Delivery &amp; Logistics</span>
+                <i class="fas fa-truck industry-icon"></i>
+                <h2 class="section-title">A Website That <span>Delivers</span></h2>
+                <p class="industry-description">Track packages, manage deliveries, and build trust with real-time tracking, clear pricing, and professional branding.</p>
+                
+                <div class="demo-carousel" id="carousel-delivery">
+                    <div class="carousel-track" id="track-delivery">
+                        <div class="carousel-slide demo-delivery">
+                            <div class="demo-search">
+                                <input type="text" placeholder="Track your package..." style="flex:1;padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:#fff;" />
+                                <button class="btn" style="background:#f59e0b;color:#1a100a;">Track</button>
+                            </div>
+                            <div class="demo-restaurants">
+                                <div class="demo-restaurant"><i class="fas fa-store" style="font-size:2rem;color:#f59e0b;"></i><h4>Fast Food</h4><p style="opacity:0.7;">30 min delivery</p></div>
+                                <div class="demo-restaurant"><i class="fas fa-store-alt" style="font-size:2rem;color:#f59e0b;"></i><h4>Groceries</h4><p style="opacity:0.7;">1 hour delivery</p></div>
+                                <div class="demo-restaurant"><i class="fas fa-box" style="font-size:2rem;color:#f59e0b;"></i><h4>Parcels</h4><p style="opacity:0.7;">Same day delivery</p></div>
+                            </div>
+                        </div>
+                        <div class="carousel-slide demo-delivery">
+                            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:15px;padding:20px;">
+                                <div style="background:rgba(245,158,11,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(245,158,11,0.1);">
+                                    <i class="fas fa-clock" style="font-size:2.5rem;color:#f59e0b;margin-bottom:10px;"></i>
+                                    <h4>On-Time</h4>
+                                    <p style="opacity:0.7;">99.9% delivery rate</p>
+                                </div>
+                                <div style="background:rgba(245,158,11,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(245,158,11,0.1);">
+                                    <i class="fas fa-map-pin" style="font-size:2.5rem;color:#f59e0b;margin-bottom:10px;"></i>
+                                    <h4>Live Tracking</h4>
+                                    <p style="opacity:0.7;">Real-time updates</p>
+                                </div>
+                                <div style="background:rgba(245,158,11,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(245,158,11,0.1);">
+                                    <i class="fas fa-star" style="font-size:2.5rem;color:#f59e0b;margin-bottom:10px;"></i>
+                                    <h4>5-Star Service</h4>
+                                    <p style="opacity:0.7;">1000+ deliveries</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-nav prev" onclick="prevSlide('delivery')">‹</button>
+                    <button class="carousel-nav next" onclick="nextSlide('delivery')">›</button>
+                    <div class="carousel-indicators" id="indicators-delivery">
+                        <button class="active" onclick="goToSlide('delivery', 0)"></button>
+                        <button onclick="goToSlide('delivery', 1)"></button>
+                    </div>
+                </div>
+                
+                <div style="margin-top:30px;">
+                    <a href="contact.html" class="btn">Build My Delivery Website</a>
+                    <a href="#industries-9" class="btn btn-outline">See Next</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- ===== INDUSTRY 9: REAL ESTATE ===== -->
+    <!-- ============================================================ -->
+    <section class="industry-section industry-realestate" id="industries-9">
+        <div class="container">
+            <div style="text-align:center;">
+                <span class="industry-label"><i class="fas fa-home"></i> Real Estate</span>
+                <i class="fas fa-home industry-icon"></i>
+                <h2 class="section-title">A Website That <span>Sells Homes</span></h2>
+                <p class="industry-description">Beautiful property listings, virtual tours, and lead capture — everything you need to sell more homes online.</p>
+                
+                <div class="demo-carousel" id="carousel-realestate">
+                    <div class="carousel-track" id="track-realestate">
+                        <div class="carousel-slide demo-realestate">
+                            <div class="demo-hero">
+                                <div><h3 style="color:#8b5cf6;">Find Your Dream Home</h3><p style="opacity:0.7;">Search properties in your area</p></div>
+                                <div style="display:flex;gap:10px;align-items:center;"><i class="fas fa-search" style="color:#8b5cf6;"></i><input type="text" placeholder="Search..." style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:#fff;width:100%;" /></div>
+                            </div>
+                            <div class="demo-properties">
+                                <div class="demo-property"><i class="fas fa-home" style="font-size:2rem;color:#8b5cf6;"></i><h4>Modern Villa</h4><p class="price">R2.5M</p><p style="opacity:0.7;">4 bed, 3 bath</p></div>
+                                <div class="demo-property"><i class="fas fa-building" style="font-size:2rem;color:#8b5cf6;"></i><h4>City Apartment</h4><p class="price">R1.2M</p><p style="opacity:0.7;">2 bed, 2 bath</p></div>
+                                <div class="demo-property"><i class="fas fa-house" style="font-size:2rem;color:#8b5cf6;"></i><h4>Family Home</h4><p class="price">R1.8M</p><p style="opacity:0.7;">3 bed, 2 bath</p></div>
+                            </div>
+                        </div>
+                        <div class="carousel-slide demo-realestate">
+                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:20px;">
+                                <div style="background:rgba(139,92,246,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(139,92,246,0.1);">
+                                    <i class="fas fa-star" style="font-size:2.5rem;color:#8b5cf6;margin-bottom:10px;"></i>
+                                    <h4>Top Agents</h4>
+                                    <p style="opacity:0.7;">Expert real estate professionals</p>
+                                    <button class="btn" style="background:#8b5cf6;color:#fff;font-size:0.85rem;margin-top:10px;">Meet the Team</button>
+                                </div>
+                                <div style="background:rgba(139,92,246,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(139,92,246,0.1);">
+                                    <i class="fas fa-video" style="font-size:2.5rem;color:#8b5cf6;margin-bottom:10px;"></i>
+                                    <h4>Virtual Tours</h4>
+                                    <p style="opacity:0.7;">View properties from anywhere</p>
+                                    <button class="btn" style="background:#8b5cf6;color:#fff;font-size:0.85rem;margin-top:10px;">Take a Tour</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-nav prev" onclick="prevSlide('realestate')">‹</button>
+                    <button class="carousel-nav next" onclick="nextSlide('realestate')">›</button>
+                    <div class="carousel-indicators" id="indicators-realestate">
+                        <button class="active" onclick="goToSlide('realestate', 0)"></button>
+                        <button onclick="goToSlide('realestate', 1)"></button>
+                    </div>
+                </div>
+                
+                <div style="margin-top:30px;">
+                    <a href="contact.html" class="btn">Build My Real Estate Website</a>
+                    <a href="#industries-10" class="btn btn-outline">See Next</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- ===== INDUSTRY 10: FITNESS ===== -->
+    <!-- ============================================================ -->
+    <section class="industry-section industry-fitness" id="industries-10">
+        <div class="container">
+            <div style="text-align:center;">
+                <span class="industry-label"><i class="fas fa-dumbbell"></i> Fitness &amp; Gym</span>
+                <i class="fas fa-dumbbell industry-icon"></i>
+                <h2 class="section-title">A Website That <span>Motivates</span></h2>
+                <p class="industry-description">Showcase your gym, classes, trainers, and success stories — inspire people to start their fitness journey with you.</p>
+                
+                <div class="demo-carousel" id="carousel-fitness">
+                    <div class="carousel-track" id="track-fitness">
+                        <div class="carousel-slide demo-fitness">
+                            <div class="demo-hero">
+                                <i class="fas fa-dumbbell" style="font-size:3rem;color:#ef4444;"></i>
+                                <div style="flex:1;"><h3>💪 Transform Your Body</h3><p style="opacity:0.8;">Expert trainers. World-class facilities.</p></div>
+                                <button class="btn" style="background:#ef4444;color:#fff;">Join Now</button>
+                            </div>
+                            <div class="demo-classes">
+                                <div class="demo-class"><i class="fas fa-running" style="font-size:1.5rem;color:#ef4444;"></i><h4>Cardio</h4><p style="opacity:0.7;">Mon/Wed/Fri</p></div>
+                                <div class="demo-class"><i class="fas fa-dumbbell" style="font-size:1.5rem;color:#ef4444;"></i><h4>Strength</h4><p style="opacity:0.7;">Tue/Thu/Sat</p></div>
+                                <div class="demo-class"><i class="fas fa-spa" style="font-size:1.5rem;color:#ef4444;"></i><h4>Yoga</h4><p style="opacity:0.7;">Daily</p></div>
+                            </div>
+                        </div>
+                        <div class="carousel-slide demo-fitness">
+                            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:15px;padding:20px;">
+                                <div style="background:rgba(239,68,68,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(239,68,68,0.1);">
+                                    <i class="fas fa-user-tie" style="font-size:2.5rem;color:#ef4444;margin-bottom:10px;"></i>
+                                    <h4>Pro Trainers</h4>
+                                    <p style="opacity:0.7;">Certified coaches</p>
+                                </div>
+                                <div style="background:rgba(239,68,68,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(239,68,68,0.1);">
+                                    <i class="fas fa-calendar-check" style="font-size:2.5rem;color:#ef4444;margin-bottom:10px;"></i>
+                                    <h4>Flexible Hours</h4>
+                                    <p style="opacity:0.7;">5am - 10pm daily</p>
+                                </div>
+                                <div style="background:rgba(239,68,68,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(239,68,68,0.1);">
+                                    <i class="fas fa-trophy" style="font-size:2.5rem;color:#ef4444;margin-bottom:10px;"></i>
+                                    <h4>Results Guaranteed</h4>
+                                    <p style="opacity:0.7;">See real transformations</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-nav prev" onclick="prevSlide('fitness')">‹</button>
+                    <button class="carousel-nav next" onclick="nextSlide('fitness')">›</button>
+                    <div class="carousel-indicators" id="indicators-fitness">
+                        <button class="active" onclick="goToSlide('fitness', 0)"></button>
+                        <button onclick="goToSlide('fitness', 1)"></button>
+                    </div>
+                </div>
+                
+                <div style="margin-top:30px;">
+                    <a href="contact.html" class="btn">Build My Gym Website</a>
+                    <a href="#industries-11" class="btn btn-outline">See Next</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- ===== INDUSTRY 11: PHOTOGRAPHY ===== -->
+    <!-- ============================================================ -->
+    <section class="industry-section industry-photography" id="industries-11">
+        <div class="container">
+            <div style="text-align:center;">
+                <span class="industry-label"><i class="fas fa-camera"></i> Photography</span>
+                <i class="fas fa-camera industry-icon"></i>
+                <h2 class="section-title">A Website That <span>Captures</span></h2>
+                <p class="industry-description">Showcase your portfolio, attract clients, and book more shoots with a stunning photography website that speaks for itself.</p>
+                
+                <div class="demo-carousel" id="carousel-photography">
+                    <div class="carousel-track" id="track-photography">
+                        <div class="carousel-slide demo-photography">
+                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(107,114,128,0.05);border-radius:12px;border-left:4px solid #6b7280;margin-bottom:20px;">
+                                <i class="fas fa-camera" style="font-size:3rem;color:#9ca3af;"></i>
+                                <div style="flex:1;"><h3>Capturing Life's Moments</h3><p style="opacity:0.7;">Professional photography services</p></div>
+                                <button class="btn" style="background:#6b7280;color:#fff;">Book a Shoot</button>
+                            </div>
+                            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-ring" style="color:#9ca3af;font-size:1.5rem;"></i><br/>Weddings</div>
+                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-users" style="color:#9ca3af;font-size:1.5rem;"></i><br/>Portraits</div>
+                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-building" style="color:#9ca3af;font-size:1.5rem;"></i><br/>Commercial</div>
+                            </div>
+                        </div>
+                        <div class="carousel-slide demo-photography">
+                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:20px;">
+                                <div style="background:rgba(107,114,128,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(107,114,128,0.1);">
+                                    <i class="fas fa-star" style="font-size:2.5rem;color:#9ca3af;margin-bottom:10px;"></i>
+                                    <h4>5-Star Reviews</h4>
+                                    <p style="opacity:0.7;">100+ happy clients</p>
+                                </div>
+                                <div style="background:rgba(107,114,128,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(107,114,128,0.1);">
+                                    <i class="fas fa-images" style="font-size:2.5rem;color:#9ca3af;margin-bottom:10px;"></i>
+                                    <h4>Portfolio</h4>
+                                    <p style="opacity:0.7;">View recent work</p>
+                                    <button class="btn" style="background:#6b7280;color:#fff;font-size:0.85rem;margin-top:10px;">View Gallery</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-nav prev" onclick="prevSlide('photography')">‹</button>
+                    <button class="carousel-nav next" onclick="nextSlide('photography')">›</button>
+                    <div class="carousel-indicators" id="indicators-photography">
+                        <button class="active" onclick="goToSlide('photography', 0)"></button>
+                        <button onclick="goToSlide('photography', 1)"></button>
+                    </div>
+                </div>
+                
+                <div style="margin-top:30px;">
+                    <a href="contact.html" class="btn">Build My Photography Website</a>
+                    <a href="#industries-12" class="btn btn-outline">See Next</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- ===== INDUSTRY 12: HEALTHCARE ===== -->
+    <!-- ============================================================ -->
+    <section class="industry-section industry-healthcare" id="industries-12">
+        <div class="container">
+            <div style="text-align:center;">
+                <span class="industry-label"><i class="fas fa-heartbeat"></i> Healthcare &amp; Medical</span>
+                <i class="fas fa-heartbeat industry-icon"></i>
+                <h2 class="section-title">A Website That <span>Heals</span></h2>
+                <p class="industry-description">Professional, caring, and trustworthy — your healthcare website should make patients feel safe and informed.</p>
+                
+                <div class="demo-carousel" id="carousel-healthcare">
+                    <div class="carousel-track" id="track-healthcare">
+                        <div class="carousel-slide demo-healthcare">
+                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(14,165,233,0.05);border-radius:12px;border-left:4px solid #0ea5e9;margin-bottom:20px;">
+                                <i class="fas fa-heartbeat" style="font-size:3rem;color:#0ea5e9;"></i>
+                                <div style="flex:1;"><h3>Your Health, Our Priority</h3><p style="opacity:0.8;">Caring, professional medical services</p></div>
+                                <button class="btn" style="background:#0ea5e9;color:#fff;">Book Appointment</button>
+                            </div>
+                            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-user-md" style="color:#0ea5e9;font-size:1.5rem;"></i><br/>General Practice</div>
+                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-stethoscope" style="color:#0ea5e9;font-size:1.5rem;"></i><br/>Specialists</div>
+                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-ambulance" style="color:#0ea5e9;font-size:1.5rem;"></i><br/>Emergency</div>
+                            </div>
+                        </div>
+                        <div class="carousel-slide demo-healthcare">
+                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:20px;">
+                                <div style="background:rgba(14,165,233,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(14,165,233,0.1);">
+                                    <i class="fas fa-calendar-check" style="font-size:2.5rem;color:#0ea5e9;margin-bottom:10px;"></i>
+                                    <h4>Online Booking</h4>
+                                    <p style="opacity:0.7;">Schedule appointments easily</p>
+                                    <button class="btn" style="background:#0ea5e9;color:#fff;font-size:0.85rem;margin-top:10px;">Book Now</button>
+                                </div>
+                                <div style="background:rgba(14,165,233,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(14,165,233,0.1);">
+                                    <i class="fas fa-file-medical" style="font-size:2.5rem;color:#0ea5e9;margin-bottom:10px;"></i>
+                                    <h4>Patient Portal</h4>
+                                    <p style="opacity:0.7;">Access your health records</p>
+                                    <button class="btn" style="background:#0ea5e9;color:#fff;font-size:0.85rem;margin-top:10px;">Login</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-nav prev" onclick="prevSlide('healthcare')">‹</button>
+                    <button class="carousel-nav next" onclick="nextSlide('healthcare')">›</button>
+                    <div class="carousel-indicators" id="indicators-healthcare">
+                        <button class="active" onclick="goToSlide('healthcare', 0)"></button>
+                        <button onclick="goToSlide('healthcare', 1)"></button>
+                    </div>
+                </div>
+                
+                <div style="margin-top:30px;">
+                    <a href="contact.html" class="btn">Build My Healthcare Website</a>
+                    <a href="#industries-13" class="btn btn-outline">See Next</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- ===== INDUSTRY 13: HOTEL ===== -->
+    <!-- ============================================================ -->
+    <section class="industry-section industry-hotel" id="industries-13">
+        <div class="container">
+            <div style="text-align:center;">
+                <span class="industry-label"><i class="fas fa-hotel"></i> Hotel &amp; Hospitality</span>
+                <i class="fas fa-hotel industry-icon"></i>
+                <h2 class="section-title">A Website That <span>Welcomes</span></h2>
+                <p class="industry-description">Beautiful, inviting, and easy to book — give your guests a taste of your hospitality before they even arrive.</p>
+                
+                <div class="demo-carousel" id="carousel-hotel">
+                    <div class="carousel-track" id="track-hotel">
+                        <div class="carousel-slide demo-hotel">
+                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(245,158,11,0.05);border-radius:12px;border-left:4px solid #f59e0b;margin-bottom:20px;">
+                                <i class="fas fa-hotel" style="font-size:3rem;color:#f59e0b;"></i>
+                                <div style="flex:1;"><h3>Experience Luxury</h3><p style="opacity:0.8;">Book your dream stay today</p></div>
+                                <button class="btn" style="background:#f59e0b;color:#1a0a0a;">Check Availability</button>
+                            </div>
+                            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-bed" style="color:#f59e0b;font-size:1.5rem;"></i><br/>Deluxe Suites</div>
+                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-utensils" style="color:#f59e0b;font-size:1.5rem;"></i><br/>Fine Dining</div>
+                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-spa" style="color:#f59e0b;font-size:1.5rem;"></i><br/>Spa &amp; Wellness</div>
+                            </div>
+                        </div>
+                        <div class="carousel-slide demo-hotel">
+                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:20px;">
+                                <div style="background:rgba(245,158,11,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(245,158,11,0.1);">
+                                    <i class="fas fa-star" style="font-size:2.5rem;color:#f59e0b;margin-bottom:10px;"></i>
+                                    <h4>5-Star Rated</h4>
+                                    <p style="opacity:0.7;">1000+ guest reviews</p>
+                                </div>
+                                <div style="background:rgba(245,158,11,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(245,158,11,0.1);">
+                                    <i class="fas fa-calendar-check" style="font-size:2.5rem;color:#f59e0b;margin-bottom:10px;"></i>
+                                    <h4>Special Offers</h4>
+                                    <p style="opacity:0.7;">Book now and save</p>
+                                    <button class="btn" style="background:#f59e0b;color:#1a0a0a;font-size:0.85rem;margin-top:10px;">View Deals</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-nav prev" onclick="prevSlide('hotel')">‹</button>
+                    <button class="carousel-nav next" onclick="nextSlide('hotel')">›</button>
+                    <div class="carousel-indicators" id="indicators-hotel">
+                        <button class="active" onclick="goToSlide('hotel', 0)"></button>
+                        <button onclick="goToSlide('hotel', 1)"></button>
+                    </div>
+                </div>
+                
+                <div style="margin-top:30px;">
+                    <a href="contact.html" class="btn">Build My Hotel Website</a>
+                    <a href="#industries-14" class="btn btn-outline">See Next</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- ===== INDUSTRY 14: IT & TECH ===== -->
+    <!-- ============================================================ -->
+    <section class="industry-section industry-it" id="industries-14">
+        <div class="container">
+            <div style="text-align:center;">
+                <span class="industry-label"><i class="fas fa-laptop-code"></i> IT &amp; Tech Services</span>
+                <i class="fas fa-laptop-code industry-icon"></i>
+                <h2 class="section-title">A Website That <span>Innovates</span></h2>
+                <p class="industry-description">Modern, cutting-edge, and professional — showcase your tech solutions and attract clients who need your expertise.</p>
+                
+                <div class="demo-carousel" id="carousel-it">
+                    <div class="carousel-track" id="track-it">
+                        <div class="carousel-slide demo-it">
+                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(6,182,212,0.05);border-radius:12px;border-left:4px solid #06b6d4;margin-bottom:20px;">
+                                <i class="fas fa-laptop-code" style="font-size:3rem;color:#06b6d4;"></i>
+                                <div style="flex:1;"><h3>Tech Solutions That Work</h3><p style="opacity:0.8;">Cutting-edge IT services</p></div>
+                                <button class="btn" style="background:#06b6d4;color:#0a0a1a;">Get a Quote</button>
+                            </div>
+                            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-cloud" style="color:#06b6d4;font-size:1.5rem;"></i><br/>Cloud Services</div>
+                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-shield-alt" style="color:#06b6d4;font-size:1.5rem;"></i><br/>Cyber Security</div>
+                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-headset" style="color:#06b6d4;font-size:1.5rem;"></i><br/>24/7 Support</div>
+                            </div>
+                        </div>
+                        <div class="carousel-slide demo-it">
+                            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:15px;padding:20px;">
+                                <div style="background:rgba(6,182,212,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(6,182,212,0.1);">
+                                    <i class="fas fa-code" style="font-size:2.5rem;color:#06b6d4;margin-bottom:10px;"></i>
+                                    <h4>Web Development</h4>
+                                    <p style="opacity:0.7;">Custom solutions</p>
+                                </div>
+                                <div style="background:rgba(6,182,212,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(6,182,212,0.1);">
+                                    <i class="fas fa-mobile-alt" style="font-size:2.5rem;color:#06b6d4;margin-bottom:10px;"></i>
+                                    <h4>App Development</h4>
+                                    <p style="opacity:0.7;">iOS &amp; Android</p>
+                                </div>
+                                <div style="background:rgba(6,182,212,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(6,182,212,0.1);">
+                                    <i class="fas fa-robot" style="font-size:2.5rem;color:#06b6d4;margin-bottom:10px;"></i>
+                                    <h4>AI Solutions</h4>
+                                    <p style="opacity:0.7;">Future-ready tech</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-nav prev" onclick="prevSlide('it')">‹</button>
+                    <button class="carousel-nav next" onclick="nextSlide('it')">›</button>
+                    <div class="carousel-indicators" id="indicators-it">
+                        <button class="active" onclick="goToSlide('it', 0)"></button>
+                        <button onclick="goToSlide('it', 1)"></button>
+                    </div>
+                </div>
+                
+                <div style="margin-top:30px;">
+                    <a href="contact.html" class="btn">Build My IT Website</a>
+                    <a href="#industries-15" class="btn btn-outline">See Next</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- ===== INDUSTRY 15: CONSTRUCTION ===== -->
+    <!-- ============================================================ -->
+    <section class="industry-section industry-construction" id="industries-15">
+        <div class="container">
+            <div style="text-align:center;">
+                <span class="industry-label"><i class="fas fa-hard-hat"></i> Construction &amp; Building</span>
+                <i class="fas fa-hard-hat industry-icon"></i>
+                <h2 class="section-title">A Website That <span>Builds Trust</span></h2>
+                <p class="industry-description">Showcase your projects, services, and expertise — attract more clients and build your reputation as a reliable contractor.</p>
+                
+                <div class="demo-carousel" id="carousel-construction">
+                    <div class="carousel-track" id="track-construction">
+                        <div class="carousel-slide demo-construction">
+                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(249,115,22,0.05);border-radius:12px;border-left:4px solid #f97316;margin-bottom:20px;">
+                                <i class="fas fa-hard-hat" style="font-size:3rem;color:#f97316;"></i>
+                                <div style="flex:1;"><h3>Building Excellence</h3><p style="opacity:0.8;">Quality construction you can trust</p></div>
+                                <button class="btn" style="background:#f97316;color:#0a0a0a;">Get a Quote</button>
+                            </div>
+                            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-home" style="color:#f97316;font-size:1.5rem;"></i><br/>Residential</div>
+                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-building" style="color:#f97316;font-size:1.5rem;"></i><br/>Commercial</div>
+                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-warehouse" style="color:#f97316;font-size:1.5rem;"></i><br/>Industrial</div>
+                            </div>
+                        </div>
+                        <div class="carousel-slide demo-construction">
+                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:20px;">
+                                <div style="background:rgba(249,115,22,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(249,115,22,0.1);">
+                                    <i class="fas fa-star" style="font-size:2.5rem;color:#f97316;margin-bottom:10px;"></i>
+                                    <h4>10+ Years</h4>
+                                    <p style="opacity:0.7;">Experience</p>
+                                </div>
+                                <div style="background:rgba(249,115,22,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(249,115,22,0.1);">
+                                    <i class="fas fa-users" style="font-size:2.5rem;color:#f97316;margin-bottom:10px;"></i>
+                                    <h4>Expert Team</h4>
+                                    <p style="opacity:0.7;">50+ professionals</p>
+                                    <button class="btn" style="background:#f97316;color:#0a0a0a;font-size:0.85rem;margin-top:10px;">Meet the Team</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-nav prev" onclick="prevSlide('construction')">‹</button>
+                    <button class="carousel-nav next" onclick="nextSlide('construction')">›</button>
+                    <div class="carousel-indicators" id="indicators-construction">
+                        <button class="active" onclick="goToSlide('construction', 0)"></button>
+                        <button onclick="goToSlide('construction', 1)"></button>
+                    </div>
+                </div>
+                
+                <div style="margin-top:30px;">
+                    <a href="contact.html" class="btn">Build My Construction Website</a>
+                    <a href="#industries-16" class="btn btn-outline">See Next</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- ===== INDUSTRY 16: PET SERVICES ===== -->
+    <!-- ============================================================ -->
+    <section class="industry-section industry-pets" id="industries-16">
+        <div class="container">
+            <div style="text-align:center;">
+                <span class="industry-label"><i class="fas fa-paw"></i> Pet Services</span>
+                <i class="fas fa-paw industry-icon"></i>
+                <h2 class="section-title">A Website That <span>Welcomes</span></h2>
+                <p class="industry-description">Friendly, caring, and professional — connect with pet owners and show them that their furry family members are in safe hands.</p>
+                
+                <div class="demo-carousel" id="carousel-pets">
+                    <div class="carousel-track" id="track-pets">
+                        <div class="carousel-slide demo-pets">
+                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(16,185,129,0.05);border-radius:12px;border-left:4px solid #10b981;margin-bottom:20px;">
+                                <i class="fas fa-paw" style="font-size:3rem;color:#10b981;"></i>
+                                <div style="flex:1;"><h3>🐾 Your Pet's Home Away From Home</h3><p style="opacity:0.8;">Loving care for your furry friends</p></div>
+                                <button class="btn" style="background:#10b981;color:#0a1a0a;">Book Now</button>
+                            </div>
+                            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-dog" style="color:#10b981;font-size:1.5rem;"></i><br/>Dog Boarding</div>
+                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-cat" style="color:#10b981;font-size:1.5rem;"></i><br/>Cat Sitting</div>
+                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-cut" style="color:#10b981;font-size:1.5rem;"></i><br/>Grooming</div>
+                            </div>
+                        </div>
+                        <div class="carousel-slide demo-pets">
+                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:20px;">
+                                <div style="background:rgba(16,185,129,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(16,185,129,0.1);">
+                                    <i class="fas fa-star" style="font-size:2.5rem;color:#10b981;margin-bottom:10px;"></i>
+                                    <h4>5-Star Care</h4>
+                                    <p style="opacity:0.7;">200+ happy pets</p>
+                                </div>
+                                <div style="background:rgba(16,185,129,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(16,185,129,0.1);">
+                                    <i class="fas fa-heart" style="font-size:2.5rem;color:#10b981;margin-bottom:10px;"></i>
+                                    <h4>Loving Staff</h4>
+                                    <p style="opacity:0.7;">Certified pet care professionals</p>
+                                    <button class="btn" style="background:#10b981;color:#0a1a0a;font-size:0.85rem;margin-top:10px;">Meet the Team</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-nav prev" onclick="prevSlide('pets')">‹</button>
+                    <button class="carousel-nav next" onclick="nextSlide('pets')">›</button>
+                    <div class="carousel-indicators" id="indicators-pets">
+                        <button class="active" onclick="goToSlide('pets', 0)"></button>
+                        <button onclick="goToSlide('pets', 1)"></button>
+                    </div>
+                </div>
+                
+                <div style="margin-top:30px;">
+                    <a href="contact.html" class="btn">Build My Pet Services Website</a>
+                    <a href="#industries-17" class="btn btn-outline">See Next</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- ===== INDUSTRY 17: EVENT PLANNING ===== -->
+    <!-- ============================================================ -->
+    <section class="industry-section industry-events" id="industries-17">
+        <div class="container">
+            <div style="text-align:center;">
+                <span class="industry-label"><i class="fas fa-calendar-alt"></i> Event Planning</span>
+                <i class="fas fa-calendar-alt industry-icon"></i>
+                <h2 class="section-title">A Website That <span>Celebrates</span></h2>
+                <p class="industry-description">Show your creativity and planning skills with a stunning website that makes clients want to book you for their special occasions.</p>
+                
+                <div class="demo-carousel" id="carousel-events">
+                    <div class="carousel-track" id="track-events">
+                        <div class="carousel-slide demo-events">
+                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(236,72,153,0.05);border-radius:12px;border-left:4px solid #ec4899;margin-bottom:20px;">
+                                <i class="fas fa-calendar-alt" style="font-size:3rem;color:#ec4899;"></i>
+                                <div style="flex:1;"><h3>🎉 Creating Unforgettable Moments</h3><p style="opacity:0.8;">Professional event planning services</p></div>
+                                <button class="btn" style="background:#ec4899;color:#fff;">Plan Your Event</button>
+                            </div>
+                            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-ring" style="color:#ec4899;font-size:1.5rem;"></i><br/>Weddings</div>
+                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-birthday-cake" style="color:#ec4899;font-size:1.5rem;"></i><br/>Birthdays</div>
+                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-briefcase" style="color:#ec4899;font-size:1.5rem;"></i><br/>Corporate</div>
+                            </div>
+                        </div>
+                        <div class="carousel-slide demo-events">
+                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:20px;">
+                                <div style="background:rgba(236,72,153,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(236,72,153,0.1);">
+                                    <i class="fas fa-star" style="font-size:2.5rem;color:#ec4899;margin-bottom:10px;"></i>
+                                    <h4>5-Star Planning</h4>
+                                    <p style="opacity:0.7;">100+ successful events</p>
+                                </div>
+                                <div style="background:rgba(236,72,153,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(236,72,153,0.1);">
+                                    <i class="fas fa-images" style="font-size:2.5rem;color:#ec4899;margin-bottom:10px;"></i>
+                                    <h4>Event Gallery</h4>
+                                    <p style="opacity:0.7;">See our work</p>
+                                    <button class="btn" style="background:#ec4899;color:#fff;font-size:0.85rem;margin-top:10px;">View Portfolio</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-nav prev" onclick="prevSlide('events')">‹</button>
+                    <button class="carousel-nav next" onclick="nextSlide('events')">›</button>
+                    <div class="carousel-indicators" id="indicators-events">
+                        <button class="active" onclick="goToSlide('events', 0)"></button>
+                        <button onclick="goToSlide('events', 1)"></button>
+                    </div>
+                </div>
+                
+                <div style="margin-top:30px;">
+                    <a href="contact.html" class="btn">Build My Event Planning Website</a>
+                    <a href="#industries-18" class="btn btn-outline">See Next</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- ===== INDUSTRY 18: FINANCIAL ===== -->
+    <!-- ============================================================ -->
+    <section class="industry-section industry-financial" id="industries-18">
+        <div class="container">
+            <div style="text-align:center;">
+                <span class="industry-label"><i class="fas fa-coins"></i> Financial Services</span>
+                <i class="fas fa-coins industry-icon"></i>
+                <h2 class="section-title">A Website That <span>Builds Wealth</span></h2>
+                <p class="industry-description">Professional, trustworthy, and secure — your financial services website should instill confidence and attract high-value clients.</p>
+                
+                <div class="demo-carousel" id="carousel-financial">
+                    <div class="carousel-track" id="track-financial">
+                        <div class="carousel-slide demo-financial">
+                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(20,184,166,0.05);border-radius:12px;border-left:4px solid #14b8a6;margin-bottom:20px;">
+                                <i class="fas fa-coins" style="font-size:3rem;color:#14b8a6;"></i>
+                                <div style="flex:1;"><h3>Your Financial Future Starts Here</h3><p style="opacity:0.8;">Expert financial advice and solutions</p></div>
+                                <button class="btn" style="background:#14b8a6;color:#0a1a1a;">Get Started</button>
+                            </div>
+                            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-chart-line" style="color:#14b8a6;font-size:1.5rem;"></i><br/>Investments</div>
+                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-piggy-bank" style="color:#14b8a6;font-size:1.5rem;"></i><br/>Savings</div>
+                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-hand-holding-usd" style="color:#14b8a6;font-size:1.5rem;"></i><br/>Loans</div>
+                            </div>
+                        </div>
+                        <div class="carousel-slide demo-financial">
+                            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:15px;padding:20px;">
+                                <div style="background:rgba(20,184,166,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(20,184,166,0.1);">
+                                    <i class="fas fa-star" style="font-size:2.5rem;color:#14b8a6;margin-bottom:10px;"></i>
+                                    <h4>Trusted</h4>
+                                    <p style="opacity:0.7;">500+ clients</p>
+                                </div>
+                                <div style="background:rgba(20,184,166,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(20,184,166,0.1);">
+                                    <i class="fas fa-user-tie" style="font-size:2.5rem;color:#14b8a6;margin-bottom:10px;"></i>
+                                    <h4>Expert Advisors</h4>
+                                    <p style="opacity:0.7;">Certified professionals</p>
+                                </div>
+                                <div style="background:rgba(20,184,166,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(20,184,166,0.1);">
+                                    <i class="fas fa-shield-alt" style="font-size:2.5rem;color:#14b8a6;margin-bottom:10px;"></i>
+                                    <h4>Secure</h4>
+                                    <p style="opacity:0.7;">100% protected</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-nav prev" onclick="prevSlide('financial')">‹</button>
+                    <button class="carousel-nav next" onclick="nextSlide('financial')">›</button>
+                    <div class="carousel-indicators" id="indicators-financial">
+                        <button class="active" onclick="goToSlide('financial', 0)"></button>
+                        <button onclick="goToSlide('financial', 1)"></button>
+                    </div>
+                </div>
+                
+                <div style="margin-top:30px;">
+                    <a href="contact.html" class="btn">Build My Financial Website</a>
+                    <a href="#industries-19" class="btn btn-outline">See Next</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- ===== INDUSTRY 19: TRAVEL ===== -->
+    <!-- ============================================================ -->
+    <section class="industry-section industry-travel" id="industries-19">
+        <div class="container">
+            <div style="text-align:center;">
+                <span class="industry-label"><i class="fas fa-plane"></i> Travel &amp; Tourism</span>
+                <i class="fas fa-plane industry-icon"></i>
+                <h2 class="section-title">A Website That <span>Inspires</span></h2>
+                <p class="industry-description">Beautiful, adventurous, and easy to book — inspire travelers with stunning visuals and make planning their next trip effortless.</p>
+                
+                <div class="demo-carousel" id="carousel-travel">
+                    <div class="carousel-track" id="track-travel">
+                        <div class="carousel-slide demo-travel">
+                            <div class="demo-search-big">
+                                <h3>🌍 Where to?</h3>
+                                <input type="text" placeholder="Search destinations..." style="padding:14px 20px;border-radius:50px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:#fff;width:60%;" />
+                                <button class="btn" style="background:#06b6d4;color:#0a1a2a;margin-left:10px;">Search</button>
+                            </div>
+                            <div class="demo-destinations">
+                                <div class="demo-destination"><i class="fas fa-umbrella-beach" style="color:#06b6d4;font-size:2rem;"></i><h4>Beach</h4><p style="opacity:0.7;">5 destinations</p></div>
+                                <div class="demo-destination"><i class="fas fa-mountain" style="color:#06b6d4;font-size:2rem;"></i><h4>Mountains</h4><p style="opacity:0.7;">8 destinations</p></div>
+                                <div class="demo-destination"><i class="fas fa-city" style="color:#06b6d4;font-size:2rem;"></i><h4>City</h4><p style="opacity:0.7;">12 destinations</p></div>
+                                <div class="demo-destination"><i class="fas fa-tree" style="color:#06b6d4;font-size:2rem;"></i><h4>Nature</h4><p style="opacity:0.7;">6 destinations</p></div>
+                            </div>
+                        </div>
+                        <div class="carousel-slide demo-travel">
+                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:20px;">
+                                <div style="background:rgba(6,182,212,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(6,182,212,0.1);">
+                                    <i class="fas fa-star" style="font-size:2.5rem;color:#06b6d4;margin-bottom:10px;"></i>
+                                    <h4>Top Rated</h4>
+                                    <p style="opacity:0.7;">1000+ reviews</p>
+                                </div>
+                                <div style="background:rgba(6,182,212,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(6,182,212,0.1);">
+                                    <i class="fas fa-suitcase" style="font-size:2.5rem;color:#06b6d4;margin-bottom:10px;"></i>
+                                    <h4>Travel Packages</h4>
+                                    <p style="opacity:0.7;">Save up to 40%</p>
+                                    <button class="btn" style="background:#06b6d4;color:#0a1a2a;font-size:0.85rem;margin-top:10px;">View Deals</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-nav prev" onclick="prevSlide('travel')">‹</button>
+                    <button class="carousel-nav next" onclick="nextSlide('travel')">›</button>
+                    <div class="carousel-indicators" id="indicators-travel">
+                        <button class="active" onclick="goToSlide('travel', 0)"></button>
+                        <button onclick="goToSlide('travel', 1)"></button>
+                    </div>
+                </div>
+                
+                <div style="margin-top:30px;">
+                    <a href="contact.html" class="btn">Build My Travel Website</a>
+                    <a href="#industries-20" class="btn btn-outline">See Next</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- ===== INDUSTRY 20: LEGAL ===== -->
+    <!-- ============================================================ -->
+    <section class="industry-section industry-legal" id="industries-20">
+        <div class="container">
+            <div style="text-align:center;">
+                <span class="industry-label"><i class="fas fa-gavel"></i> Law &amp; Legal</span>
+                <i class="fas fa-gavel industry-icon"></i>
+                <h2 class="section-title">A Website That <span>Commands Respect</span></h2>
+                <p class="industry-description">Authoritative, professional, and trustworthy — your legal website should instill confidence and attract clients who need your expertise.</p>
+                
+                <div class="demo-carousel" id="carousel-legal">
+                    <div class="carousel-track" id="track-legal">
+                        <div class="carousel-slide demo-legal">
+                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(99,102,241,0.05);border-radius:12px;border-left:4px solid #6366f1;margin-bottom:20px;">
+                                <i class="fas fa-gavel" style="font-size:3rem;color:#6366f1;"></i>
+                                <div style="flex:1;"><h3>⚖️ Justice &amp; Advocacy</h3><p style="opacity:0.8;">Expert legal representation you can trust</p></div>
+                                <button class="btn" style="background:#6366f1;color:#fff;">Free Consultation</button>
+                            </div>
+                            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-balance-scale" style="color:#6366f1;font-size:1.5rem;"></i><br/>Family Law</div>
+                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-building" style="color:#6366f1;font-size:1.5rem;"></i><br/>Corporate Law</div>
+                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-user-shield" style="color:#6366f1;font-size:1.5rem;"></i><br/>Criminal Defense</div>
+                            </div>
+                        </div>
+                        <div class="carousel-slide demo-legal">
+                            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:15px;padding:20px;">
+                                <div style="background:rgba(99,102,241,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(99,102,241,0.1);">
+                                    <i class="fas fa-star" style="font-size:2.5rem;color:#6366f1;margin-bottom:10px;"></i>
+                                    <h4>5-Star Rated</h4>
+                                    <p style="opacity:0.7;">200+ client reviews</p>
+                                </div>
+                                <div style="background:rgba(99,102,241,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(99,102,241,0.1);">
+                                    <i class="fas fa-gavel" style="font-size:2.5rem;color:#6366f1;margin-bottom:10px;"></i>
+                                    <h4>20+ Years</h4>
+                                    <p style="opacity:0.7;">Experience</p>
+                                </div>
+                                <div style="background:rgba(99,102,241,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(99,102,241,0.1);">
+                                    <i class="fas fa-trophy" style="font-size:2.5rem;color:#6366f1;margin-bottom:10px;"></i>
+                                    <h4>Results</h4>
+                                    <p style="opacity:0.7;">Successful cases</p>
+                                    <button class="btn" style="background:#6366f1;color:#fff;font-size:0.85rem;margin-top:10px;">View Results</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-nav prev" onclick="prevSlide('legal')">‹</button>
+                    <button class="carousel-nav next" onclick="nextSlide('legal')">›</button>
+                    <div class="carousel-indicators" id="indicators-legal">
+                        <button class="active" onclick="goToSlide('legal', 0)"></button>
+                        <button onclick="goToSlide('legal', 1)"></button>
+                    </div>
+                </div>
+                
+                <div style="margin-top:30px;">
+                    <a href="contact.html" class="btn">Build My Legal Website</a>
+                    <a href="#cta-final" class="btn btn-outline">See Next</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA FINAL ===== -->
+    <section class="cta-final" id="cta-final">
+        <div class="container">
+            <h2>Ready to Build <span>Your Dream Website</span>?</h2>
+            <p>
+                Whatever your industry, we create a website that perfectly represents 
+                your brand and speaks directly to your customers.
+            </p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="btn">Let's Build Yours</a>
+                <a href="portfolio.html" class="btn btn-outline">View Our Work</a>
+            </div>
+            <div style="margin-top:40px; display:flex; gap:30px; justify-content:center; flex-wrap:wrap; color:#94a3b8; font-size:0.9rem;">
+                <span><i class="fas fa-check-circle" style="color:#00d4ff;"></i> Custom Design</span>
+                <span><i class="fas fa-check-circle" style="color:#00d4ff;"></i> Mobile Responsive</span>
+                <span><i class="fas fa-check-circle" style="color:#00d4ff;"></i> SEO Optimized</span>
+                <span><i class="fas fa-check-circle" style="color:#00d4ff;"></i> 24/7 Support</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer-brand">
+                <h3>Shabs <span>Web</span> Dev</h3>
+                <p>Build &bull; Maintain &bull; Grow<br />We create websites that transform businesses.</p>
+            </div>
+            <div class="footer-links">
+                <h5>Quick Links</h5>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h5>Connect With Me</h5>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="https://wa.me/27738537751" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">&copy; 2026 Shabs Web Development. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <!-- ===== FLOATING WHATSAPP BUTTON ===== -->
+    <a href="https://wa.me/27738537751" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

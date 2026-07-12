@@ -1,0 +1,1255 @@
+ /* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #0a0e17;
+    color: #e2e8f0;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ===== HEADER / NAV ===== */
+header {
+    background: rgba(10, 14, 23, 0.95);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    padding: 15px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+    transition: all 0.5s ease;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.logo h1 span {
+    color: #00d4ff;
+    transition: color 0.5s ease;
+}
+
+.logo p {
+    font-size: 0.7rem;
+    opacity: 0.7;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 28px;
+    flex-wrap: wrap;
+}
+
+nav ul li a {
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+    position: relative;
+    color: #94a3b8;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #00d4ff;
+    transition: width 0.3s;
+}
+
+nav ul li a:hover::after,
+nav ul li a.active::after {
+    width: 100%;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    color: #00d4ff;
+}
+
+.hamburger {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #fff;
+}
+
+/* ===== HERO ===== */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 0 80px;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #0a0e17 0%, #1a2a4a 100%);
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    background: rgba(0, 212, 255, 0.03);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.hero .tagline {
+    font-size: 0.9rem;
+    font-weight: 300;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #00d4ff;
+    margin-bottom: 10px;
+}
+
+.hero h2 {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+}
+
+.hero h2 span {
+    color: #00d4ff;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    max-width: 700px;
+    margin: 0 auto 30px;
+    opacity: 0.9;
+    color: #94a3b8;
+}
+
+.hero .code-symbols {
+    font-size: 1.5rem;
+    color: #00d4ff;
+    opacity: 0.2;
+    letter-spacing: 20px;
+    margin-top: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px 40px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+    background: #00d4ff;
+    color: #0a0e17;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 40px rgba(0, 212, 255, 0.3);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid #00d4ff;
+    color: #00d4ff;
+    margin-left: 12px;
+}
+
+.btn-outline:hover {
+    background: #00d4ff;
+    color: #0a0e17;
+    box-shadow: none;
+}
+
+/* ===== SCROLL INDICATOR ===== */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: #94a3b8;
+    font-size: 0.8rem;
+    animation: bounce 2s infinite;
+}
+
+.scroll-indicator i {
+    font-size: 1.5rem;
+    color: #00d4ff;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.section-title span {
+    color: #00d4ff;
+}
+
+.section-sub {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto 50px;
+    color: #94a3b8;
+    font-size: 1.1rem;
+}
+
+/* ===== INDUSTRY SECTIONS - BASE ===== */
+.industry-section {
+    padding: 80px 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.8s ease;
+}
+
+.industry-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.industry-section .industry-label {
+    display: inline-block;
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.industry-section .industry-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.industry-section .industry-description {
+    max-width: 600px;
+    margin: 0 auto 30px;
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.industry-section .demo-preview {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 30px;
+    max-width: 800px;
+    margin: 0 auto;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.industry-section .demo-preview .demo-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.industry-section .demo-preview .demo-item {
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    min-width: 150px;
+    flex: 1;
+    text-align: center;
+}
+
+.industry-section .demo-preview .demo-item i {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.industry-section .demo-preview .demo-item h4 {
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+}
+
+.industry-section .demo-preview .demo-item p {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* ===== CAROUSEL ===== */
+.demo-carousel {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    margin-top: 30px;
+    padding: 20px 0;
+}
+
+.demo-carousel .carousel-track {
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    touch-action: pan-y;
+}
+
+.demo-carousel .carousel-slide {
+    min-width: 100%;
+    padding: 10px 30px;
+    box-sizing: border-box;
+}
+
+.demo-carousel .carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 0 5px;
+}
+
+.demo-carousel .carousel-indicators button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.demo-carousel .carousel-indicators button.active {
+    background: #00d4ff;
+    transform: scale(1.2);
+}
+
+.demo-carousel .carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+    backdrop-filter: blur(10px);
+}
+
+.demo-carousel .carousel-nav:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.demo-carousel .carousel-nav.prev {
+    left: 10px;
+}
+
+.demo-carousel .carousel-nav.next {
+    right: 10px;
+}
+
+/* ===== DEMO HOMEPAGE LAYOUTS ===== */
+
+/* Food Demo */
+.demo-food .demo-hero {
+    text-align: center;
+    padding: 30px 20px;
+    background: linear-gradient(135deg, #e85d04, #f4a261);
+    border-radius: 12px;
+    color: #fff;
+    margin-bottom: 20px;
+}
+.demo-food .demo-hero h2 { font-size: 2rem; }
+.demo-food .demo-hero p { opacity: 0.9; }
+.demo-food .demo-menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+.demo-food .demo-menu-item {
+    background: rgba(255,255,255,0.05);
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+}
+.demo-food .demo-menu-item i { font-size: 2rem; margin-bottom: 8px; }
+.demo-food .demo-menu-item h4 { font-size: 0.9rem; }
+
+/* Electrical Demo */
+.demo-electrical .demo-hero {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 30px;
+    background: rgba(0, 212, 255, 0.05);
+    border-radius: 12px;
+    border-left: 4px solid #00d4ff;
+    margin-bottom: 20px;
+}
+.demo-electrical .demo-hero .icon { font-size: 3rem; color: #00d4ff; }
+.demo-electrical .demo-services {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+.demo-electrical .demo-service {
+    background: rgba(255,255,255,0.03);
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 0.85rem;
+}
+
+/* Salon Demo */
+.demo-salon .demo-hero {
+    text-align: center;
+    padding: 30px 20px;
+    background: linear-gradient(135deg, #d946ef, #f0abfc);
+    border-radius: 12px;
+    color: #fff;
+    margin-bottom: 20px;
+}
+.demo-salon .demo-hero .price { font-size: 1.5rem; font-weight: bold; }
+.demo-salon .demo-services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+.demo-salon .demo-service-card {
+    background: rgba(255,255,255,0.05);
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+/* Clothing Demo */
+.demo-clothing .demo-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+    background: rgba(244, 114, 182, 0.05);
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+.demo-clothing .demo-hero .featured { font-size: 2rem; color: #f472b6; }
+.demo-clothing .demo-products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+.demo-clothing .demo-product {
+    background: rgba(255,255,255,0.03);
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* Delivery Demo */
+.demo-delivery .demo-search {
+    display: flex;
+    gap: 10px;
+    padding: 15px;
+    background: rgba(245, 158, 11, 0.05);
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+.demo-delivery .demo-search input {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.05);
+    color: #fff;
+}
+.demo-delivery .demo-restaurants {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+.demo-delivery .demo-restaurant {
+    background: rgba(255,255,255,0.03);
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* Real Estate Demo */
+.demo-realestate .demo-hero {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    padding: 20px;
+    background: rgba(139, 92, 246, 0.05);
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+.demo-realestate .demo-properties {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+.demo-realestate .demo-property {
+    background: rgba(255,255,255,0.03);
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+.demo-realestate .demo-property .price { color: #8b5cf6; font-weight: bold; }
+
+/* Fitness Demo */
+.demo-fitness .demo-hero {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 30px;
+    background: rgba(239, 68, 68, 0.05);
+    border-radius: 12px;
+    border-left: 4px solid #ef4444;
+    margin-bottom: 20px;
+}
+.demo-fitness .demo-classes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+.demo-fitness .demo-class {
+    background: rgba(255,255,255,0.03);
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* Travel Demo */
+.demo-travel .demo-search-big {
+    padding: 30px;
+    background: rgba(6, 182, 212, 0.05);
+    border-radius: 12px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.demo-travel .demo-search-big input {
+    padding: 14px 20px;
+    border-radius: 50px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.05);
+    color: #fff;
+    width: 60%;
+}
+.demo-travel .demo-destinations {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+.demo-travel .demo-destination {
+    background: rgba(255,255,255,0.03);
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* ============================================================ */
+/* ===== INDUSTRY 1: FOOD (Warm Orange/Brown) ===== */
+/* ============================================================ */
+.industry-food {
+    background: linear-gradient(145deg, #1a0a0a 0%, #3d1a0a 50%, #1a0a0a 100%);
+    font-family: 'Georgia', serif;
+}
+.industry-food .industry-label { background: #e85d04; color: #fff; }
+.industry-food .section-title span,
+.industry-food .industry-icon { color: #e85d04; }
+.industry-food .btn { background: #e85d04; color: #fff; }
+.industry-food .btn:hover { box-shadow: 0 10px 40px rgba(232, 93, 4, 0.3); }
+.industry-food .btn-outline { border-color: #e85d04; color: #e85d04; }
+.industry-food .btn-outline:hover { background: #e85d04; color: #fff; }
+.industry-food .demo-preview { background: rgba(232, 93, 4, 0.08); border-color: rgba(232, 93, 4, 0.2); }
+.industry-food .demo-item { background: rgba(232, 93, 4, 0.05); }
+
+/* ============================================================ */
+/* ===== INDUSTRY 2: ELECTRICAL (Electric Blue) ===== */
+/* ============================================================ */
+.industry-electrical {
+    background: linear-gradient(145deg, #0a0a1a 0%, #0a1a3d 50%, #0a0a1a 100%);
+    font-family: 'Courier New', monospace;
+}
+.industry-electrical .industry-label { background: #00d4ff; color: #0a0a1a; }
+.industry-electrical .section-title span,
+.industry-electrical .industry-icon { color: #00d4ff; }
+.industry-electrical .btn { background: #00d4ff; color: #0a0a1a; }
+.industry-electrical .btn:hover { box-shadow: 0 10px 40px rgba(0, 212, 255, 0.3); }
+.industry-electrical .btn-outline { border-color: #00d4ff; color: #00d4ff; }
+.industry-electrical .btn-outline:hover { background: #00d4ff; color: #0a0a1a; }
+.industry-electrical .demo-preview { background: rgba(0, 212, 255, 0.05); border-color: rgba(0, 212, 255, 0.15); }
+.industry-electrical .demo-item { background: rgba(0, 212, 255, 0.03); }
+
+/* ============================================================ */
+/* ===== INDUSTRY 3: SALON (Soft Pink/Purple) ===== */
+/* ============================================================ */
+.industry-salon {
+    background: linear-gradient(145deg, #1a0a1a 0%, #3d1a3d 50%, #1a0a1a 100%);
+    font-family: 'Georgia', cursive;
+}
+.industry-salon .industry-label { background: #d946ef; color: #fff; }
+.industry-salon .section-title span,
+.industry-salon .industry-icon { color: #d946ef; }
+.industry-salon .btn { background: #d946ef; color: #fff; }
+.industry-salon .btn:hover { box-shadow: 0 10px 40px rgba(217, 70, 239, 0.3); }
+.industry-salon .btn-outline { border-color: #d946ef; color: #d946ef; }
+.industry-salon .btn-outline:hover { background: #d946ef; color: #fff; }
+.industry-salon .demo-preview { background: rgba(217, 70, 239, 0.08); border-color: rgba(217, 70, 239, 0.15); }
+.industry-salon .demo-item { background: rgba(217, 70, 239, 0.05); }
+
+/* ============================================================ */
+/* ===== INDUSTRY 4: MECHANIC (Dark Red/Industrial) ===== */
+/* ============================================================ */
+.industry-mechanic {
+    background: linear-gradient(145deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+    font-family: 'Impact', sans-serif;
+    text-transform: uppercase;
+}
+.industry-mechanic .industry-label { background: #ef4444; color: #fff; }
+.industry-mechanic .section-title span,
+.industry-mechanic .industry-icon { color: #ef4444; }
+.industry-mechanic .btn { background: #ef4444; color: #fff; }
+.industry-mechanic .btn:hover { box-shadow: 0 10px 40px rgba(239, 68, 68, 0.3); }
+.industry-mechanic .btn-outline { border-color: #ef4444; color: #ef4444; }
+.industry-mechanic .btn-outline:hover { background: #ef4444; color: #fff; }
+.industry-mechanic .demo-preview { background: rgba(239, 68, 68, 0.05); border-color: rgba(239, 68, 68, 0.15); }
+.industry-mechanic .demo-item { background: rgba(239, 68, 68, 0.03); }
+
+/* ============================================================ */
+/* ===== INDUSTRY 5: TUTORING (Bright Yellow/Cyan) ===== */
+/* ============================================================ */
+.industry-tutoring {
+    background: linear-gradient(145deg, #0a1a0a 0%, #1a3d1a 50%, #0a1a0a 100%);
+    font-family: 'Trebuchet MS', sans-serif;
+}
+.industry-tutoring .industry-label { background: #22d3ee; color: #0a1a0a; }
+.industry-tutoring .section-title span,
+.industry-tutoring .industry-icon { color: #22d3ee; }
+.industry-tutoring .btn { background: #22d3ee; color: #0a1a0a; }
+.industry-tutoring .btn:hover { box-shadow: 0 10px 40px rgba(34, 211, 238, 0.3); }
+.industry-tutoring .btn-outline { border-color: #22d3ee; color: #22d3ee; }
+.industry-tutoring .btn-outline:hover { background: #22d3ee; color: #0a1a0a; }
+.industry-tutoring .demo-preview { background: rgba(34, 211, 238, 0.05); border-color: rgba(34, 211, 238, 0.15); }
+.industry-tutoring .demo-item { background: rgba(34, 211, 238, 0.03); }
+
+/* ============================================================ */
+/* ===== INDUSTRY 6: CLEANING (Fresh Green) ===== */
+/* ============================================================ */
+.industry-cleaning {
+    background: linear-gradient(145deg, #0a1a1a 0%, #1a3d3d 50%, #0a1a1a 100%);
+    font-family: 'Arial', sans-serif;
+}
+.industry-cleaning .industry-label { background: #34d399; color: #0a1a1a; }
+.industry-cleaning .section-title span,
+.industry-cleaning .industry-icon { color: #34d399; }
+.industry-cleaning .btn { background: #34d399; color: #0a1a1a; }
+.industry-cleaning .btn:hover { box-shadow: 0 10px 40px rgba(52, 211, 153, 0.3); }
+.industry-cleaning .btn-outline { border-color: #34d399; color: #34d399; }
+.industry-cleaning .btn-outline:hover { background: #34d399; color: #0a1a1a; }
+.industry-cleaning .demo-preview { background: rgba(52, 211, 153, 0.05); border-color: rgba(52, 211, 153, 0.15); }
+.industry-cleaning .demo-item { background: rgba(52, 211, 153, 0.03); }
+
+/* ============================================================ */
+/* ===== INDUSTRY 7: CLOTHING (Fashion Pink) ===== */
+/* ============================================================ */
+.industry-clothing {
+    background: linear-gradient(145deg, #1a0a14 0%, #3d1a2a 50%, #1a0a14 100%);
+    font-family: 'Tahoma', sans-serif;
+    letter-spacing: 0.5px;
+}
+.industry-clothing .industry-label { background: #f472b6; color: #1a0a14; }
+.industry-clothing .section-title span,
+.industry-clothing .industry-icon { color: #f472b6; }
+.industry-clothing .btn { background: #f472b6; color: #1a0a14; }
+.industry-clothing .btn:hover { box-shadow: 0 10px 40px rgba(244, 114, 182, 0.3); }
+.industry-clothing .btn-outline { border-color: #f472b6; color: #f472b6; }
+.industry-clothing .btn-outline:hover { background: #f472b6; color: #1a0a14; }
+.industry-clothing .demo-preview { background: rgba(244, 114, 182, 0.08); border-color: rgba(244, 114, 182, 0.15); }
+.industry-clothing .demo-item { background: rgba(244, 114, 182, 0.05); }
+
+/* ============================================================ */
+/* ===== INDUSTRY 8: DELIVERY (Gold/Amber) ===== */
+/* ============================================================ */
+.industry-delivery {
+    background: linear-gradient(145deg, #1a100a 0%, #3d2a0a 50%, #1a100a 100%);
+    font-family: 'Verdana', sans-serif;
+}
+.industry-delivery .industry-label { background: #f59e0b; color: #1a100a; }
+.industry-delivery .section-title span,
+.industry-delivery .industry-icon { color: #f59e0b; }
+.industry-delivery .btn { background: #f59e0b; color: #1a100a; }
+.industry-delivery .btn:hover { box-shadow: 0 10px 40px rgba(245, 158, 11, 0.3); }
+.industry-delivery .btn-outline { border-color: #f59e0b; color: #f59e0b; }
+.industry-delivery .btn-outline:hover { background: #f59e0b; color: #1a100a; }
+.industry-delivery .demo-preview { background: rgba(245, 158, 11, 0.05); border-color: rgba(245, 158, 11, 0.15); }
+.industry-delivery .demo-item { background: rgba(245, 158, 11, 0.03); }
+
+/* ============================================================ */
+/* ===== INDUSTRY 9: REAL ESTATE (Luxurious Purple) ===== */
+/* ============================================================ */
+.industry-realestate {
+    background: linear-gradient(145deg, #0a0a1a 0%, #1a1a3d 50%, #0a0a1a 100%);
+    font-family: 'Times New Roman', serif;
+}
+.industry-realestate .industry-label { background: #8b5cf6; color: #fff; }
+.industry-realestate .section-title span,
+.industry-realestate .industry-icon { color: #8b5cf6; }
+.industry-realestate .btn { background: #8b5cf6; color: #fff; }
+.industry-realestate .btn:hover { box-shadow: 0 10px 40px rgba(139, 92, 246, 0.3); }
+.industry-realestate .btn-outline { border-color: #8b5cf6; color: #8b5cf6; }
+.industry-realestate .btn-outline:hover { background: #8b5cf6; color: #fff; }
+.industry-realestate .demo-preview { background: rgba(139, 92, 246, 0.05); border-color: rgba(139, 92, 246, 0.15); }
+.industry-realestate .demo-item { background: rgba(139, 92, 246, 0.03); }
+
+/* ============================================================ */
+/* ===== INDUSTRY 10: FITNESS (Energetic Red) ===== */
+/* ============================================================ */
+.industry-fitness {
+    background: linear-gradient(145deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+    font-family: 'Arial Black', sans-serif;
+}
+.industry-fitness .industry-label { background: #ef4444; color: #fff; }
+.industry-fitness .section-title span,
+.industry-fitness .industry-icon { color: #ef4444; }
+.industry-fitness .btn { background: #ef4444; color: #fff; }
+.industry-fitness .btn:hover { box-shadow: 0 10px 40px rgba(239, 68, 68, 0.3); }
+.industry-fitness .btn-outline { border-color: #ef4444; color: #ef4444; }
+.industry-fitness .btn-outline:hover { background: #ef4444; color: #fff; }
+.industry-fitness .demo-preview { background: rgba(239, 68, 68, 0.05); border-color: rgba(239, 68, 68, 0.15); }
+.industry-fitness .demo-item { background: rgba(239, 68, 68, 0.03); }
+
+/* ============================================================ */
+/* ===== INDUSTRY 11: PHOTOGRAPHY (Monochrome) ===== */
+/* ============================================================ */
+.industry-photography {
+    background: linear-gradient(145deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+    font-family: 'Helvetica Neue', sans-serif;
+}
+.industry-photography .industry-label { background: #6b7280; color: #fff; }
+.industry-photography .section-title span,
+.industry-photography .industry-icon { color: #9ca3af; }
+.industry-photography .btn { background: #6b7280; color: #fff; }
+.industry-photography .btn:hover { box-shadow: 0 10px 40px rgba(107, 114, 128, 0.3); }
+.industry-photography .btn-outline { border-color: #6b7280; color: #6b7280; }
+.industry-photography .btn-outline:hover { background: #6b7280; color: #fff; }
+.industry-photography .demo-preview { background: rgba(107, 114, 128, 0.05); border-color: rgba(107, 114, 128, 0.15); }
+.industry-photography .demo-item { background: rgba(107, 114, 128, 0.03); }
+
+/* ============================================================ */
+/* ===== INDUSTRY 12: HEALTHCARE (Calming Blue) ===== */
+/* ============================================================ */
+.industry-healthcare {
+    background: linear-gradient(145deg, #0a1a2a 0%, #1a3d5a 50%, #0a1a2a 100%);
+    font-family: 'Garamond', serif;
+}
+.industry-healthcare .industry-label { background: #0ea5e9; color: #fff; }
+.industry-healthcare .section-title span,
+.industry-healthcare .industry-icon { color: #0ea5e9; }
+.industry-healthcare .btn { background: #0ea5e9; color: #fff; }
+.industry-healthcare .btn:hover { box-shadow: 0 10px 40px rgba(14, 165, 233, 0.3); }
+.industry-healthcare .btn-outline { border-color: #0ea5e9; color: #0ea5e9; }
+.industry-healthcare .btn-outline:hover { background: #0ea5e9; color: #fff; }
+.industry-healthcare .demo-preview { background: rgba(14, 165, 233, 0.05); border-color: rgba(14, 165, 233, 0.15); }
+.industry-healthcare .demo-item { background: rgba(14, 165, 233, 0.03); }
+
+/* ============================================================ */
+/* ===== INDUSTRY 13: HOTEL (Warm Gold) ===== */
+/* ============================================================ */
+.industry-hotel {
+    background: linear-gradient(145deg, #1a0a0a 0%, #3d2a1a 50%, #1a0a0a 100%);
+    font-family: 'Georgia', serif;
+}
+.industry-hotel .industry-label { background: #f59e0b; color: #1a0a0a; }
+.industry-hotel .section-title span,
+.industry-hotel .industry-icon { color: #f59e0b; }
+.industry-hotel .btn { background: #f59e0b; color: #1a0a0a; }
+.industry-hotel .btn:hover { box-shadow: 0 10px 40px rgba(245, 158, 11, 0.3); }
+.industry-hotel .btn-outline { border-color: #f59e0b; color: #f59e0b; }
+.industry-hotel .btn-outline:hover { background: #f59e0b; color: #1a0a0a; }
+.industry-hotel .demo-preview { background: rgba(245, 158, 11, 0.05); border-color: rgba(245, 158, 11, 0.15); }
+.industry-hotel .demo-item { background: rgba(245, 158, 11, 0.03); }
+
+/* ============================================================ */
+/* ===== INDUSTRY 14: IT & TECH (Cyber Blue) ===== */
+/* ============================================================ */
+.industry-it {
+    background: linear-gradient(145deg, #0a0a1a 0%, #0a1a3d 50%, #0a0a1a 100%);
+    font-family: 'Consolas', monospace;
+}
+.industry-it .industry-label { background: #06b6d4; color: #0a0a1a; }
+.industry-it .section-title span,
+.industry-it .industry-icon { color: #06b6d4; }
+.industry-it .btn { background: #06b6d4; color: #0a0a1a; }
+.industry-it .btn:hover { box-shadow: 0 10px 40px rgba(6, 182, 212, 0.3); }
+.industry-it .btn-outline { border-color: #06b6d4; color: #06b6d4; }
+.industry-it .btn-outline:hover { background: #06b6d4; color: #0a0a1a; }
+.industry-it .demo-preview { background: rgba(6, 182, 212, 0.05); border-color: rgba(6, 182, 212, 0.15); }
+.industry-it .demo-item { background: rgba(6, 182, 212, 0.03); }
+
+/* ============================================================ */
+/* ===== INDUSTRY 15: CONSTRUCTION (Industrial Orange) ===== */
+/* ============================================================ */
+.industry-construction {
+    background: linear-gradient(145deg, #0a0a0a 0%, #2a1a0a 50%, #0a0a0a 100%);
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+}
+.industry-construction .industry-label { background: #f97316; color: #0a0a0a; }
+.industry-construction .section-title span,
+.industry-construction .industry-icon { color: #f97316; }
+.industry-construction .btn { background: #f97316; color: #0a0a0a; }
+.industry-construction .btn:hover { box-shadow: 0 10px 40px rgba(249, 115, 22, 0.3); }
+.industry-construction .btn-outline { border-color: #f97316; color: #f97316; }
+.industry-construction .btn-outline:hover { background: #f97316; color: #0a0a0a; }
+.industry-construction .demo-preview { background: rgba(249, 115, 22, 0.05); border-color: rgba(249, 115, 22, 0.15); }
+.industry-construction .demo-item { background: rgba(249, 115, 22, 0.03); }
+
+/* ============================================================ */
+/* ===== INDUSTRY 16: PET SERVICES (Soft Green) ===== */
+/* ============================================================ */
+.industry-pets {
+    background: linear-gradient(145deg, #0a1a0a 0%, #1a3d1a 50%, #0a1a0a 100%);
+    font-family: 'Comic Sans MS', cursive;
+}
+.industry-pets .industry-label { background: #10b981; color: #0a1a0a; }
+.industry-pets .section-title span,
+.industry-pets .industry-icon { color: #10b981; }
+.industry-pets .btn { background: #10b981; color: #0a1a0a; }
+.industry-pets .btn:hover { box-shadow: 0 10px 40px rgba(16, 185, 129, 0.3); }
+.industry-pets .btn-outline { border-color: #10b981; color: #10b981; }
+.industry-pets .btn-outline:hover { background: #10b981; color: #0a1a0a; }
+.industry-pets .demo-preview { background: rgba(16, 185, 129, 0.05); border-color: rgba(16, 185, 129, 0.15); }
+.industry-pets .demo-item { background: rgba(16, 185, 129, 0.03); }
+
+/* ============================================================ */
+/* ===== INDUSTRY 17: EVENT PLANNING (Vibrant Pink) ===== */
+/* ============================================================ */
+.industry-events {
+    background: linear-gradient(145deg, #1a0a1a 0%, #3d1a3d 50%, #1a0a1a 100%);
+    font-family: 'Segoe UI', sans-serif;
+}
+.industry-events .industry-label { background: #ec4899; color: #fff; }
+.industry-events .section-title span,
+.industry-events .industry-icon { color: #ec4899; }
+.industry-events .btn { background: #ec4899; color: #fff; }
+.industry-events .btn:hover { box-shadow: 0 10px 40px rgba(236, 72, 153, 0.3); }
+.industry-events .btn-outline { border-color: #ec4899; color: #ec4899; }
+.industry-events .btn-outline:hover { background: #ec4899; color: #fff; }
+.industry-events .demo-preview { background: rgba(236, 72, 153, 0.08); border-color: rgba(236, 72, 153, 0.15); }
+.industry-events .demo-item { background: rgba(236, 72, 153, 0.05); }
+
+/* ============================================================ */
+/* ===== INDUSTRY 18: FINANCIAL (Dark Teal) ===== */
+/* ============================================================ */
+.industry-financial {
+    background: linear-gradient(145deg, #0a1a1a 0%, #1a3d3d 50%, #0a1a1a 100%);
+    font-family: 'Garamond', serif;
+}
+.industry-financial .industry-label { background: #14b8a6; color: #0a1a1a; }
+.industry-financial .section-title span,
+.industry-financial .industry-icon { color: #14b8a6; }
+.industry-financial .btn { background: #14b8a6; color: #0a1a1a; }
+.industry-financial .btn:hover { box-shadow: 0 10px 40px rgba(20, 184, 166, 0.3); }
+.industry-financial .btn-outline { border-color: #14b8a6; color: #14b8a6; }
+.industry-financial .btn-outline:hover { background: #14b8a6; color: #0a1a1a; }
+.industry-financial .demo-preview { background: rgba(20, 184, 166, 0.05); border-color: rgba(20, 184, 166, 0.15); }
+.industry-financial .demo-item { background: rgba(20, 184, 166, 0.03); }
+
+/* ============================================================ */
+/* ===== INDUSTRY 19: TRAVEL (Sky Blue/Beach) ===== */
+/* ============================================================ */
+.industry-travel {
+    background: linear-gradient(145deg, #0a1a2a 0%, #1a3d5a 50%, #0a1a2a 100%);
+    font-family: 'Georgia', serif;
+}
+.industry-travel .industry-label { background: #06b6d4; color: #0a1a2a; }
+.industry-travel .section-title span,
+.industry-travel .industry-icon { color: #06b6d4; }
+.industry-travel .btn { background: #06b6d4; color: #0a1a2a; }
+.industry-travel .btn:hover { box-shadow: 0 10px 40px rgba(6, 182, 212, 0.3); }
+.industry-travel .btn-outline { border-color: #06b6d4; color: #06b6d4; }
+.industry-travel .btn-outline:hover { background: #06b6d4; color: #0a1a2a; }
+.industry-travel .demo-preview { background: rgba(6, 182, 212, 0.05); border-color: rgba(6, 182, 212, 0.15); }
+.industry-travel .demo-item { background: rgba(6, 182, 212, 0.03); }
+
+/* ============================================================ */
+/* ===== INDUSTRY 20: LEGAL (Dark Navy/Authoritative) ===== */
+/* ============================================================ */
+.industry-legal {
+    background: linear-gradient(145deg, #0a0a1a 0%, #1a1a3d 50%, #0a0a1a 100%);
+    font-family: 'Times New Roman', serif;
+}
+.industry-legal .industry-label { background: #6366f1; color: #fff; }
+.industry-legal .section-title span,
+.industry-legal .industry-icon { color: #6366f1; }
+.industry-legal .btn { background: #6366f1; color: #fff; }
+.industry-legal .btn:hover { box-shadow: 0 10px 40px rgba(99, 102, 241, 0.3); }
+.industry-legal .btn-outline { border-color: #6366f1; color: #6366f1; }
+.industry-legal .btn-outline:hover { background: #6366f1; color: #fff; }
+.industry-legal .demo-preview { background: rgba(99, 102, 241, 0.05); border-color: rgba(99, 102, 241, 0.15); }
+.industry-legal .demo-item { background: rgba(99, 102, 241, 0.03); }
+
+/* ===== CTA FINAL SECTION ===== */
+.cta-final {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #0a0e17 0%, #1a2a4a 100%);
+    text-align: center;
+    position: relative;
+}
+
+.cta-final::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(0, 212, 255, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.cta-final h2 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 16px;
+}
+
+.cta-final h2 span {
+    color: #00d4ff;
+}
+
+.cta-final p {
+    max-width: 600px;
+    margin: 0 auto 30px;
+    color: #94a3b8;
+    font-size: 1.2rem;
+}
+
+.cta-final .cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background: #0a0e17;
+    color: #94a3b8;
+    padding: 40px 0 20px;
+    border-top: 1px solid #1a2a4a;
+}
+
+footer .container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+footer .footer-brand h3 {
+    color: #fff;
+    font-size: 1.4rem;
+}
+
+footer .footer-brand h3 span {
+    color: #00d4ff;
+}
+
+footer .footer-brand p {
+    max-width: 300px;
+    font-size: 0.9rem;
+    margin-top: 6px;
+}
+
+footer .footer-links h5,
+footer .footer-social h5 {
+    color: #fff;
+    margin-bottom: 12px;
+    font-size: 1rem;
+}
+
+footer .footer-links ul {
+    list-style: none;
+}
+
+footer .footer-links ul li {
+    margin-bottom: 6px;
+}
+
+footer .footer-links ul li a:hover {
+    color: #00d4ff;
+}
+
+footer .footer-social .social-icons {
+    display: flex;
+    gap: 16px;
+    font-size: 1.4rem;
+}
+
+footer .footer-social .social-icons a:hover {
+    color: #00d4ff;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 25px;
+    margin-top: 25px;
+    border-top: 1px solid #1a2a4a;
+    font-size: 0.85rem;
+    width: 100%;
+}
+
+/* ===== WHATSAPP FLOATING BUTTON ===== */
+.whatsapp-float {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: #25D366;
+    color: #fff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    z-index: 999;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+    color: #fff;
+}
+
+.whatsapp-float::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    border: 3px solid #25D366;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 992px) {
+    .hero h2 {
+        font-size: 2.8rem;
+    }
+    .section-title {
+        font-size: 2.2rem;
+    }
+    .industry-section .demo-preview .demo-row {
+        flex-direction: column;
+        align-items: center;
+    }
+    .industry-section .demo-preview .demo-item {
+        width: 100%;
+        max-width: 300px;
+    }
+    .cta-final h2 {
+        font-size: 2.8rem;
+    }
+    .demo-food .demo-menu-grid,
+    .demo-electrical .demo-services,
+    .demo-salon .demo-services-grid,
+    .demo-clothing .demo-products,
+    .demo-delivery .demo-restaurants,
+    .demo-realestate .demo-properties,
+    .demo-fitness .demo-classes,
+    .demo-travel .demo-destinations {
+        grid-template-columns: 1fr 1fr;
+    }
+    .demo-clothing .demo-hero,
+    .demo-realestate .demo-hero {
+        grid-template-columns: 1fr;
+    }
+    .demo-travel .demo-search-big input {
+        width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
+    nav ul {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 12px;
+        padding: 20px 0 10px;
+        border-top: 1px solid #1a2a4a;
+        margin-top: 14px;
+    }
+
+    nav ul.open {
+        display: flex;
+    }
+
+    .hero h2 {
+        font-size: 2.2rem;
+    }
+
+    .hero {
+        padding: 100px 0 60px;
+    }
+
+    .btn-outline {
+        margin-left: 0;
+        margin-top: 12px;
+    }
+
+    footer .container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .cta-final h2 {
+        font-size: 2.2rem;
+    }
+    .demo-carousel .carousel-nav {
+        width: 30px;
+        height: 30px;
+        font-size: 0.8rem;
+    }
+    .demo-food .demo-menu-grid,
+    .demo-electrical .demo-services,
+    .demo-salon .demo-services-grid,
+    .demo-clothing .demo-products,
+    .demo-delivery .demo-restaurants,
+    .demo-realestate .demo-properties,
+    .demo-fitness .demo-classes,
+    .demo-travel .demo-destinations {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h2 {
+        font-size: 1.8rem;
+    }
+    .section-title {
+        font-size: 1.8rem;
+    }
+    .cta-final h2 {
+        font-size: 1.8rem;
+    }
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        font-size: 1.8rem;
+        bottom: 15px;
+        right: 15px;
+    }
+    .industry-section .industry-icon {
+        font-size: 3rem;
+    }
+    .industry-section .demo-preview .demo-item {
+        min-width: auto;
+        padding: 15px;
+    }
+    .demo-food .demo-menu-grid,
+    .demo-electrical .demo-services,
+    .demo-salon .demo-services-grid,
+    .demo-clothing .demo-products,
+    .demo-delivery .demo-restaurants,
+    .demo-realestate .demo-properties,
+    .demo-fitness .demo-classes,
+    .demo-travel .demo-destinations {
+        grid-template-columns: 1fr;
+    }
+}

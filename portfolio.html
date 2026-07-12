@@ -1,0 +1,317 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shabs Web Development | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+        .portfolio-card .img-placeholder {
+            height: 220px;
+            background: linear-gradient(145deg, #1a2a4a, #0a0e17);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 3rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .portfolio-card .img-placeholder i {
+            opacity: 0.2;
+            font-size: 4rem;
+        }
+
+        .portfolio-card .img-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .portfolio-card {
+            background: #0f172a;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 212, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-8px);
+            border-color: #00d4ff;
+            box-shadow: 0 12px 40px rgba(0, 212, 255, 0.05);
+        }
+
+        .portfolio-card .portfolio-info {
+            padding: 20px;
+        }
+
+        .portfolio-card .portfolio-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+            color: #fff;
+        }
+
+        .portfolio-card .portfolio-info p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .portfolio-card .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .portfolio-card .tech-tags span {
+            background: rgba(0, 212, 255, 0.08);
+            color: #00d4ff;
+            padding: 3px 12px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+        }
+
+        .portfolio-card .view-btn {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 6px 20px;
+            border: 1px solid #00d4ff;
+            border-radius: 30px;
+            color: #00d4ff;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-card .view-btn:hover {
+            background: #00d4ff;
+            color: #0a0e17;
+        }
+
+        /* ===== COMING SOON CARD ===== */
+        .portfolio-card.coming-soon {
+            opacity: 0.7;
+        }
+
+        .portfolio-card.coming-soon .img-placeholder {
+            background: linear-gradient(145deg, #0a0e17, #0a0e17);
+        }
+
+        .portfolio-card.coming-soon .img-placeholder i {
+            opacity: 0.1;
+        }
+
+        .coming-badge {
+            display: inline-block;
+            background: #f59e0b;
+            color: #0a0e17;
+            padding: 2px 12px;
+            border-radius: 12px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER WITH LOGO ===== -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html" style="display:flex; align-items:center; gap:15px; text-decoration:none;">
+                    <img src="pictures/shabs_web_development_Logo.jpg" alt="Shabs Web Development Logo" style="height:50px; width:auto; border-radius:8px;" onerror="this.style.display='none'" />
+                    <div>
+                        <h1>Shabs <span>Web</span> Dev</h1>
+                        <p>Web Development &amp; Maintenance</p>
+                    </div>
+                </a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== PAGE HEADER ===== -->
+    <section style="padding:120px 0 60px; background:linear-gradient(135deg, #0a0e17 0%, #1a2a4a 100%); color:#fff; text-align:center;">
+        <div class="container">
+            <h1 style="font-size:3rem;font-weight:800;">My <span style="color:#00d4ff;">Portfolio</span></h1>
+            <p style="font-size:1.1rem;opacity:0.9;max-width:600px;margin:10px auto 0;color:#94a3b8;">Check out some of my recent web development projects.</p>
+        </div>
+    </section>
+
+    <!-- ===== PORTFOLIO CONTENT ===== -->
+    <section style="padding:60px 0 80px; background:#0a0e17;">
+        <div class="container">
+
+            <div class="portfolio-grid">
+
+                <!-- PROJECT 1: Zoe Zion Projects -->
+                <div class="portfolio-card">
+                    <div class="img-placeholder">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="portfolio-info">
+                        <h4>⚡ Zoe Zion Projects</h4>
+                        <p>Complete electrical and solar company website with contact form, project gallery, and WhatsApp integration.</p>
+                        <div class="tech-tags">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                            <span>Responsive</span>
+                            <span>Formspree</span>
+                        </div>
+                        <a href="#" class="view-btn">View Project</a>
+                    </div>
+                </div>
+
+                <!-- PROJECT 2: Nwa Zeme Electrical -->
+                <div class="portfolio-card">
+                    <div class="img-placeholder">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="portfolio-info">
+                        <h4>🔌 Nwa Zeme Electrical</h4>
+                        <p>Professional electrical services website with service listings, compliance certificates, and quote request system.</p>
+                        <div class="tech-tags">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                            <span>SEO</span>
+                            <span>WhatsApp API</span>
+                        </div>
+                        <a href="#" class="view-btn">View Project</a>
+                    </div>
+                </div>
+
+                <!-- PROJECT 3: Shabs Web Development -->
+                <div class="portfolio-card">
+                    <div class="img-placeholder">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="portfolio-info">
+                        <h4>💻 Shabs Web Development</h4>
+                        <p>My personal web development agency website showcasing services, pricing, and a dynamic industry showcase.</p>
+                        <div class="tech-tags">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                            <span>Responsive</span>
+                            <span>Interactive</span>
+                        </div>
+                        <a href="#" class="view-btn">View Project</a>
+                    </div>
+                </div>
+
+                <!-- PROJECT 4: Coming Soon -->
+                <div class="portfolio-card coming-soon">
+                    <div class="img-placeholder">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div class="portfolio-info">
+                        <span class="coming-badge">🚀 Coming Soon</span>
+                        <h4>Your Project Here</h4>
+                        <p>I'm ready to build your dream website. Let's create something amazing together!</p>
+                        <div class="tech-tags">
+                            <span>Your</span>
+                            <span>Idea</span>
+                            <span>+</span>
+                            <span>My Code</span>
+                        </div>
+                        <a href="contact.html" class="view-btn" style="border-color:#f59e0b; color:#f59e0b;">Let's Build Yours</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ===== CTA SECTION ===== -->
+            <div style="text-align:center; margin-top:60px; padding:50px; background:linear-gradient(135deg, #0f172a, #1a2a4a); border-radius:16px; border:1px solid rgba(0,212,255,0.05);">
+                <h2 style="font-size:2rem; font-weight:700; margin-bottom:16px;">
+                    Want to Be <span style="color:#00d4ff;">Next</span>?
+                </h2>
+                <p style="color:#94a3b8; max-width:500px; margin:0 auto 25px; font-size:1.05rem;">
+                    Let's build your website together. I'll create something that perfectly represents your brand.
+                </p>
+                <a href="contact.html" class="btn" style="background:#00d4ff; color:#0a0e17; font-size:1rem; padding:14px 45px;">
+                    <i class="fas fa-paper-plane"></i> Get a Free Quote
+                </a>
+                <p style="margin-top:15px; font-size:0.85rem; color:#64748b;">
+                    <i class="fas fa-check-circle" style="color:#22c55e;"></i> No obligation &bull; Free consultation
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer-brand">
+                <h3>Shabs <span>Web</span> Dev</h3>
+                <p>Web Development &amp; Maintenance<br />We create websites that transform businesses.</p>
+            </div>
+            <div class="footer-links">
+                <h5>Quick Links</h5>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h5>Connect With Me</h5>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="https://wa.me/27738537751" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">&copy; 2026 Shabs Web Development and Maintenance. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <!-- ===== FLOATING WHATSAPP BUTTON ===== -->
+    <a href="https://wa.me/27738537751" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,412 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shabs Web Development | Contact</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+        /* ===== ENHANCED FORM STYLES ===== */
+        .contact-form textarea {
+            height: 180px;
+            resize: vertical;
+            padding: 16px 18px;
+        }
+
+        .contact-form input {
+            padding: 16px 18px;
+        }
+
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        .contact-form label {
+            display: block;
+            color: #94a3b8;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            margin-top: 5px;
+        }
+
+        .contact-form .optional {
+            color: #64748b;
+            font-weight: 400;
+            font-size: 0.75rem;
+        }
+
+        .contact-form .field-hint {
+            color: #64748b;
+            font-size: 0.75rem;
+            margin-top: 4px;
+            margin-bottom: 8px;
+        }
+
+        .contact-form .btn {
+            width: 100%;
+            padding: 16px;
+            font-size: 1.05rem;
+            margin-top: 5px;
+        }
+
+        /* ===== CONTACT DETAILS WITH ICONS ===== */
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            transition: all 0.3s ease;
+        }
+
+        .contact-detail:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(0, 212, 255, 0.1);
+        }
+
+        .contact-detail i {
+            width: 44px;
+            height: 44px;
+            min-width: 44px;
+            background: #00d4ff;
+            color: #0a0e17;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .contact-detail .whatsapp-icon {
+            background: #25D366;
+            color: #fff;
+        }
+
+        .contact-detail .call-icon {
+            background: #22c55e;
+            color: #fff;
+        }
+
+        .contact-detail .email-icon {
+            background: #3b82f6;
+            color: #fff;
+        }
+
+        .contact-detail strong {
+            display: block;
+            font-size: 0.75rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-detail span {
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: #e2e8f0;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 992px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contact-detail span {
+                font-size: 0.95rem;
+            }
+            .contact-form textarea {
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER WITH LOGO ===== -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html" style="display:flex; align-items:center; gap:15px; text-decoration:none;">
+                    <img src="pictures/shabs_web_development_Logo.jpg" alt="Shabs Web Development Logo" style="height:50px; width:auto; border-radius:8px;" onerror="this.style.display='none'" />
+                    <div>
+                        <h1>Shabs <span>Web</span> Dev</h1>
+                        <p>Web Development &amp; Maintenance</p>
+                    </div>
+                </a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== PAGE HEADER ===== -->
+    <section style="padding:120px 0 60px; background:linear-gradient(135deg, #0a0e17 0%, #1a2a4a 100%); color:#fff; text-align:center;">
+        <div class="container">
+            <h1 style="font-size:3rem;font-weight:800;">Get In <span style="color:#00d4ff;">Touch</span></h1>
+            <p style="font-size:1.1rem;opacity:0.9;max-width:600px;margin:10px auto 0;color:#94a3b8;">Ready to build something amazing? Let's talk!</p>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT CONTENT ===== -->
+    <section style="padding:80px 0; background:#0f172a;">
+        <div class="container">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:50px;" class="contact-grid">
+
+                <!-- ===== CONTACT INFO ===== -->
+                <div>
+                    <h3 style="font-size:1.8rem;margin-bottom:20px;">Contact <span style="color:#00d4ff;">Information</span></h3>
+                    <p style="color:#94a3b8;margin-bottom:25px;">
+                        Have a project in mind? Want to revamp your existing website?
+                        Need maintenance support? I'm here to help! Just reach out.
+                    </p>
+
+                    <!-- Phone / Call -->
+                    <div class="contact-detail">
+                        <i class="fas fa-phone-alt call-icon"></i>
+                        <div>
+                            <strong>Call Me</strong>
+                            <span>083 384 2647</span>
+                        </div>
+                    </div>
+
+                    <!-- WhatsApp -->
+                    <div class="contact-detail">
+                        <i class="fab fa-whatsapp whatsapp-icon"></i>
+                        <div>
+                            <strong>WhatsApp</strong>
+                            <span>083 384 2647</span>
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="contact-detail">
+                        <i class="fas fa-envelope email-icon"></i>
+                        <div>
+                            <strong>Email</strong>
+                            <span>tyrontshabalala64@gmail.com</span>
+                        </div>
+                    </div>
+
+                    <!-- Quick Action Buttons -->
+                    <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:25px;">
+                        <a href="https://wa.me/27833842647" target="_blank" class="btn" style="background:#25D366; color:#fff; display:inline-flex; align-items:center; gap:8px; flex:1; min-width:140px; justify-content:center;">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                        <a href="tel:+27833842647" class="btn" style="background:#22c55e; color:#fff; display:inline-flex; align-items:center; gap:8px; flex:1; min-width:140px; justify-content:center;">
+                            <i class="fas fa-phone-alt"></i> Call Me
+                        </a>
+                        <a href="mailto:tyrontshabalala64@gmail.com" class="btn" style="background:#3b82f6; color:#fff; display:inline-flex; align-items:center; gap:8px; flex:1; min-width:140px; justify-content:center;">
+                            <i class="fas fa-envelope"></i> Email
+                        </a>
+                    </div>
+
+                    <!-- Response Time -->
+                    <div style="margin-top:25px; background:#1a2a4a; padding:20px; border-radius:12px; border:1px solid rgba(0,212,255,0.05);">
+                        <p style="font-size:0.9rem;color:#94a3b8;">
+                            <i class="fas fa-clock" style="color:#00d4ff;margin-right:8px;"></i>
+                            <strong style="color:#fff;">Response Time:</strong> Usually within 1-2 hours
+                        </p>
+                        <p style="font-size:0.9rem;color:#94a3b8;margin-top:8px;">
+                            <i class="fas fa-globe" style="color:#00d4ff;margin-right:8px;"></i>
+                            <strong style="color:#fff;">Available:</strong> 24/7 for emergencies
+                        </p>
+                    </div>
+                </div>
+
+                <!-- ===== CONTACT FORM ===== -->
+                <div>
+                    <h3 style="font-size:1.5rem;margin-bottom:20px;">Send Me a <span style="color:#00d4ff;">Message</span></h3>
+                    <p style="color:#94a3b8;margin-bottom:20px;font-size:0.95rem;">
+                        Fill in the details below and I'll get back to you within 1-2 hours.
+                    </p>
+
+                    <form 
+                        class="contact-form" 
+                        id="contactForm"
+                        action="https://formspree.io/f/mqerzlyg" 
+                        method="POST"
+                    >
+                        <!-- Name -->
+                        <label for="name">Your Name <span style="color:#ef4444;">*</span></label>
+                        <input type="text" id="name" name="name" placeholder="e.g. John Doe" required />
+
+                        <!-- Email -->
+                        <label for="email">Your Email <span style="color:#ef4444;">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="e.g. john@example.com" required />
+
+                        <!-- Phone (Optional) -->
+                        <label for="phone">Phone Number <span class="optional">(optional)</span></label>
+                        <input type="tel" id="phone" name="phone" placeholder="e.g. 083 384 2647" />
+                        <div class="field-hint">This helps me reach you faster if needed.</div>
+
+                        <!-- Subject -->
+                        <label for="subject">Subject <span style="color:#ef4444;">*</span></label>
+                        <input type="text" id="subject" name="subject" placeholder="e.g. Website Development Quote" required />
+
+                        <!-- Message -->
+                        <label for="message">Tell me about your project <span style="color:#ef4444;">*</span></label>
+                        <textarea id="message" name="message" placeholder="Describe your project, budget, timeline, or any questions you have..." required></textarea>
+                        <div class="field-hint">The more details you provide, the better I can help you.</div>
+
+                        <!-- Optional honeypot field for spam prevention -->
+                        <input type="text" name="_gotcha" style="display:none" />
+
+                        <button type="submit" class="btn" id="formSubmitBtn">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+
+                        <div id="formStatus" class="form-status"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer-brand">
+                <h3>Shabs <span>Web</span> Dev</h3>
+                <p>Web Development &amp; Maintenance<br />We create websites that transform businesses.</p>
+            </div>
+            <div class="footer-links">
+                <h5>Quick Links</h5>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h5>Connect With Me</h5>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="https://wa.me/27833842647" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">&copy; 2026 Shabs Web Development and Maintenance. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <!-- ===== FLOATING WHATSAPP BUTTON ===== -->
+    <a href="https://wa.me/27833842647" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- ===== CUSTOM JAVASCRIPT FOR THIS PAGE ===== -->
+    <script>
+        // ===== CONTACT FORM HANDLING (Formspree) =====
+        const form = document.getElementById('contactForm');
+        const statusDiv = document.getElementById('formStatus');
+        const submitBtn = document.getElementById('formSubmitBtn');
+
+        if (form && statusDiv) {
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // Disable button to prevent double submission
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+                // Clear previous status
+                statusDiv.className = 'form-status';
+                statusDiv.style.display = 'none';
+                statusDiv.textContent = '';
+
+                // Collect form data
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData.entries());
+
+                try {
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    });
+
+                    if (response.ok) {
+                        // Success
+                        statusDiv.className = 'form-status success';
+                        statusDiv.style.display = 'block';
+                        statusDiv.textContent = '✅ Thank you! Your message has been sent. I\'ll get back to you within 1-2 hours.';
+                        form.reset();
+                    } else {
+                        // Error from Formspree
+                        const errorData = await response.json();
+                        statusDiv.className = 'form-status error';
+                        statusDiv.style.display = 'block';
+                        statusDiv.textContent = '❌ Oops! Something went wrong. Please try again or contact me directly via WhatsApp.';
+                        console.error('Formspree error:', errorData);
+                    }
+                } catch (error) {
+                    // Network error
+                    statusDiv.className = 'form-status error';
+                    statusDiv.style.display = 'block';
+                    statusDiv.textContent = '❌ Network error. Please check your connection and try again, or contact me via WhatsApp.';
+                    console.error('Form submission error:', error);
+                } finally {
+                    // Re-enable button
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+                }
+            });
+        }
+
+        // ===== HAMBURGER TOGGLE =====
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', () => {
+                navMenu.classList.toggle('open');
+            });
+
+            document.querySelectorAll('#navMenu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('open');
+                });
+            });
+        }
+
+        // ===== ACTIVE NAV LINK =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop() || 'contact.html';
+            const navLinksAll = document.querySelectorAll('#navMenu a');
+
+            navLinksAll.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
