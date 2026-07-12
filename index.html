@@ -6,41 +6,1088 @@
     <title>Shabs Web Development | Build Your Dream Website</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <style>
+        /* ===== MOBILE RESPONSIVE FIXES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0e17;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== HEADER / NAVIGATION - FIXED ===== */
+        header {
+            background: rgba(10, 14, 23, 0.97);
+            padding: 12px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 45px;
+            width: auto;
+            border-radius: 8px;
+        }
+
+        .logo h1 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.2;
+        }
+
+        .logo h1 span {
+            color: #00d4ff;
+        }
+
+        .logo p {
+            font-size: 0.65rem;
+            color: #94a3b8;
+            margin-top: -2px;
+        }
+
+        /* ===== HAMBURGER MENU ===== */
+        .hamburger {
+            display: none;
+            font-size: 1.8rem;
+            color: #fff;
+            cursor: pointer;
+            padding: 8px 14px;
+            background: rgba(0, 212, 255, 0.08);
+            border-radius: 8px;
+            border: 1px solid rgba(0, 212, 255, 0.15);
+            transition: all 0.3s ease;
+            line-height: 1;
+        }
+
+        .hamburger:hover {
+            background: rgba(0, 212, 255, 0.15);
+        }
+
+        .hamburger.active {
+            border-color: #00d4ff;
+        }
+
+        /* ===== NAV MENU ===== */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 5px;
+            align-items: center;
+        }
+
+        nav ul li a {
+            color: #94a3b8;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            display: block;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: #fff;
+            background: rgba(0, 212, 255, 0.1);
+        }
+
+        nav ul li a.active {
+            color: #00d4ff;
+        }
+
+        /* ===== MOBILE NAV RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            nav {
+                width: 100%;
+                display: none;
+                margin-top: 12px;
+                border-top: 1px solid rgba(0, 212, 255, 0.08);
+                padding-top: 12px;
+            }
+
+            nav.open {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 4px;
+                width: 100%;
+            }
+
+            nav ul li {
+                width: 100%;
+            }
+
+            nav ul li a {
+                padding: 12px 18px;
+                width: 100%;
+                text-align: center;
+                font-size: 1rem;
+                border-radius: 10px;
+            }
+
+            nav ul li a:hover,
+            nav ul li a.active {
+                background: rgba(0, 212, 255, 0.08);
+            }
+
+            .logo h1 {
+                font-size: 1.1rem;
+            }
+
+            .logo p {
+                font-size: 0.55rem;
+            }
+
+            .logo img {
+                height: 38px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo h1 {
+                font-size: 0.95rem;
+            }
+
+            .logo p {
+                display: none;
+            }
+
+            .logo img {
+                height: 32px;
+            }
+
+            header {
+                padding: 10px 0;
+            }
+
+            header .container {
+                padding: 0 15px;
+            }
+
+            .hamburger {
+                font-size: 1.5rem;
+                padding: 6px 12px;
+            }
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            padding: 140px 0 60px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #0a0e17 0%, #1a2a4a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero .container {
+            width: 100%;
+        }
+
+        .hero .tagline {
+            color: #00d4ff;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            display: inline-block;
+            background: rgba(0, 212, 255, 0.08);
+            padding: 6px 20px;
+            border-radius: 30px;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero h2 span {
+            color: #00d4ff;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            line-height: 1.7;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero .btn {
+            padding: 14px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            margin: 0 8px 10px;
+        }
+
+        .hero .btn:first-of-type {
+            background: #00d4ff;
+            color: #0a0e17;
+        }
+
+        .hero .btn:first-of-type:hover {
+            background: #00b8d4;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .hero .btn-outline {
+            border: 2px solid #00d4ff;
+            color: #00d4ff;
+            background: transparent;
+        }
+
+        .hero .btn-outline:hover {
+            background: #00d4ff;
+            color: #0a0e17;
+            transform: translateY(-2px);
+        }
+
+        .code-symbols {
+            margin-top: 30px;
+            font-size: 0.8rem;
+            color: rgba(0, 212, 255, 0.15);
+            letter-spacing: 8px;
+            font-family: monospace;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #94a3b8;
+            font-size: 0.8rem;
+            text-align: center;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator i {
+            display: block;
+            margin-top: 5px;
+            font-size: 1.2rem;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        /* ===== HERO MOBILE ===== */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 120px 0 50px;
+                min-height: auto;
+            }
+
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+                padding: 0 10px;
+            }
+
+            .hero .btn {
+                padding: 12px 28px;
+                font-size: 0.9rem;
+                margin: 0 5px 8px;
+            }
+
+            .scroll-indicator {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 100px 0 40px;
+            }
+
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+
+            .hero .btn {
+                display: block;
+                width: 100%;
+                max-width: 280px;
+                margin: 8px auto;
+                text-align: center;
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+
+            .hero .tagline {
+                font-size: 0.8rem;
+                padding: 4px 16px;
+            }
+
+            .code-symbols {
+                font-size: 0.6rem;
+                letter-spacing: 4px;
+            }
+        }
+
+        /* ===== INDUSTRY SECTIONS - RESPONSIVE ===== */
+        .industry-section {
+            padding: 60px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .industry-label {
+            display: inline-block;
+            background: rgba(0, 212, 255, 0.08);
+            color: #00d4ff;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .industry-icon {
+            font-size: 3rem;
+            color: rgba(0, 212, 255, 0.1);
+            display: block;
+            margin: 10px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .section-title span {
+            color: #00d4ff;
+        }
+
+        .industry-description {
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        /* ===== DEMO CAROUSEL ===== */
+        .demo-carousel {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            padding: 20px;
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            border: none;
+            font-size: 2rem;
+            padding: 10px 16px;
+            cursor: pointer;
+            z-index: 10;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-nav:hover {
+            background: rgba(0, 212, 255, 0.3);
+        }
+
+        .carousel-nav.prev {
+            left: 10px;
+        }
+
+        .carousel-nav.next {
+            right: 10px;
+        }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px 0 5px;
+        }
+
+        .carousel-indicators button {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-indicators button.active {
+            background: #00d4ff;
+            width: 30px;
+            border-radius: 10px;
+        }
+
+        /* ===== INDUSTRY DEMO STYLES ===== */
+        .demo-hero {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .demo-hero h2,
+        .demo-hero h3 {
+            color: #fff;
+        }
+
+        .demo-hero p {
+            color: #94a3b8;
+        }
+
+        .demo-hero .btn {
+            padding: 10px 24px;
+            border-radius: 30px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+
+        .demo-menu-grid,
+        .demo-services,
+        .demo-products,
+        .demo-restaurants,
+        .demo-properties,
+        .demo-classes,
+        .demo-destinations {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 12px;
+            padding: 10px 0;
+        }
+
+        .demo-menu-item,
+        .demo-service,
+        .demo-product,
+        .demo-restaurant,
+        .demo-property,
+        .demo-class,
+        .demo-destination,
+        .demo-service-card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .demo-menu-item:hover,
+        .demo-service:hover,
+        .demo-product:hover {
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .demo-menu-item h4,
+        .demo-service h4,
+        .demo-product h4,
+        .demo-restaurant h4,
+        .demo-property h4,
+        .demo-class h4,
+        .demo-destination h4,
+        .demo-service-card h4 {
+            color: #fff;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        .demo-menu-item p,
+        .demo-service p,
+        .demo-product p {
+            color: #94a3b8;
+            font-size: 0.8rem;
+        }
+
+        .demo-services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            padding: 10px 0;
+        }
+
+        .demo-search {
+            display: flex;
+            gap: 10px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .demo-search input {
+            flex: 1;
+            min-width: 150px;
+            padding: 12px 18px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            font-size: 0.95rem;
+        }
+
+        .demo-search input::placeholder {
+            color: #64748b;
+        }
+
+        .demo-search .btn {
+            padding: 12px 28px;
+            border-radius: 30px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .demo-search-big {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .demo-search-big h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .demo-search-big input {
+            padding: 14px 20px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            font-size: 1rem;
+            width: 60%;
+            min-width: 200px;
+        }
+
+        .demo-search-big input::placeholder {
+            color: #64748b;
+        }
+
+        .demo-search-big .btn {
+            padding: 14px 32px;
+            border-radius: 50px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .price {
+            color: #00d4ff;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .featured {
+            font-size: 2rem;
+        }
+
+        /* ===== INDUSTRY SECTION MOBILE ===== */
+        @media (max-width: 768px) {
+            .industry-section {
+                padding: 40px 0;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .industry-description {
+                font-size: 0.95rem;
+                padding: 0 10px;
+            }
+
+            .demo-hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 15px;
+            }
+
+            .demo-hero h2 {
+                font-size: 1.3rem;
+            }
+
+            .demo-menu-grid,
+            .demo-services,
+            .demo-products,
+            .demo-restaurants,
+            .demo-properties,
+            .demo-classes,
+            .demo-destinations {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .demo-services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .carousel-nav {
+                font-size: 1.5rem;
+                padding: 6px 12px;
+            }
+
+            .demo-search-big input {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .demo-search-big .btn {
+                margin-left: 0;
+                width: 100%;
+            }
+
+            .demo-search {
+                flex-direction: column;
+            }
+
+            .demo-search input {
+                width: 100%;
+            }
+
+            .demo-search .btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .industry-description {
+                font-size: 0.85rem;
+            }
+
+            .demo-menu-grid,
+            .demo-services,
+            .demo-products,
+            .demo-restaurants,
+            .demo-properties,
+            .demo-classes,
+            .demo-destinations {
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+
+            .demo-services-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .demo-menu-item,
+            .demo-service,
+            .demo-product,
+            .demo-restaurant,
+            .demo-property,
+            .demo-class,
+            .demo-destination,
+            .demo-service-card {
+                padding: 12px 8px;
+            }
+
+            .demo-menu-item h4,
+            .demo-service h4,
+            .demo-product h4 {
+                font-size: 0.8rem;
+            }
+
+            .demo-menu-item p,
+            .demo-service p,
+            .demo-product p {
+                font-size: 0.7rem;
+            }
+
+            .carousel-slide {
+                padding: 12px;
+            }
+
+            .demo-hero {
+                padding: 12px;
+            }
+
+            .demo-hero .btn {
+                font-size: 0.8rem;
+                padding: 8px 18px;
+            }
+
+            .demo-search-big h3 {
+                font-size: 1.3rem;
+            }
+
+            .carousel-nav {
+                font-size: 1.2rem;
+                padding: 4px 10px;
+            }
+
+            .carousel-nav.prev {
+                left: 4px;
+            }
+
+            .carousel-nav.next {
+                right: 4px;
+            }
+        }
+
+        /* ===== CTA FINAL ===== */
+        .cta-final {
+            padding: 80px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #0a0e17, #1a2a4a);
+            border-top: 1px solid rgba(0, 212, 255, 0.05);
+        }
+
+        .cta-final h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .cta-final h2 span {
+            color: #00d4ff;
+        }
+
+        .cta-final p {
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-buttons .btn {
+            padding: 14px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .cta-buttons .btn:first-child {
+            background: #00d4ff;
+            color: #0a0e17;
+        }
+
+        .cta-buttons .btn:first-child:hover {
+            background: #00b8d4;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .cta-buttons .btn-outline {
+            border: 2px solid #00d4ff;
+            color: #00d4ff;
+            background: transparent;
+        }
+
+        .cta-buttons .btn-outline:hover {
+            background: #00d4ff;
+            color: #0a0e17;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .cta-final h2 {
+                font-size: 2rem;
+            }
+
+            .cta-final p {
+                font-size: 1rem;
+                padding: 0 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cta-final {
+                padding: 50px 15px;
+            }
+
+            .cta-final h2 {
+                font-size: 1.6rem;
+            }
+
+            .cta-final p {
+                font-size: 0.9rem;
+            }
+
+            .cta-buttons .btn {
+                display: block;
+                width: 100%;
+                max-width: 280px;
+                margin: 8px auto;
+                text-align: center;
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #0a0e17;
+            padding: 50px 20px 30px;
+            border-top: 1px solid rgba(0, 212, 255, 0.05);
+        }
+
+        footer .container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .footer-brand h3 span {
+            color: #00d4ff;
+        }
+
+        .footer-brand p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .footer-links h5,
+        .footer-social h5 {
+            color: #fff;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-links ul li a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .footer-links ul li a:hover {
+            color: #00d4ff;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            color: #94a3b8;
+            font-size: 1.3rem;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #00d4ff;
+        }
+
+        .footer-bottom {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: #64748b;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            footer .container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: center;
+            }
+
+            .social-icons {
+                justify-content: center;
+            }
+
+            .footer-links ul li a {
+                display: inline-block;
+            }
+        }
+
+        /* ===== FLOATING WHATSAPP ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25d366;
+            color: #fff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        @media (max-width: 480px) {
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 1.6rem;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- ===== HEADER ===== -->
-    <!-- ===== HEADER WITH LOGO ===== -->
-<header>
-    <div class="container">
-        <div class="logo">
-            <a href="index.html" style="display:flex; align-items:center; gap:15px; text-decoration:none;">
-                <img src="pictures/shabs_web_development_Logo.jpg" alt="Shabs Web Development Logo" style="height:50px; width:auto; border-radius:8px;" onerror="this.style.display='none'" />
-                <div>
-                    <h1>Shabs <span>Web</span> Dev</h1>
-                    <p>Web Development &amp; Maintenance</p>
-                </div>
-            </a>
+    <!-- ===== HEADER WITH LOGO & HAMBURGER ===== -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="pictures/shabs_web_development_Logo.jpg" alt="Shabs Web Development Logo" onerror="this.style.display='none'" />
+                    <div>
+                        <h1>Shabs <span>Web</span> Dev</h1>
+                        <p>Web Development &amp; Maintenance</p>
+                    </div>
+                </a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav id="navMenu">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
         </div>
-        <div class="hamburger" id="hamburger">
-            <i class="fas fa-bars"></i>
-        </div>
-        <nav>
-            <ul id="navMenu">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
+    </header>
 
     <!-- ===== HERO ===== -->
     <section class="hero" id="home">
         <div class="container">
-            <p class="tagline">🚀 We Build and mantain Websites That Transform Businesses</p>
+            <p class="tagline">🚀 We Build and Maintain Websites That Transform Businesses</p>
             <h2>Your Website <span>Speaks</span> For You</h2>
             <p>
                 Whether you own a restaurant, salon, electrical company, or tutoring business — 
@@ -119,8 +1166,8 @@
                 </div>
                 
                 <div style="margin-top:30px;">
-                    <a href="contact.html" class="btn">Build My Restaurant Website</a>
-                    <a href="#industries-2" class="btn btn-outline">See Next</a>
+                    <a href="contact.html" class="btn" style="background:#00d4ff;color:#0a0e17;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;">Build My Restaurant Website</a>
+                    <a href="#industries-2" class="btn" style="border:2px solid #00d4ff;color:#00d4ff;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;background:transparent;">See Next</a>
                 </div>
             </div>
         </div>
@@ -141,7 +1188,7 @@
                     <div class="carousel-track" id="track-electrical">
                         <div class="carousel-slide demo-electrical">
                             <div class="demo-hero">
-                                <i class="fas fa-bolt icon"></i>
+                                <i class="fas fa-bolt icon" style="font-size:2.5rem;color:#00d4ff;"></i>
                                 <div style="flex:1;">
                                     <h3>Powering Your World with Excellence</h3>
                                     <p style="opacity:0.8;">Reliable, Safe &amp; Professional Electrical Installations</p>
@@ -186,8 +1233,8 @@
                 </div>
                 
                 <div style="margin-top:30px;">
-                    <a href="contact.html" class="btn">Build My Electrical Website</a>
-                    <a href="#industries-3" class="btn btn-outline">See Next</a>
+                    <a href="contact.html" class="btn" style="background:#00d4ff;color:#0a0e17;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;">Build My Electrical Website</a>
+                    <a href="#industries-3" class="btn" style="border:2px solid #00d4ff;color:#00d4ff;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;background:transparent;">See Next</a>
                 </div>
             </div>
         </div>
@@ -245,8 +1292,8 @@
                 </div>
                 
                 <div style="margin-top:30px;">
-                    <a href="contact.html" class="btn">Build My Salon Website</a>
-                    <a href="#industries-4" class="btn btn-outline">See Next</a>
+                    <a href="contact.html" class="btn" style="background:#00d4ff;color:#0a0e17;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;">Build My Salon Website</a>
+                    <a href="#industries-4" class="btn" style="border:2px solid #00d4ff;color:#00d4ff;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;background:transparent;">See Next</a>
                 </div>
             </div>
         </div>
@@ -266,7 +1313,7 @@
                 <div class="demo-carousel" id="carousel-mechanic">
                     <div class="carousel-track" id="track-mechanic">
                         <div class="carousel-slide demo-mechanic">
-                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(239,68,68,0.05);border-radius:12px;border-left:4px solid #ef4444;margin-bottom:20px;">
+                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(239,68,68,0.05);border-radius:12px;border-left:4px solid #ef4444;margin-bottom:20px;flex-wrap:wrap;">
                                 <i class="fas fa-car" style="font-size:3rem;color:#ef4444;"></i>
                                 <div style="flex:1;"><h3>Your Trusted Auto Repair Shop</h3><p style="opacity:0.8;">Quality service you can depend on</p></div>
                                 <button class="btn" style="background:#ef4444;color:#fff;">Book Now</button>
@@ -306,8 +1353,8 @@
                 </div>
                 
                 <div style="margin-top:30px;">
-                    <a href="contact.html" class="btn">Build My Mechanic Website</a>
-                    <a href="#industries-5" class="btn btn-outline">See Next</a>
+                    <a href="contact.html" class="btn" style="background:#00d4ff;color:#0a0e17;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;">Build My Mechanic Website</a>
+                    <a href="#industries-5" class="btn" style="border:2px solid #00d4ff;color:#00d4ff;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;background:transparent;">See Next</a>
                 </div>
             </div>
         </div>
@@ -327,7 +1374,7 @@
                 <div class="demo-carousel" id="carousel-tutoring">
                     <div class="carousel-track" id="track-tutoring">
                         <div class="carousel-slide demo-tutoring">
-                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(34,211,238,0.05);border-radius:12px;border-left:4px solid #22d3ee;margin-bottom:20px;">
+                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(34,211,238,0.05);border-radius:12px;border-left:4px solid #22d3ee;margin-bottom:20px;flex-wrap:wrap;">
                                 <i class="fas fa-graduation-cap" style="font-size:3rem;color:#22d3ee;"></i>
                                 <div style="flex:1;"><h3>📚 Learn with Confidence</h3><p style="opacity:0.8;">Expert tutoring for all subjects</p></div>
                                 <button class="btn" style="background:#22d3ee;color:#0a1a0a;">Book a Lesson</button>
@@ -364,8 +1411,8 @@
                 </div>
                 
                 <div style="margin-top:30px;">
-                    <a href="contact.html" class="btn">Build My Tutoring Website</a>
-                    <a href="#industries-6" class="btn btn-outline">See Next</a>
+                    <a href="contact.html" class="btn" style="background:#00d4ff;color:#0a0e17;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;">Build My Tutoring Website</a>
+                    <a href="#industries-6" class="btn" style="border:2px solid #00d4ff;color:#00d4ff;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;background:transparent;">See Next</a>
                 </div>
             </div>
         </div>
@@ -385,7 +1432,7 @@
                 <div class="demo-carousel" id="carousel-cleaning">
                     <div class="carousel-track" id="track-cleaning">
                         <div class="carousel-slide demo-cleaning">
-                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(52,211,153,0.05);border-radius:12px;border-left:4px solid #34d399;margin-bottom:20px;">
+                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(52,211,153,0.05);border-radius:12px;border-left:4px solid #34d399;margin-bottom:20px;flex-wrap:wrap;">
                                 <i class="fas fa-broom" style="font-size:3rem;color:#34d399;"></i>
                                 <div style="flex:1;"><h3>✨ Sparkling Clean Every Time</h3><p style="opacity:0.8;">Professional cleaning services you can trust</p></div>
                                 <button class="btn" style="background:#34d399;color:#0a1a1a;">Book Now</button>
@@ -420,8 +1467,8 @@
                 </div>
                 
                 <div style="margin-top:30px;">
-                    <a href="contact.html" class="btn">Build My Cleaning Website</a>
-                    <a href="#industries-7" class="btn btn-outline">See Next</a>
+                    <a href="contact.html" class="btn" style="background:#00d4ff;color:#0a0e17;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;">Build My Cleaning Website</a>
+                    <a href="#industries-7" class="btn" style="border:2px solid #00d4ff;color:#00d4ff;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;background:transparent;">See Next</a>
                 </div>
             </div>
         </div>
@@ -478,8 +1525,8 @@
                 </div>
                 
                 <div style="margin-top:30px;">
-                    <a href="contact.html" class="btn">Build My Clothing Website</a>
-                    <a href="#industries-8" class="btn btn-outline">See Next</a>
+                    <a href="contact.html" class="btn" style="background:#00d4ff;color:#0a0e17;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;">Build My Clothing Website</a>
+                    <a href="#industries-8" class="btn" style="border:2px solid #00d4ff;color:#00d4ff;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;background:transparent;">See Next</a>
                 </div>
             </div>
         </div>
@@ -500,7 +1547,7 @@
                     <div class="carousel-track" id="track-delivery">
                         <div class="carousel-slide demo-delivery">
                             <div class="demo-search">
-                                <input type="text" placeholder="Track your package..." style="flex:1;padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:#fff;" />
+                                <input type="text" placeholder="Track your package..." />
                                 <button class="btn" style="background:#f59e0b;color:#1a100a;">Track</button>
                             </div>
                             <div class="demo-restaurants">
@@ -538,8 +1585,8 @@
                 </div>
                 
                 <div style="margin-top:30px;">
-                    <a href="contact.html" class="btn">Build My Delivery Website</a>
-                    <a href="#industries-9" class="btn btn-outline">See Next</a>
+                    <a href="contact.html" class="btn" style="background:#00d4ff;color:#0a0e17;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;">Build My Delivery Website</a>
+                    <a href="#industries-9" class="btn" style="border:2px solid #00d4ff;color:#00d4ff;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;background:transparent;">See Next</a>
                 </div>
             </div>
         </div>
@@ -561,7 +1608,7 @@
                         <div class="carousel-slide demo-realestate">
                             <div class="demo-hero">
                                 <div><h3 style="color:#8b5cf6;">Find Your Dream Home</h3><p style="opacity:0.7;">Search properties in your area</p></div>
-                                <div style="display:flex;gap:10px;align-items:center;"><i class="fas fa-search" style="color:#8b5cf6;"></i><input type="text" placeholder="Search..." style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:#fff;width:100%;" /></div>
+                                <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;"><i class="fas fa-search" style="color:#8b5cf6;"></i><input type="text" placeholder="Search..." style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:#fff;flex:1;min-width:150px;" /></div>
                             </div>
                             <div class="demo-properties">
                                 <div class="demo-property"><i class="fas fa-home" style="font-size:2rem;color:#8b5cf6;"></i><h4>Modern Villa</h4><p class="price">R2.5M</p><p style="opacity:0.7;">4 bed, 3 bath</p></div>
@@ -595,8 +1642,8 @@
                 </div>
                 
                 <div style="margin-top:30px;">
-                    <a href="contact.html" class="btn">Build My Real Estate Website</a>
-                    <a href="#industries-10" class="btn btn-outline">See Next</a>
+                    <a href="contact.html" class="btn" style="background:#00d4ff;color:#0a0e17;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;">Build My Real Estate Website</a>
+                    <a href="#industries-10" class="btn" style="border:2px solid #00d4ff;color:#00d4ff;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;background:transparent;">See Next</a>
                 </div>
             </div>
         </div>
@@ -656,8 +1703,8 @@
                 </div>
                 
                 <div style="margin-top:30px;">
-                    <a href="contact.html" class="btn">Build My Gym Website</a>
-                    <a href="#industries-11" class="btn btn-outline">See Next</a>
+                    <a href="contact.html" class="btn" style="background:#00d4ff;color:#0a0e17;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;">Build My Gym Website</a>
+                    <a href="#industries-11" class="btn" style="border:2px solid #00d4ff;color:#00d4ff;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;background:transparent;">See Next</a>
                 </div>
             </div>
         </div>
@@ -677,7 +1724,7 @@
                 <div class="demo-carousel" id="carousel-photography">
                     <div class="carousel-track" id="track-photography">
                         <div class="carousel-slide demo-photography">
-                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(107,114,128,0.05);border-radius:12px;border-left:4px solid #6b7280;margin-bottom:20px;">
+                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(107,114,128,0.05);border-radius:12px;border-left:4px solid #6b7280;margin-bottom:20px;flex-wrap:wrap;">
                                 <i class="fas fa-camera" style="font-size:3rem;color:#9ca3af;"></i>
                                 <div style="flex:1;"><h3>Capturing Life's Moments</h3><p style="opacity:0.7;">Professional photography services</p></div>
                                 <button class="btn" style="background:#6b7280;color:#fff;">Book a Shoot</button>
@@ -713,8 +1760,8 @@
                 </div>
                 
                 <div style="margin-top:30px;">
-                    <a href="contact.html" class="btn">Build My Photography Website</a>
-                    <a href="#industries-12" class="btn btn-outline">See Next</a>
+                    <a href="contact.html" class="btn" style="background:#00d4ff;color:#0a0e17;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;">Build My Photography Website</a>
+                    <a href="#industries-12" class="btn" style="border:2px solid #00d4ff;color:#00d4ff;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;background:transparent;">See Next</a>
                 </div>
             </div>
         </div>
@@ -734,7 +1781,7 @@
                 <div class="demo-carousel" id="carousel-healthcare">
                     <div class="carousel-track" id="track-healthcare">
                         <div class="carousel-slide demo-healthcare">
-                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(14,165,233,0.05);border-radius:12px;border-left:4px solid #0ea5e9;margin-bottom:20px;">
+                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(14,165,233,0.05);border-radius:12px;border-left:4px solid #0ea5e9;margin-bottom:20px;flex-wrap:wrap;">
                                 <i class="fas fa-heartbeat" style="font-size:3rem;color:#0ea5e9;"></i>
                                 <div style="flex:1;"><h3>Your Health, Our Priority</h3><p style="opacity:0.8;">Caring, professional medical services</p></div>
                                 <button class="btn" style="background:#0ea5e9;color:#fff;">Book Appointment</button>
@@ -771,8 +1818,8 @@
                 </div>
                 
                 <div style="margin-top:30px;">
-                    <a href="contact.html" class="btn">Build My Healthcare Website</a>
-                    <a href="#industries-13" class="btn btn-outline">See Next</a>
+                    <a href="contact.html" class="btn" style="background:#00d4ff;color:#0a0e17;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;">Build My Healthcare Website</a>
+                    <a href="#industries-13" class="btn" style="border:2px solid #00d4ff;color:#00d4ff;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;background:transparent;">See Next</a>
                 </div>
             </div>
         </div>
@@ -792,7 +1839,7 @@
                 <div class="demo-carousel" id="carousel-hotel">
                     <div class="carousel-track" id="track-hotel">
                         <div class="carousel-slide demo-hotel">
-                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(245,158,11,0.05);border-radius:12px;border-left:4px solid #f59e0b;margin-bottom:20px;">
+                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(245,158,11,0.05);border-radius:12px;border-left:4px solid #f59e0b;margin-bottom:20px;flex-wrap:wrap;">
                                 <i class="fas fa-hotel" style="font-size:3rem;color:#f59e0b;"></i>
                                 <div style="flex:1;"><h3>Experience Luxury</h3><p style="opacity:0.8;">Book your dream stay today</p></div>
                                 <button class="btn" style="background:#f59e0b;color:#1a0a0a;">Check Availability</button>
@@ -828,8 +1875,8 @@
                 </div>
                 
                 <div style="margin-top:30px;">
-                    <a href="contact.html" class="btn">Build My Hotel Website</a>
-                    <a href="#industries-14" class="btn btn-outline">See Next</a>
+                    <a href="contact.html" class="btn" style="background:#00d4ff;color:#0a0e17;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;">Build My Hotel Website</a>
+                    <a href="#industries-14" class="btn" style="border:2px solid #00d4ff;color:#00d4ff;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;background:transparent;">See Next</a>
                 </div>
             </div>
         </div>
@@ -849,7 +1896,7 @@
                 <div class="demo-carousel" id="carousel-it">
                     <div class="carousel-track" id="track-it">
                         <div class="carousel-slide demo-it">
-                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(6,182,212,0.05);border-radius:12px;border-left:4px solid #06b6d4;margin-bottom:20px;">
+                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(6,182,212,0.05);border-radius:12px;border-left:4px solid #06b6d4;margin-bottom:20px;flex-wrap:wrap;">
                                 <i class="fas fa-laptop-code" style="font-size:3rem;color:#06b6d4;"></i>
                                 <div style="flex:1;"><h3>Tech Solutions That Work</h3><p style="opacity:0.8;">Cutting-edge IT services</p></div>
                                 <button class="btn" style="background:#06b6d4;color:#0a0a1a;">Get a Quote</button>
@@ -889,8 +1936,8 @@
                 </div>
                 
                 <div style="margin-top:30px;">
-                    <a href="contact.html" class="btn">Build My IT Website</a>
-                    <a href="#industries-15" class="btn btn-outline">See Next</a>
+                    <a href="contact.html" class="btn" style="background:#00d4ff;color:#0a0e17;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;">Build My IT Website</a>
+                    <a href="#industries-15" class="btn" style="border:2px solid #00d4ff;color:#00d4ff;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;background:transparent;">See Next</a>
                 </div>
             </div>
         </div>
@@ -910,7 +1957,7 @@
                 <div class="demo-carousel" id="carousel-construction">
                     <div class="carousel-track" id="track-construction">
                         <div class="carousel-slide demo-construction">
-                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(249,115,22,0.05);border-radius:12px;border-left:4px solid #f97316;margin-bottom:20px;">
+                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(249,115,22,0.05);border-radius:12px;border-left:4px solid #f97316;margin-bottom:20px;flex-wrap:wrap;">
                                 <i class="fas fa-hard-hat" style="font-size:3rem;color:#f97316;"></i>
                                 <div style="flex:1;"><h3>Building Excellence</h3><p style="opacity:0.8;">Quality construction you can trust</p></div>
                                 <button class="btn" style="background:#f97316;color:#0a0a0a;">Get a Quote</button>
@@ -946,8 +1993,8 @@
                 </div>
                 
                 <div style="margin-top:30px;">
-                    <a href="contact.html" class="btn">Build My Construction Website</a>
-                    <a href="#industries-16" class="btn btn-outline">See Next</a>
+                    <a href="contact.html" class="btn" style="background:#00d4ff;color:#0a0e17;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;">Build My Construction Website</a>
+                    <a href="#industries-16" class="btn" style="border:2px solid #00d4ff;color:#00d4ff;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;background:transparent;">See Next</a>
                 </div>
             </div>
         </div>
@@ -967,7 +2014,7 @@
                 <div class="demo-carousel" id="carousel-pets">
                     <div class="carousel-track" id="track-pets">
                         <div class="carousel-slide demo-pets">
-                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(16,185,129,0.05);border-radius:12px;border-left:4px solid #10b981;margin-bottom:20px;">
+                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(16,185,129,0.05);border-radius:12px;border-left:4px solid #10b981;margin-bottom:20px;flex-wrap:wrap;">
                                 <i class="fas fa-paw" style="font-size:3rem;color:#10b981;"></i>
                                 <div style="flex:1;"><h3>🐾 Your Pet's Home Away From Home</h3><p style="opacity:0.8;">Loving care for your furry friends</p></div>
                                 <button class="btn" style="background:#10b981;color:#0a1a0a;">Book Now</button>
@@ -1003,8 +2050,8 @@
                 </div>
                 
                 <div style="margin-top:30px;">
-                    <a href="contact.html" class="btn">Build My Pet Services Website</a>
-                    <a href="#industries-17" class="btn btn-outline">See Next</a>
+                    <a href="contact.html" class="btn" style="background:#00d4ff;color:#0a0e17;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;">Build My Pet Services Website</a>
+                    <a href="#industries-17" class="btn" style="border:2px solid #00d4ff;color:#00d4ff;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;background:transparent;">See Next</a>
                 </div>
             </div>
         </div>
@@ -1024,7 +2071,7 @@
                 <div class="demo-carousel" id="carousel-events">
                     <div class="carousel-track" id="track-events">
                         <div class="carousel-slide demo-events">
-                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(236,72,153,0.05);border-radius:12px;border-left:4px solid #ec4899;margin-bottom:20px;">
+                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(236,72,153,0.05);border-radius:12px;border-left:4px solid #ec4899;margin-bottom:20px;flex-wrap:wrap;">
                                 <i class="fas fa-calendar-alt" style="font-size:3rem;color:#ec4899;"></i>
                                 <div style="flex:1;"><h3>🎉 Creating Unforgettable Moments</h3><p style="opacity:0.8;">Professional event planning services</p></div>
                                 <button class="btn" style="background:#ec4899;color:#fff;">Plan Your Event</button>
@@ -1060,8 +2107,8 @@
                 </div>
                 
                 <div style="margin-top:30px;">
-                    <a href="contact.html" class="btn">Build My Event Planning Website</a>
-                    <a href="#industries-18" class="btn btn-outline">See Next</a>
+                    <a href="contact.html" class="btn" style="background:#00d4ff;color:#0a0e17;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;">Build My Event Planning Website</a>
+                    <a href="#industries-18" class="btn" style="border:2px solid #00d4ff;color:#00d4ff;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;background:transparent;">See Next</a>
                 </div>
             </div>
         </div>
@@ -1081,7 +2128,7 @@
                 <div class="demo-carousel" id="carousel-financial">
                     <div class="carousel-track" id="track-financial">
                         <div class="carousel-slide demo-financial">
-                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(20,184,166,0.05);border-radius:12px;border-left:4px solid #14b8a6;margin-bottom:20px;">
+                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(20,184,166,0.05);border-radius:12px;border-left:4px solid #14b8a6;margin-bottom:20px;flex-wrap:wrap;">
                                 <i class="fas fa-coins" style="font-size:3rem;color:#14b8a6;"></i>
                                 <div style="flex:1;"><h3>Your Financial Future Starts Here</h3><p style="opacity:0.8;">Expert financial advice and solutions</p></div>
                                 <button class="btn" style="background:#14b8a6;color:#0a1a1a;">Get Started</button>
@@ -1121,8 +2168,8 @@
                 </div>
                 
                 <div style="margin-top:30px;">
-                    <a href="contact.html" class="btn">Build My Financial Website</a>
-                    <a href="#industries-19" class="btn btn-outline">See Next</a>
+                    <a href="contact.html" class="btn" style="background:#00d4ff;color:#0a0e17;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;">Build My Financial Website</a>
+                    <a href="#industries-19" class="btn" style="border:2px solid #00d4ff;color:#00d4ff;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;background:transparent;">See Next</a>
                 </div>
             </div>
         </div>
@@ -1144,8 +2191,8 @@
                         <div class="carousel-slide demo-travel">
                             <div class="demo-search-big">
                                 <h3>🌍 Where to?</h3>
-                                <input type="text" placeholder="Search destinations..." style="padding:14px 20px;border-radius:50px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:#fff;width:60%;" />
-                                <button class="btn" style="background:#06b6d4;color:#0a1a2a;margin-left:10px;">Search</button>
+                                <input type="text" placeholder="Search destinations..." />
+                                <button class="btn" style="background:#06b6d4;color:#0a1a2a;">Search</button>
                             </div>
                             <div class="demo-destinations">
                                 <div class="demo-destination"><i class="fas fa-umbrella-beach" style="color:#06b6d4;font-size:2rem;"></i><h4>Beach</h4><p style="opacity:0.7;">5 destinations</p></div>
@@ -1179,8 +2226,8 @@
                 </div>
                 
                 <div style="margin-top:30px;">
-                    <a href="contact.html" class="btn">Build My Travel Website</a>
-                    <a href="#industries-20" class="btn btn-outline">See Next</a>
+                    <a href="contact.html" class="btn" style="background:#00d4ff;color:#0a0e17;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;">Build My Travel Website</a>
+                    <a href="#industries-20" class="btn" style="border:2px solid #00d4ff;color:#00d4ff;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;background:transparent;">See Next</a>
                 </div>
             </div>
         </div>
@@ -1200,7 +2247,7 @@
                 <div class="demo-carousel" id="carousel-legal">
                     <div class="carousel-track" id="track-legal">
                         <div class="carousel-slide demo-legal">
-                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(99,102,241,0.05);border-radius:12px;border-left:4px solid #6366f1;margin-bottom:20px;">
+                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(99,102,241,0.05);border-radius:12px;border-left:4px solid #6366f1;margin-bottom:20px;flex-wrap:wrap;">
                                 <i class="fas fa-gavel" style="font-size:3rem;color:#6366f1;"></i>
                                 <div style="flex:1;"><h3>⚖️ Justice &amp; Advocacy</h3><p style="opacity:0.8;">Expert legal representation you can trust</p></div>
                                 <button class="btn" style="background:#6366f1;color:#fff;">Free Consultation</button>
@@ -1241,8 +2288,8 @@
                 </div>
                 
                 <div style="margin-top:30px;">
-                    <a href="contact.html" class="btn">Build My Legal Website</a>
-                    <a href="#cta-final" class="btn btn-outline">See Next</a>
+                    <a href="contact.html" class="btn" style="background:#00d4ff;color:#0a0e17;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;">Build My Legal Website</a>
+                    <a href="#cta-final" class="btn" style="border:2px solid #00d4ff;color:#00d4ff;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;background:transparent;">See Next</a>
                 </div>
             </div>
         </div>
@@ -1304,6 +2351,103 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <script src="js/main.js"></script>
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        // ===== HAMBURGER MENU =====
+        document.addEventListener('DOMContentLoaded', function() {
+            var hamburger = document.getElementById('hamburger');
+            var navMenu = document.getElementById('navMenu');
+
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('open');
+                    hamburger.classList.toggle('active');
+                    var icon = hamburger.querySelector('i');
+                    if (navMenu.classList.contains('open')) {
+                        icon.className = 'fas fa-times';
+                    } else {
+                        icon.className = 'fas fa-bars';
+                    }
+                });
+
+                var navLinks = navMenu.querySelectorAll('a');
+                navLinks.forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        navMenu.classList.remove('open');
+                        hamburger.classList.remove('active');
+                        var icon = hamburger.querySelector('i');
+                        icon.className = 'fas fa-bars';
+                    });
+                });
+            }
+        });
+
+        // ===== CAROUSEL FUNCTIONS =====
+        var carouselStates = {};
+
+        function initCarousel(id) {
+            var track = document.getElementById('track-' + id);
+            var indicators = document.getElementById('indicators-' + id);
+            if (!track || !indicators) return;
+
+            var slides = track.querySelectorAll('.carousel-slide');
+            var totalSlides = slides.length;
+            var currentSlide = 0;
+
+            carouselStates[id] = {
+                current: 0,
+                total: totalSlides
+            };
+
+            updateCarousel(id);
+        }
+
+        function updateCarousel(id) {
+            var state = carouselStates[id];
+            if (!state) return;
+
+            var track = document.getElementById('track-' + id);
+            var indicators = document.getElementById('indicators-' + id);
+            if (!track || !indicators) return;
+
+            track.style.transform = 'translateX(-' + (state.current * 100) + '%)';
+
+            var dots = indicators.querySelectorAll('button');
+            dots.forEach(function(dot, index) {
+                dot.classList.toggle('active', index === state.current);
+            });
+        }
+
+        function goToSlide(id, index) {
+            var state = carouselStates[id];
+            if (!state) return;
+
+            if (index < 0) index = state.total - 1;
+            if (index >= state.total) index = 0;
+            state.current = index;
+            updateCarousel(id);
+        }
+
+        function nextSlide(id) {
+            var state = carouselStates[id];
+            if (!state) return;
+            goToSlide(id, state.current + 1);
+        }
+
+        function prevSlide(id) {
+            var state = carouselStates[id];
+            if (!state) return;
+            goToSlide(id, state.current - 1);
+        }
+
+        // Initialize all carousels
+        document.addEventListener('DOMContentLoaded', function() {
+            var carousels = ['food', 'electrical', 'salon', 'mechanic', 'tutoring', 'cleaning', 'clothing', 'delivery', 'realestate', 'fitness', 'photography', 'healthcare', 'hotel', 'it', 'construction', 'pets', 'events', 'financial', 'travel', 'legal'];
+            carousels.forEach(function(id) {
+                initCarousel(id);
+            });
+        });
+    </script>
+
 </body>
 </html>
