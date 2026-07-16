@@ -4,40 +4,88 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shabs Web Development | Build Your Dream Website</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <link rel="stylesheet" href="css/style.css" />
     <style>
-        /* ===== MOBILE RESPONSIVE FIXES ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* ===== RESET & BASE ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        :root {
+            --ink: #0a0e13;
+            --panel: #10161d;
+            --panel-2: #141b23;
+            --line: #1a2a4a;
+            --line-soft: #1a232d;
+            --blue: #00d4ff;
+            --blue-dark: #0099cc;
+            --blue-light: #66e0ff;
+            --trace: #00d4ff;
+            --paper: #eef1f4;
+            --muted: #8393a3;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #0a0e17;
-            color: #fff;
+            font-family: 'Inter', sans-serif;
+            background: var(--ink);
+            color: var(--paper);
             overflow-x: hidden;
+            background-image:
+                linear-gradient(var(--line-soft) 1px, transparent 1px),
+                linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+            background-size: 42px 42px;
+            background-position: -1px -1px;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--ink); }
+        ::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 10px; }
+
+        a { color: inherit; }
+
+        /* ===== SHEET LABEL ===== */
+        .sheet-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 1.5px;
+            color: var(--blue-light);
+            border: 1px solid var(--line);
+            padding: 5px 14px 5px 10px;
+            border-radius: 3px;
+            background: var(--panel);
+            margin-bottom: 16px;
+        }
+        .sheet-label::before {
+            content: '';
+            width: 7px;
+            height: 7px;
+            background: var(--blue);
+            display: inline-block;
         }
 
-        /* ===== HEADER / NAVIGATION - FIXED ===== */
+        /* ===== HEADER ===== */
         header {
-            background: rgba(10, 14, 23, 0.97);
-            padding: 12px 0;
+            background: rgba(10, 14, 19, 0.9);
+            padding: 16px 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
-            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--line);
+            backdrop-filter: blur(14px);
+            transition: all 0.3s ease;
         }
+
+        header.scrolled { background: rgba(10, 14, 19, 0.98); }
 
         header .container {
             display: flex;
@@ -46,1026 +94,647 @@
             flex-wrap: wrap;
         }
 
-        .logo a {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
+        .logo a { display: flex; align-items: center; gap: 12px; text-decoration: none; }
 
-        .logo img {
-            height: 45px;
-            width: auto;
-            border-radius: 8px;
+        .logo h1 { 
+            font-size: 1.3rem; 
+            font-weight: 700; 
+            color: var(--paper); 
+            line-height: 1.2; 
+            letter-spacing: 0.2px; 
         }
-
-        .logo h1 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #fff;
-            line-height: 1.2;
-        }
-
-        .logo h1 span {
-            color: #00d4ff;
-        }
-
+        .logo h1 span { color: var(--blue); }
         .logo p {
-            font-size: 0.65rem;
-            color: #94a3b8;
-            margin-top: -2px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.6rem;
+            color: var(--muted);
+            margin-top: 2px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
         }
 
-        /* ===== HAMBURGER MENU ===== */
         .hamburger {
             display: none;
-            font-size: 1.8rem;
-            color: #fff;
+            font-size: 1.6rem;
+            color: var(--paper);
             cursor: pointer;
             padding: 8px 14px;
-            background: rgba(0, 212, 255, 0.08);
-            border-radius: 8px;
-            border: 1px solid rgba(0, 212, 255, 0.15);
+            background: var(--panel);
+            border-radius: 4px;
+            border: 1px solid var(--line);
             transition: all 0.3s ease;
-            line-height: 1;
         }
+        .hamburger:hover { border-color: var(--blue); }
 
-        .hamburger:hover {
-            background: rgba(0, 212, 255, 0.15);
-        }
-
-        .hamburger.active {
-            border-color: #00d4ff;
-        }
-
-        /* ===== NAV MENU ===== */
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 5px;
-            align-items: center;
-        }
+        nav ul { display: flex; list-style: none; gap: 4px; align-items: center; }
 
         nav ul li a {
-            color: #94a3b8;
+            color: var(--muted);
             text-decoration: none;
             padding: 8px 16px;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            font-weight: 500;
+            font-size: 0.88rem;
+            font-family: 'IBM Plex Mono', monospace;
+            transition: all 0.25s ease;
+            font-weight: 400;
             display: block;
+            position: relative;
+            border-radius: 3px;
         }
+        nav ul li a::before { content: '/'; color: var(--line); margin-right: 6px; }
+        nav ul li a:hover, nav ul li a.active { color: var(--blue-light); background: var(--panel); }
 
-        nav ul li a:hover,
-        nav ul li a.active {
-            color: #fff;
-            background: rgba(0, 212, 255, 0.1);
-        }
-
-        nav ul li a.active {
-            color: #00d4ff;
-        }
-
-        /* ===== MOBILE NAV RESPONSIVE ===== */
         @media (max-width: 768px) {
-            .hamburger {
-                display: block;
+            .hamburger { display: block; }
+            nav { 
+                width: 100%; 
+                display: none; 
+                margin-top: 14px; 
+                border-top: 1px solid var(--line); 
+                padding-top: 14px; 
             }
-
-            nav {
-                width: 100%;
-                display: none;
-                margin-top: 12px;
-                border-top: 1px solid rgba(0, 212, 255, 0.08);
-                padding-top: 12px;
+            nav.open { display: block; }
+            nav ul { 
+                flex-direction: column; 
+                gap: 4px; 
+                width: 100%; 
             }
-
-            nav.open {
-                display: block;
+            nav ul li { width: 100%; }
+            nav ul li a { 
+                padding: 12px 18px; 
+                width: 100%; 
+                text-align: left; 
+                font-size: 1rem; 
             }
-
-            nav ul {
-                flex-direction: column;
-                gap: 4px;
-                width: 100%;
-            }
-
-            nav ul li {
-                width: 100%;
-            }
-
-            nav ul li a {
-                padding: 12px 18px;
-                width: 100%;
-                text-align: center;
-                font-size: 1rem;
-                border-radius: 10px;
-            }
-
-            nav ul li a:hover,
-            nav ul li a.active {
-                background: rgba(0, 212, 255, 0.08);
-            }
-
-            .logo h1 {
-                font-size: 1.1rem;
-            }
-
-            .logo p {
-                font-size: 0.55rem;
-            }
-
-            .logo img {
-                height: 38px;
-            }
+            .logo h1 { font-size: 1.05rem; }
         }
 
         @media (max-width: 480px) {
-            .logo h1 {
-                font-size: 0.95rem;
-            }
+            .logo p { display: none; }
+            header { padding: 10px 0; }
+            .container { padding: 0 16px; }
+        }
 
-            .logo p {
-                display: none;
-            }
+        /* ===== SECTION TITLES ===== */
+        .section-title { margin-bottom: 50px; }
+        .section-title h2 { font-size: 2.6rem; font-weight: 700; color: var(--paper); }
+        .section-title h2 span { color: var(--blue); }
+        .section-title p { color: var(--muted); max-width: 550px; margin-top: 12px; font-size: 1.02rem; line-height: 1.6; }
 
-            .logo img {
-                height: 32px;
-            }
+        @media (max-width: 768px) {
+            .section-title h2 { font-size: 2rem; }
+        }
+        @media (max-width: 480px) {
+            .section-title h2 { font-size: 1.6rem; }
+            .section-title { margin-bottom: 30px; }
+        }
 
-            header {
-                padding: 10px 0;
-            }
+        /* ============================================================ */
+        /* ===== ANIMATED TEXT ===== */
+        /* ============================================================ */
+        .reveal-text {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: textReveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
 
-            header .container {
-                padding: 0 15px;
-            }
+        .reveal-text:nth-child(1) { animation-delay: 0.1s; }
+        .reveal-text:nth-child(2) { animation-delay: 0.4s; }
+        .reveal-text:nth-child(3) { animation-delay: 0.7s; }
+        .reveal-text:nth-child(4) { animation-delay: 1.0s; }
+        .reveal-text:nth-child(5) { animation-delay: 1.3s; }
+        .reveal-text:nth-child(6) { animation-delay: 1.6s; }
+        .reveal-text:nth-child(7) { animation-delay: 1.9s; }
+        .reveal-text:nth-child(8) { animation-delay: 2.2s; }
 
-            .hamburger {
-                font-size: 1.5rem;
-                padding: 6px 12px;
+        @keyframes textReveal {
+            0% {
+                opacity: 0;
+                transform: translateY(20px) scale(0.98);
+                filter: blur(4px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                filter: blur(0);
             }
         }
 
-        /* ===== HERO SECTION ===== */
+        /* Typewriter effect for inline words */
+        .type-word {
+            display: inline-block;
+            opacity: 0;
+            animation: typeIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        .type-word:nth-child(1) { animation-delay: 0.2s; }
+        .type-word:nth-child(2) { animation-delay: 0.5s; }
+        .type-word:nth-child(3) { animation-delay: 0.8s; }
+        .type-word:nth-child(4) { animation-delay: 1.1s; }
+        .type-word:nth-child(5) { animation-delay: 1.4s; }
+        .type-word:nth-child(6) { animation-delay: 1.7s; }
+        .type-word:nth-child(7) { animation-delay: 2.0s; }
+
+        @keyframes typeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(8px) scale(0.9);
+                color: var(--blue);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                color: inherit;
+            }
+        }
+
+        /* Glow pulse for emphasis */
+        .glow-text {
+            animation: glowPulse 2.5s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { 
+                text-shadow: 0 0 10px rgba(0, 212, 255, 0.1);
+            }
+            50% { 
+                text-shadow: 0 0 25px rgba(0, 212, 255, 0.3), 0 0 50px rgba(0, 212, 255, 0.1);
+            }
+        }
+
+        /* ============================================================ */
+        /* ===== HERO ===== */
+        /* ============================================================ */
         .hero {
-            padding: 140px 0 60px;
+            padding: 170px 0 90px;
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
-            text-align: center;
-            background: linear-gradient(135deg, #0a0e17 0%, #1a2a4a 100%);
             position: relative;
-            overflow: hidden;
         }
 
-        .hero .container {
-            width: 100%;
-        }
-
-        .hero .tagline {
-            color: #00d4ff;
-            font-size: 0.95rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-            display: inline-block;
-            background: rgba(0, 212, 255, 0.08);
-            padding: 6px 20px;
-            border-radius: 30px;
-        }
+        .hero .container { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 50px; align-items: center; }
 
         .hero h2 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 20px;
+            font-size: 3.6rem;
+            font-weight: 700;
+            line-height: 1.12;
+            margin-bottom: 22px;
+            color: var(--paper);
         }
+        .hero h2 .highlight { color: var(--blue); }
 
-        .hero h2 span {
-            color: #00d4ff;
-        }
-
-        .hero p {
+        .hero p.lead {
             font-size: 1.1rem;
-            color: #94a3b8;
-            line-height: 1.7;
-            margin-bottom: 30px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            color: var(--muted);
+            line-height: 1.75;
+            margin-bottom: 34px;
+            max-width: 520px;
         }
 
-        .hero .btn {
-            padding: 14px 35px;
-            border-radius: 30px;
+        .btn-group { display: flex; gap: 14px; flex-wrap: wrap; }
+
+        .btn {
+            padding: 13px 32px;
+            border-radius: 4px;
             text-decoration: none;
             font-weight: 600;
             display: inline-block;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-            margin: 0 8px 10px;
+            transition: all 0.25s ease;
+            font-size: 0.92rem;
+            font-family: 'IBM Plex Mono', monospace;
+            letter-spacing: 0.3px;
         }
 
-        .hero .btn:first-of-type {
-            background: #00d4ff;
-            color: #0a0e17;
-        }
+        .btn-primary { background: var(--blue); color: var(--ink); }
+        .btn-primary:hover { background: var(--blue-light); transform: translateY(-2px); }
 
-        .hero .btn:first-of-type:hover {
-            background: #00b8d4;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(0, 212, 255, 0.3);
-        }
+        .btn-outline { border: 1px solid var(--line); color: var(--paper); background: transparent; }
+        .btn-outline:hover { border-color: var(--blue); color: var(--blue-light); }
 
-        .hero .btn-outline {
-            border: 2px solid #00d4ff;
-            color: #00d4ff;
-            background: transparent;
+        /* Title block */
+        .title-block {
+            border: 1px solid var(--line);
+            background: var(--panel);
+            border-radius: 4px;
+            overflow: hidden;
         }
-
-        .hero .btn-outline:hover {
-            background: #00d4ff;
-            color: #0a0e17;
-            transform: translateY(-2px);
+        .title-block .tb-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 11px 16px;
+            border-bottom: 1px solid var(--line-soft);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.74rem;
         }
-
-        .code-symbols {
-            margin-top: 30px;
-            font-size: 0.8rem;
-            color: rgba(0, 212, 255, 0.15);
-            letter-spacing: 8px;
-            font-family: monospace;
+        .title-block .tb-row:last-child { border-bottom: none; }
+        .title-block .tb-label { color: var(--muted); letter-spacing: 1px; }
+        .title-block .tb-value { color: var(--paper); text-align: right; }
+        .title-block .tb-head {
+            padding: 18px 16px;
+            background: var(--panel-2);
+            border-bottom: 1px solid var(--line);
         }
+        .title-block .tb-head .tb-title { font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: var(--paper); font-size: 1rem; }
+        .title-block .tb-head .tb-sub { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: var(--blue-light); letter-spacing: 1.5px; margin-top: 4px; }
 
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #94a3b8;
-            font-size: 0.8rem;
-            text-align: center;
-            animation: bounce 2s infinite;
-        }
-
-        .scroll-indicator i {
-            display: block;
-            margin-top: 5px;
-            font-size: 1.2rem;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(-10px); }
-        }
-
-        /* ===== HERO MOBILE ===== */
         @media (max-width: 992px) {
-            .hero h2 {
-                font-size: 2.8rem;
-            }
+            .hero .container { grid-template-columns: 1fr; }
+            .hero h2 { font-size: 2.8rem; }
+            .title-block { max-width: 420px; }
         }
-
         @media (max-width: 768px) {
-            .hero {
-                padding: 120px 0 50px;
-                min-height: auto;
-            }
-
-            .hero h2 {
-                font-size: 2.2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-                padding: 0 10px;
-            }
-
-            .hero .btn {
-                padding: 12px 28px;
-                font-size: 0.9rem;
-                margin: 0 5px 8px;
-            }
-
-            .scroll-indicator {
-                display: none;
-            }
+            .hero { padding: 130px 0 60px; min-height: auto; }
+            .hero h2 { font-size: 2.3rem; }
+            .hero p.lead { font-size: 1rem; }
         }
-
         @media (max-width: 480px) {
-            .hero {
-                padding: 100px 0 40px;
-            }
-
-            .hero h2 {
-                font-size: 1.8rem;
-            }
-
-            .hero p {
-                font-size: 0.9rem;
-            }
-
-            .hero .btn {
-                display: block;
-                width: 100%;
-                max-width: 280px;
-                margin: 8px auto;
-                text-align: center;
-                padding: 12px 20px;
-                font-size: 0.9rem;
-            }
-
-            .hero .tagline {
-                font-size: 0.8rem;
-                padding: 4px 16px;
-            }
-
-            .code-symbols {
-                font-size: 0.6rem;
-                letter-spacing: 4px;
-            }
+            .hero { padding: 110px 0 40px; }
+            .hero h2 { font-size: 1.9rem; }
+            .hero p.lead { font-size: 0.9rem; }
+            .btn-group { flex-direction: column; width: 100%; }
+            .btn { text-align: center; width: 100%; padding: 12px 20px; font-size: 0.85rem; }
+            .title-block { max-width: 100%; }
+            .title-block .tb-row { font-size: 0.65rem; padding: 8px 12px; }
+            .title-block .tb-head { padding: 14px 12px; }
+            .title-block .tb-head .tb-title { font-size: 0.85rem; }
         }
 
-        /* ===== INDUSTRY SECTIONS - RESPONSIVE ===== */
-        .industry-section {
-            padding: 60px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-        }
+        /* ============================================================ */
+        /* ===== INDUSTRY SHOWCASE ===== */
+        /* ============================================================ */
+        .industry-showcase { padding: 90px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 
-        .industry-label {
-            display: inline-block;
-            background: rgba(0, 212, 255, 0.08);
-            color: #00d4ff;
-            padding: 4px 16px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .industry-icon {
-            font-size: 3rem;
-            color: rgba(0, 212, 255, 0.1);
-            display: block;
-            margin: 10px 0;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 15px;
-        }
-
-        .section-title span {
-            color: #00d4ff;
-        }
-
-        .industry-description {
-            color: #94a3b8;
-            max-width: 600px;
-            margin: 0 auto 40px;
-            font-size: 1.05rem;
-            line-height: 1.7;
-        }
-
-        /* ===== DEMO CAROUSEL ===== */
-        .demo-carousel {
+        .slideshow-wrapper {
             position: relative;
-            max-width: 900px;
+            max-width: 1100px;
             margin: 0 auto;
             overflow: hidden;
-            border-radius: 16px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 6px;
+            background: var(--panel);
+            border: 1px solid var(--line);
         }
 
-        .carousel-track {
-            display: flex;
-            transition: transform 0.5s ease;
+        .slideshow-track { display: flex; transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .slide { min-width: 100%; padding: 48px 52px; }
+
+        .slide-top { display: flex; align-items: flex-start; gap: 22px; margin-bottom: 28px; flex-wrap: wrap; }
+
+        .slide-icon {
+            width: 60px; height: 60px; min-width: 60px;
+            border-radius: 4px;
+            background: var(--panel-2);
+            border: 1px solid var(--line);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.6rem; color: var(--blue);
         }
 
-        .carousel-slide {
-            min-width: 100%;
-            padding: 20px;
-        }
+        .slide-header h3 { font-size: 1.7rem; font-weight: 700; color: var(--paper); margin-bottom: 4px; }
+        .slide-header h3 span { color: var(--blue); }
+        .slide-header p { color: var(--muted); font-size: 0.96rem; line-height: 1.6; }
 
-        .carousel-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.6);
-            color: #fff;
-            border: none;
-            font-size: 2rem;
-            padding: 10px 16px;
-            cursor: pointer;
-            z-index: 10;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-        }
+        .slide-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-bottom: 28px; background: var(--line); border: 1px solid var(--line); }
 
-        .carousel-nav:hover {
-            background: rgba(0, 212, 255, 0.3);
-        }
-
-        .carousel-nav.prev {
-            left: 10px;
-        }
-
-        .carousel-nav.next {
-            right: 10px;
-        }
-
-        .carousel-indicators {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            padding: 15px 0 5px;
-        }
-
-        .carousel-indicators button {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            border: none;
-            background: rgba(255, 255, 255, 0.2);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .carousel-indicators button.active {
-            background: #00d4ff;
-            width: 30px;
-            border-radius: 10px;
-        }
-
-        /* ===== INDUSTRY DEMO STYLES ===== */
-        .demo-hero {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 12px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-
-        .demo-hero h2,
-        .demo-hero h3 {
-            color: #fff;
-        }
-
-        .demo-hero p {
-            color: #94a3b8;
-        }
-
-        .demo-hero .btn {
-            padding: 10px 24px;
-            border-radius: 30px;
-            border: none;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 0.85rem;
-        }
-
-        .demo-menu-grid,
-        .demo-services,
-        .demo-products,
-        .demo-restaurants,
-        .demo-properties,
-        .demo-classes,
-        .demo-destinations {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 12px;
-            padding: 10px 0;
-        }
-
-        .demo-menu-item,
-        .demo-service,
-        .demo-product,
-        .demo-restaurant,
-        .demo-property,
-        .demo-class,
-        .demo-destination,
-        .demo-service-card {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 15px;
-            border-radius: 10px;
+        .slide-item {
+            background: var(--panel);
+            padding: 20px 14px;
             text-align: center;
             transition: all 0.3s ease;
+            position: relative;
         }
+        .slide-item:hover { background: var(--panel-2); }
+        .slide-item i { font-size: 1.6rem; color: var(--blue); margin-bottom: 8px; display: block; }
+        .slide-item h4 { font-size: 0.9rem; font-weight: 600; color: var(--paper); }
+        .slide-item p { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: var(--muted); margin-top: 3px; }
 
-        .demo-menu-item:hover,
-        .demo-service:hover,
-        .demo-product:hover {
-            background: rgba(255, 255, 255, 0.06);
+        .slide-bottom {
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;
+            padding-top: 20px; border-top: 1px solid var(--line-soft);
         }
+        .slide-bottom .stats { display: flex; gap: 22px; font-family: 'IBM Plex Mono', monospace; }
+        .slide-bottom .stats span { color: var(--muted); font-size: 0.78rem; }
+        .slide-bottom .stats strong { color: var(--trace); font-weight: 500; }
 
-        .demo-menu-item h4,
-        .demo-service h4,
-        .demo-product h4,
-        .demo-restaurant h4,
-        .demo-property h4,
-        .demo-class h4,
-        .demo-destination h4,
-        .demo-service-card h4 {
-            color: #fff;
-            font-size: 0.9rem;
-            margin-top: 5px;
+        .slideshow-controls { display: flex; justify-content: center; align-items: center; gap: 18px; margin-top: 26px; }
+        .slideshow-controls button {
+            background: var(--panel); border: 1px solid var(--line); color: var(--muted);
+            width: 42px; height: 42px; border-radius: 4px; font-size: 1.05rem; cursor: pointer;
+            transition: all 0.25s ease; display: flex; align-items: center; justify-content: center;
         }
+        .slideshow-controls button:hover { border-color: var(--blue); color: var(--blue-light); }
 
-        .demo-menu-item p,
-        .demo-service p,
-        .demo-product p {
-            color: #94a3b8;
-            font-size: 0.8rem;
+        .slideshow-dots { display: flex; gap: 8px; }
+        .slideshow-dots button { width: 8px; height: 8px; border-radius: 1px; border: none; background: var(--line); cursor: pointer; transition: all 0.3s ease; padding: 0; }
+        .slideshow-dots button.active { background: var(--blue); width: 26px; }
+
+        @media (max-width: 992px) {
+            .slide { padding: 34px 28px; }
+            .slide-grid { grid-template-columns: repeat(2, 1fr); }
+            .slide-header h3 { font-size: 1.4rem; }
         }
-
-        .demo-services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 15px;
-            padding: 10px 0;
-        }
-
-        .demo-search {
-            display: flex;
-            gap: 10px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 12px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-
-        .demo-search input {
-            flex: 1;
-            min-width: 150px;
-            padding: 12px 18px;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(255, 255, 255, 0.05);
-            color: #fff;
-            font-size: 0.95rem;
-        }
-
-        .demo-search input::placeholder {
-            color: #64748b;
-        }
-
-        .demo-search .btn {
-            padding: 12px 28px;
-            border-radius: 30px;
-            border: none;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .demo-search-big {
-            text-align: center;
-            padding: 30px 20px;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 12px;
-            margin-bottom: 20px;
-        }
-
-        .demo-search-big h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-        }
-
-        .demo-search-big input {
-            padding: 14px 20px;
-            border-radius: 50px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(255, 255, 255, 0.05);
-            color: #fff;
-            font-size: 1rem;
-            width: 60%;
-            min-width: 200px;
-        }
-
-        .demo-search-big input::placeholder {
-            color: #64748b;
-        }
-
-        .demo-search-big .btn {
-            padding: 14px 32px;
-            border-radius: 50px;
-            border: none;
-            font-weight: 600;
-            cursor: pointer;
-            margin-left: 10px;
-        }
-
-        .price {
-            color: #00d4ff;
-            font-weight: 700;
-            font-size: 1.1rem;
-        }
-
-        .featured {
-            font-size: 2rem;
-        }
-
-        /* ===== INDUSTRY SECTION MOBILE ===== */
         @media (max-width: 768px) {
-            .industry-section {
-                padding: 40px 0;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .industry-description {
-                font-size: 0.95rem;
-                padding: 0 10px;
-            }
-
-            .demo-hero {
-                flex-direction: column;
-                text-align: center;
-                padding: 15px;
-            }
-
-            .demo-hero h2 {
-                font-size: 1.3rem;
-            }
-
-            .demo-menu-grid,
-            .demo-services,
-            .demo-products,
-            .demo-restaurants,
-            .demo-properties,
-            .demo-classes,
-            .demo-destinations {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
-            }
-
-            .demo-services-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .carousel-nav {
-                font-size: 1.5rem;
-                padding: 6px 12px;
-            }
-
-            .demo-search-big input {
-                width: 100%;
-                margin-bottom: 10px;
-            }
-
-            .demo-search-big .btn {
-                margin-left: 0;
-                width: 100%;
-            }
-
-            .demo-search {
-                flex-direction: column;
-            }
-
-            .demo-search input {
-                width: 100%;
-            }
-
-            .demo-search .btn {
-                width: 100%;
-            }
+            .industry-showcase { padding: 55px 0; }
+            .slide { padding: 24px 18px; }
+            .slide-top { flex-direction: column; align-items: center; text-align: center; }
+            .slide-bottom { flex-direction: column; text-align: center; }
+            .slide-bottom .stats { flex-wrap: wrap; justify-content: center; }
+            .slide-item { padding: 14px 10px; }
+            .slide-item i { font-size: 1.3rem; }
+            .slide-item h4 { font-size: 0.8rem; }
         }
-
         @media (max-width: 480px) {
-            .section-title {
-                font-size: 1.6rem;
-            }
-
-            .industry-description {
-                font-size: 0.85rem;
-            }
-
-            .demo-menu-grid,
-            .demo-services,
-            .demo-products,
-            .demo-restaurants,
-            .demo-properties,
-            .demo-classes,
-            .demo-destinations {
-                grid-template-columns: 1fr 1fr;
-                gap: 8px;
-            }
-
-            .demo-services-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 10px;
-            }
-
-            .demo-menu-item,
-            .demo-service,
-            .demo-product,
-            .demo-restaurant,
-            .demo-property,
-            .demo-class,
-            .demo-destination,
-            .demo-service-card {
-                padding: 12px 8px;
-            }
-
-            .demo-menu-item h4,
-            .demo-service h4,
-            .demo-product h4 {
-                font-size: 0.8rem;
-            }
-
-            .demo-menu-item p,
-            .demo-service p,
-            .demo-product p {
-                font-size: 0.7rem;
-            }
-
-            .carousel-slide {
-                padding: 12px;
-            }
-
-            .demo-hero {
-                padding: 12px;
-            }
-
-            .demo-hero .btn {
-                font-size: 0.8rem;
-                padding: 8px 18px;
-            }
-
-            .demo-search-big h3 {
-                font-size: 1.3rem;
-            }
-
-            .carousel-nav {
-                font-size: 1.2rem;
-                padding: 4px 10px;
-            }
-
-            .carousel-nav.prev {
-                left: 4px;
-            }
-
-            .carousel-nav.next {
-                right: 4px;
-            }
+            .slide { padding: 16px 12px; }
+            .slide-grid { grid-template-columns: 1fr 1fr; gap: 1px; }
+            .slide-item { padding: 12px 8px; }
+            .slide-item i { font-size: 1.1rem; }
+            .slide-item h4 { font-size: 0.7rem; }
+            .slide-item p { font-size: 0.6rem; }
+            .slide-header h3 { font-size: 1.1rem; }
+            .slide-header p { font-size: 0.82rem; }
+            .slide-icon { width: 48px; height: 48px; min-width: 48px; font-size: 1.3rem; }
+            .slide-bottom .stats span { font-size: 0.65rem; }
+            .slide-bottom .btn { width: 100%; text-align: center; padding: 10px 16px; font-size: 0.78rem; }
+            .slideshow-controls button { width: 36px; height: 36px; font-size: 0.85rem; }
+            .slideshow-controls { gap: 12px; flex-wrap: wrap; }
         }
 
+        /* ============================================================ */
+        /* ===== SERVICES ===== */
+        /* ============================================================ */
+        .services-preview { padding: 90px 0; }
+
+        .service-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+
+        .service-card {
+            background: var(--panel);
+            padding: 30px 24px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .service-card:hover { background: var(--panel-2); }
+        .service-card .ref { font-family: 'IBM Plex Mono', monospace; font-size: 0.68rem; color: var(--muted); letter-spacing: 1px; margin-bottom: 14px; }
+        .service-card .icon {
+            width: 46px; height: 46px; margin-bottom: 16px;
+            background: var(--panel-2); border: 1px solid var(--line); border-radius: 4px;
+            display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: var(--blue);
+            transition: all 0.3s ease;
+        }
+        .service-card:hover .icon { border-color: var(--blue); }
+        .service-card h4 { font-size: 1.05rem; font-weight: 700; color: var(--paper); margin-bottom: 8px; }
+        .service-card p { color: var(--muted); font-size: 0.88rem; line-height: 1.6; }
+
+        @media (max-width: 992px) { 
+            .service-grid { grid-template-columns: repeat(2, 1fr); } 
+        }
+        @media (max-width: 768px) {
+            .services-preview { padding: 55px 0; }
+            .service-card { padding: 22px 18px; }
+            .service-card h4 { font-size: 0.95rem; }
+            .service-card p { font-size: 0.8rem; }
+        }
+        @media (max-width: 480px) { 
+            .services-preview { padding: 40px 0; }
+            .service-grid { grid-template-columns: 1fr; }
+            .service-card { padding: 18px 14px; }
+            .service-card .icon { width: 38px; height: 38px; font-size: 1rem; }
+            .service-card h4 { font-size: 0.9rem; }
+            .service-card p { font-size: 0.78rem; }
+        }
+
+        /* ============================================================ */
+        /* ===== PORTFOLIO ===== */
+        /* ============================================================ */
+        .portfolio-snippet { padding: 90px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+        .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+        .portfolio-card {
+            background: var(--panel);
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            transition: all 0.3s ease;
+        }
+        .portfolio-card:hover { border-color: var(--blue); transform: translateY(-4px); }
+
+        .portfolio-card .preview {
+            height: 150px;
+            background: var(--panel-2);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2.6rem; color: var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .portfolio-card .info { padding: 22px 22px 26px; }
+        .portfolio-card .info h4 { font-size: 1rem; font-weight: 700; color: var(--paper); margin-bottom: 4px; }
+        .portfolio-card .info p { color: var(--muted); font-size: 0.85rem; margin-bottom: 14px; }
+        .portfolio-card .info .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+        .portfolio-card .info .tags span {
+            font-family: 'IBM Plex Mono', monospace;
+            background: var(--panel-2); color: var(--blue-light);
+            padding: 3px 10px; border-radius: 2px; font-size: 0.66rem; border: 1px solid var(--line);
+        }
+        .portfolio-card .info .btn-link {
+            display: inline-block; margin-top: 14px; color: var(--blue);
+            text-decoration: none; font-weight: 600; font-size: 0.82rem;
+            font-family: 'IBM Plex Mono', monospace; transition: all 0.25s ease;
+        }
+        .portfolio-card .info .btn-link:hover { color: var(--blue-light); }
+
+        @media (max-width: 992px) { 
+            .portfolio-grid { grid-template-columns: repeat(2, 1fr); } 
+        }
+        @media (max-width: 768px) {
+            .portfolio-snippet { padding: 55px 0; }
+            .portfolio-card .preview { height: 120px; font-size: 2rem; }
+            .portfolio-card .info { padding: 16px 18px 20px; }
+            .portfolio-card .info h4 { font-size: 0.9rem; }
+            .portfolio-card .info p { font-size: 0.78rem; }
+        }
+        @media (max-width: 480px) { 
+            .portfolio-snippet { padding: 40px 0; }
+            .portfolio-grid { grid-template-columns: 1fr; gap: 14px; }
+            .portfolio-card .preview { height: 100px; font-size: 1.8rem; }
+            .portfolio-card .info { padding: 14px 14px 18px; }
+        }
+
+        /* ============================================================ */
         /* ===== CTA FINAL ===== */
-        .cta-final {
-            padding: 80px 20px;
-            text-align: center;
-            background: linear-gradient(135deg, #0a0e17, #1a2a4a);
-            border-top: 1px solid rgba(0, 212, 255, 0.05);
+        /* ============================================================ */
+        .cta-final { padding: 100px 20px; text-align: center; }
+        .cta-final h2 { font-size: 2.6rem; font-weight: 700; color: var(--paper); margin-bottom: 16px; }
+        .cta-final h2 span { color: var(--blue); }
+        .cta-final p { color: var(--muted); max-width: 550px; margin: 0 auto 32px; font-size: 1.05rem; line-height: 1.7; }
+        .cta-final .btn-group { justify-content: center; }
+
+        .cta-final .features {
+            margin-top: 44px; display: flex; gap: 0; justify-content: center; flex-wrap: wrap;
+            border: 1px solid var(--line); border-radius: 4px; overflow: hidden; max-width: 720px; margin-left: auto; margin-right: auto;
         }
-
-        .cta-final h2 {
-            font-size: 2.8rem;
-            font-weight: 800;
-            margin-bottom: 20px;
+        .cta-final .features span {
+            flex: 1 1 160px;
+            padding: 16px 14px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.78rem;
+            color: var(--muted);
+            border-right: 1px solid var(--line);
+            background: var(--panel);
         }
+        .cta-final .features span:last-child { border-right: none; }
+        .cta-final .features i { color: var(--trace); margin-right: 8px; }
 
-        .cta-final h2 span {
-            color: #00d4ff;
+        @media (max-width: 768px) { 
+            .cta-final h2 { font-size: 2rem; }
+            .cta-final p { font-size: 0.95rem; }
         }
-
-        .cta-final p {
-            color: #94a3b8;
-            max-width: 600px;
-            margin: 0 auto 30px;
-            font-size: 1.1rem;
-            line-height: 1.7;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .cta-buttons .btn {
-            padding: 14px 40px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-block;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-        }
-
-        .cta-buttons .btn:first-child {
-            background: #00d4ff;
-            color: #0a0e17;
-        }
-
-        .cta-buttons .btn:first-child:hover {
-            background: #00b8d4;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(0, 212, 255, 0.3);
-        }
-
-        .cta-buttons .btn-outline {
-            border: 2px solid #00d4ff;
-            color: #00d4ff;
-            background: transparent;
-        }
-
-        .cta-buttons .btn-outline:hover {
-            background: #00d4ff;
-            color: #0a0e17;
-            transform: translateY(-2px);
-        }
-
-        @media (max-width: 768px) {
-            .cta-final h2 {
-                font-size: 2rem;
-            }
-
-            .cta-final p {
-                font-size: 1rem;
-                padding: 0 15px;
-            }
-        }
-
         @media (max-width: 480px) {
-            .cta-final {
-                padding: 50px 15px;
+            .cta-final { padding: 40px 15px; }
+            .cta-final h2 { font-size: 1.6rem; }
+            .cta-final p { font-size: 0.85rem; padding: 0 10px; }
+            .cta-final .btn-group { flex-direction: column; align-items: center; width: 100%; }
+            .cta-final .btn-group .btn { width: 100%; max-width: 280px; text-align: center; }
+            .cta-final .features span { 
+                flex: 1 1 100%; 
+                border-right: none; 
+                border-bottom: 1px solid var(--line);
+                font-size: 0.7rem;
+                padding: 12px 10px;
             }
-
-            .cta-final h2 {
-                font-size: 1.6rem;
-            }
-
-            .cta-final p {
-                font-size: 0.9rem;
-            }
-
-            .cta-buttons .btn {
-                display: block;
-                width: 100%;
-                max-width: 280px;
-                margin: 8px auto;
-                text-align: center;
-                padding: 12px 20px;
-                font-size: 0.9rem;
-            }
+            .cta-final .features span:last-child { border-bottom: none; }
         }
 
+        /* ============================================================ */
         /* ===== FOOTER ===== */
-        footer {
-            background: #0a0e17;
-            padding: 50px 20px 30px;
-            border-top: 1px solid rgba(0, 212, 255, 0.05);
+        /* ============================================================ */
+        footer { padding: 56px 20px 28px; border-top: 1px solid var(--line); }
+
+        footer .container { 
+            display: grid; 
+            grid-template-columns: 2fr 1fr 1fr; 
+            gap: 40px; 
+            max-width: 1200px; 
+            margin: 0 auto; 
         }
 
-        footer .container {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
+        .footer-brand h3 { font-size: 1.3rem; margin-bottom: 10px; color: var(--paper); }
+        .footer-brand h3 span { color: var(--blue); }
+        .footer-brand p { 
+            color: var(--muted); 
+            font-size: 0.88rem; 
+            line-height: 1.7; 
+            font-family: 'IBM Plex Mono', monospace; 
         }
 
-        .footer-brand h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
+        .footer-links h5, .footer-social h5 {
+            color: var(--muted); 
+            font-size: 0.72rem; 
+            margin-bottom: 16px;
+            font-family: 'IBM Plex Mono', monospace; 
+            letter-spacing: 1.5px; 
+            text-transform: uppercase;
         }
-
-        .footer-brand h3 span {
-            color: #00d4ff;
+        .footer-links ul { list-style: none; }
+        .footer-links ul li { margin-bottom: 10px; }
+        .footer-links ul li a { 
+            color: var(--paper); 
+            text-decoration: none; 
+            transition: color 0.25s; 
+            font-size: 0.9rem; 
         }
+        .footer-links ul li a:hover { color: var(--blue-light); }
 
-        .footer-brand p {
-            color: #94a3b8;
-            font-size: 0.9rem;
-            line-height: 1.7;
-        }
-
-        .footer-links h5,
-        .footer-social h5 {
-            color: #fff;
-            font-size: 1rem;
-            margin-bottom: 15px;
-        }
-
-        .footer-links ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .footer-links ul li {
-            margin-bottom: 8px;
-        }
-
-        .footer-links ul li a {
-            color: #94a3b8;
-            text-decoration: none;
-            transition: color 0.3s;
-            font-size: 0.9rem;
-        }
-
-        .footer-links ul li a:hover {
-            color: #00d4ff;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 15px;
-        }
-
+        .social-icons { display: flex; gap: 12px; flex-wrap: wrap; }
         .social-icons a {
-            color: #94a3b8;
-            font-size: 1.3rem;
-            transition: color 0.3s;
+            color: var(--muted); 
+            font-size: 1.1rem; 
+            transition: all 0.25s ease;
+            width: 40px; 
+            height: 40px; 
+            border-radius: 4px; 
+            background: var(--panel);
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            border: 1px solid var(--line);
+            text-decoration: none;
         }
-
-        .social-icons a:hover {
-            color: #00d4ff;
-        }
+        .social-icons a:hover { color: var(--blue-light); border-color: var(--blue); }
 
         .footer-bottom {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            color: #64748b;
-            font-size: 0.85rem;
+            grid-column: 1 / -1; 
+            text-align: center; 
+            padding-top: 28px; 
+            margin-top: 28px;
+            border-top: 1px solid var(--line-soft); 
+            color: var(--muted); 
+            font-size: 0.78rem;
+            font-family: 'IBM Plex Mono', monospace;
         }
 
         @media (max-width: 768px) {
-            footer .container {
-                grid-template-columns: 1fr;
-                gap: 30px;
-                text-align: center;
+            footer .container { 
+                grid-template-columns: 1fr; 
+                gap: 30px; 
+                text-align: center; 
             }
-
-            .social-icons {
-                justify-content: center;
-            }
-
-            .footer-links ul li a {
-                display: inline-block;
-            }
+            .social-icons { justify-content: center; }
+        }
+        @media (max-width: 480px) {
+            footer { padding: 30px 16px 20px; }
+            .footer-brand h3 { font-size: 1.1rem; }
+            .footer-brand p { font-size: 0.8rem; }
+            .footer-links ul li a { font-size: 0.8rem; }
+            .footer-bottom { font-size: 0.65rem; }
+            .social-icons a { width: 36px; height: 36px; font-size: 0.95rem; }
         }
 
+        /* ============================================================ */
         /* ===== FLOATING WHATSAPP ===== */
+        /* ============================================================ */
         .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
+            position: fixed; 
+            bottom: 28px; 
+            right: 28px;
             background: #25d366;
             color: #fff;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
+            width: 56px; 
+            height: 56px; 
+            border-radius: 4px;
+            display: flex; 
+            align-items: center; 
             justify-content: center;
-            font-size: 2rem;
+            font-size: 1.9rem; 
             text-decoration: none;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-            z-index: 999;
-            transition: all 0.3s ease;
+            box-shadow: 0 6px 24px rgba(37, 211, 102, 0.3);
+            z-index: 999; 
+            transition: all 0.25s ease;
         }
-
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+        .whatsapp-float:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4); 
         }
 
         @media (max-width: 480px) {
-            .whatsapp-float {
-                width: 50px;
-                height: 50px;
-                font-size: 1.6rem;
-                bottom: 20px;
-                right: 20px;
+            .whatsapp-float { 
+                width: 48px; 
+                height: 48px; 
+                font-size: 1.5rem; 
+                bottom: 16px; 
+                right: 16px; 
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== HEADER WITH LOGO & HAMBURGER ===== -->
-    <header>
+    <!-- ===== HEADER ===== -->
+    <header id="header">
         <div class="container">
             <div class="logo">
                 <a href="index.html">
-                    <img src="pictures/shabs_web_development_Logo.jpg" alt="Shabs Web Development Logo" onerror="this.style.display='none'" />
                     <div>
                         <h1>Shabs <span>Web</span> Dev</h1>
-                        <p>Web Development &amp; Maintenance</p>
+                        <p>Development &amp; Maintenance</p>
                     </div>
                 </a>
             </div>
@@ -1084,1239 +753,279 @@
         </div>
     </header>
 
+    <!-- ============================================================ -->
     <!-- ===== HERO ===== -->
+    <!-- ============================================================ -->
     <section class="hero" id="home">
         <div class="container">
-            <p class="tagline">🚀 We Build and Maintain Websites That Transform Businesses</p>
-            <h2>Your Website <span>Speaks</span> For You</h2>
-            <p>
-                Whether you own a restaurant, salon, electrical company, or tutoring business — 
-                we create custom websites that perfectly match your brand and industry.
-            </p>
             <div>
-                <a href="#industries" class="btn">See How We Do It</a>
-                <a href="contact.html" class="btn btn-outline">Get Started</a>
+                <span class="sheet-label">SHEET 01 / HOME</span>
+                <h2>
+                    <span class="reveal-text">Built to spec.</span>
+                    <span class="reveal-text"><span class="highlight glow-text">Wired</span> to last.</span>
+                </h2>
+                <p class="lead">
+                    <span class="reveal-text">Websites for restaurants,</span>
+                    <span class="reveal-text">electrical &amp; solar companies,</span>
+                    <span class="reveal-text">salons and tutors —</span>
+                    <span class="reveal-text">designed with the same precision</span>
+                    <span class="reveal-text">as a signed-off drawing,</span>
+                    <span class="reveal-text">and maintained long</span>
+                    <span class="reveal-text">after launch.</span>
+                </p>
+                <div class="btn-group">
+                    <a href="portfolio.html" class="btn btn-primary">See Our Work</a>
+                    <a href="contact.html" class="btn btn-outline">Get Started</a>
+                </div>
             </div>
-            <div class="code-symbols">
-                &lt; / &gt; { } ( ) ; &lt; / &gt; { } ( ) ;
+            <div class="title-block">
+                <div class="tb-head">
+                    <div class="tb-title">Shabs Web Development</div>
+                    <div class="tb-sub">PROJECT SPECIFICATION</div>
+                </div>
+                <div class="tb-row"><span class="tb-label">CLIENT</span><span class="tb-value">Your Business</span></div>
+                <div class="tb-row"><span class="tb-label">SCOPE</span><span class="tb-value">Design &middot; Build &middot; Maintain</span></div>
+                <div class="tb-row"><span class="tb-label">STACK</span><span class="tb-value">HTML &middot; CSS &middot; JS</span></div>
+                <div class="tb-row"><span class="tb-label">SUPPORT</span><span class="tb-value">24/7</span></div>
+                <div class="tb-row"><span class="tb-label">STATUS</span><span class="tb-value" style="color: var(--trace);">Accepting Projects</span></div>
             </div>
-        </div>
-        <div class="scroll-indicator">
-            <span>Scroll to explore 20+ industries</span>
-            <i class="fas fa-chevron-down"></i>
         </div>
     </section>
 
     <!-- ============================================================ -->
-    <!-- ===== INDUSTRY 1: FOOD ===== -->
+    <!-- ===== INDUSTRY SHOWCASE ===== -->
     <!-- ============================================================ -->
-    <section class="industry-section industry-food" id="industries">
+    <section class="industry-showcase" id="showcase">
         <div class="container">
-            <div style="text-align:center;">
-                <span class="industry-label"><i class="fas fa-utensils"></i> Fast Food &amp; Restaurant</span>
-                <i class="fas fa-utensils industry-icon"></i>
-                <h2 class="section-title">A Website That <span>Makes You Hungry</span></h2>
-                <p class="industry-description">From mouth-watering menus to online ordering — your restaurant deserves a website that looks as good as your food tastes.</p>
-                
-                <div class="demo-carousel" id="carousel-food">
-                    <div class="carousel-track" id="track-food">
-                        <div class="carousel-slide demo-food">
-                            <div class="demo-hero">
-                                <h2>🔥 Crispy &amp; Crunchy</h2>
-                                <p>NEW Bone In Chicken has arrived! Perfect for sharing.</p>
-                                <button class="btn" style="background:#e85d04;color:#fff;margin-top:10px;">View More</button>
-                            </div>
-                            <div class="demo-menu-grid">
-                                <div class="demo-menu-item"><i class="fas fa-hamburger"></i><h4>Burgers</h4><p>8 varieties</p></div>
-                                <div class="demo-menu-item"><i class="fas fa-pizza-slice"></i><h4>Pizza</h4><p>12 varieties</p></div>
-                                <div class="demo-menu-item"><i class="fas fa-coffee"></i><h4>Beverages</h4><p>15 varieties</p></div>
-                                <div class="demo-menu-item"><i class="fas fa-ice-cream"></i><h4>Desserts</h4><p>6 varieties</p></div>
-                                <div class="demo-menu-item"><i class="fas fa-utensils"></i><h4>Combos</h4><p>5 varieties</p></div>
-                                <div class="demo-menu-item"><i class="fas fa-clock"></i><h4>Breakfast</h4><p>7am - 11am</p></div>
+            <div class="section-title">
+                <span class="sheet-label">SHEET 02 / INDUSTRIES</span>
+                <h2>Websites for <span>Every Industry</span></h2>
+                <p>Professionally designed website concepts tailored to your business.</p>
+            </div>
+
+            <div class="slideshow-wrapper">
+                <div class="slideshow-track" id="slideshowTrack">
+
+                    <!-- SLIDE 1: Fast Food -->
+                    <div class="slide">
+                        <div class="slide-top">
+                            <div class="slide-icon"><i class="fas fa-utensils"></i></div>
+                            <div class="slide-header">
+                                <h3>Fast Food &amp; <span>Restaurant</span></h3>
+                                <p>A mouth-watering website to showcase your menu and attract hungry customers.</p>
                             </div>
                         </div>
-                        <div class="carousel-slide demo-food">
-                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:20px;">
-                                <div style="background:rgba(232,93,4,0.1);border-radius:12px;padding:30px;text-align:center;">
-                                    <i class="fas fa-utensils" style="font-size:3rem;color:#e85d04;margin-bottom:10px;"></i>
-                                    <h4>Bone In Chicken</h4>
-                                    <p style="opacity:0.8;">NEW! Crispy, crunchy, and delicious.</p>
-                                    <button class="btn" style="background:#e85d04;color:#fff;margin-top:15px;font-size:0.85rem;">Order Now</button>
-                                </div>
-                                <div style="background:rgba(232,93,4,0.1);border-radius:12px;padding:30px;text-align:center;">
-                                    <i class="fas fa-coffee" style="font-size:3rem;color:#e85d04;margin-bottom:10px;"></i>
-                                    <h4>BK Café</h4>
-                                    <p style="opacity:0.8;">Freshly brewed coffee to start your day.</p>
-                                    <button class="btn" style="background:#e85d04;color:#fff;margin-top:15px;font-size:0.85rem;">View Menu</button>
-                                </div>
+                        <div class="slide-grid">
+                            <div class="slide-item"><i class="fas fa-hamburger"></i><h4>Burgers</h4><p>8 varieties</p></div>
+                            <div class="slide-item"><i class="fas fa-pizza-slice"></i><h4>Pizza</h4><p>12 varieties</p></div>
+                            <div class="slide-item"><i class="fas fa-coffee"></i><h4>Beverages</h4><p>15+ options</p></div>
+                            <div class="slide-item"><i class="fas fa-utensils"></i><h4>Combos</h4><p>5 meal deals</p></div>
+                        </div>
+                        <div class="slide-bottom">
+                            <div class="stats">
+                                <span>MOBILE <strong>OPTIMIZED</strong></span>
+                                <span>LOAD <strong>&lt; 2s</strong></span>
                             </div>
-                            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:15px;padding:0 20px;">
-                                <div style="background:rgba(232,93,4,0.05);border-radius:10px;padding:15px;text-align:center;"><h4>🍔 Stacked</h4><p style="opacity:0.7;">Limited Time</p></div>
-                                <div style="background:rgba(232,93,4,0.05);border-radius:10px;padding:15px;text-align:center;"><h4>🍗 Chicken</h4><p style="opacity:0.7;">NEW!</p></div>
-                                <div style="background:rgba(232,93,4,0.05);border-radius:10px;padding:15px;text-align:center;"><h4>🍰 Desserts</h4><p style="opacity:0.7;">Sweet Treats</p></div>
-                            </div>
+                            <a href="contact.html" class="btn" style="background: var(--blue); color: var(--ink);">Build My Restaurant Site</a>
                         </div>
                     </div>
-                    <button class="carousel-nav prev" onclick="prevSlide('food')">‹</button>
-                    <button class="carousel-nav next" onclick="nextSlide('food')">›</button>
-                    <div class="carousel-indicators" id="indicators-food">
-                        <button class="active" onclick="goToSlide('food', 0)"></button>
-                        <button onclick="goToSlide('food', 1)"></button>
+
+                    <!-- SLIDE 2: Electrical -->
+                    <div class="slide">
+                        <div class="slide-top">
+                            <div class="slide-icon"><i class="fas fa-bolt"></i></div>
+                            <div class="slide-header">
+                                <h3>Electrical &amp; <span>Solar</span></h3>
+                                <p>A professional website that builds trust and showcases your certified services.</p>
+                            </div>
+                        </div>
+                        <div class="slide-grid">
+                            <div class="slide-item"><i class="fas fa-home"></i><h4>Residential</h4><p>Installations</p></div>
+                            <div class="slide-item"><i class="fas fa-building"></i><h4>Commercial</h4><p>Projects</p></div>
+                            <div class="slide-item"><i class="fas fa-solar-panel"></i><h4>Solar</h4><p>Solutions</p></div>
+                            <div class="slide-item"><i class="fas fa-file-certificate"></i><h4>COC</h4><p>Certified</p></div>
+                        </div>
+                        <div class="slide-bottom">
+                            <div class="stats">
+                                <span>UPTIME <strong>SECURE</strong></span>
+                                <span>SUPPORT <strong>24/7</strong></span>
+                            </div>
+                            <a href="contact.html" class="btn" style="background: var(--blue); color: var(--ink);">Build My Electrical Site</a>
+                        </div>
                     </div>
+
+                    <!-- SLIDE 3: Salon -->
+                    <div class="slide">
+                        <div class="slide-top">
+                            <div class="slide-icon"><i class="fas fa-cut"></i></div>
+                            <div class="slide-header">
+                                <h3>Salon &amp; <span>Beauty</span></h3>
+                                <p>An elegant, sophisticated website that reflects your artistry and style.</p>
+                            </div>
+                        </div>
+                        <div class="slide-grid">
+                            <div class="slide-item"><i class="fas fa-cut"></i><h4>Hair Styling</h4><p>From R150</p></div>
+                            <div class="slide-item"><i class="fas fa-paint-brush"></i><h4>Makeup</h4><p>From R200</p></div>
+                            <div class="slide-item"><i class="fas fa-spa"></i><h4>Spa</h4><p>Treatments</p></div>
+                            <div class="slide-item"><i class="fas fa-hand-sparkles"></i><h4>Nail Art</h4><p>From R100</p></div>
+                        </div>
+                        <div class="slide-bottom">
+                            <div class="stats">
+                                <span>DESIGN <strong>ELEGANT</strong></span>
+                                <span>BOOKING <strong>READY</strong></span>
+                            </div>
+                            <a href="contact.html" class="btn" style="background: var(--blue); color: var(--ink);">Build My Salon Site</a>
+                        </div>
+                    </div>
+
+                    <!-- SLIDE 4: Tutoring -->
+                    <div class="slide">
+                        <div class="slide-top">
+                            <div class="slide-icon"><i class="fas fa-graduation-cap"></i></div>
+                            <div class="slide-header">
+                                <h3>Tutoring &amp; <span>Education</span></h3>
+                                <p>Inspire students and parents with a professional website that showcases your expertise.</p>
+                            </div>
+                        </div>
+                        <div class="slide-grid">
+                            <div class="slide-item"><i class="fas fa-calculator"></i><h4>Mathematics</h4><p>All levels</p></div>
+                            <div class="slide-item"><i class="fas fa-atom"></i><h4>Science</h4><p>Physics &amp; Chem</p></div>
+                            <div class="slide-item"><i class="fas fa-language"></i><h4>Languages</h4><p>English &amp; more</p></div>
+                            <div class="slide-item"><i class="fas fa-user-graduate"></i><h4>1-on-1</h4><p>Personalized</p></div>
+                        </div>
+                        <div class="slide-bottom">
+                            <div class="stats">
+                                <span>TUTORS <strong>EXPERT</strong></span>
+                                <span>RATING <strong>5 STAR</strong></span>
+                            </div>
+                            <a href="contact.html" class="btn" style="background: var(--blue); color: var(--ink);">Build My Tutoring Site</a>
+                        </div>
+                    </div>
+
                 </div>
-                
-                <div style="margin-top:30px;">
-                    <a href="contact.html" class="btn" style="background:#00d4ff;color:#0a0e17;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;">Build My Restaurant Website</a>
-                    <a href="#industries-2" class="btn" style="border:2px solid #00d4ff;color:#00d4ff;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;background:transparent;">See Next</a>
+            </div>
+
+            <div class="slideshow-controls">
+                <button id="prevBtn" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+                <div class="slideshow-dots" id="dotsContainer">
+                    <button class="active" data-index="0"></button>
+                    <button data-index="1"></button>
+                    <button data-index="2"></button>
+                    <button data-index="3"></button>
                 </div>
+                <button id="nextBtn" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
     </section>
 
     <!-- ============================================================ -->
-    <!-- ===== INDUSTRY 2: ELECTRICAL ===== -->
+    <!-- ===== SERVICES PREVIEW ===== -->
     <!-- ============================================================ -->
-    <section class="industry-section industry-electrical" id="industries-2">
+    <section class="services-preview">
         <div class="container">
-            <div style="text-align:center;">
-                <span class="industry-label"><i class="fas fa-bolt"></i> Electrical &amp; Solar</span>
-                <i class="fas fa-bolt industry-icon"></i>
-                <h2 class="section-title">A Website That <span>Electrifies</span></h2>
-                <p class="industry-description">Showcase your services, certifications, and completed projects with a professional website that builds trust.</p>
-                
-                <div class="demo-carousel" id="carousel-electrical">
-                    <div class="carousel-track" id="track-electrical">
-                        <div class="carousel-slide demo-electrical">
-                            <div class="demo-hero">
-                                <i class="fas fa-bolt icon" style="font-size:2.5rem;color:#00d4ff;"></i>
-                                <div style="flex:1;">
-                                    <h3>Powering Your World with Excellence</h3>
-                                    <p style="opacity:0.8;">Reliable, Safe &amp; Professional Electrical Installations</p>
-                                    <button class="btn" style="background:#00d4ff;color:#0a0e17;margin-top:10px;">REQUEST A FREE QUOTE</button>
-                                </div>
-                            </div>
-                            <div class="demo-services">
-                                <div class="demo-service"><i class="fas fa-home"></i><br/>Residential</div>
-                                <div class="demo-service"><i class="fas fa-building"></i><br/>Commercial</div>
-                                <div class="demo-service"><i class="fas fa-industry"></i><br/>Industrial</div>
-                                <div class="demo-service"><i class="fas fa-solar-panel"></i><br/>Solar</div>
-                                <div class="demo-service"><i class="fas fa-tools"></i><br/>Maintenance</div>
-                                <div class="demo-service"><i class="fas fa-file-certificate"></i><br/>COC</div>
-                            </div>
-                        </div>
-                        <div class="carousel-slide demo-electrical">
-                            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:15px;padding:20px;">
-                                <div style="background:rgba(0,212,255,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(0,212,255,0.1);">
-                                    <i class="fas fa-check-circle" style="font-size:2.5rem;color:#00d4ff;margin-bottom:10px;"></i>
-                                    <h4>Certified</h4>
-                                    <p style="opacity:0.7;">ECSA Registered</p>
-                                </div>
-                                <div style="background:rgba(0,212,255,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(0,212,255,0.1);">
-                                    <i class="fas fa-star" style="font-size:2.5rem;color:#00d4ff;margin-bottom:10px;"></i>
-                                    <h4>5-Star Service</h4>
-                                    <p style="opacity:0.7;">100+ Reviews</p>
-                                </div>
-                                <div style="background:rgba(0,212,255,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(0,212,255,0.1);">
-                                    <i class="fas fa-clock" style="font-size:2.5rem;color:#00d4ff;margin-bottom:10px;"></i>
-                                    <h4>24/7 Support</h4>
-                                    <p style="opacity:0.7;">Emergency Services</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="carousel-nav prev" onclick="prevSlide('electrical')">‹</button>
-                    <button class="carousel-nav next" onclick="nextSlide('electrical')">›</button>
-                    <div class="carousel-indicators" id="indicators-electrical">
-                        <button class="active" onclick="goToSlide('electrical', 0)"></button>
-                        <button onclick="goToSlide('electrical', 1)"></button>
-                    </div>
+            <div class="section-title">
+                <span class="sheet-label">SHEET 03 / SERVICES</span>
+                <h2>Complete <span>Web Solutions</span></h2>
+                <p>Everything you need to establish and grow your online presence, handled end to end.</p>
+            </div>
+            <div class="service-grid">
+                <div class="service-card">
+                    <div class="ref">REF. SVC-01</div>
+                    <div class="icon"><i class="fas fa-code"></i></div>
+                    <h4>Web Development</h4>
+                    <p>Custom-built websites tailored to your brand and industry needs.</p>
                 </div>
-                
-                <div style="margin-top:30px;">
-                    <a href="contact.html" class="btn" style="background:#00d4ff;color:#0a0e17;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;">Build My Electrical Website</a>
-                    <a href="#industries-3" class="btn" style="border:2px solid #00d4ff;color:#00d4ff;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;background:transparent;">See Next</a>
+                <div class="service-card">
+                    <div class="ref">REF. SVC-02</div>
+                    <div class="icon"><i class="fas fa-tools"></i></div>
+                    <h4>Maintenance</h4>
+                    <p>Keep your site secure, up-to-date, and performing at its best.</p>
+                </div>
+                <div class="service-card">
+                    <div class="ref">REF. SVC-03</div>
+                    <div class="icon"><i class="fas fa-search"></i></div>
+                    <h4>SEO &amp; Growth</h4>
+                    <p>Drive organic traffic and convert visitors into loyal customers.</p>
+                </div>
+                <div class="service-card">
+                    <div class="ref">REF. SVC-04</div>
+                    <div class="icon"><i class="fas fa-paint-brush"></i></div>
+                    <h4>Branding &amp; Design</h4>
+                    <p>Professional logos and brand identity that make you stand out.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ============================================================ -->
-    <!-- ===== INDUSTRY 3: SALON ===== -->
+    <!-- ===== PORTFOLIO SNIPPET ===== -->
     <!-- ============================================================ -->
-    <section class="industry-section industry-salon" id="industries-3">
+    <section class="portfolio-snippet">
         <div class="container">
-            <div style="text-align:center;">
-                <span class="industry-label"><i class="fas fa-cut"></i> Salon &amp; Beauty</span>
-                <i class="fas fa-cut industry-icon"></i>
-                <h2 class="section-title">A Website That <span>Shines</span></h2>
-                <p class="industry-description">Elegant, sophisticated, and beautiful — your salon website should reflect the artistry and care you bring to every client.</p>
-                
-                <div class="demo-carousel" id="carousel-salon">
-                    <div class="carousel-track" id="track-salon">
-                        <div class="carousel-slide demo-salon">
-                            <div class="demo-hero">
-                                <h2 style="font-family:Georgia,serif;">✨ glow.</h2>
-                                <p>EXPERIENCE THE GLOW</p>
-                                <button class="btn" style="background:#d946ef;color:#fff;margin-top:10px;">Make a Booking</button>
-                            </div>
-                            <div class="demo-services-grid">
-                                <div class="demo-service-card"><i class="fas fa-cut" style="font-size:2rem;color:#d946ef;"></i><h4>Hair Styling</h4><p style="opacity:0.7;">From R150</p></div>
-                                <div class="demo-service-card"><i class="fas fa-paint-brush" style="font-size:2rem;color:#d946ef;"></i><h4>Makeup</h4><p style="opacity:0.7;">From R200</p></div>
-                                <div class="demo-service-card"><i class="fas fa-spa" style="font-size:2rem;color:#d946ef;"></i><h4>Spa Treatments</h4><p style="opacity:0.7;">From R300</p></div>
-                                <div class="demo-service-card"><i class="fas fa-hand-sparkles" style="font-size:2rem;color:#d946ef;"></i><h4>Nail Art</h4><p style="opacity:0.7;">From R100</p></div>
-                            </div>
-                        </div>
-                        <div class="carousel-slide demo-salon">
-                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:20px;">
-                                <div style="background:rgba(217,70,239,0.08);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(217,70,239,0.1);">
-                                    <i class="fas fa-star" style="font-size:2.5rem;color:#d946ef;margin-bottom:10px;"></i>
-                                    <h4>Wedding Packages</h4>
-                                    <p style="opacity:0.7;">Special occasion looks</p>
-                                    <button class="btn" style="background:#d946ef;color:#fff;font-size:0.85rem;margin-top:10px;">View Details</button>
-                                </div>
-                                <div style="background:rgba(217,70,239,0.08);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(217,70,239,0.1);">
-                                    <i class="fas fa-gift" style="font-size:2.5rem;color:#d946ef;margin-bottom:10px;"></i>
-                                    <h4>Gift Vouchers</h4>
-                                    <p style="opacity:0.7;">The perfect gift</p>
-                                    <button class="btn" style="background:#d946ef;color:#fff;font-size:0.85rem;margin-top:10px;">Buy Now</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="carousel-nav prev" onclick="prevSlide('salon')">‹</button>
-                    <button class="carousel-nav next" onclick="nextSlide('salon')">›</button>
-                    <div class="carousel-indicators" id="indicators-salon">
-                        <button class="active" onclick="goToSlide('salon', 0)"></button>
-                        <button onclick="goToSlide('salon', 1)"></button>
+            <div class="section-title">
+                <span class="sheet-label">SHEET 04 / PORTFOLIO</span>
+                <h2>Featured <span>Projects</span></h2>
+                <p>Check out some of the websites we've built for our clients.</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <div class="preview"><i class="fas fa-bolt"></i></div>
+                    <div class="info">
+                        <h4>Zoe Zion Projects</h4>
+                        <p>Electrical &amp; solar company website</p>
+                        <div class="tags"><span>HTML</span><span>CSS</span><span>JS</span></div>
+                        <a href="https://zoezionprojects.co.za" target="_blank" class="btn-link">View Project →</a>
                     </div>
                 </div>
-                
-                <div style="margin-top:30px;">
-                    <a href="contact.html" class="btn" style="background:#00d4ff;color:#0a0e17;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;">Build My Salon Website</a>
-                    <a href="#industries-4" class="btn" style="border:2px solid #00d4ff;color:#00d4ff;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;background:transparent;">See Next</a>
+                <div class="portfolio-card">
+                    <div class="preview"><i class="fas fa-lightbulb"></i></div>
+                    <div class="info">
+                        <h4>Nwa Zeme Electrical</h4>
+                        <p>Professional electrical services</p>
+                        <div class="tags"><span>HTML</span><span>CSS</span><span>SEO</span></div>
+                        <a href="https://nwazemeelectrical.co.za" target="_blank" class="btn-link">View Project →</a>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="preview"><i class="fas fa-code"></i></div>
+                    <div class="info">
+                        <h4>Shabs Web Dev</h4>
+                        <p>Web development agency website</p>
+                        <div class="tags"><span>HTML</span><span>CSS</span><span>Interactive</span></div>
+                        <a href="index.html" class="btn-link">View Project →</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ============================================================ -->
-    <!-- ===== INDUSTRY 4: MECHANIC ===== -->
-    <!-- ============================================================ -->
-    <section class="industry-section industry-mechanic" id="industries-4">
-        <div class="container">
-            <div style="text-align:center;">
-                <span class="industry-label"><i class="fas fa-wrench"></i> Auto &amp; Mechanic</span>
-                <i class="fas fa-wrench industry-icon"></i>
-                <h2 class="section-title">A Website That <span>Drives Trust</span></h2>
-                <p class="industry-description">Build credibility with a professional website that showcases your expertise, services, and customer reviews.</p>
-                
-                <div class="demo-carousel" id="carousel-mechanic">
-                    <div class="carousel-track" id="track-mechanic">
-                        <div class="carousel-slide demo-mechanic">
-                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(239,68,68,0.05);border-radius:12px;border-left:4px solid #ef4444;margin-bottom:20px;flex-wrap:wrap;">
-                                <i class="fas fa-car" style="font-size:3rem;color:#ef4444;"></i>
-                                <div style="flex:1;"><h3>Your Trusted Auto Repair Shop</h3><p style="opacity:0.8;">Quality service you can depend on</p></div>
-                                <button class="btn" style="background:#ef4444;color:#fff;">Book Now</button>
-                            </div>
-                            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
-                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-oil-can" style="color:#ef4444;font-size:1.5rem;"></i><br/>Oil Change</div>
-                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-car-crash" style="color:#ef4444;font-size:1.5rem;"></i><br/>Collision Repair</div>
-                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-tachometer-alt" style="color:#ef4444;font-size:1.5rem;"></i><br/>Diagnostics</div>
-                            </div>
-                        </div>
-                        <div class="carousel-slide demo-mechanic">
-                            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:15px;padding:20px;">
-                                <div style="background:rgba(239,68,68,0.05);border-radius:12px;padding:20px;text-align:center;border:1px solid rgba(239,68,68,0.1);">
-                                    <i class="fas fa-star" style="font-size:2rem;color:#ef4444;"></i>
-                                    <h4>4.9/5</h4>
-                                    <p style="opacity:0.7;">Customer Rating</p>
-                                </div>
-                                <div style="background:rgba(239,68,68,0.05);border-radius:12px;padding:20px;text-align:center;border:1px solid rgba(239,68,68,0.1);">
-                                    <i class="fas fa-clock" style="font-size:2rem;color:#ef4444;"></i>
-                                    <h4>15+ Years</h4>
-                                    <p style="opacity:0.7;">Experience</p>
-                                </div>
-                                <div style="background:rgba(239,68,68,0.05);border-radius:12px;padding:20px;text-align:center;border:1px solid rgba(239,68,68,0.1);">
-                                    <i class="fas fa-shield-alt" style="font-size:2rem;color:#ef4444;"></i>
-                                    <h4>100%</h4>
-                                    <p style="opacity:0.7;">Guaranteed</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="carousel-nav prev" onclick="prevSlide('mechanic')">‹</button>
-                    <button class="carousel-nav next" onclick="nextSlide('mechanic')">›</button>
-                    <div class="carousel-indicators" id="indicators-mechanic">
-                        <button class="active" onclick="goToSlide('mechanic', 0)"></button>
-                        <button onclick="goToSlide('mechanic', 1)"></button>
-                    </div>
-                </div>
-                
-                <div style="margin-top:30px;">
-                    <a href="contact.html" class="btn" style="background:#00d4ff;color:#0a0e17;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;">Build My Mechanic Website</a>
-                    <a href="#industries-5" class="btn" style="border:2px solid #00d4ff;color:#00d4ff;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;background:transparent;">See Next</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- ===== INDUSTRY 5: TUTORING ===== -->
-    <!-- ============================================================ -->
-    <section class="industry-section industry-tutoring" id="industries-5">
-        <div class="container">
-            <div style="text-align:center;">
-                <span class="industry-label"><i class="fas fa-graduation-cap"></i> Tutoring &amp; Education</span>
-                <i class="fas fa-graduation-cap industry-icon"></i>
-                <h2 class="section-title">A Website That <span>Inspires Learning</span></h2>
-                <p class="industry-description">Connect with students and parents through a professional website that showcases your subjects, experience, and success stories.</p>
-                
-                <div class="demo-carousel" id="carousel-tutoring">
-                    <div class="carousel-track" id="track-tutoring">
-                        <div class="carousel-slide demo-tutoring">
-                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(34,211,238,0.05);border-radius:12px;border-left:4px solid #22d3ee;margin-bottom:20px;flex-wrap:wrap;">
-                                <i class="fas fa-graduation-cap" style="font-size:3rem;color:#22d3ee;"></i>
-                                <div style="flex:1;"><h3>📚 Learn with Confidence</h3><p style="opacity:0.8;">Expert tutoring for all subjects</p></div>
-                                <button class="btn" style="background:#22d3ee;color:#0a1a0a;">Book a Lesson</button>
-                            </div>
-                            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
-                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-calculator" style="color:#22d3ee;font-size:1.5rem;"></i><br/>Mathematics</div>
-                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-atom" style="color:#22d3ee;font-size:1.5rem;"></i><br/>Science</div>
-                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-language" style="color:#22d3ee;font-size:1.5rem;"></i><br/>Languages</div>
-                            </div>
-                        </div>
-                        <div class="carousel-slide demo-tutoring">
-                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:20px;">
-                                <div style="background:rgba(34,211,238,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(34,211,238,0.1);">
-                                    <i class="fas fa-users" style="font-size:2.5rem;color:#22d3ee;margin-bottom:10px;"></i>
-                                    <h4>Group Classes</h4>
-                                    <p style="opacity:0.7;">Interactive learning</p>
-                                    <button class="btn" style="background:#22d3ee;color:#0a1a0a;font-size:0.85rem;margin-top:10px;">Join Now</button>
-                                </div>
-                                <div style="background:rgba(34,211,238,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(34,211,238,0.1);">
-                                    <i class="fas fa-user-graduate" style="font-size:2.5rem;color:#22d3ee;margin-bottom:10px;"></i>
-                                    <h4>1-on-1 Tutoring</h4>
-                                    <p style="opacity:0.7;">Personalized attention</p>
-                                    <button class="btn" style="background:#22d3ee;color:#0a1a0a;font-size:0.85rem;margin-top:10px;">Book Now</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="carousel-nav prev" onclick="prevSlide('tutoring')">‹</button>
-                    <button class="carousel-nav next" onclick="nextSlide('tutoring')">›</button>
-                    <div class="carousel-indicators" id="indicators-tutoring">
-                        <button class="active" onclick="goToSlide('tutoring', 0)"></button>
-                        <button onclick="goToSlide('tutoring', 1)"></button>
-                    </div>
-                </div>
-                
-                <div style="margin-top:30px;">
-                    <a href="contact.html" class="btn" style="background:#00d4ff;color:#0a0e17;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;">Build My Tutoring Website</a>
-                    <a href="#industries-6" class="btn" style="border:2px solid #00d4ff;color:#00d4ff;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;background:transparent;">See Next</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- ===== INDUSTRY 6: CLEANING ===== -->
-    <!-- ============================================================ -->
-    <section class="industry-section industry-cleaning" id="industries-6">
-        <div class="container">
-            <div style="text-align:center;">
-                <span class="industry-label"><i class="fas fa-broom"></i> Cleaning Services</span>
-                <i class="fas fa-broom industry-icon"></i>
-                <h2 class="section-title">A Website That <span>Sparkles</span></h2>
-                <p class="industry-description">Show your professionalism with a clean, fresh website that makes it easy for clients to book your cleaning services.</p>
-                
-                <div class="demo-carousel" id="carousel-cleaning">
-                    <div class="carousel-track" id="track-cleaning">
-                        <div class="carousel-slide demo-cleaning">
-                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(52,211,153,0.05);border-radius:12px;border-left:4px solid #34d399;margin-bottom:20px;flex-wrap:wrap;">
-                                <i class="fas fa-broom" style="font-size:3rem;color:#34d399;"></i>
-                                <div style="flex:1;"><h3>✨ Sparkling Clean Every Time</h3><p style="opacity:0.8;">Professional cleaning services you can trust</p></div>
-                                <button class="btn" style="background:#34d399;color:#0a1a1a;">Book Now</button>
-                            </div>
-                            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
-                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-home" style="color:#34d399;font-size:1.5rem;"></i><br/>Home Cleaning</div>
-                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-building" style="color:#34d399;font-size:1.5rem;"></i><br/>Office Cleaning</div>
-                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-window-maximize" style="color:#34d399;font-size:1.5rem;"></i><br/>Window Cleaning</div>
-                            </div>
-                        </div>
-                        <div class="carousel-slide demo-cleaning">
-                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:20px;">
-                                <div style="background:rgba(52,211,153,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(52,211,153,0.1);">
-                                    <i class="fas fa-star" style="font-size:2.5rem;color:#34d399;margin-bottom:10px;"></i>
-                                    <h4>5-Star Service</h4>
-                                    <p style="opacity:0.7;">200+ happy clients</p>
-                                </div>
-                                <div style="background:rgba(52,211,153,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(52,211,153,0.1);">
-                                    <i class="fas fa-shield-alt" style="font-size:2.5rem;color:#34d399;margin-bottom:10px;"></i>
-                                    <h4>100% Satisfaction</h4>
-                                    <p style="opacity:0.7;">Guaranteed</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="carousel-nav prev" onclick="prevSlide('cleaning')">‹</button>
-                    <button class="carousel-nav next" onclick="nextSlide('cleaning')">›</button>
-                    <div class="carousel-indicators" id="indicators-cleaning">
-                        <button class="active" onclick="goToSlide('cleaning', 0)"></button>
-                        <button onclick="goToSlide('cleaning', 1)"></button>
-                    </div>
-                </div>
-                
-                <div style="margin-top:30px;">
-                    <a href="contact.html" class="btn" style="background:#00d4ff;color:#0a0e17;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;">Build My Cleaning Website</a>
-                    <a href="#industries-7" class="btn" style="border:2px solid #00d4ff;color:#00d4ff;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;background:transparent;">See Next</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- ===== INDUSTRY 7: CLOTHING ===== -->
-    <!-- ============================================================ -->
-    <section class="industry-section industry-clothing" id="industries-7">
-        <div class="container">
-            <div style="text-align:center;">
-                <span class="industry-label"><i class="fas fa-tshirt"></i> Clothing &amp; Fashion</span>
-                <i class="fas fa-tshirt industry-icon"></i>
-                <h2 class="section-title">A Website That <span>Looks Good</span></h2>
-                <p class="industry-description">Showcase your collections with a stylish, visually stunning website that makes your products look irresistible.</p>
-                
-                <div class="demo-carousel" id="carousel-clothing">
-                    <div class="carousel-track" id="track-clothing">
-                        <div class="carousel-slide demo-clothing">
-                            <div class="demo-hero">
-                                <div style="text-align:left;"><h3 style="color:#f472b6;">New Collection</h3><h2>Spring/Summer 2025</h2><p style="opacity:0.7;">Discover the latest trends</p></div>
-                                <div style="text-align:right;"><span class="featured">✨</span><p style="opacity:0.7;">Up to 50% off</p></div>
-                            </div>
-                            <div class="demo-products">
-                                <div class="demo-product"><i class="fas fa-tshirt" style="font-size:2rem;color:#f472b6;"></i><h4>T-Shirts</h4><p style="opacity:0.7;">R200-R400</p></div>
-                                <div class="demo-product"><i class="fas fa-tshirt" style="font-size:2rem;color:#f472b6;"></i><h4>Dresses</h4><p style="opacity:0.7;">R400-R800</p></div>
-                                <div class="demo-product"><i class="fas fa-socks" style="font-size:2rem;color:#f472b6;"></i><h4>Accessories</h4><p style="opacity:0.7;">R100-R300</p></div>
-                                <div class="demo-product"><i class="fas fa-user-tie" style="font-size:2rem;color:#f472b6;"></i><h4>Suits</h4><p style="opacity:0.7;">R800-R2000</p></div>
-                            </div>
-                        </div>
-                        <div class="carousel-slide demo-clothing">
-                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:20px;">
-                                <div style="background:rgba(244,114,182,0.08);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(244,114,182,0.1);">
-                                    <i class="fas fa-tag" style="font-size:2.5rem;color:#f472b6;margin-bottom:10px;"></i>
-                                    <h4>Sale</h4>
-                                    <p style="opacity:0.7;">Up to 60% off</p>
-                                    <button class="btn" style="background:#f472b6;color:#1a0a14;font-size:0.85rem;margin-top:10px;">Shop Now</button>
-                                </div>
-                                <div style="background:rgba(244,114,182,0.08);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(244,114,182,0.1);">
-                                    <i class="fas fa-star" style="font-size:2.5rem;color:#f472b6;margin-bottom:10px;"></i>
-                                    <h4>Bestsellers</h4>
-                                    <p style="opacity:0.7;">Most popular items</p>
-                                    <button class="btn" style="background:#f472b6;color:#1a0a14;font-size:0.85rem;margin-top:10px;">View Collection</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="carousel-nav prev" onclick="prevSlide('clothing')">‹</button>
-                    <button class="carousel-nav next" onclick="nextSlide('clothing')">›</button>
-                    <div class="carousel-indicators" id="indicators-clothing">
-                        <button class="active" onclick="goToSlide('clothing', 0)"></button>
-                        <button onclick="goToSlide('clothing', 1)"></button>
-                    </div>
-                </div>
-                
-                <div style="margin-top:30px;">
-                    <a href="contact.html" class="btn" style="background:#00d4ff;color:#0a0e17;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;">Build My Clothing Website</a>
-                    <a href="#industries-8" class="btn" style="border:2px solid #00d4ff;color:#00d4ff;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;background:transparent;">See Next</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- ===== INDUSTRY 8: DELIVERY ===== -->
-    <!-- ============================================================ -->
-    <section class="industry-section industry-delivery" id="industries-8">
-        <div class="container">
-            <div style="text-align:center;">
-                <span class="industry-label"><i class="fas fa-truck"></i> Delivery &amp; Logistics</span>
-                <i class="fas fa-truck industry-icon"></i>
-                <h2 class="section-title">A Website That <span>Delivers</span></h2>
-                <p class="industry-description">Track packages, manage deliveries, and build trust with real-time tracking, clear pricing, and professional branding.</p>
-                
-                <div class="demo-carousel" id="carousel-delivery">
-                    <div class="carousel-track" id="track-delivery">
-                        <div class="carousel-slide demo-delivery">
-                            <div class="demo-search">
-                                <input type="text" placeholder="Track your package..." />
-                                <button class="btn" style="background:#f59e0b;color:#1a100a;">Track</button>
-                            </div>
-                            <div class="demo-restaurants">
-                                <div class="demo-restaurant"><i class="fas fa-store" style="font-size:2rem;color:#f59e0b;"></i><h4>Fast Food</h4><p style="opacity:0.7;">30 min delivery</p></div>
-                                <div class="demo-restaurant"><i class="fas fa-store-alt" style="font-size:2rem;color:#f59e0b;"></i><h4>Groceries</h4><p style="opacity:0.7;">1 hour delivery</p></div>
-                                <div class="demo-restaurant"><i class="fas fa-box" style="font-size:2rem;color:#f59e0b;"></i><h4>Parcels</h4><p style="opacity:0.7;">Same day delivery</p></div>
-                            </div>
-                        </div>
-                        <div class="carousel-slide demo-delivery">
-                            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:15px;padding:20px;">
-                                <div style="background:rgba(245,158,11,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(245,158,11,0.1);">
-                                    <i class="fas fa-clock" style="font-size:2.5rem;color:#f59e0b;margin-bottom:10px;"></i>
-                                    <h4>On-Time</h4>
-                                    <p style="opacity:0.7;">99.9% delivery rate</p>
-                                </div>
-                                <div style="background:rgba(245,158,11,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(245,158,11,0.1);">
-                                    <i class="fas fa-map-pin" style="font-size:2.5rem;color:#f59e0b;margin-bottom:10px;"></i>
-                                    <h4>Live Tracking</h4>
-                                    <p style="opacity:0.7;">Real-time updates</p>
-                                </div>
-                                <div style="background:rgba(245,158,11,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(245,158,11,0.1);">
-                                    <i class="fas fa-star" style="font-size:2.5rem;color:#f59e0b;margin-bottom:10px;"></i>
-                                    <h4>5-Star Service</h4>
-                                    <p style="opacity:0.7;">1000+ deliveries</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="carousel-nav prev" onclick="prevSlide('delivery')">‹</button>
-                    <button class="carousel-nav next" onclick="nextSlide('delivery')">›</button>
-                    <div class="carousel-indicators" id="indicators-delivery">
-                        <button class="active" onclick="goToSlide('delivery', 0)"></button>
-                        <button onclick="goToSlide('delivery', 1)"></button>
-                    </div>
-                </div>
-                
-                <div style="margin-top:30px;">
-                    <a href="contact.html" class="btn" style="background:#00d4ff;color:#0a0e17;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;">Build My Delivery Website</a>
-                    <a href="#industries-9" class="btn" style="border:2px solid #00d4ff;color:#00d4ff;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;background:transparent;">See Next</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- ===== INDUSTRY 9: REAL ESTATE ===== -->
-    <!-- ============================================================ -->
-    <section class="industry-section industry-realestate" id="industries-9">
-        <div class="container">
-            <div style="text-align:center;">
-                <span class="industry-label"><i class="fas fa-home"></i> Real Estate</span>
-                <i class="fas fa-home industry-icon"></i>
-                <h2 class="section-title">A Website That <span>Sells Homes</span></h2>
-                <p class="industry-description">Beautiful property listings, virtual tours, and lead capture — everything you need to sell more homes online.</p>
-                
-                <div class="demo-carousel" id="carousel-realestate">
-                    <div class="carousel-track" id="track-realestate">
-                        <div class="carousel-slide demo-realestate">
-                            <div class="demo-hero">
-                                <div><h3 style="color:#8b5cf6;">Find Your Dream Home</h3><p style="opacity:0.7;">Search properties in your area</p></div>
-                                <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;"><i class="fas fa-search" style="color:#8b5cf6;"></i><input type="text" placeholder="Search..." style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:#fff;flex:1;min-width:150px;" /></div>
-                            </div>
-                            <div class="demo-properties">
-                                <div class="demo-property"><i class="fas fa-home" style="font-size:2rem;color:#8b5cf6;"></i><h4>Modern Villa</h4><p class="price">R2.5M</p><p style="opacity:0.7;">4 bed, 3 bath</p></div>
-                                <div class="demo-property"><i class="fas fa-building" style="font-size:2rem;color:#8b5cf6;"></i><h4>City Apartment</h4><p class="price">R1.2M</p><p style="opacity:0.7;">2 bed, 2 bath</p></div>
-                                <div class="demo-property"><i class="fas fa-house" style="font-size:2rem;color:#8b5cf6;"></i><h4>Family Home</h4><p class="price">R1.8M</p><p style="opacity:0.7;">3 bed, 2 bath</p></div>
-                            </div>
-                        </div>
-                        <div class="carousel-slide demo-realestate">
-                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:20px;">
-                                <div style="background:rgba(139,92,246,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(139,92,246,0.1);">
-                                    <i class="fas fa-star" style="font-size:2.5rem;color:#8b5cf6;margin-bottom:10px;"></i>
-                                    <h4>Top Agents</h4>
-                                    <p style="opacity:0.7;">Expert real estate professionals</p>
-                                    <button class="btn" style="background:#8b5cf6;color:#fff;font-size:0.85rem;margin-top:10px;">Meet the Team</button>
-                                </div>
-                                <div style="background:rgba(139,92,246,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(139,92,246,0.1);">
-                                    <i class="fas fa-video" style="font-size:2.5rem;color:#8b5cf6;margin-bottom:10px;"></i>
-                                    <h4>Virtual Tours</h4>
-                                    <p style="opacity:0.7;">View properties from anywhere</p>
-                                    <button class="btn" style="background:#8b5cf6;color:#fff;font-size:0.85rem;margin-top:10px;">Take a Tour</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="carousel-nav prev" onclick="prevSlide('realestate')">‹</button>
-                    <button class="carousel-nav next" onclick="nextSlide('realestate')">›</button>
-                    <div class="carousel-indicators" id="indicators-realestate">
-                        <button class="active" onclick="goToSlide('realestate', 0)"></button>
-                        <button onclick="goToSlide('realestate', 1)"></button>
-                    </div>
-                </div>
-                
-                <div style="margin-top:30px;">
-                    <a href="contact.html" class="btn" style="background:#00d4ff;color:#0a0e17;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;">Build My Real Estate Website</a>
-                    <a href="#industries-10" class="btn" style="border:2px solid #00d4ff;color:#00d4ff;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;background:transparent;">See Next</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- ===== INDUSTRY 10: FITNESS ===== -->
-    <!-- ============================================================ -->
-    <section class="industry-section industry-fitness" id="industries-10">
-        <div class="container">
-            <div style="text-align:center;">
-                <span class="industry-label"><i class="fas fa-dumbbell"></i> Fitness &amp; Gym</span>
-                <i class="fas fa-dumbbell industry-icon"></i>
-                <h2 class="section-title">A Website That <span>Motivates</span></h2>
-                <p class="industry-description">Showcase your gym, classes, trainers, and success stories — inspire people to start their fitness journey with you.</p>
-                
-                <div class="demo-carousel" id="carousel-fitness">
-                    <div class="carousel-track" id="track-fitness">
-                        <div class="carousel-slide demo-fitness">
-                            <div class="demo-hero">
-                                <i class="fas fa-dumbbell" style="font-size:3rem;color:#ef4444;"></i>
-                                <div style="flex:1;"><h3>💪 Transform Your Body</h3><p style="opacity:0.8;">Expert trainers. World-class facilities.</p></div>
-                                <button class="btn" style="background:#ef4444;color:#fff;">Join Now</button>
-                            </div>
-                            <div class="demo-classes">
-                                <div class="demo-class"><i class="fas fa-running" style="font-size:1.5rem;color:#ef4444;"></i><h4>Cardio</h4><p style="opacity:0.7;">Mon/Wed/Fri</p></div>
-                                <div class="demo-class"><i class="fas fa-dumbbell" style="font-size:1.5rem;color:#ef4444;"></i><h4>Strength</h4><p style="opacity:0.7;">Tue/Thu/Sat</p></div>
-                                <div class="demo-class"><i class="fas fa-spa" style="font-size:1.5rem;color:#ef4444;"></i><h4>Yoga</h4><p style="opacity:0.7;">Daily</p></div>
-                            </div>
-                        </div>
-                        <div class="carousel-slide demo-fitness">
-                            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:15px;padding:20px;">
-                                <div style="background:rgba(239,68,68,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(239,68,68,0.1);">
-                                    <i class="fas fa-user-tie" style="font-size:2.5rem;color:#ef4444;margin-bottom:10px;"></i>
-                                    <h4>Pro Trainers</h4>
-                                    <p style="opacity:0.7;">Certified coaches</p>
-                                </div>
-                                <div style="background:rgba(239,68,68,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(239,68,68,0.1);">
-                                    <i class="fas fa-calendar-check" style="font-size:2.5rem;color:#ef4444;margin-bottom:10px;"></i>
-                                    <h4>Flexible Hours</h4>
-                                    <p style="opacity:0.7;">5am - 10pm daily</p>
-                                </div>
-                                <div style="background:rgba(239,68,68,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(239,68,68,0.1);">
-                                    <i class="fas fa-trophy" style="font-size:2.5rem;color:#ef4444;margin-bottom:10px;"></i>
-                                    <h4>Results Guaranteed</h4>
-                                    <p style="opacity:0.7;">See real transformations</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="carousel-nav prev" onclick="prevSlide('fitness')">‹</button>
-                    <button class="carousel-nav next" onclick="nextSlide('fitness')">›</button>
-                    <div class="carousel-indicators" id="indicators-fitness">
-                        <button class="active" onclick="goToSlide('fitness', 0)"></button>
-                        <button onclick="goToSlide('fitness', 1)"></button>
-                    </div>
-                </div>
-                
-                <div style="margin-top:30px;">
-                    <a href="contact.html" class="btn" style="background:#00d4ff;color:#0a0e17;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;">Build My Gym Website</a>
-                    <a href="#industries-11" class="btn" style="border:2px solid #00d4ff;color:#00d4ff;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;background:transparent;">See Next</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- ===== INDUSTRY 11: PHOTOGRAPHY ===== -->
-    <!-- ============================================================ -->
-    <section class="industry-section industry-photography" id="industries-11">
-        <div class="container">
-            <div style="text-align:center;">
-                <span class="industry-label"><i class="fas fa-camera"></i> Photography</span>
-                <i class="fas fa-camera industry-icon"></i>
-                <h2 class="section-title">A Website That <span>Captures</span></h2>
-                <p class="industry-description">Showcase your portfolio, attract clients, and book more shoots with a stunning photography website that speaks for itself.</p>
-                
-                <div class="demo-carousel" id="carousel-photography">
-                    <div class="carousel-track" id="track-photography">
-                        <div class="carousel-slide demo-photography">
-                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(107,114,128,0.05);border-radius:12px;border-left:4px solid #6b7280;margin-bottom:20px;flex-wrap:wrap;">
-                                <i class="fas fa-camera" style="font-size:3rem;color:#9ca3af;"></i>
-                                <div style="flex:1;"><h3>Capturing Life's Moments</h3><p style="opacity:0.7;">Professional photography services</p></div>
-                                <button class="btn" style="background:#6b7280;color:#fff;">Book a Shoot</button>
-                            </div>
-                            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
-                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-ring" style="color:#9ca3af;font-size:1.5rem;"></i><br/>Weddings</div>
-                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-users" style="color:#9ca3af;font-size:1.5rem;"></i><br/>Portraits</div>
-                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-building" style="color:#9ca3af;font-size:1.5rem;"></i><br/>Commercial</div>
-                            </div>
-                        </div>
-                        <div class="carousel-slide demo-photography">
-                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:20px;">
-                                <div style="background:rgba(107,114,128,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(107,114,128,0.1);">
-                                    <i class="fas fa-star" style="font-size:2.5rem;color:#9ca3af;margin-bottom:10px;"></i>
-                                    <h4>5-Star Reviews</h4>
-                                    <p style="opacity:0.7;">100+ happy clients</p>
-                                </div>
-                                <div style="background:rgba(107,114,128,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(107,114,128,0.1);">
-                                    <i class="fas fa-images" style="font-size:2.5rem;color:#9ca3af;margin-bottom:10px;"></i>
-                                    <h4>Portfolio</h4>
-                                    <p style="opacity:0.7;">View recent work</p>
-                                    <button class="btn" style="background:#6b7280;color:#fff;font-size:0.85rem;margin-top:10px;">View Gallery</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="carousel-nav prev" onclick="prevSlide('photography')">‹</button>
-                    <button class="carousel-nav next" onclick="nextSlide('photography')">›</button>
-                    <div class="carousel-indicators" id="indicators-photography">
-                        <button class="active" onclick="goToSlide('photography', 0)"></button>
-                        <button onclick="goToSlide('photography', 1)"></button>
-                    </div>
-                </div>
-                
-                <div style="margin-top:30px;">
-                    <a href="contact.html" class="btn" style="background:#00d4ff;color:#0a0e17;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;">Build My Photography Website</a>
-                    <a href="#industries-12" class="btn" style="border:2px solid #00d4ff;color:#00d4ff;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;background:transparent;">See Next</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- ===== INDUSTRY 12: HEALTHCARE ===== -->
-    <!-- ============================================================ -->
-    <section class="industry-section industry-healthcare" id="industries-12">
-        <div class="container">
-            <div style="text-align:center;">
-                <span class="industry-label"><i class="fas fa-heartbeat"></i> Healthcare &amp; Medical</span>
-                <i class="fas fa-heartbeat industry-icon"></i>
-                <h2 class="section-title">A Website That <span>Heals</span></h2>
-                <p class="industry-description">Professional, caring, and trustworthy — your healthcare website should make patients feel safe and informed.</p>
-                
-                <div class="demo-carousel" id="carousel-healthcare">
-                    <div class="carousel-track" id="track-healthcare">
-                        <div class="carousel-slide demo-healthcare">
-                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(14,165,233,0.05);border-radius:12px;border-left:4px solid #0ea5e9;margin-bottom:20px;flex-wrap:wrap;">
-                                <i class="fas fa-heartbeat" style="font-size:3rem;color:#0ea5e9;"></i>
-                                <div style="flex:1;"><h3>Your Health, Our Priority</h3><p style="opacity:0.8;">Caring, professional medical services</p></div>
-                                <button class="btn" style="background:#0ea5e9;color:#fff;">Book Appointment</button>
-                            </div>
-                            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
-                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-user-md" style="color:#0ea5e9;font-size:1.5rem;"></i><br/>General Practice</div>
-                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-stethoscope" style="color:#0ea5e9;font-size:1.5rem;"></i><br/>Specialists</div>
-                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-ambulance" style="color:#0ea5e9;font-size:1.5rem;"></i><br/>Emergency</div>
-                            </div>
-                        </div>
-                        <div class="carousel-slide demo-healthcare">
-                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:20px;">
-                                <div style="background:rgba(14,165,233,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(14,165,233,0.1);">
-                                    <i class="fas fa-calendar-check" style="font-size:2.5rem;color:#0ea5e9;margin-bottom:10px;"></i>
-                                    <h4>Online Booking</h4>
-                                    <p style="opacity:0.7;">Schedule appointments easily</p>
-                                    <button class="btn" style="background:#0ea5e9;color:#fff;font-size:0.85rem;margin-top:10px;">Book Now</button>
-                                </div>
-                                <div style="background:rgba(14,165,233,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(14,165,233,0.1);">
-                                    <i class="fas fa-file-medical" style="font-size:2.5rem;color:#0ea5e9;margin-bottom:10px;"></i>
-                                    <h4>Patient Portal</h4>
-                                    <p style="opacity:0.7;">Access your health records</p>
-                                    <button class="btn" style="background:#0ea5e9;color:#fff;font-size:0.85rem;margin-top:10px;">Login</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="carousel-nav prev" onclick="prevSlide('healthcare')">‹</button>
-                    <button class="carousel-nav next" onclick="nextSlide('healthcare')">›</button>
-                    <div class="carousel-indicators" id="indicators-healthcare">
-                        <button class="active" onclick="goToSlide('healthcare', 0)"></button>
-                        <button onclick="goToSlide('healthcare', 1)"></button>
-                    </div>
-                </div>
-                
-                <div style="margin-top:30px;">
-                    <a href="contact.html" class="btn" style="background:#00d4ff;color:#0a0e17;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;">Build My Healthcare Website</a>
-                    <a href="#industries-13" class="btn" style="border:2px solid #00d4ff;color:#00d4ff;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;background:transparent;">See Next</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- ===== INDUSTRY 13: HOTEL ===== -->
-    <!-- ============================================================ -->
-    <section class="industry-section industry-hotel" id="industries-13">
-        <div class="container">
-            <div style="text-align:center;">
-                <span class="industry-label"><i class="fas fa-hotel"></i> Hotel &amp; Hospitality</span>
-                <i class="fas fa-hotel industry-icon"></i>
-                <h2 class="section-title">A Website That <span>Welcomes</span></h2>
-                <p class="industry-description">Beautiful, inviting, and easy to book — give your guests a taste of your hospitality before they even arrive.</p>
-                
-                <div class="demo-carousel" id="carousel-hotel">
-                    <div class="carousel-track" id="track-hotel">
-                        <div class="carousel-slide demo-hotel">
-                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(245,158,11,0.05);border-radius:12px;border-left:4px solid #f59e0b;margin-bottom:20px;flex-wrap:wrap;">
-                                <i class="fas fa-hotel" style="font-size:3rem;color:#f59e0b;"></i>
-                                <div style="flex:1;"><h3>Experience Luxury</h3><p style="opacity:0.8;">Book your dream stay today</p></div>
-                                <button class="btn" style="background:#f59e0b;color:#1a0a0a;">Check Availability</button>
-                            </div>
-                            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
-                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-bed" style="color:#f59e0b;font-size:1.5rem;"></i><br/>Deluxe Suites</div>
-                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-utensils" style="color:#f59e0b;font-size:1.5rem;"></i><br/>Fine Dining</div>
-                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-spa" style="color:#f59e0b;font-size:1.5rem;"></i><br/>Spa &amp; Wellness</div>
-                            </div>
-                        </div>
-                        <div class="carousel-slide demo-hotel">
-                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:20px;">
-                                <div style="background:rgba(245,158,11,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(245,158,11,0.1);">
-                                    <i class="fas fa-star" style="font-size:2.5rem;color:#f59e0b;margin-bottom:10px;"></i>
-                                    <h4>5-Star Rated</h4>
-                                    <p style="opacity:0.7;">1000+ guest reviews</p>
-                                </div>
-                                <div style="background:rgba(245,158,11,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(245,158,11,0.1);">
-                                    <i class="fas fa-calendar-check" style="font-size:2.5rem;color:#f59e0b;margin-bottom:10px;"></i>
-                                    <h4>Special Offers</h4>
-                                    <p style="opacity:0.7;">Book now and save</p>
-                                    <button class="btn" style="background:#f59e0b;color:#1a0a0a;font-size:0.85rem;margin-top:10px;">View Deals</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="carousel-nav prev" onclick="prevSlide('hotel')">‹</button>
-                    <button class="carousel-nav next" onclick="nextSlide('hotel')">›</button>
-                    <div class="carousel-indicators" id="indicators-hotel">
-                        <button class="active" onclick="goToSlide('hotel', 0)"></button>
-                        <button onclick="goToSlide('hotel', 1)"></button>
-                    </div>
-                </div>
-                
-                <div style="margin-top:30px;">
-                    <a href="contact.html" class="btn" style="background:#00d4ff;color:#0a0e17;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;">Build My Hotel Website</a>
-                    <a href="#industries-14" class="btn" style="border:2px solid #00d4ff;color:#00d4ff;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;background:transparent;">See Next</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- ===== INDUSTRY 14: IT & TECH ===== -->
-    <!-- ============================================================ -->
-    <section class="industry-section industry-it" id="industries-14">
-        <div class="container">
-            <div style="text-align:center;">
-                <span class="industry-label"><i class="fas fa-laptop-code"></i> IT &amp; Tech Services</span>
-                <i class="fas fa-laptop-code industry-icon"></i>
-                <h2 class="section-title">A Website That <span>Innovates</span></h2>
-                <p class="industry-description">Modern, cutting-edge, and professional — showcase your tech solutions and attract clients who need your expertise.</p>
-                
-                <div class="demo-carousel" id="carousel-it">
-                    <div class="carousel-track" id="track-it">
-                        <div class="carousel-slide demo-it">
-                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(6,182,212,0.05);border-radius:12px;border-left:4px solid #06b6d4;margin-bottom:20px;flex-wrap:wrap;">
-                                <i class="fas fa-laptop-code" style="font-size:3rem;color:#06b6d4;"></i>
-                                <div style="flex:1;"><h3>Tech Solutions That Work</h3><p style="opacity:0.8;">Cutting-edge IT services</p></div>
-                                <button class="btn" style="background:#06b6d4;color:#0a0a1a;">Get a Quote</button>
-                            </div>
-                            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
-                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-cloud" style="color:#06b6d4;font-size:1.5rem;"></i><br/>Cloud Services</div>
-                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-shield-alt" style="color:#06b6d4;font-size:1.5rem;"></i><br/>Cyber Security</div>
-                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-headset" style="color:#06b6d4;font-size:1.5rem;"></i><br/>24/7 Support</div>
-                            </div>
-                        </div>
-                        <div class="carousel-slide demo-it">
-                            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:15px;padding:20px;">
-                                <div style="background:rgba(6,182,212,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(6,182,212,0.1);">
-                                    <i class="fas fa-code" style="font-size:2.5rem;color:#06b6d4;margin-bottom:10px;"></i>
-                                    <h4>Web Development</h4>
-                                    <p style="opacity:0.7;">Custom solutions</p>
-                                </div>
-                                <div style="background:rgba(6,182,212,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(6,182,212,0.1);">
-                                    <i class="fas fa-mobile-alt" style="font-size:2.5rem;color:#06b6d4;margin-bottom:10px;"></i>
-                                    <h4>App Development</h4>
-                                    <p style="opacity:0.7;">iOS &amp; Android</p>
-                                </div>
-                                <div style="background:rgba(6,182,212,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(6,182,212,0.1);">
-                                    <i class="fas fa-robot" style="font-size:2.5rem;color:#06b6d4;margin-bottom:10px;"></i>
-                                    <h4>AI Solutions</h4>
-                                    <p style="opacity:0.7;">Future-ready tech</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="carousel-nav prev" onclick="prevSlide('it')">‹</button>
-                    <button class="carousel-nav next" onclick="nextSlide('it')">›</button>
-                    <div class="carousel-indicators" id="indicators-it">
-                        <button class="active" onclick="goToSlide('it', 0)"></button>
-                        <button onclick="goToSlide('it', 1)"></button>
-                    </div>
-                </div>
-                
-                <div style="margin-top:30px;">
-                    <a href="contact.html" class="btn" style="background:#00d4ff;color:#0a0e17;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;">Build My IT Website</a>
-                    <a href="#industries-15" class="btn" style="border:2px solid #00d4ff;color:#00d4ff;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;background:transparent;">See Next</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- ===== INDUSTRY 15: CONSTRUCTION ===== -->
-    <!-- ============================================================ -->
-    <section class="industry-section industry-construction" id="industries-15">
-        <div class="container">
-            <div style="text-align:center;">
-                <span class="industry-label"><i class="fas fa-hard-hat"></i> Construction &amp; Building</span>
-                <i class="fas fa-hard-hat industry-icon"></i>
-                <h2 class="section-title">A Website That <span>Builds Trust</span></h2>
-                <p class="industry-description">Showcase your projects, services, and expertise — attract more clients and build your reputation as a reliable contractor.</p>
-                
-                <div class="demo-carousel" id="carousel-construction">
-                    <div class="carousel-track" id="track-construction">
-                        <div class="carousel-slide demo-construction">
-                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(249,115,22,0.05);border-radius:12px;border-left:4px solid #f97316;margin-bottom:20px;flex-wrap:wrap;">
-                                <i class="fas fa-hard-hat" style="font-size:3rem;color:#f97316;"></i>
-                                <div style="flex:1;"><h3>Building Excellence</h3><p style="opacity:0.8;">Quality construction you can trust</p></div>
-                                <button class="btn" style="background:#f97316;color:#0a0a0a;">Get a Quote</button>
-                            </div>
-                            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
-                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-home" style="color:#f97316;font-size:1.5rem;"></i><br/>Residential</div>
-                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-building" style="color:#f97316;font-size:1.5rem;"></i><br/>Commercial</div>
-                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-warehouse" style="color:#f97316;font-size:1.5rem;"></i><br/>Industrial</div>
-                            </div>
-                        </div>
-                        <div class="carousel-slide demo-construction">
-                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:20px;">
-                                <div style="background:rgba(249,115,22,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(249,115,22,0.1);">
-                                    <i class="fas fa-star" style="font-size:2.5rem;color:#f97316;margin-bottom:10px;"></i>
-                                    <h4>10+ Years</h4>
-                                    <p style="opacity:0.7;">Experience</p>
-                                </div>
-                                <div style="background:rgba(249,115,22,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(249,115,22,0.1);">
-                                    <i class="fas fa-users" style="font-size:2.5rem;color:#f97316;margin-bottom:10px;"></i>
-                                    <h4>Expert Team</h4>
-                                    <p style="opacity:0.7;">50+ professionals</p>
-                                    <button class="btn" style="background:#f97316;color:#0a0a0a;font-size:0.85rem;margin-top:10px;">Meet the Team</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="carousel-nav prev" onclick="prevSlide('construction')">‹</button>
-                    <button class="carousel-nav next" onclick="nextSlide('construction')">›</button>
-                    <div class="carousel-indicators" id="indicators-construction">
-                        <button class="active" onclick="goToSlide('construction', 0)"></button>
-                        <button onclick="goToSlide('construction', 1)"></button>
-                    </div>
-                </div>
-                
-                <div style="margin-top:30px;">
-                    <a href="contact.html" class="btn" style="background:#00d4ff;color:#0a0e17;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;">Build My Construction Website</a>
-                    <a href="#industries-16" class="btn" style="border:2px solid #00d4ff;color:#00d4ff;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;background:transparent;">See Next</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- ===== INDUSTRY 16: PET SERVICES ===== -->
-    <!-- ============================================================ -->
-    <section class="industry-section industry-pets" id="industries-16">
-        <div class="container">
-            <div style="text-align:center;">
-                <span class="industry-label"><i class="fas fa-paw"></i> Pet Services</span>
-                <i class="fas fa-paw industry-icon"></i>
-                <h2 class="section-title">A Website That <span>Welcomes</span></h2>
-                <p class="industry-description">Friendly, caring, and professional — connect with pet owners and show them that their furry family members are in safe hands.</p>
-                
-                <div class="demo-carousel" id="carousel-pets">
-                    <div class="carousel-track" id="track-pets">
-                        <div class="carousel-slide demo-pets">
-                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(16,185,129,0.05);border-radius:12px;border-left:4px solid #10b981;margin-bottom:20px;flex-wrap:wrap;">
-                                <i class="fas fa-paw" style="font-size:3rem;color:#10b981;"></i>
-                                <div style="flex:1;"><h3>🐾 Your Pet's Home Away From Home</h3><p style="opacity:0.8;">Loving care for your furry friends</p></div>
-                                <button class="btn" style="background:#10b981;color:#0a1a0a;">Book Now</button>
-                            </div>
-                            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
-                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-dog" style="color:#10b981;font-size:1.5rem;"></i><br/>Dog Boarding</div>
-                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-cat" style="color:#10b981;font-size:1.5rem;"></i><br/>Cat Sitting</div>
-                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-cut" style="color:#10b981;font-size:1.5rem;"></i><br/>Grooming</div>
-                            </div>
-                        </div>
-                        <div class="carousel-slide demo-pets">
-                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:20px;">
-                                <div style="background:rgba(16,185,129,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(16,185,129,0.1);">
-                                    <i class="fas fa-star" style="font-size:2.5rem;color:#10b981;margin-bottom:10px;"></i>
-                                    <h4>5-Star Care</h4>
-                                    <p style="opacity:0.7;">200+ happy pets</p>
-                                </div>
-                                <div style="background:rgba(16,185,129,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(16,185,129,0.1);">
-                                    <i class="fas fa-heart" style="font-size:2.5rem;color:#10b981;margin-bottom:10px;"></i>
-                                    <h4>Loving Staff</h4>
-                                    <p style="opacity:0.7;">Certified pet care professionals</p>
-                                    <button class="btn" style="background:#10b981;color:#0a1a0a;font-size:0.85rem;margin-top:10px;">Meet the Team</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="carousel-nav prev" onclick="prevSlide('pets')">‹</button>
-                    <button class="carousel-nav next" onclick="nextSlide('pets')">›</button>
-                    <div class="carousel-indicators" id="indicators-pets">
-                        <button class="active" onclick="goToSlide('pets', 0)"></button>
-                        <button onclick="goToSlide('pets', 1)"></button>
-                    </div>
-                </div>
-                
-                <div style="margin-top:30px;">
-                    <a href="contact.html" class="btn" style="background:#00d4ff;color:#0a0e17;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;">Build My Pet Services Website</a>
-                    <a href="#industries-17" class="btn" style="border:2px solid #00d4ff;color:#00d4ff;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;background:transparent;">See Next</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- ===== INDUSTRY 17: EVENT PLANNING ===== -->
-    <!-- ============================================================ -->
-    <section class="industry-section industry-events" id="industries-17">
-        <div class="container">
-            <div style="text-align:center;">
-                <span class="industry-label"><i class="fas fa-calendar-alt"></i> Event Planning</span>
-                <i class="fas fa-calendar-alt industry-icon"></i>
-                <h2 class="section-title">A Website That <span>Celebrates</span></h2>
-                <p class="industry-description">Show your creativity and planning skills with a stunning website that makes clients want to book you for their special occasions.</p>
-                
-                <div class="demo-carousel" id="carousel-events">
-                    <div class="carousel-track" id="track-events">
-                        <div class="carousel-slide demo-events">
-                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(236,72,153,0.05);border-radius:12px;border-left:4px solid #ec4899;margin-bottom:20px;flex-wrap:wrap;">
-                                <i class="fas fa-calendar-alt" style="font-size:3rem;color:#ec4899;"></i>
-                                <div style="flex:1;"><h3>🎉 Creating Unforgettable Moments</h3><p style="opacity:0.8;">Professional event planning services</p></div>
-                                <button class="btn" style="background:#ec4899;color:#fff;">Plan Your Event</button>
-                            </div>
-                            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
-                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-ring" style="color:#ec4899;font-size:1.5rem;"></i><br/>Weddings</div>
-                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-birthday-cake" style="color:#ec4899;font-size:1.5rem;"></i><br/>Birthdays</div>
-                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-briefcase" style="color:#ec4899;font-size:1.5rem;"></i><br/>Corporate</div>
-                            </div>
-                        </div>
-                        <div class="carousel-slide demo-events">
-                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:20px;">
-                                <div style="background:rgba(236,72,153,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(236,72,153,0.1);">
-                                    <i class="fas fa-star" style="font-size:2.5rem;color:#ec4899;margin-bottom:10px;"></i>
-                                    <h4>5-Star Planning</h4>
-                                    <p style="opacity:0.7;">100+ successful events</p>
-                                </div>
-                                <div style="background:rgba(236,72,153,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(236,72,153,0.1);">
-                                    <i class="fas fa-images" style="font-size:2.5rem;color:#ec4899;margin-bottom:10px;"></i>
-                                    <h4>Event Gallery</h4>
-                                    <p style="opacity:0.7;">See our work</p>
-                                    <button class="btn" style="background:#ec4899;color:#fff;font-size:0.85rem;margin-top:10px;">View Portfolio</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="carousel-nav prev" onclick="prevSlide('events')">‹</button>
-                    <button class="carousel-nav next" onclick="nextSlide('events')">›</button>
-                    <div class="carousel-indicators" id="indicators-events">
-                        <button class="active" onclick="goToSlide('events', 0)"></button>
-                        <button onclick="goToSlide('events', 1)"></button>
-                    </div>
-                </div>
-                
-                <div style="margin-top:30px;">
-                    <a href="contact.html" class="btn" style="background:#00d4ff;color:#0a0e17;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;">Build My Event Planning Website</a>
-                    <a href="#industries-18" class="btn" style="border:2px solid #00d4ff;color:#00d4ff;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;background:transparent;">See Next</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- ===== INDUSTRY 18: FINANCIAL ===== -->
-    <!-- ============================================================ -->
-    <section class="industry-section industry-financial" id="industries-18">
-        <div class="container">
-            <div style="text-align:center;">
-                <span class="industry-label"><i class="fas fa-coins"></i> Financial Services</span>
-                <i class="fas fa-coins industry-icon"></i>
-                <h2 class="section-title">A Website That <span>Builds Wealth</span></h2>
-                <p class="industry-description">Professional, trustworthy, and secure — your financial services website should instill confidence and attract high-value clients.</p>
-                
-                <div class="demo-carousel" id="carousel-financial">
-                    <div class="carousel-track" id="track-financial">
-                        <div class="carousel-slide demo-financial">
-                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(20,184,166,0.05);border-radius:12px;border-left:4px solid #14b8a6;margin-bottom:20px;flex-wrap:wrap;">
-                                <i class="fas fa-coins" style="font-size:3rem;color:#14b8a6;"></i>
-                                <div style="flex:1;"><h3>Your Financial Future Starts Here</h3><p style="opacity:0.8;">Expert financial advice and solutions</p></div>
-                                <button class="btn" style="background:#14b8a6;color:#0a1a1a;">Get Started</button>
-                            </div>
-                            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
-                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-chart-line" style="color:#14b8a6;font-size:1.5rem;"></i><br/>Investments</div>
-                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-piggy-bank" style="color:#14b8a6;font-size:1.5rem;"></i><br/>Savings</div>
-                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-hand-holding-usd" style="color:#14b8a6;font-size:1.5rem;"></i><br/>Loans</div>
-                            </div>
-                        </div>
-                        <div class="carousel-slide demo-financial">
-                            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:15px;padding:20px;">
-                                <div style="background:rgba(20,184,166,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(20,184,166,0.1);">
-                                    <i class="fas fa-star" style="font-size:2.5rem;color:#14b8a6;margin-bottom:10px;"></i>
-                                    <h4>Trusted</h4>
-                                    <p style="opacity:0.7;">500+ clients</p>
-                                </div>
-                                <div style="background:rgba(20,184,166,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(20,184,166,0.1);">
-                                    <i class="fas fa-user-tie" style="font-size:2.5rem;color:#14b8a6;margin-bottom:10px;"></i>
-                                    <h4>Expert Advisors</h4>
-                                    <p style="opacity:0.7;">Certified professionals</p>
-                                </div>
-                                <div style="background:rgba(20,184,166,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(20,184,166,0.1);">
-                                    <i class="fas fa-shield-alt" style="font-size:2.5rem;color:#14b8a6;margin-bottom:10px;"></i>
-                                    <h4>Secure</h4>
-                                    <p style="opacity:0.7;">100% protected</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="carousel-nav prev" onclick="prevSlide('financial')">‹</button>
-                    <button class="carousel-nav next" onclick="nextSlide('financial')">›</button>
-                    <div class="carousel-indicators" id="indicators-financial">
-                        <button class="active" onclick="goToSlide('financial', 0)"></button>
-                        <button onclick="goToSlide('financial', 1)"></button>
-                    </div>
-                </div>
-                
-                <div style="margin-top:30px;">
-                    <a href="contact.html" class="btn" style="background:#00d4ff;color:#0a0e17;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;">Build My Financial Website</a>
-                    <a href="#industries-19" class="btn" style="border:2px solid #00d4ff;color:#00d4ff;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;background:transparent;">See Next</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- ===== INDUSTRY 19: TRAVEL ===== -->
-    <!-- ============================================================ -->
-    <section class="industry-section industry-travel" id="industries-19">
-        <div class="container">
-            <div style="text-align:center;">
-                <span class="industry-label"><i class="fas fa-plane"></i> Travel &amp; Tourism</span>
-                <i class="fas fa-plane industry-icon"></i>
-                <h2 class="section-title">A Website That <span>Inspires</span></h2>
-                <p class="industry-description">Beautiful, adventurous, and easy to book — inspire travelers with stunning visuals and make planning their next trip effortless.</p>
-                
-                <div class="demo-carousel" id="carousel-travel">
-                    <div class="carousel-track" id="track-travel">
-                        <div class="carousel-slide demo-travel">
-                            <div class="demo-search-big">
-                                <h3>🌍 Where to?</h3>
-                                <input type="text" placeholder="Search destinations..." />
-                                <button class="btn" style="background:#06b6d4;color:#0a1a2a;">Search</button>
-                            </div>
-                            <div class="demo-destinations">
-                                <div class="demo-destination"><i class="fas fa-umbrella-beach" style="color:#06b6d4;font-size:2rem;"></i><h4>Beach</h4><p style="opacity:0.7;">5 destinations</p></div>
-                                <div class="demo-destination"><i class="fas fa-mountain" style="color:#06b6d4;font-size:2rem;"></i><h4>Mountains</h4><p style="opacity:0.7;">8 destinations</p></div>
-                                <div class="demo-destination"><i class="fas fa-city" style="color:#06b6d4;font-size:2rem;"></i><h4>City</h4><p style="opacity:0.7;">12 destinations</p></div>
-                                <div class="demo-destination"><i class="fas fa-tree" style="color:#06b6d4;font-size:2rem;"></i><h4>Nature</h4><p style="opacity:0.7;">6 destinations</p></div>
-                            </div>
-                        </div>
-                        <div class="carousel-slide demo-travel">
-                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:20px;">
-                                <div style="background:rgba(6,182,212,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(6,182,212,0.1);">
-                                    <i class="fas fa-star" style="font-size:2.5rem;color:#06b6d4;margin-bottom:10px;"></i>
-                                    <h4>Top Rated</h4>
-                                    <p style="opacity:0.7;">1000+ reviews</p>
-                                </div>
-                                <div style="background:rgba(6,182,212,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(6,182,212,0.1);">
-                                    <i class="fas fa-suitcase" style="font-size:2.5rem;color:#06b6d4;margin-bottom:10px;"></i>
-                                    <h4>Travel Packages</h4>
-                                    <p style="opacity:0.7;">Save up to 40%</p>
-                                    <button class="btn" style="background:#06b6d4;color:#0a1a2a;font-size:0.85rem;margin-top:10px;">View Deals</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="carousel-nav prev" onclick="prevSlide('travel')">‹</button>
-                    <button class="carousel-nav next" onclick="nextSlide('travel')">›</button>
-                    <div class="carousel-indicators" id="indicators-travel">
-                        <button class="active" onclick="goToSlide('travel', 0)"></button>
-                        <button onclick="goToSlide('travel', 1)"></button>
-                    </div>
-                </div>
-                
-                <div style="margin-top:30px;">
-                    <a href="contact.html" class="btn" style="background:#00d4ff;color:#0a0e17;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;">Build My Travel Website</a>
-                    <a href="#industries-20" class="btn" style="border:2px solid #00d4ff;color:#00d4ff;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;background:transparent;">See Next</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- ===== INDUSTRY 20: LEGAL ===== -->
-    <!-- ============================================================ -->
-    <section class="industry-section industry-legal" id="industries-20">
-        <div class="container">
-            <div style="text-align:center;">
-                <span class="industry-label"><i class="fas fa-gavel"></i> Law &amp; Legal</span>
-                <i class="fas fa-gavel industry-icon"></i>
-                <h2 class="section-title">A Website That <span>Commands Respect</span></h2>
-                <p class="industry-description">Authoritative, professional, and trustworthy — your legal website should instill confidence and attract clients who need your expertise.</p>
-                
-                <div class="demo-carousel" id="carousel-legal">
-                    <div class="carousel-track" id="track-legal">
-                        <div class="carousel-slide demo-legal">
-                            <div style="display:flex;align-items:center;gap:30px;padding:20px;background:rgba(99,102,241,0.05);border-radius:12px;border-left:4px solid #6366f1;margin-bottom:20px;flex-wrap:wrap;">
-                                <i class="fas fa-gavel" style="font-size:3rem;color:#6366f1;"></i>
-                                <div style="flex:1;"><h3>⚖️ Justice &amp; Advocacy</h3><p style="opacity:0.8;">Expert legal representation you can trust</p></div>
-                                <button class="btn" style="background:#6366f1;color:#fff;">Free Consultation</button>
-                            </div>
-                            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
-                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-balance-scale" style="color:#6366f1;font-size:1.5rem;"></i><br/>Family Law</div>
-                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-building" style="color:#6366f1;font-size:1.5rem;"></i><br/>Corporate Law</div>
-                                <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;text-align:center;"><i class="fas fa-user-shield" style="color:#6366f1;font-size:1.5rem;"></i><br/>Criminal Defense</div>
-                            </div>
-                        </div>
-                        <div class="carousel-slide demo-legal">
-                            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:15px;padding:20px;">
-                                <div style="background:rgba(99,102,241,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(99,102,241,0.1);">
-                                    <i class="fas fa-star" style="font-size:2.5rem;color:#6366f1;margin-bottom:10px;"></i>
-                                    <h4>5-Star Rated</h4>
-                                    <p style="opacity:0.7;">200+ client reviews</p>
-                                </div>
-                                <div style="background:rgba(99,102,241,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(99,102,241,0.1);">
-                                    <i class="fas fa-gavel" style="font-size:2.5rem;color:#6366f1;margin-bottom:10px;"></i>
-                                    <h4>20+ Years</h4>
-                                    <p style="opacity:0.7;">Experience</p>
-                                </div>
-                                <div style="background:rgba(99,102,241,0.05);border-radius:12px;padding:25px;text-align:center;border:1px solid rgba(99,102,241,0.1);">
-                                    <i class="fas fa-trophy" style="font-size:2.5rem;color:#6366f1;margin-bottom:10px;"></i>
-                                    <h4>Results</h4>
-                                    <p style="opacity:0.7;">Successful cases</p>
-                                    <button class="btn" style="background:#6366f1;color:#fff;font-size:0.85rem;margin-top:10px;">View Results</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="carousel-nav prev" onclick="prevSlide('legal')">‹</button>
-                    <button class="carousel-nav next" onclick="nextSlide('legal')">›</button>
-                    <div class="carousel-indicators" id="indicators-legal">
-                        <button class="active" onclick="goToSlide('legal', 0)"></button>
-                        <button onclick="goToSlide('legal', 1)"></button>
-                    </div>
-                </div>
-                
-                <div style="margin-top:30px;">
-                    <a href="contact.html" class="btn" style="background:#00d4ff;color:#0a0e17;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;">Build My Legal Website</a>
-                    <a href="#cta-final" class="btn" style="border:2px solid #00d4ff;color:#00d4ff;padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;display:inline-block;margin:5px;background:transparent;">See Next</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- ===== CTA FINAL ===== -->
-    <section class="cta-final" id="cta-final">
+    <!-- ============================================================ -->
+    <section class="cta-final">
         <div class="container">
+            <span class="sheet-label">SHEET 05 / CONTACT</span>
             <h2>Ready to Build <span>Your Dream Website</span>?</h2>
             <p>
-                Whatever your industry, we create a website that perfectly represents 
+                Whatever your industry, we create a website that perfectly represents
                 your brand and speaks directly to your customers.
             </p>
-            <div class="cta-buttons">
-                <a href="contact.html" class="btn">Let's Build Yours</a>
-                <a href="portfolio.html" class="btn btn-outline">View Our Work</a>
+            <div class="btn-group">
+                <a href="contact.html" class="btn btn-primary">Let's Build Yours</a>
+                <a href="portfolio.html" class="btn btn-outline">View Full Portfolio</a>
             </div>
-            <div style="margin-top:40px; display:flex; gap:30px; justify-content:center; flex-wrap:wrap; color:#94a3b8; font-size:0.9rem;">
-                <span><i class="fas fa-check-circle" style="color:#00d4ff;"></i> Custom Design</span>
-                <span><i class="fas fa-check-circle" style="color:#00d4ff;"></i> Mobile Responsive</span>
-                <span><i class="fas fa-check-circle" style="color:#00d4ff;"></i> SEO Optimized</span>
-                <span><i class="fas fa-check-circle" style="color:#00d4ff;"></i> 24/7 Support</span>
+            <div class="features">
+                <span><i class="fas fa-check-circle"></i>Custom Design</span>
+                <span><i class="fas fa-check-circle"></i>Mobile Responsive</span>
+                <span><i class="fas fa-check-circle"></i>SEO Optimized</span>
+                <span><i class="fas fa-check-circle"></i>24/7 Support</span>
             </div>
         </div>
     </section>
 
+    <!-- ============================================================ -->
     <!-- ===== FOOTER ===== -->
+    <!-- ============================================================ -->
     <footer>
         <div class="container">
             <div class="footer-brand">
@@ -2336,116 +1045,96 @@
             <div class="footer-social">
                 <h5>Connect With Me</h5>
                 <div class="social-icons">
-                    <a href="#"><i class="fab fa-github"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="https://wa.me/27833842647" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://github.com/tyrontshabalala64-droid" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/vuako-tshabalala-975878266/?skipRedirect=true" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://wa.me/27833842647" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
             <div class="footer-bottom">&copy; 2026 Shabs Web Development. All rights reserved.</div>
         </div>
     </footer>
 
-    <!-- ===== FLOATING WHATSAPP BUTTON ===== -->
+    <!-- ============================================================ -->
+    <!-- ===== FLOATING WHATSAPP ===== -->
+    <!-- ============================================================ -->
     <a href="https://wa.me/27833842647" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
+    <!-- ============================================================ -->
     <!-- ===== JAVASCRIPT ===== -->
+    <!-- ============================================================ -->
     <script>
-        // ===== HAMBURGER MENU =====
         document.addEventListener('DOMContentLoaded', function() {
-            var hamburger = document.getElementById('hamburger');
-            var navMenu = document.getElementById('navMenu');
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('navMenu');
 
             if (hamburger && navMenu) {
                 hamburger.addEventListener('click', function() {
                     navMenu.classList.toggle('open');
                     hamburger.classList.toggle('active');
-                    var icon = hamburger.querySelector('i');
-                    if (navMenu.classList.contains('open')) {
-                        icon.className = 'fas fa-times';
-                    } else {
-                        icon.className = 'fas fa-bars';
-                    }
+                    const icon = hamburger.querySelector('i');
+                    icon.className = navMenu.classList.contains('open') ? 'fas fa-times' : 'fas fa-bars';
                 });
 
-                var navLinks = navMenu.querySelectorAll('a');
-                navLinks.forEach(function(link) {
+                navMenu.querySelectorAll('a').forEach(link => {
                     link.addEventListener('click', function() {
                         navMenu.classList.remove('open');
                         hamburger.classList.remove('active');
-                        var icon = hamburger.querySelector('i');
-                        icon.className = 'fas fa-bars';
+                        hamburger.querySelector('i').className = 'fas fa-bars';
                     });
                 });
             }
-        });
 
-        // ===== CAROUSEL FUNCTIONS =====
-        var carouselStates = {};
-
-        function initCarousel(id) {
-            var track = document.getElementById('track-' + id);
-            var indicators = document.getElementById('indicators-' + id);
-            if (!track || !indicators) return;
-
-            var slides = track.querySelectorAll('.carousel-slide');
-            var totalSlides = slides.length;
-            var currentSlide = 0;
-
-            carouselStates[id] = {
-                current: 0,
-                total: totalSlides
-            };
-
-            updateCarousel(id);
-        }
-
-        function updateCarousel(id) {
-            var state = carouselStates[id];
-            if (!state) return;
-
-            var track = document.getElementById('track-' + id);
-            var indicators = document.getElementById('indicators-' + id);
-            if (!track || !indicators) return;
-
-            track.style.transform = 'translateX(-' + (state.current * 100) + '%)';
-
-            var dots = indicators.querySelectorAll('button');
-            dots.forEach(function(dot, index) {
-                dot.classList.toggle('active', index === state.current);
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', function() {
+                header.classList.toggle('scrolled', window.scrollY > 50);
             });
-        }
 
-        function goToSlide(id, index) {
-            var state = carouselStates[id];
-            if (!state) return;
+            const track = document.getElementById('slideshowTrack');
+            const slides = track.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('#dotsContainer button');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            let currentIndex = 0;
+            let autoPlayInterval;
 
-            if (index < 0) index = state.total - 1;
-            if (index >= state.total) index = 0;
-            state.current = index;
-            updateCarousel(id);
-        }
+            function updateSlide(index) {
+                if (index < 0) index = slides.length - 1;
+                if (index >= slides.length) index = 0;
+                currentIndex = index;
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
+            }
 
-        function nextSlide(id) {
-            var state = carouselStates[id];
-            if (!state) return;
-            goToSlide(id, state.current + 1);
-        }
+            function nextSlide() { updateSlide(currentIndex + 1); }
+            function prevSlide() { updateSlide(currentIndex - 1); }
 
-        function prevSlide(id) {
-            var state = carouselStates[id];
-            if (!state) return;
-            goToSlide(id, state.current - 1);
-        }
+            function startAutoPlay() {
+                if (autoPlayInterval) clearInterval(autoPlayInterval);
+                autoPlayInterval = setInterval(nextSlide, 5500);
+            }
+            function stopAutoPlay() {
+                if (autoPlayInterval) { clearInterval(autoPlayInterval); autoPlayInterval = null; }
+            }
 
-        // Initialize all carousels
-        document.addEventListener('DOMContentLoaded', function() {
-            var carousels = ['food', 'electrical', 'salon', 'mechanic', 'tutoring', 'cleaning', 'clothing', 'delivery', 'realestate', 'fitness', 'photography', 'healthcare', 'hotel', 'it', 'construction', 'pets', 'events', 'financial', 'travel', 'legal'];
-            carousels.forEach(function(id) {
-                initCarousel(id);
+            nextBtn.addEventListener('click', () => { stopAutoPlay(); nextSlide(); startAutoPlay(); });
+            prevBtn.addEventListener('click', () => { stopAutoPlay(); prevSlide(); startAutoPlay(); });
+
+            dots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    stopAutoPlay();
+                    updateSlide(parseInt(this.dataset.index));
+                    startAutoPlay();
+                });
             });
+
+            const wrapper = document.querySelector('.slideshow-wrapper');
+            wrapper.addEventListener('mouseenter', stopAutoPlay);
+            wrapper.addEventListener('mouseleave', startAutoPlay);
+
+            updateSlide(0);
+            startAutoPlay();
         });
     </script>
 
