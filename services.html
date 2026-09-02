@@ -231,7 +231,7 @@
             line-height: 1.7;
         }
 
-        /* ===== PRICING ===== */
+        /* ===== PRICING/SERVICE CARDS ===== */
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -255,20 +255,6 @@
         .pricing-card.popular {
             border-color: var(--blue);
             background: var(--panel-2);
-        }
-        .pricing-card .popular-badge {
-            position: absolute;
-            top: 12px;
-            right: -20px;
-            background: var(--blue);
-            color: var(--ink);
-            padding: 4px 30px;
-            font-size: 0.6rem;
-            font-weight: 700;
-            font-family: 'IBM Plex Mono', monospace;
-            text-transform: uppercase;
-            transform: rotate(45deg);
-            letter-spacing: 1px;
         }
         .pricing-card .special-badge {
             display: inline-block;
@@ -294,36 +280,12 @@
             color: var(--paper);
             margin-bottom: 8px;
         }
-        .pricing-card .price { margin: 14px 0; }
-        .pricing-card .price .original {
-            font-size: 1rem;
+        .pricing-card .service-description {
             color: var(--muted);
-            text-decoration: line-through;
-            display: block;
-        }
-        .pricing-card .price .current {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: var(--blue);
-        }
-        .pricing-card .price .current span {
             font-size: 0.9rem;
-            font-weight: 400;
-            color: var(--muted);
+            line-height: 1.6;
+            margin-bottom: 18px;
         }
-        .pricing-card.popular .price .current { color: var(--blue); }
-        .pricing-card .price .saving {
-            display: inline-block;
-            background: rgba(0, 212, 255, 0.08);
-            color: var(--blue-light);
-            padding: 2px 12px;
-            border-radius: 2px;
-            font-size: 0.65rem;
-            font-weight: 600;
-            font-family: 'IBM Plex Mono', monospace;
-            margin-top: 4px;
-        }
-
         .pricing-card .features {
             list-style: none;
             padding: 0;
@@ -370,147 +332,17 @@
         }
         @media (max-width: 768px) {
             .pricing-grid { grid-template-columns: 1fr; max-width: 450px; margin: 30px auto 50px; }
-            .pricing-card .price .current { font-size: 2rem; }
+            .pricing-card .service-description { font-size: 0.85rem; }
         }
         @media (max-width: 480px) {
             .pricing-card { padding: 24px 18px; }
-            .pricing-card .price .current { font-size: 1.7rem; }
             .pricing-card h3 { font-size: 1.05rem; }
             .pricing-card .features li { font-size: 0.78rem; padding: 5px 0; }
             .services-intro h2 { font-size: 1.7rem; }
             .services-intro p { font-size: 0.88rem; }
         }
 
-        /* ============================================================ */
-        /* ===== BUSINESS EMAIL SPECIAL BAR ===== */
-        /* ============================================================ */
-        .email-bar {
-            background: var(--panel-2);
-            border: 1px solid var(--blue);
-            border-radius: 4px;
-            padding: 32px 40px;
-            margin: 50px 0 60px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 20px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .email-bar::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(0, 212, 255, 0.04) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .email-bar-left {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            position: relative;
-            z-index: 1;
-        }
-
-        .email-bar-icon {
-            width: 56px;
-            height: 56px;
-            min-width: 56px;
-            background: rgba(0, 212, 255, 0.08);
-            border: 1px solid rgba(0, 212, 255, 0.15);
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.6rem;
-            color: var(--blue);
-        }
-
-        .email-bar-text h4 {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--paper);
-        }
-        .email-bar-text h4 span { color: var(--blue); }
-        .email-bar-text p {
-            color: var(--muted);
-            font-size: 0.92rem;
-            line-height: 1.6;
-            max-width: 450px;
-        }
-
-        .email-bar .btn {
-            padding: 12px 32px;
-            background: var(--blue);
-            color: var(--ink);
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.85rem;
-            font-family: 'IBM Plex Mono', monospace;
-            transition: all 0.25s ease;
-            position: relative;
-            z-index: 1;
-            white-space: nowrap;
-        }
-        .email-bar .btn:hover { background: var(--blue-light); transform: translateY(-2px); }
-
-        .email-bar .features-mini {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 4px;
-        }
-        .email-bar .features-mini span {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.72rem;
-            color: var(--muted);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .email-bar .features-mini i {
-            color: var(--trace);
-            font-size: 0.6rem;
-        }
-
-        @media (max-width: 992px) {
-            .email-bar { padding: 28px 30px; }
-            .email-bar-left { flex: 1; }
-            .email-bar .btn { white-space: normal; }
-        }
-
-        @media (max-width: 768px) {
-            .email-bar { 
-                padding: 24px 20px; 
-                flex-direction: column;
-                text-align: center;
-            }
-            .email-bar-left {
-                flex-direction: column;
-                text-align: center;
-            }
-            .email-bar-text p { max-width: 100%; }
-            .email-bar .btn { width: 100%; text-align: center; padding: 12px 20px; }
-            .email-bar .features-mini { justify-content: center; }
-        }
-
-        @media (max-width: 480px) {
-            .email-bar { padding: 20px 16px; margin: 30px 0 40px; }
-            .email-bar-icon { width: 44px; height: 44px; min-width: 44px; font-size: 1.3rem; }
-            .email-bar-text h4 { font-size: 1rem; }
-            .email-bar-text p { font-size: 0.82rem; }
-            .email-bar .features-mini span { font-size: 0.65rem; }
-        }
-
-        /* ===== OTHER SERVICES ===== */
+        /* ===== ADDITIONAL SERVICES ===== */
         .other-services-title {
             text-align: center;
             font-size: 2rem;
@@ -568,12 +400,6 @@
             font-size: 0.85rem;
             line-height: 1.6;
             margin-bottom: 10px;
-        }
-        .service-card .service-price {
-            color: var(--blue-light);
-            font-weight: 600;
-            font-size: 0.8rem;
-            font-family: 'IBM Plex Mono', monospace;
         }
         .service-card .btn-small {
             display: inline-block;
@@ -814,7 +640,7 @@
         <div class="container">
             <span class="sheet-label">SHEET 01 / SERVICES</span>
             <h1>Our <span>Services</span></h1>
-            <p>We build, maintain &amp; grow websites that transform businesses.</p>
+            <p>Complete technology solutions for your business — from websites to custom apps and systems.</p>
         </div>
     </section>
 
@@ -823,161 +649,123 @@
         <div class="container">
 
             <div class="services-intro">
-                <h2>Choose Your <span>Perfect Plan</span></h2>
-                <p>Limited time special offers — get your dream website at an unbeatable price. All plans include free maintenance for the first month!</p>
+                <h2>Technology That <span>Grows Your Business</span></h2>
+                <p>Whether you need a professional web presence, a mobile application for your customers, or a custom system to streamline your operations, we provide end-to-end solutions built to your exact requirements.</p>
             </div>
 
-            <!-- PRICING -->
+            <!-- MAIN SERVICE BLOCKS -->
             <div class="pricing-grid">
 
-                <!-- BASIC -->
+                <!-- WEB DEVELOPMENT -->
                 <div class="pricing-card">
-                    <span class="special-badge">🔥 SPECIAL OFFER</span>
-                    <div class="icon"><i class="fas fa-file-code"></i></div>
-                    <h3>Basic Website</h3>
-                    <div class="price">
-                        <span class="original">R6,000</span>
-                        <div class="current">R2,500 <span>once-off</span></div>
-                        <span class="saving">Save R3,500</span>
+                    <div class="icon"><i class="fas fa-globe"></i></div>
+                    <h3>Web Development</h3>
+                    <div class="service-description">
+                        <p>Professional, responsive websites designed to represent your brand and convert visitors into customers.</p>
                     </div>
                     <ul class="features">
-                        <li><i class="fas fa-check"></i> 5 Pages (Home, About, Services, Contact, Gallery)</li>
-                        <li><i class="fas fa-check"></i> Mobile-responsive design</li>
-                        <li><i class="fas fa-check"></i> Contact form with email integration</li>
-                        <li><i class="fas fa-check"></i> 1 Month FREE maintenance</li>
-                        <li><i class="fas fa-check"></i> Basic SEO setup</li>
-                        <li><i class="fas fa-check"></i> WhatsApp integration</li>
-                    </ul>
-                    <a href="contact.html" class="btn">Get Started</a>
-                </div>
-
-                <!-- POPULAR -->
-                <div class="pricing-card popular">
-                    <span class="popular-badge">⭐ MOST POPULAR</span>
-                    <span class="special-badge">🔥 BEST VALUE</span>
-                    <div class="icon"><i class="fas fa-building"></i></div>
-                    <h3>Business Website</h3>
-                    <div class="price">
-                        <span class="original">R8,000</span>
-                        <div class="current">R4,500 <span>once-off</span></div>
-                        <span class="saving">Save R3,500</span>
-                    </div>
-                    <ul class="features">
-                        <li><i class="fas fa-check"></i> 10+ Pages</li>
-                        <li><i class="fas fa-check"></i> Custom design tailored to your brand</li>
-                        <li><i class="fas fa-check"></i> Service &amp; product pages</li>
+                        <li><i class="fas fa-check"></i> Corporate &amp; business websites</li>
+                        <li><i class="fas fa-check"></i> E-commerce &amp; online stores</li>
+                        <li><i class="fas fa-check"></i> Booking &amp; reservation systems</li>
+                        <li><i class="fas fa-check"></i> Mobile-optimized, fast-loading pages</li>
                         <li><i class="fas fa-check"></i> Contact forms &amp; lead capture</li>
-                        <li><i class="fas fa-check"></i> Google Maps integration</li>
-                        <li><i class="fas fa-check"></i> 2 Months FREE maintenance</li>
-                        <li><i class="fas fa-check"></i> Advanced SEO setup</li>
-                        <li><i class="fas fa-check"></i> WhatsApp Business integration</li>
+                        <li><i class="fas fa-check"></i> Basic to advanced SEO setup</li>
                     </ul>
-                    <a href="contact.html" class="btn">Get Started</a>
+                    <a href="contact.html" class="btn">Request a Quote</a>
                 </div>
 
-                <!-- PREMIUM -->
-                <div class="pricing-card">
-                    <span class="special-badge">🔥 SPECIAL OFFER</span>
-                    <div class="icon"><i class="fas fa-crown"></i></div>
-                    <h3>Premium Website</h3>
-                    <div class="price">
-                        <span class="original">R12,500</span>
-                        <div class="current">R7,500 <span>once-off</span></div>
-                        <span class="saving">Save R5,000</span>
+                <!-- APP DEVELOPMENT -->
+                <div class="pricing-card popular">
+                    <span class="special-badge">🚀 APPS &amp; SYSTEMS</span>
+                    <div class="icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3>Mobile App Development</h3>
+                    <div class="service-description">
+                        <p>Custom mobile applications for iOS and Android that give your business a direct line to your customers.</p>
                     </div>
                     <ul class="features">
-                        <li><i class="fas fa-check"></i> Unlimited Pages</li>
-                        <li><i class="fas fa-check"></i> Full custom design &amp; development</li>
-                        <li><i class="fas fa-check"></i> E-commerce ready</li>
-                        <li><i class="fas fa-check"></i> Payment gateway integration</li>
-                        <li><i class="fas fa-check"></i> Advanced SEO package</li>
-                        <li><i class="fas fa-check"></i> 3 Months FREE maintenance</li>
-                        <li><i class="fas fa-check"></i> Priority support</li>
-                        <li><i class="fas fa-check"></i> Social media integration</li>
+                        <li><i class="fas fa-check"></i> Native iOS &amp; Android apps</li>
+                        <li><i class="fas fa-check"></i> Cross-platform solutions (React Native)</li>
+                        <li><i class="fas fa-check"></i> Customer &amp; client portals</li>
+                        <li><i class="fas fa-check"></i> E-commerce &amp; booking apps</li>
+                        <li><i class="fas fa-check"></i> Push notifications &amp; real-time updates</li>
+                        <li><i class="fas fa-check"></i> App Store &amp; Play Store deployment</li>
                     </ul>
-                    <a href="contact.html" class="btn">Get Started</a>
+                    <a href="contact.html" class="btn">Request a Quote</a>
                 </div>
 
-            </div>
-
-            <!-- ============================================================ -->
-            <!-- ===== BUSINESS EMAIL SPECIAL BAR ===== -->
-            <!-- ============================================================ -->
-            <div class="email-bar">
-                <div class="email-bar-left">
-                    <div class="email-bar-icon"><i class="fas fa-envelope"></i></div>
-                    <div class="email-bar-text">
-                        <h4>📧 Business <span>Email</span> Setup</h4>
-                        <p>Get a professional email address that matches your domain — <strong>yourname@yourbusiness.com</strong>. Build trust and look credible with every email you send.</p>
-                        <div class="features-mini">
-                            <span><i class="fas fa-check"></i> Domain-based email</span>
-                            <span><i class="fas fa-check"></i> 24/7 access</span>
-                            <span><i class="fas fa-check"></i> Mobile &amp; desktop ready</span>
-                        </div>
+                <!-- BUSINESS SYSTEMS -->
+                <div class="pricing-card">
+                    <div class="icon"><i class="fas fa-cogs"></i></div>
+                    <h3>Business Systems</h3>
+                    <div class="service-description">
+                        <p>Custom-built software designed around your exact processes to automate tasks and streamline operations.</p>
                     </div>
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> Inventory &amp; stock management</li>
+                        <li><i class="fas fa-check"></i> Customer Relationship Management (CRM)</li>
+                        <li><i class="fas fa-check"></i> Point of Sale (POS) systems</li>
+                        <li><i class="fas fa-check"></i> Booking &amp; scheduling platforms</li>
+                        <li><i class="fas fa-check"></i> Data dashboards &amp; reporting</li>
+                        <li><i class="fas fa-check"></i> Workflow &amp; process automation</li>
+                    </ul>
+                    <a href="contact.html" class="btn">Request a Quote</a>
                 </div>
-                <a href="contact.html" class="btn"><i class="fas fa-envelope"></i> Get Email Setup</a>
+
             </div>
 
-            <!-- ===== OTHER SERVICES ===== -->
+            <!-- ===== ADDITIONAL SERVICES ===== -->
             <h3 class="other-services-title">Additional <span>Services</span></h3>
-            <p class="other-services-subtitle">Need something extra? We've got you covered with these additional services.</p>
+            <p class="other-services-subtitle">We offer everything your business needs to succeed online and digitally.</p>
 
             <div class="services-grid">
                 <div class="service-card">
+                    <div class="icon"><i class="fas fa-cloud"></i></div>
+                    <h4>Cloud &amp; Hosting</h4>
+                    <p>Reliable hosting and cloud setup to keep your applications running smoothly and securely 24/7.</p>
+                    <a href="contact.html" class="btn-small">Get a Quote</a>
+                </div>
+
+                <div class="service-card">
                     <div class="icon"><i class="fas fa-tools"></i></div>
                     <h4>Website Maintenance</h4>
-                    <p>Keep your website secure, up-to-date, and performing at its best with our ongoing maintenance packages.</p>
-                    <span class="service-price">From R800/month</span>
+                    <p>Keep your site secure, up-to-date, and performing at its best with our ongoing maintenance packages.</p>
                     <a href="contact.html" class="btn-small">Get a Quote</a>
                 </div>
 
                 <div class="service-card">
                     <div class="icon"><i class="fas fa-search"></i></div>
                     <h4>SEO Optimization</h4>
-                    <p>Get your business found on Google with our proven SEO strategies. Drive organic traffic and convert visitors into customers.</p>
-                    <span class="service-price">From R1,500</span>
+                    <p>Drive organic traffic and get found on Google with our proven SEO strategies.</p>
                     <a href="contact.html" class="btn-small">Get a Quote</a>
                 </div>
 
                 <div class="service-card">
                     <div class="icon"><i class="fas fa-tshirt"></i></div>
-                    <h4>Branding &amp; Logo Design</h4>
-                    <p>Professional logo design and complete branding package to establish your business identity and stand out from the competition.</p>
-                    <span class="service-price">From R1,200</span>
+                    <h4>Branding &amp; Design</h4>
+                    <p>Professional logo design and complete branding packages to establish your business identity.</p>
                     <a href="contact.html" class="btn-small">Get a Quote</a>
                 </div>
 
                 <div class="service-card">
                     <div class="icon"><i class="fas fa-hashtag"></i></div>
                     <h4>Social Media Management</h4>
-                    <p>Grow your online presence with professional social media management. Content creation, scheduling, and engagement.</p>
-                    <span class="service-price">From R1,500/month</span>
-                    <a href="contact.html" class="btn-small">Get a Quote</a>
-                </div>
-
-                <div class="service-card">
-                    <div class="icon"><i class="fas fa-mail-bulk"></i></div>
-                    <h4>Email Marketing Setup</h4>
-                    <p>Get started with professional email marketing. Newsletter templates, automation, and subscriber management.</p>
-                    <span class="service-price">From R900</span>
+                    <p>Grow your online presence with professional content creation, scheduling, and engagement.</p>
                     <a href="contact.html" class="btn-small">Get a Quote</a>
                 </div>
 
                 <div class="service-card">
                     <div class="icon"><i class="fas fa-shield-alt"></i></div>
-                    <h4>Website Security &amp; Backup</h4>
-                    <p>Protect your website with advanced security features, regular backups, and malware scanning to keep your data safe.</p>
-                    <span class="service-price">From R400/month</span>
+                    <h4>Security &amp; Backup</h4>
+                    <p>Protect your digital assets with advanced security features, regular backups, and malware scanning.</p>
                     <a href="contact.html" class="btn-small">Get a Quote</a>
                 </div>
             </div>
 
             <!-- CTA -->
             <div class="cta-box">
-                <h2>Ready to Build Your <span>Dream Website</span>?</h2>
-                <p>Let's bring your vision to life. Whether you need a new website or want to revamp an existing one, we're here to help.</p>
-                <a href="contact.html" class="btn"><i class="fas fa-paper-plane"></i> Get a Free Quote</a>
+                <h2>Have a Project in <span>Mind?</span></h2>
+                <p>Let's discuss your requirements and build a solution that's right for your business.</p>
+                <a href="contact.html" class="btn"><i class="fas fa-paper-plane"></i> Get a Free Consultation</a>
                 <p class="trust-badge"><i class="fas fa-check-circle"></i> No obligation · Free consultation</p>
             </div>
 
@@ -989,7 +777,7 @@
         <div class="container">
             <div class="footer-brand">
                 <h3>Shabs <span>Web</span> Dev</h3>
-                <p>Build &bull; Maintain &bull; Grow<br />We create websites that transform businesses.</p>
+                <p>Build &bull; Maintain &bull; Grow<br />We create technology that transforms businesses.</p>
             </div>
             <div class="footer-links">
                 <h5>Quick Links</h5>
