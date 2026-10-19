@@ -65,22 +65,20 @@
     margin-top: auto; 
   }
   
-  /* Image Container */
+  /* Image Container - Removed the boxy look */
   .img-container {
     position: relative;
     width: 100%;
-    height: 200px;
+    height: 220px;
     overflow: hidden;
-    border-radius: var(--radius-sm);
-    background: #fff;
-    margin-bottom: 12px;
+    background: transparent; /* Removed the white box background */
+    margin-bottom: 8px;
     cursor: zoom-in;
   }
   .product-img { 
     width: 100%; 
     height: 100%; 
     object-fit: contain; 
-    padding: 10px;
     transition: transform 0.3s ease; 
   }
   .img-container:hover .product-img { 
@@ -104,7 +102,7 @@
   
   /* Reveal Specs on Card Hover */
   .card.product:hover .specs-list {
-    max-height: 200px;
+    max-height: 250px;
     opacity: 1;
     padding: 12px;
     margin-bottom: 16px;
@@ -244,7 +242,7 @@
         <!-- Laptop 1 -->
         <div class="card product searchable" data-category="hardware" data-name="Dell Laptop" data-price="8500">
           <div class="img-container">
-            <img src="Store Picture/Dell Laptop.jpg" alt="Dell Laptop" class="product-img">
+            <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405726/Dell_Laptop.jpg" alt="Dell Laptop" class="product-img">
           </div>
           <h3>Dell Laptop</h3>
           
@@ -252,7 +250,7 @@
             <h4>Specifications</h4>
             <ul>
               <li>Intel Core i5 (11th Gen)</li>
-              <li>16GB DDR4 RAM</li>
+              <li>8GB DDR4 RAM</li>
               <li>256GB NVMe SSD</li>
               <li>15.6" Full HD Display</li>
               <li>Windows 11 Pro</li>
@@ -260,13 +258,13 @@
           </div>
 
           <div class="price">R 8,500</div>
-          <button class="btn add-to-cart" data-img="Store Picture/Dell Laptop.jpg">Add to Bag</button>
+          <button class="btn add-to-cart" data-img="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405726/Dell_Laptop.jpg">Add to Bag</button>
         </div>
 
         <!-- Laptop 2 -->
         <div class="card product searchable" data-category="hardware" data-name="Mac PC" data-price="14500">
           <div class="img-container">
-            <img src="Store Picture/Mac PC.jpg" alt="Mac PC" class="product-img">
+            <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405726/Mac_PC.jpg" alt="Mac PC" class="product-img">
           </div>
           <h3>Mac PC</h3>
           
@@ -282,13 +280,13 @@
           </div>
 
           <div class="price">R 14,500</div>
-          <button class="btn add-to-cart" data-img="Store Picture/Mac PC.jpg">Add to Bag</button>
+          <button class="btn add-to-cart" data-img="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405726/Mac_PC.jpg">Add to Bag</button>
         </div>
 
         <!-- Laptop 3 -->
         <div class="card product searchable" data-category="hardware" data-name="Curvey Laptop" data-price="9200">
           <div class="img-container">
-            <img src="Store Picture/curvey 2.jpg" alt="Curvey Laptop" class="product-img">
+            <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405725/curvey_2.jpg" alt="Curvey Laptop" class="product-img">
           </div>
           <h3>Curvey Laptop</h3>
           
@@ -304,13 +302,13 @@
           </div>
 
           <div class="price">R 9,200</div>
-          <button class="btn add-to-cart" data-img="Store Picture/curvey 2.jpg">Add to Bag</button>
+          <button class="btn add-to-cart" data-img="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405725/curvey_2.jpg">Add to Bag</button>
         </div>
 
         <!-- Monitor 1 -->
         <div class="card product searchable" data-category="hardware" data-name="Curvey Monitor" data-price="3200">
           <div class="img-container">
-            <img src="Store Picture/curvey Monitor.jpg" alt="Curvey Monitor" class="product-img">
+            <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405725/curvey_Monitor.jpg" alt="Curvey Monitor" class="product-img">
           </div>
           <h3>Curvey Monitor</h3>
           
@@ -326,13 +324,13 @@
           </div>
 
           <div class="price">R 3,200</div>
-          <button class="btn add-to-cart" data-img="Store Picture/curvey Monitor.jpg">Add to Bag</button>
+          <button class="btn add-to-cart" data-img="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405725/curvey_Monitor.jpg">Add to Bag</button>
         </div>
 
         <!-- Monitor 2 -->
         <div class="card product searchable" data-category="hardware" data-name="Dell Monitor" data-price="2400">
           <div class="img-container">
-            <img src="Store Picture/dell monitor.jpg" alt="Dell Monitor" class="product-img">
+            <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405727/dell_monitor.jpg" alt="Dell Monitor" class="product-img">
           </div>
           <h3>Dell Monitor</h3>
           
@@ -348,53 +346,54 @@
           </div>
 
           <div class="price">R 2,400</div>
-          <button class="btn add-to-cart" data-img="Store Picture/dell monitor.jpg">Add to Bag</button>
+          <button class="btn add-to-cart" data-img="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405727/dell_monitor.jpg">Add to Bag</button>
         </div>
 
         <!-- Keyboard 1 -->
         <div class="card product searchable" data-category="hardware" data-name="Keyboard R250" data-price="250">
           <div class="img-container">
-            <img src="Store Picture/keyboard R250.png" alt="Keyboard R250" class="product-img">
+            <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405725/keyboard_R250.png" alt="Keyboard R250" class="product-img">
           </div>
-          <h3>Standard Keyboard and mouse</h3>
+          <h3>Standard Keyboard</h3>
           <div class="price">R 250</div>
-          <button class="btn add-to-cart" data-img="Store Picture/keyboard R250.png">Add to Bag</button>
+          <button class="btn add-to-cart" data-img="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405725/keyboard_R250.png">Add to Bag</button>
         </div>
 
         <!-- Keyboard 2 -->
         <div class="card product searchable" data-category="hardware" data-name="Standard Keyboard" data-price="350">
           <div class="img-container">
-            <img src="Store Picture/keyboard.jpg" alt="Standard Keyboard" class="product-img">
+            <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405726/keyboard.jpg" alt="Standard Keyboard" class="product-img">
           </div>
-          <h3>Colorful Keyboard</h3>
+          <h3>Reliable Keyboard</h3>
           <div class="price">R 350</div>
-          <button class="btn add-to-cart" data-img="Store Picture/keyboard.jpg">Add to Bag</button>
+          <button class="btn add-to-cart" data-img="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405726/keyboard.jpg">Add to Bag</button>
         </div>
 
         <!-- Keyboard 3 -->
         <div class="card product searchable" data-category="hardware" data-name="Keyboard 4" data-price="650">
           <div class="img-container">
-            <img src="Store Picture/keyboard4.jpg" alt="Keyboard 4" class="product-img">
+            <!-- FIXED SPACE TYPO HERE -->
+            <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405726/keyboard4.jpg" alt="Keyboard 4" class="product-img">
           </div>
-          <h3>Premium Keyboard with utils</h3>
+          <h3>Premium Keyboard</h3>
           <div class="price">R 650</div>
-          <button class="btn add-to-cart" data-img="Store Picture/keyboard4.jpg">Add to Bag</button>
+          <button class="btn add-to-cart" data-img="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405726/keyboard4.jpg">Add to Bag</button>
         </div>
 
         <!-- Chair -->
         <div class="card product searchable" data-category="hardware" data-name="Office Chair" data-price="1800">
           <div class="img-container">
-            <img src="Store Picture/gchair 1.jpg" alt="Office Chair" class="product-img">
+            <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405725/gchair_1.jpg" alt="Office Chair" class="product-img">
           </div>
           <h3>Ergonomic Office Chair</h3>
           <div class="price">R 1,800</div>
-          <button class="btn add-to-cart" data-img="Store Picture/gchair 1.jpg">Add to Bag</button>
+          <button class="btn add-to-cart" data-img="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405725/gchair_1.jpg">Add to Bag</button>
         </div>
 
         <!-- PC Setup 2 -->
         <div class="card product searchable" data-category="hardware" data-name="PC Setup" data-price="12000">
           <div class="img-container">
-            <img src="Store Picture/PC SETUP2.jpg" alt="PC Setup" class="product-img">
+            <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405728/PC_SETUP2.jpg" alt="PC Setup" class="product-img">
           </div>
           <h3>Complete PC Setup</h3>
           
@@ -409,38 +408,38 @@
             </ul>
           </div>
 
-          <div class="price">R 43,000</div>
-          <button class="btn add-to-cart" data-img="Store Picture/PC SETUP2.jpg">Add to Bag</button>
+          <div class="price">R 12,000</div>
+          <button class="btn add-to-cart" data-img="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405728/PC_SETUP2.jpg">Add to Bag</button>
         </div>
 
         <!-- Controller 1 -->
         <div class="card product searchable" data-category="hardware" data-name="PS5 Controller Blue" data-price="1200">
           <div class="img-container">
-            <img src="Store Picture/js1.jpg" alt="PS5 Controller" class="product-img">
+            <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405729/js1.jpg" alt="PS5 Controller" class="product-img">
           </div>
           <h3>PS5 DualSense Controller</h3>
-          <div class="price">R 2,500</div>
-          <button class="btn add-to-cart" data-img="Store Picture/js1.jpg">Add to Bag</button>
+          <div class="price">R 1,200</div>
+          <button class="btn add-to-cart" data-img="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405729/js1.jpg">Add to Bag</button>
         </div>
 
         <!-- Controller 2 -->
         <div class="card product searchable" data-category="hardware" data-name="PS5 Controllers Dual" data-price="2400">
           <div class="img-container">
-            <img src="Store Picture/j2.jpg" alt="PS5 Controllers" class="product-img">
+            <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405725/j2.jpg" alt="PS5 Controllers" class="product-img">
           </div>
           <h3>PS5 Dual Controllers</h3>
           <div class="price">R 2,400</div>
-          <button class="btn add-to-cart" data-img="Store Picture/j2.jpg">Add to Bag</button>
+          <button class="btn add-to-cart" data-img="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405725/j2.jpg">Add to Bag</button>
         </div>
 
         <!-- Controller 3 -->
         <div class="card product searchable" data-category="hardware" data-name="PS5 Controller White" data-price="1200">
           <div class="img-container">
-            <img src="Store Picture/j3.jpg" alt="PS5 Controller White" class="product-img">
+            <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405725/j3.jpg" alt="PS5 Controller White" class="product-img">
           </div>
           <h3>PS5 DualSense (White)</h3>
           <div class="price">R 1,200</div>
-          <button class="btn add-to-cart" data-img="Store Picture/j3.jpg">Add to Bag</button>
+          <button class="btn add-to-cart" data-img="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405725/j3.jpg">Add to Bag</button>
         </div>
 
       </div>
@@ -453,7 +452,7 @@
         
         <div class="card product searchable" data-category="setups" data-name="Setup Idea 1">
           <div class="img-container">
-            <img src="Store Picture/set up idead 1.jpg" alt="Setup Idea 1" class="product-img">
+            <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405729/setup8.jpg" alt="Setup Idea 1" class="product-img">
           </div>
           <h3>Modern Workspace Idea</h3>
           <div class="price" style="color: var(--muted); font-size: 1.2rem;">Custom Quote</div>
@@ -462,7 +461,7 @@
 
         <div class="card product searchable" data-category="setups" data-name="Setup Idea 3">
           <div class="img-container">
-            <img src="Store Picture/setup3.jpg" alt="Setup 3" class="product-img">
+            <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405729/setup_7.jpg" alt="Setup 3" class="product-img">
           </div>
           <h3>Dual-Screen Setup</h3>
           <div class="price" style="color: var(--muted); font-size: 1.2rem;">Custom Quote</div>
@@ -471,7 +470,7 @@
 
         <div class="card product searchable" data-category="setups" data-name="Setup Idea 4">
           <div class="img-container">
-            <img src="Store Picture/setup4.jpg" alt="Setup 4" class="product-img">
+            <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405728/set_up_idead_1.jpg" alt="Setup 4" class="product-img">
           </div>
           <h3>Executive Desk Setup</h3>
           <div class="price" style="color: var(--muted); font-size: 1.2rem;">Custom Quote</div>
@@ -480,7 +479,7 @@
 
         <div class="card product searchable" data-category="setups" data-name="Setup Idea 7">
           <div class="img-container">
-            <img src="Store Picture/setup 7.jpg" alt="Setup 7" class="product-img">
+            <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405729/setup4.jpg" alt="Setup 7" class="product-img">
           </div>
           <h3>Compact Home Office</h3>
           <div class="price" style="color: var(--muted); font-size: 1.2rem;">Custom Quote</div>
@@ -489,7 +488,7 @@
 
         <div class="card product searchable" data-category="setups" data-name="Setup Idea 8">
           <div class="img-container">
-            <img src="Store Picture/setup8.jpg" alt="Setup 8" class="product-img">
+            <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405728/setup3.jpg" alt="Setup 8" class="product-img">
           </div>
           <h3>Creative Studio Setup</h3>
           <div class="price" style="color: var(--muted); font-size: 1.2rem;">Custom Quote</div>
@@ -498,7 +497,7 @@
 
         <div class="card product searchable" data-category="setups" data-name="Office Setup 1">
           <div class="img-container">
-            <img src="Store Picture/office setup1.jpg" alt="Office Setup 1" class="product-img">
+            <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405728/offics6.jpg" alt="Office Setup 1" class="product-img">
           </div>
           <h3>Classic Office Workspace</h3>
           <div class="price" style="color: var(--muted); font-size: 1.2rem;">Custom Quote</div>
@@ -507,7 +506,7 @@
 
         <div class="card product searchable" data-category="setups" data-name="Office Setup 2">
           <div class="img-container">
-            <img src="Store Picture/officesetup2.jpg" alt="Office Setup 2" class="product-img">
+            <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405728/PC_SETUP2.jpg" alt="Office Setup 2" class="product-img">
           </div>
           <h3>Open Plan Workstation</h3>
           <div class="price" style="color: var(--muted); font-size: 1.2rem;">Custom Quote</div>
@@ -516,7 +515,7 @@
 
         <div class="card product searchable" data-category="setups" data-name="Office Setup 3">
           <div class="img-container">
-            <img src="Store Picture/office setup 3.jpg" alt="Office Setup 3" class="product-img">
+            <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405727/office_setup3.jpg" alt="Office Setup 3" class="product-img">
           </div>
           <h3>Ergonomic Setup</h3>
           <div class="price" style="color: var(--muted); font-size: 1.2rem;">Custom Quote</div>
