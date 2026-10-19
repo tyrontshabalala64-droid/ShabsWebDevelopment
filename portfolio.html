@@ -1,738 +1,120 @@
  <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shabs Web Development | Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <style>
-        /* ===== RESET & BASE ===== */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-
-        :root {
-            --ink: #0a0e13;
-            --panel: #10161d;
-            --panel-2: #141b23;
-            --line: #1a2a4a;
-            --line-soft: #1a232d;
-            --blue: #00d4ff;
-            --blue-light: #66e0ff;
-            --trace: #00d4ff;
-            --paper: #eef1f4;
-            --muted: #8393a3;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--ink);
-            color: var(--paper);
-            overflow-x: hidden;
-            background-image:
-                linear-gradient(var(--line-soft) 1px, transparent 1px),
-                linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
-            background-size: 42px 42px;
-            background-position: -1px -1px;
-        }
-
-        h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; }
-
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--ink); }
-        ::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 10px; }
-
-        a { color: inherit; }
-
-        /* ===== SHEET LABEL ===== */
-        .sheet-label {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.72rem;
-            letter-spacing: 1.5px;
-            color: var(--blue-light);
-            border: 1px solid var(--line);
-            padding: 5px 14px 5px 10px;
-            border-radius: 3px;
-            background: var(--panel);
-            margin-bottom: 16px;
-        }
-        .sheet-label::before {
-            content: '';
-            width: 7px;
-            height: 7px;
-            background: var(--blue);
-            display: inline-block;
-        }
-
-        /* ===== HEADER ===== */
-        header {
-            background: rgba(10, 14, 19, 0.9);
-            padding: 16px 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid var(--line);
-            backdrop-filter: blur(14px);
-            transition: all 0.3s ease;
-        }
-        header.scrolled { background: rgba(10, 14, 19, 0.98); }
-
-        header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .logo a { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-
-        .logo h1 { 
-            font-size: 1.3rem; 
-            font-weight: 700; 
-            color: var(--paper); 
-            line-height: 1.2; 
-            letter-spacing: 0.2px; 
-        }
-        .logo h1 span { color: var(--blue); }
-        .logo p {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.6rem;
-            color: var(--muted);
-            margin-top: 2px;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-        }
-
-        .hamburger {
-            display: none;
-            font-size: 1.6rem;
-            color: var(--paper);
-            cursor: pointer;
-            padding: 8px 14px;
-            background: var(--panel);
-            border-radius: 4px;
-            border: 1px solid var(--line);
-            transition: all 0.3s ease;
-        }
-        .hamburger:hover { border-color: var(--blue); }
-
-        nav ul { display: flex; list-style: none; gap: 4px; align-items: center; }
-
-        nav ul li a {
-            color: var(--muted);
-            text-decoration: none;
-            padding: 8px 16px;
-            font-size: 0.88rem;
-            font-family: 'IBM Plex Mono', monospace;
-            transition: all 0.25s ease;
-            font-weight: 400;
-            display: block;
-            position: relative;
-            border-radius: 3px;
-        }
-        nav ul li a::before { content: '/'; color: var(--line); margin-right: 6px; }
-        nav ul li a:hover, nav ul li a.active { color: var(--blue-light); background: var(--panel); }
-
-        @media (max-width: 768px) {
-            .hamburger { display: block; }
-            nav { 
-                width: 100%; 
-                display: none; 
-                margin-top: 14px; 
-                border-top: 1px solid var(--line); 
-                padding-top: 14px; 
-            }
-            nav.open { display: block; }
-            nav ul { 
-                flex-direction: column; 
-                gap: 4px; 
-                width: 100%; 
-            }
-            nav ul li { width: 100%; }
-            nav ul li a { 
-                padding: 12px 18px; 
-                width: 100%; 
-                text-align: left; 
-                font-size: 1rem; 
-            }
-            .logo h1 { font-size: 1.05rem; }
-        }
-
-        @media (max-width: 480px) {
-            .logo p { display: none; }
-            header { padding: 10px 0; }
-            .container { padding: 0 16px; }
-        }
-
-        /* ===== PAGE HEADER ===== */
-        .page-header {
-            padding: 140px 0 50px;
-            border-bottom: 1px solid var(--line);
-            background: var(--panel);
-        }
-
-        .page-header .container {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .page-header h1 {
-            font-size: 3.2rem;
-            font-weight: 700;
-            color: var(--paper);
-            line-height: 1.1;
-        }
-        .page-header h1 span { color: var(--blue); }
-        .page-header p {
-            color: var(--muted);
-            font-size: 1.05rem;
-            max-width: 550px;
-            margin-top: 12px;
-            line-height: 1.6;
-        }
-
-        @media (max-width: 768px) {
-            .page-header { padding: 120px 0 40px; }
-            .page-header h1 { font-size: 2.4rem; }
-        }
-        @media (max-width: 480px) {
-            .page-header { padding: 100px 0 30px; }
-            .page-header h1 { font-size: 2rem; }
-            .page-header p { font-size: 0.9rem; }
-        }
-
-        /* ===== PORTFOLIO GRID ===== */
-        .portfolio-section { padding: 60px 0 80px; }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        .portfolio-card {
-            background: var(--panel);
-            border-radius: 4px;
-            overflow: hidden;
-            border: 1px solid var(--line);
-            transition: all 0.3s ease;
-        }
-        .portfolio-card:hover {
-            border-color: var(--blue);
-            transform: translateY(-6px);
-        }
-
-        .portfolio-card .preview {
-            height: 180px;
-            background: var(--panel-2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: var(--line);
-            border-bottom: 1px solid var(--line);
-        }
-
-        .portfolio-card .info { padding: 24px 24px 28px; }
-        .portfolio-card .info h4 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--paper);
-            margin-bottom: 4px;
-        }
-        .portfolio-card .info p {
-            color: var(--muted);
-            font-size: 0.88rem;
-            margin-bottom: 14px;
-            line-height: 1.5;
-        }
-        .portfolio-card .info .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 6px;
-        }
-        .portfolio-card .info .tags span {
-            font-family: 'IBM Plex Mono', monospace;
-            background: var(--panel-2);
-            color: var(--blue-light);
-            padding: 3px 12px;
-            border-radius: 2px;
-            font-size: 0.68rem;
-            border: 1px solid var(--line);
-        }
-        .portfolio-card .info .btn-link {
-            display: inline-block;
-            margin-top: 14px;
-            color: var(--blue);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.85rem;
-            font-family: 'IBM Plex Mono', monospace;
-            transition: all 0.25s ease;
-        }
-        .portfolio-card .info .btn-link:hover { color: var(--blue-light); }
-
-        .portfolio-card.coming-soon {
-            opacity: 0.7;
-        }
-        .portfolio-card.coming-soon .preview {
-            background: var(--panel);
-        }
-        .coming-badge {
-            display: inline-block;
-            background: var(--blue);
-            color: var(--ink);
-            padding: 2px 14px;
-            border-radius: 2px;
-            font-size: 0.6rem;
-            font-weight: 700;
-            font-family: 'IBM Plex Mono', monospace;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-        }
-
-        @media (max-width: 992px) {
-            .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 768px) {
-            .portfolio-section { padding: 40px 0 60px; }
-            .portfolio-card .preview { height: 140px; font-size: 2.4rem; }
-            .portfolio-card .info { padding: 18px 18px 22px; }
-            .portfolio-card .info h4 { font-size: 1rem; }
-            .portfolio-card .info p { font-size: 0.82rem; }
-        }
-        @media (max-width: 480px) {
-            .portfolio-section { padding: 30px 0 40px; }
-            .portfolio-grid { grid-template-columns: 1fr; gap: 16px; }
-            .portfolio-card .preview { height: 120px; font-size: 2rem; }
-            .portfolio-card .info { padding: 14px 14px 18px; }
-            .portfolio-card .info h4 { font-size: 0.95rem; }
-            .portfolio-card .info p { font-size: 0.78rem; }
-            .portfolio-card .info .tags span { font-size: 0.6rem; padding: 2px 10px; }
-        }
-
-        /* ===== CTA ===== */
-        .cta-box {
-            margin-top: 60px;
-            padding: 50px;
-            text-align: center;
-            background: var(--panel);
-            border: 1px solid var(--line);
-            border-radius: 4px;
-        }
-        .cta-box h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--paper);
-            margin-bottom: 16px;
-        }
-        .cta-box h2 span { color: var(--blue); }
-        .cta-box p {
-            color: var(--muted);
-            max-width: 500px;
-            margin: 0 auto 25px;
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-        .cta-box .btn {
-            padding: 13px 40px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.92rem;
-            font-family: 'IBM Plex Mono', monospace;
-            background: var(--blue);
-            color: var(--ink);
-            transition: all 0.25s ease;
-            display: inline-block;
-        }
-        .cta-box .btn:hover { background: var(--blue-light); transform: translateY(-2px); }
-        .cta-box .trust-badge {
-            margin-top: 15px;
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.78rem;
-            color: var(--muted);
-        }
-        .cta-box .trust-badge i { color: var(--trace); margin-right: 6px; }
-
-        @media (max-width: 768px) {
-            .cta-box { margin-top: 40px; padding: 35px 25px; }
-            .cta-box h2 { font-size: 1.6rem; }
-            .cta-box p { font-size: 0.9rem; }
-        }
-        @media (max-width: 480px) {
-            .cta-box { margin-top: 30px; padding: 25px 18px; }
-            .cta-box h2 { font-size: 1.3rem; }
-            .cta-box p { font-size: 0.82rem; }
-            .cta-box .btn { display: block; width: 100%; max-width: 280px; margin: 0 auto; text-align: center; padding: 12px 20px; font-size: 0.85rem; }
-        }
-
-        /* ===== FOOTER ===== */
-        footer { padding: 56px 20px 28px; border-top: 1px solid var(--line); }
-
-        footer .container { 
-            display: grid; 
-            grid-template-columns: 2fr 1fr 1fr; 
-            gap: 40px; 
-            max-width: 1200px; 
-            margin: 0 auto; 
-        }
-
-        .footer-brand h3 { font-size: 1.3rem; margin-bottom: 10px; color: var(--paper); }
-        .footer-brand h3 span { color: var(--blue); }
-        .footer-brand p { 
-            color: var(--muted); 
-            font-size: 0.88rem; 
-            line-height: 1.7; 
-            font-family: 'IBM Plex Mono', monospace; 
-        }
-
-        .footer-links h5, .footer-social h5 {
-            color: var(--muted); 
-            font-size: 0.72rem; 
-            margin-bottom: 16px;
-            font-family: 'IBM Plex Mono', monospace; 
-            letter-spacing: 1.5px; 
-            text-transform: uppercase;
-        }
-        .footer-links ul { list-style: none; }
-        .footer-links ul li { margin-bottom: 10px; }
-        .footer-links ul li a { 
-            color: var(--paper); 
-            text-decoration: none; 
-            transition: color 0.25s; 
-            font-size: 0.9rem; 
-        }
-        .footer-links ul li a:hover { color: var(--blue-light); }
-
-        .social-icons { display: flex; gap: 12px; flex-wrap: wrap; }
-        .social-icons a {
-            color: var(--muted); 
-            font-size: 1.1rem; 
-            transition: all 0.25s ease;
-            width: 40px; 
-            height: 40px; 
-            border-radius: 4px; 
-            background: var(--panel);
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            border: 1px solid var(--line);
-            text-decoration: none;
-        }
-        .social-icons a:hover { color: var(--blue-light); border-color: var(--blue); }
-
-        .footer-bottom {
-            grid-column: 1 / -1; 
-            text-align: center; 
-            padding-top: 28px; 
-            margin-top: 28px;
-            border-top: 1px solid var(--line-soft); 
-            color: var(--muted); 
-            font-size: 0.78rem;
-            font-family: 'IBM Plex Mono', monospace;
-        }
-
-        @media (max-width: 768px) {
-            footer .container { 
-                grid-template-columns: 1fr; 
-                gap: 30px; 
-                text-align: center; 
-            }
-            .social-icons { justify-content: center; }
-        }
-        @media (max-width: 480px) {
-            footer { padding: 30px 16px 20px; }
-            .footer-brand h3 { font-size: 1.1rem; }
-            .footer-brand p { font-size: 0.8rem; }
-            .footer-links ul li a { font-size: 0.8rem; }
-            .footer-bottom { font-size: 0.65rem; }
-            .social-icons a { width: 36px; height: 36px; font-size: 0.95rem; }
-        }
-
-        /* ===== FLOATING WHATSAPP ===== */
-        .whatsapp-float {
-            position: fixed; 
-            bottom: 28px; 
-            right: 28px;
-            background: #25d366;
-            color: #fff;
-            width: 56px; 
-            height: 56px; 
-            border-radius: 4px;
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
-            font-size: 1.9rem; 
-            text-decoration: none;
-            box-shadow: 0 6px 24px rgba(37, 211, 102, 0.3);
-            z-index: 999; 
-            transition: all 0.25s ease;
-        }
-        .whatsapp-float:hover { 
-            transform: translateY(-3px); 
-            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4); 
-        }
-
-        @media (max-width: 480px) {
-            .whatsapp-float { 
-                width: 48px; 
-                height: 48px; 
-                font-size: 1.5rem; 
-                bottom: 16px; 
-                right: 16px; 
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contact | Shabs Web Development</title>
+<meta name="description" content="Get a free, no-obligation plan for your business.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<header>
+  <div class="w bar">
+    <a class="brand" href="index.html">Shabs Web Development</a>
+    <nav>
+      <a href="about.html">About</a>
+      <a href="services.html">Pricing</a>
+      <a href="portfolio.html">Work</a>
+      <a class="btn sm" href="contact.html">Get in touch</a>
+    </nav>
+  </div>
+</header>
 
-    <!-- ===== HEADER ===== -->
-    <header id="header">
-        <div class="container">
-            <div class="logo">
-                <a href="index.html">
-                    <div>
-                        <h1>Shabs <span>Web</span> Dev</h1>
-                        <p>Development &amp; Maintenance</p>
-                    </div>
-                </a>
-            </div>
-            <div class="hamburger" id="hamburger">
-                <i class="fas fa-bars"></i>
-            </div>
-            <nav id="navMenu">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="portfolio.html" class="active">Portfolio</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
+<main>
+  <section class="page-h">
+    <div class="w">
+      <h1>Let's talk</h1>
+      <p class="lead">Tell me about your business and what you need. I'll reply with a free plan and a clear quote.</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="w two">
+      <div>
+        <div class="card">
+          <h3>Reach me directly</h3>
+          <p><a href="https://wa.me/27833842647">WhatsApp: 083 384 2647</a></p>
+          <p><a href="tel:+27833842647">Call: 083 384 2647</a></p>
+          <p><a href="mailto:tyrontshabalala64@gmail.com">tyrontshabalala64@gmail.com</a></p>
+          <p style="margin-top:12px">I usually reply within a few hours on weekdays.</p>
         </div>
-    </header>
+      </div>
 
-    <!-- ===== PAGE HEADER ===== -->
-    <section class="page-header">
-        <div class="container">
-            <span class="sheet-label">SHEET 01 / PORTFOLIO</span>
-            <h1>My <span>Portfolio</span></h1>
-            <p>Websites, systems, and digital solutions I've built for clients.</p>
-        </div>
-    </section>
+      <form id="f" action="https://formspree.io/f/mqerzlyg" method="POST">
+        <label for="name">Your name</label>
+        <input id="name" name="name" required autocomplete="name">
 
-    <!-- ===== PORTFOLIO CONTENT ===== -->
-    <section class="portfolio-section">
-        <div class="container">
-            <div class="portfolio-grid">
+        <label for="email">Your email</label>
+        <input id="email" name="email" type="email" required autocomplete="email">
 
-                <!-- PROJECT 1: Zoe Zion -->
-                <div class="portfolio-card">
-                    <div class="preview"><i class="fas fa-bolt"></i></div>
-                    <div class="info">
-                        <h4>⚡ Zoe Zion Projects</h4>
-                        <p>Complete electrical and solar company website with contact form, project gallery, and WhatsApp integration.</p>
-                        <div class="tags">
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>JavaScript</span>
-                            <span>Responsive</span>
-                            <span>Formspree</span>
-                        </div>
-                        <a href="https://zoezionprojects.co.za" target="_blank" rel="noopener noreferrer" class="btn-link">View Project →</a>
-                    </div>
-                </div>
+        <label for="phone">Phone number (optional)</label>
+        <input id="phone" name="phone" type="tel" autocomplete="tel">
 
-                <!-- PROJECT 2: Nwa Zeme Electrical -->
-                <div class="portfolio-card">
-                    <div class="preview"><i class="fas fa-lightbulb"></i></div>
-                    <div class="info">
-                        <h4>🔌 Nwa Zeme Electrical</h4>
-                        <p>Professional electrical services website with service listings, compliance certificates, and quote request system.</p>
-                        <div class="tags">
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>JavaScript</span>
-                            <span>SEO</span>
-                            <span>WhatsApp API</span>
-                        </div>
-                        <a href="https://nwazemeelectrical.co.za" target="_blank" rel="noopener noreferrer" class="btn-link">View Project →</a>
-                    </div>
-                </div>
+        <label for="subject">What do you need?</label>
+        <input id="subject" name="subject" placeholder="e.g. A website for my salon" required>
 
-                <!-- PROJECT 3: ClawsByWami -->
-                <div class="portfolio-card">
-                    <div class="preview"><i class="fas fa-paw"></i></div>
-                    <div class="info">
-                        <h4>💅 ClawsByWami</h4>
-                        <p>Nail technician appointment booking website. Clients can view services, check availability, and book their appointments online.</p>
-                        <div class="tags">
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>JavaScript</span>
-                            <span>Booking System</span>
-                            <span>Responsive</span>
-                        </div>
-                        <a href="https://tyrontshabalala64-droid.github.io/ClawsByWami/" target="_blank" rel="noopener noreferrer" class="btn-link">View Project →</a>
-                    </div>
-                </div>
+        <label for="message">Tell me more</label>
+        <textarea id="message" name="message" placeholder="Your business, what you'd like built, and any deadline" required></textarea>
 
-                <!-- PROJECT 4: Ohch Cafe -->
-                <div class="portfolio-card">
-                    <div class="preview"><i class="fas fa-utensils"></i></div>
-                    <div class="info">
-                        <h4>☕ Ohch Cafe</h4>
-                        <p>Restaurant website with full online ordering system. Customers can browse the menu, add items to cart, and place orders online.</p>
-                        <div class="tags">
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>JavaScript</span>
-                            <span>Online Ordering</span>
-                            <span>Responsive</span>
-                        </div>
-                        <a href="https://tyrontshabalala64-droid.github.io/ohch-Cafeweb/" target="_blank" rel="noopener noreferrer" class="btn-link">View Project →</a>
-                    </div>
-                </div>
+        <input name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+        <button class="btn" id="b">Send message</button>
+        <p id="status" role="status"></p>
+      </form>
+    </div>
+  </section>
 
-                <!-- PROJECT 5: Shabs Web Dev -->
-                <div class="portfolio-card">
-                    <div class="preview"><i class="fas fa-code"></i></div>
-                    <div class="info">
-                        <h4>💻 Shabs Web Development</h4>
-                        <p>My personal web development agency website showcasing services, pricing, and a dynamic industry showcase.</p>
-                        <div class="tags">
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>JavaScript</span>
-                            <span>Responsive</span>
-                            <span>Interactive</span>
-                        </div>
-                        <a href="index.html" class="btn-link">View Project →</a>
-                    </div>
-                </div>
-
-                <!-- PROJECT 6: Vuswikoti Food Scheme System -->
-                <div class="portfolio-card">
-                    <div class="preview"><i class="fas fa-cogs"></i></div>
-                    <div class="info">
-                        <h4>📦 Vuswikoti Food Scheme</h4>
-                        <span class="coming-badge" style="background: var(--blue); color: var(--ink);">Custom System</span>
-                        <p>Complete member management system with application portal, payment tracking, danger zone monitoring, and Excel export.</p>
-                        <div class="tags">
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>JavaScript</span>
-                            <span>Supabase</span>
-                            <span>Cloud Database</span>
-                        </div>
-                        <p style="font-size: 0.75rem; color: var(--muted); margin-top: 10px;">Private system for client use</p>
-                    </div>
-                </div>
-
-                <!-- PROJECT 7: Coming Soon -->
-                <div class="portfolio-card coming-soon">
-                    <div class="preview"><i class="fas fa-rocket"></i></div>
-                    <div class="info">
-                        <span class="coming-badge">🚀 Coming Soon</span>
-                        <h4>Your Project Here</h4>
-                        <p>I'm ready to build your dream website, app, or system. Let's create something amazing together!</p>
-                        <div class="tags">
-                            <span>Your</span>
-                            <span>Idea</span>
-                            <span>+</span>
-                            <span>My Code</span>
-                        </div>
-                        <a href="contact.html" class="btn-link" style="border-color: var(--blue); color: var(--blue);">Let's Build Yours →</a>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- ===== CTA ===== -->
-            <div class="cta-box">
-                <h2>Want to Be <span>Next</span>?</h2>
-                <p>Let's build your website, app, or system together. I'll create something that perfectly represents your brand.</p>
-                <a href="contact.html" class="btn"><i class="fas fa-paper-plane"></i> Get a Free Quote</a>
-                <p class="trust-badge"><i class="fas fa-check-circle"></i> No obligation · Free consultation</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== FOOTER ===== -->
-    <footer>
-        <div class="container">
-            <div class="footer-brand">
-                <h3>Shabs <span>Web</span> Dev</h3>
-                <p>Build &bull; Maintain &bull; Grow<br />We create websites that transform businesses.</p>
-            </div>
-            <div class="footer-links">
-                <h5>Quick Links</h5>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-social">
-                <h5>Connect With Me</h5>
-                <div class="social-icons">
-                    <a href="https://github.com/tyrontshabalala64-droid" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/vuako-tshabalala-975878266/?skipRedirect=true" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://wa.me/27833842647" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                </div>
-            </div>
-            <div class="footer-bottom">&copy; 2026 Shabs Web Development. All rights reserved.</div>
-        </div>
-    </footer>
-
-    <!-- ===== FLOATING WHATSAPP ===== -->
-    <a href="https://wa.me/27833842647" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <!-- ===== JAVASCRIPT ===== -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const hamburger = document.getElementById('hamburger');
-            const navMenu = document.getElementById('navMenu');
-
-            if (hamburger && navMenu) {
-                hamburger.addEventListener('click', function() {
-                    navMenu.classList.toggle('open');
-                    hamburger.classList.toggle('active');
-                    const icon = hamburger.querySelector('i');
-                    icon.className = navMenu.classList.contains('open') ? 'fas fa-times' : 'fas fa-bars';
-                });
-
-                navMenu.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', function() {
-                        navMenu.classList.remove('open');
-                        hamburger.classList.remove('active');
-                        hamburger.querySelector('i').className = 'fas fa-bars';
-                    });
-                });
-            }
-
-            const header = document.getElementById('header');
-            window.addEventListener('scroll', function() {
-                header.classList.toggle('scrolled', window.scrollY > 50);
-            });
+  <script>
+    const f = document.getElementById('f'), s = document.getElementById('status'), b = document.getElementById('b');
+    f.addEventListener('submit', async e => {
+      e.preventDefault();
+      b.disabled = true;
+      b.textContent = 'Sending...';
+      s.textContent = '';
+      try {
+        const r = await fetch(f.action, {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: new FormData(f)
         });
-    </script>
+        if (r.ok) {
+          s.textContent = 'Thanks, your message is sent. I will reply soon.';
+          f.reset();
+        } else throw 0;
+      } catch {
+        s.textContent = 'That did not send. Please try again or message me on WhatsApp.';
+      }
+      b.disabled = false;
+      b.textContent = 'Send message';
+    });
+  </script>
+</main>
 
+<footer>
+  <div class="w foot">
+    <div>
+      <strong>Shabs Web Development</strong>
+      <p class="muted">Websites, systems and social media for small businesses across South Africa.</p>
+    </div>
+    <div>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Pricing</a>
+      <a href="portfolio.html">Work</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div>
+      <a href="tel:+27833842647">083 384 2647</a>
+      <a href="mailto:tyrontshabalala64@gmail.com">tyrontshabalala64@gmail.com</a>
+      <a href="https://github.com/tyrontshabalala64-droid" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/vuako-tshabalala-975878266/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+  <p class="w copy">&copy; 2026 Shabs Web Development. All rights reserved.</p>
+</footer>
+
+<a class="wa" href="https://wa.me/27833842647" target="_blank" rel="noopener">Chat on WhatsApp</a>
 </body>
 </html>
