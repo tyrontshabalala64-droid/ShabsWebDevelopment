@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Shop | A+ Tech</title>
-<meta name="description" content="Shop laptops, monitors, controllers and keyboards from A+ Tech.">
+<meta name="description" content="Shop pre-owned laptops, monitors, accessories and keyboards from A+ Tech.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <style>
-  /* --- ANIMATION STYLES --- */
+  /* --- ANIMATIONS --- */
   .fade-up {
     animation: fadeUp 0.6s cubic-bezier(0.5, 0, 0, 1) forwards;
     opacity: 0;
@@ -24,18 +24,20 @@
     }
   }
 
-  /* Product Card Hover Lift */
-  .card.product:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(16,24,40,.1);
-    border-color: var(--accent-soft);
+  /* --- RESPONSIVE SEARCH & FILTERS --- */
+  .search-sticky-wrapper {
+    position: sticky;
+    top: 70px;
+    z-index: 40;
+    background: var(--paper);
+    padding: 16px 0;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    border-bottom: 1px solid var(--line);
   }
-
-  /* --- SHOP SPECIFIC STYLES --- */
   .search-container {
-    margin: 24px 0;
     display: flex;
-    gap: 10px;
+    gap: 12px;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
@@ -43,24 +45,26 @@
   .search-box {
     flex: 1;
     min-width: 250px;
-    padding: 14px 18px;
+    padding: 14px 20px;
     font-size: 1rem;
     border: 1px solid var(--line);
     border-radius: var(--radius-sm);
     font-family: var(--font-body);
-    transition: border-color 0.3s, box-shadow 0.3s;
+    transition: all 0.3s;
+    background: var(--soft);
   }
   .search-box:focus {
     outline: none;
     border-color: var(--accent);
-    box-shadow: 0 0 0 3px var(--accent-soft);
+    background: #fff;
+    box-shadow: 0 0 0 4px var(--accent-soft);
   }
   .filter-btns { display: flex; gap: 8px; flex-wrap: wrap; }
   .filter-btn {
     background: #fff;
     border: 1px solid var(--line);
-    padding: 10px 16px;
-    border-radius: var(--radius-sm);
+    padding: 10px 18px;
+    border-radius: 999px;
     cursor: pointer;
     font-family: var(--font-body);
     font-weight: 600;
@@ -70,20 +74,31 @@
   }
   .filter-btn:hover, .filter-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
 
-  /* Product Cards */
+  /* --- PRO PRODUCT CARDS --- */
   .card.product { 
-    padding: 16px; 
+    padding: 20px 16px; 
     text-align: center; 
     display: flex; 
     flex-direction: column; 
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    height: 100%;
+    position: relative;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: 0 2px 8px rgba(16,24,40,.04);
+  }
+  .card.product:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(16,24,40,.08);
+    border-color: var(--accent-soft);
   }
   .card.product .price { 
     font-family: var(--font-head); 
-    font-size: 1.5rem; 
+    font-size: 1.4rem; 
     font-weight: 700; 
-    color: var(--accent); 
-    margin: 10px 0 16px; 
+    color: var(--ink); 
+    margin: 12px 0 16px; 
     margin-top: auto; 
   }
   
@@ -93,121 +108,389 @@
     width: 100%;
     height: 220px;
     overflow: hidden;
-    background: transparent;
-    margin-bottom: 8px;
+    background: #f8fafc;
+    border-radius: var(--radius-sm);
+    margin-bottom: 16px;
     cursor: zoom-in;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
   }
   .product-img { 
     width: 100%; 
     height: 100%; 
     object-fit: contain; 
-    transition: transform 0.4s ease; 
+    transition: transform 0.5s ease; 
   }
   .img-container:hover .product-img { 
-    transform: scale(1.08); 
+    transform: scale(1.1); 
   }
 
-  /* Hidden Specs List */
-  .specs-list {
-    background: #f8fafc;
-    border: 1px solid transparent;
-    border-radius: var(--radius-sm);
-    text-align: left;
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    padding: 0 12px;
-    margin-bottom: 0;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .card.product:hover .specs-list {
-    max-height: 250px;
-    opacity: 1;
-    padding: 12px;
-    margin-bottom: 16px;
-    border-color: var(--line);
-  }
-
-  .specs-list h4 {
-    font-size: 0.8rem;
-    margin: 0 0 8px 0;
-    color: var(--ink);
+  /* Badges */
+  .badge-preowned, .badge-new {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    font-size: 0.65rem;
+    font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
+    padding: 6px 10px;
+    border-radius: 4px;
+    z-index: 2;
+    color: #fff;
   }
-  .specs-list ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  .badge-preowned { background: var(--ink); }
+  .badge-new { background: #10b981; }
+
+  /* Add to Bag Button */
+  .card.product .btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 0.95rem;
+    border-radius: var(--radius-sm);
+    background: var(--accent-soft);
+    color: var(--accent-dark);
+    font-weight: 700;
+    transition: all 0.2s;
   }
-  .specs-list ul li {
-    font-size: 0.85rem;
-    color: var(--muted);
-    margin-bottom: 4px;
-    display: flex;
-    align-items: flex-start;
-    line-height: 1.4;
-  }
-  .specs-list ul li::before {
-    content: "•";
-    color: var(--accent);
-    font-weight: bold;
-    margin-right: 8px;
+  .card.product .btn:hover {
+    background: var(--accent);
+    color: #fff;
+    transform: none;
+    box-shadow: none;
   }
 
-  /* Cart Button in Header */
+  /* --- HEADER CART BUTTON --- */
   .cart-btn {
     background: var(--accent-soft);
     color: var(--accent-dark);
     border: none;
-    padding: 8px 14px;
-    border-radius: var(--radius-sm);
+    padding: 8px 16px;
+    border-radius: 999px;
     font-weight: 700;
     font-family: var(--font-body);
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 6px;
-    transition: background 0.2s;
+    gap: 8px;
+    transition: all 0.2s;
   }
-  .cart-btn:hover { background: #d1e0ff; }
+  .cart-btn:hover { background: #d1e0ff; transform: scale(1.02); }
 
-  /* Slide-out Cart Panel */
+  /* --- SLIDE-OUT CART PANEL --- */
   .cart-panel {
     position: fixed;
-    top: 0; right: -400px; width: 100%; max-width: 400px; height: 100vh;
+    top: 0; right: -100%; width: 100%; max-width: 400px; height: 100vh;
     background: #fff;
-    box-shadow: -5px 0 30px rgba(0,0,0,0.15);
+    box-shadow: -10px 0 40px rgba(0,0,0,0.1);
     z-index: 1001;
-    transition: right 0.3s ease;
+    transition: right 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
     display: flex; flex-direction: column;
   }
   .cart-panel.open { right: 0; }
-  .cart-header { display: flex; justify-content: space-between; align-items: center; padding: 20px; border-bottom: 1px solid var(--line); }
-  .cart-header h2 { margin: 0; font-size: 1.3rem; }
-  .close-cart { background: none; border: none; font-size: 1.8rem; cursor: pointer; color: var(--muted); line-height: 1; }
-  .cart-items { flex: 1; overflow-y: auto; padding: 20px; }
-  .cart-item { display: flex; gap: 12px; margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--line); align-items: center; }
-  .cart-item img { width: 60px; height: 60px; object-fit: contain; border-radius: 4px; background: #f4f6f8; padding: 4px; }
+  .cart-header { display: flex; justify-content: space-between; align-items: center; padding: 24px; border-bottom: 1px solid var(--line); }
+  .cart-header h2 { margin: 0; font-size: 1.4rem; }
+  .close-cart { background: none; border: none; font-size: 2rem; cursor: pointer; color: var(--muted); line-height: 1; transition: color 0.2s; }
+  .close-cart:hover { color: var(--ink); }
+  .cart-items { flex: 1; overflow-y: auto; padding: 24px; }
+  .cart-item { display: flex; gap: 16px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--line); align-items: center; }
+  .cart-item img { width: 70px; height: 70px; object-fit: contain; border-radius: 6px; background: #f4f6f8; padding: 6px; }
   .cart-item-info { flex: 1; text-align: left; }
-  .cart-item-info h4 { margin: 0 0 4px; font-size: 0.95rem; }
-  .cart-item-info p { margin: 0; font-size: 0.9rem; color: var(--accent); font-weight: 600; }
-  .remove-item { background: none; border: none; color: #e74c3c; cursor: pointer; font-size: 0.8rem; font-weight: 600; padding: 4px; }
-  .cart-footer { padding: 20px; border-top: 1px solid var(--line); background: #fafbfc; }
-  .cart-total { display: flex; justify-content: space-between; font-size: 1.2rem; font-weight: 700; margin-bottom: 16px; font-family: var(--font-head); }
-  .checkout-btn { width: 100%; padding: 15px; font-size: 1rem; background: #25d366; color: #fff; border: none; border-radius: var(--radius-sm); font-weight: 700; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 8px; transition: background 0.2s, transform 0.2s; }
-  .checkout-btn:hover { background: #1fb457; transform: translateY(-2px); }
-  .cart-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; display: none; opacity: 0; transition: opacity 0.3s; }
+  .cart-item-info h4 { margin: 0 0 6px; font-size: 1rem; }
+  .cart-item-info p { margin: 0; font-size: 0.95rem; color: var(--accent); font-weight: 700; }
+  .remove-item { background: none; border: none; color: #ef4444; cursor: pointer; font-size: 0.8rem; font-weight: 700; padding: 6px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .cart-footer { padding: 24px; border-top: 1px solid var(--line); background: #fafbfc; }
+  
+  /* Cart Totals Breakdown */
+  .cart-breakdown {
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+  }
+  .cart-row { display: flex; justify-content: space-between; margin-bottom: 8px; color: var(--muted); }
+  .cart-row.total { font-size: 1.4rem; font-weight: 800; color: var(--ink); font-family: var(--font-head); margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--line); }
+  .free-delivery { color: #10b981; font-weight: 700; }
+  
+  .checkout-btn { width: 100%; padding: 16px; font-size: 1.05rem; background: #25d366; color: #fff; border: none; border-radius: var(--radius-sm); font-weight: 700; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 10px; transition: all 0.2s; box-shadow: 0 4px 12px rgba(37,211,102,.3); }
+  .checkout-btn:hover { background: #1fb457; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(37,211,102,.4); }
+  .cart-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(11,14,18,0.6); backdrop-filter: blur(3px); z-index: 1000; display: none; opacity: 0; transition: opacity 0.3s; }
   .cart-overlay.active { display: block; opacity: 1; }
 
-  /* Lightbox (Zoom) */
-  .lightbox { display: none; position: fixed; z-index: 1002; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); align-items: center; justify-content: center; padding: 20px; cursor: zoom-out; opacity: 0; transition: opacity 0.3s; }
+  /* --- PRO LIGHTBOX (Zoom + Specs) --- */
+  .lightbox { 
+    display: none; 
+    position: fixed; 
+    z-index: 1002; 
+    top: 0; left: 0; 
+    width: 100%; height: 100%; 
+    background: rgba(11,14,18,0.9); 
+    backdrop-filter: blur(8px); 
+    align-items: center; 
+    justify-content: center; 
+    padding: 20px; 
+    opacity: 0; 
+    transition: opacity 0.3s; 
+  }
   .lightbox.active { display: flex; opacity: 1; }
-  .lightbox img { max-width: 95%; max-height: 95vh; border-radius: var(--radius); box-shadow: 0 20px 50px rgba(0,0,0,0.5); object-fit: contain; }
-  .lightbox-close { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 40px; font-weight: bold; cursor: pointer; line-height: 1; }
+  
+  .lightbox-content {
+    background: #fff;
+    border-radius: 12px;
+    max-width: 900px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+    animation: zoomIn 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+  
+  @keyframes zoomIn {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+  
+  .lightbox-img-wrapper {
+    background: #f8fafc;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid var(--line);
+  }
+  
+  .lightbox-img-wrapper img {
+    max-width: 100%;
+    max-height: 45vh;
+    object-fit: contain;
+  }
+
+  .lightbox-info {
+    padding: 32px;
+    text-align: left;
+  }
+  .lightbox-info h3 {
+    font-size: 1.6rem;
+    margin-bottom: 8px;
+    font-family: var(--font-head);
+  }
+  .lightbox-price {
+    font-family: var(--font-head);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 24px;
+  }
+  .lightbox-specs {
+    background: #f8fafc;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 20px;
+  }
+  .lightbox-specs h4 {
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+    font-weight: 700;
+  }
+  .lightbox-specs ul {
+    list-style: none;
+    padding: 0; margin: 0;
+  }
+  .lightbox-specs li {
+    font-size: 0.95rem;
+    color: var(--ink);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: flex-start;
+    line-height: 1.5;
+  }
+  .lightbox-specs li::before {
+    content: "•";
+    color: var(--accent);
+    font-weight: bold;
+    margin-right: 10px;
+    font-size: 1.2rem;
+    line-height: 1;
+  }
+
+  .lightbox-close { 
+    position: absolute; 
+    top: 20px; 
+    right: 20px; 
+    background: rgba(0,0,0,0.5);
+    color: #fff; 
+    font-size: 24px; 
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer; 
+    z-index: 1003;
+    transition: background 0.2s;
+  }
+  .lightbox-close:hover { background: var(--accent); }
   
   .hidden { display: none !important; }
+
+  /* --- FLOATING RENT A PC BUTTON --- */
+  .rent-pc-btn {
+    position: fixed;
+    left: 18px;
+    bottom: 18px;
+    z-index: 60;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: var(--ink);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border-radius: 999px;
+    box-shadow: 0 10px 26px rgba(0,0,0,0.3);
+    transition: all 0.2s;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-body);
+  }
+  .rent-pc-btn:hover {
+    background: var(--accent);
+    transform: translateY(-3px);
+    box-shadow: 0 14px 32px rgba(26,86,219,0.4);
+  }
+
+  /* --- RENTAL MODAL --- */
+  .rental-modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(11,14,18,0.8);
+    backdrop-filter: blur(5px);
+    z-index: 1004;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .rental-modal.active { display: flex; }
+  .rental-content {
+    background: #fff;
+    border-radius: var(--radius);
+    max-width: 600px;
+    width: 100%;
+    padding: 32px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+  }
+  .rental-content h2 {
+    font-family: var(--font-head);
+    font-size: 1.8rem;
+    margin-bottom: 12px;
+  }
+  .rental-content p {
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+  .rental-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .rental-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: #f8fafc;
+    text-align: left;
+  }
+  .rental-option h4 {
+    margin: 0 0 4px;
+    font-size: 1rem;
+  }
+  .rental-option span {
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  /* --- MOBILE OPTIMIZATIONS --- */
+  @media (max-width: 768px) {
+    .search-sticky-wrapper {
+      top: 60px;
+      padding: 12px 0;
+    }
+    .search-box {
+      min-width: 100%;
+    }
+    .filter-btns {
+      width: 100%;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      -webkit-overflow-scrolling: touch;
+    }
+    .filter-btn {
+      flex-shrink: 0;
+    }
+    
+    #hardwareGrid, #setupsGrid {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 12px !important;
+    }
+    .card.product {
+      padding: 12px 8px;
+    }
+    .img-container {
+      height: 140px;
+    }
+    .card.product h3 {
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+    }
+    .card.product .price {
+      font-size: 1.1rem;
+      margin: 8px 0 12px;
+    }
+    .card.product .btn {
+      padding: 10px;
+      font-size: 0.85rem;
+    }
+    
+    .lightbox-content {
+      max-height: 95vh;
+    }
+    .lightbox-img-wrapper { padding: 15px; }
+    .lightbox-info { padding: 20px; }
+    .lightbox-info h3 { font-size: 1.3rem; }
+    .lightbox-price { font-size: 1.5rem; margin-bottom: 16px; }
+    .lightbox-specs { padding: 16px; }
+    .lightbox-specs li { font-size: 0.85rem; }
+    
+    .rent-pc-btn {
+      left: 14px;
+      bottom: 14px;
+      padding: 10px 16px;
+      font-size: 0.85rem;
+    }
+    .rental-content { padding: 24px; }
+  }
+  
+  @media (max-width: 480px) {
+    #hardwareGrid, #setupsGrid {
+      grid-template-columns: 1fr !important;
+    }
+    .img-container {
+      height: 200px;
+    }
+  }
 </style>
 </head>
 <body>
@@ -234,143 +517,239 @@
 </header>
 
 <main>
-  <section class="page-h fade-up">
+  <section class="page-h fade-up" style="padding-bottom: 20px;">
     <div class="w">
       <h1>Shop our available technology.</h1>
-      <p class="lead" style="color: var(--accent); font-weight: bold; margin-top: 10px;">Hover over a product to view its specifications.</p>
+      <p class="lead" style="color: var(--accent); font-weight: bold; margin-top: 10px;">Click on any product image to view its specifications. Free delivery on orders over R 500.</p>
     </div>
   </section>
 
-  <section class="sec">
+  <div class="search-sticky-wrapper">
     <div class="w">
-      
-      <!-- SEARCH AND FILTERS -->
       <div class="search-container fade-up" style="animation-delay: 0.1s;">
-        <input type="text" id="searchInput" class="search-box" placeholder="Search hardware (e.g. Monitor, Controller, Keyboard)...">
+        <input type="text" id="searchInput" class="search-box" placeholder="Search hardware...">
         <div class="filter-btns">
           <button class="filter-btn active" data-filter="all">All</button>
           <button class="filter-btn" data-filter="hardware">Hardware</button>
           <button class="filter-btn" data-filter="setups">Setup Ideas</button>
         </div>
       </div>
+    </div>
+  </div>
 
+  <section class="sec" style="padding-top: 0;">
+    <div class="w">
+      
       <!-- HARDWARE SECTION -->
-      <h2 style="margin-top: 40px; opacity: 0; animation: fadeUp 0.5s 0.2s forwards;" id="hardwareHeader">Hardware</h2>
+      <h2 style="margin-top: 20px; opacity: 0; animation: fadeUp 0.5s 0.2s forwards;" id="hardwareHeader">Hardware</h2>
       <div class="g" id="hardwareGrid" style="margin-top:24px">
         
+        <!-- NEW ACCESSORIES -->
+        
+        <!-- PC Mat -->
+        <div class="card product searchable fade-up" style="animation-delay: 0.1s;" data-category="hardware" data-name="PC Mat" data-price="350">
+          <div class="img-container" onclick="openLightbox('https://res.cloudinary.com/mbtt9jfo/image/upload/v1792585181/PC_Mat.png', 'Premium PC Mat', 'R 350', 'Water-resistant surface, Non-slip rubber base, Smooth gliding for mouse')">
+            <span class="badge-new">New</span>
+            <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792585181/PC_Mat.png" alt="PC Mat" class="product-img">
+          </div>
+          <h3>Premium PC Mat</h3>
+          <div class="price">R 350</div>
+          <button class="btn add-to-cart" data-img="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792585181/PC_Mat.png">Add to Bag</button>
+        </div>
+
+        <!-- Phone Holder -->
+        <div class="card product searchable fade-up" style="animation-delay: 0.2s;" data-category="hardware" data-name="Phone Holder" data-price="150">
+          <div class="img-container" onclick="openLightbox('https://res.cloudinary.com/mbtt9jfo/image/upload/v1792585169/Phone_Holder.png', 'Adjustable Phone Holder', 'R 150', '360-degree rotation, Sturdy desk stand, Fits all smartphone sizes')">
+            <span class="badge-new">New</span>
+            <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792585169/Phone_Holder.png" alt="Phone Holder" class="product-img">
+          </div>
+          <h3>Adjustable Phone Holder</h3>
+          <div class="price">R 150</div>
+          <button class="btn add-to-cart" data-img="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792585169/Phone_Holder.png">Add to Bag</button>
+        </div>
+
+        <!-- Portable Mic -->
+        <div class="card product searchable fade-up" style="animation-delay: 0.3s;" data-category="hardware" data-name="Portable Mic" data-price="850">
+          <div class="img-container" onclick="openLightbox('https://res.cloudinary.com/mbtt9jfo/image/upload/v1792585143/portable_mic.png', 'Portable Microphone', 'R 850', 'High-definition audio, Plug & play USB connection, Ideal for meetings & streaming')">
+            <span class="badge-new">New</span>
+            <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792585143/portable_mic.png" alt="Portable Mic" class="product-img">
+          </div>
+          <h3>Portable Microphone</h3>
+          <div class="price">R 850</div>
+          <button class="btn add-to-cart" data-img="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792585143/portable_mic.png">Add to Bag</button>
+        </div>
+
+        <!-- Portable Tripod -->
+        <div class="card product searchable fade-up" style="animation-delay: 0.4s;" data-category="hardware" data-name="Portable Tripod" data-price="400">
+          <div class="img-container" onclick="openLightbox('https://res.cloudinary.com/mbtt9jfo/image/upload/v1792585133/Portable_Tripod.png', 'Portable Tripod', 'R 400', 'Adjustable height, Includes phone mount, Compact and lightweight')">
+            <span class="badge-new">New</span>
+            <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792585133/Portable_Tripod.png" alt="Portable Tripod" class="product-img">
+          </div>
+          <h3>Portable Tripod</h3>
+          <div class="price">R 400</div>
+          <button class="btn add-to-cart" data-img="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792585133/Portable_Tripod.png">Add to Bag</button>
+        </div>
+
+        <!-- Extra Large Mat -->
+        <div class="card product searchable fade-up" style="animation-delay: 0.5s;" data-category="hardware" data-name="Extra Large Mat" data-price="550">
+          <div class="img-container" onclick="openLightbox('https://res.cloudinary.com/mbtt9jfo/image/upload/v1792585015/Extra_large_mat.png', 'Extra Large Desk Mat', 'R 550', 'Covers keyboard and mouse area, Premium stitched edges, Water-resistant fabric')">
+            <span class="badge-new">New</span>
+            <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792585015/Extra_large_mat.png" alt="Extra Large Mat" class="product-img">
+          </div>
+          <h3>Extra Large Desk Mat</h3>
+          <div class="price">R 550</div>
+          <button class="btn add-to-cart" data-img="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792585015/Extra_large_mat.png">Add to Bag</button>
+        </div>
+
+        <!-- Dual Fan -->
+        <div class="card product searchable fade-up" style="animation-delay: 0.6s;" data-category="hardware" data-name="Dual Fan" data-price="300">
+          <div class="img-container" onclick="openLightbox('https://res.cloudinary.com/mbtt9jfo/image/upload/v1792585002/Dual_Fan.png', 'Dual Cooling Fan', 'R 300', 'USB powered, Whisper-quiet operation, Adjustable tilt')">
+            <span class="badge-new">New</span>
+            <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792585002/Dual_Fan.png" alt="Dual Fan" class="product-img">
+          </div>
+          <h3>Dual Cooling Fan</h3>
+          <div class="price">R 300</div>
+          <button class="btn add-to-cart" data-img="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792585002/Dual_Fan.png">Add to Bag</button>
+        </div>
+
+        <!-- Multiple Port Hub -->
+        <div class="card product searchable fade-up" style="animation-delay: 0.2s;" data-category="hardware" data-name="Multiple Port Hub" data-price="750">
+          <div class="img-container" onclick="openLightbox('https://res.cloudinary.com/mbtt9jfo/image/upload/v1792584962/multiple_port.png', 'Multi-Port Hub', 'R 750', 'USB-C & USB-A ports, HDMI output, Fast charging support')">
+            <span class="badge-new">New</span>
+            <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792584962/multiple_port.png" alt="Multiple Port Hub" class="product-img">
+          </div>
+          <h3>Multi-Port Hub</h3>
+          <div class="price">R 750</div>
+          <button class="btn add-to-cart" data-img="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792584962/multiple_port.png">Add to Bag</button>
+        </div>
+
+        <!-- Wind Free Laptop Stand -->
+        <div class="card product searchable fade-up" style="animation-delay: 0.3s;" data-category="hardware" data-name="Wind Free Laptop Stand" data-price="450">
+          <div class="img-container" onclick="openLightbox('https://res.cloudinary.com/mbtt9jfo/image/upload/v1792574202/WIND_FREE_LAPTOP_sTAND.png', 'Wind-Free Laptop Stand', 'R 450', 'Ergonomic viewing angle, Improves laptop cooling, Foldable for travel')">
+            <span class="badge-new">New</span>
+            <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792574202/WIND_FREE_LAPTOP_sTAND.png" alt="Wind Free Laptop Stand" class="product-img">
+          </div>
+          <h3>Wind-Free Laptop Stand</h3>
+          <div class="price">R 450</div>
+          <button class="btn add-to-cart" data-img="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792574202/WIND_FREE_LAPTOP_sTAND.png">Add to Bag</button>
+        </div>
+
+        <!-- Wireless Charger -->
+        <div class="card product searchable fade-up" style="animation-delay: 0.4s;" data-category="hardware" data-name="Wireless Charger" data-price="350">
+          <div class="img-container" onclick="openLightbox('https://res.cloudinary.com/mbtt9jfo/image/upload/v1792574201/wireless_charger.png', 'Wireless Charger', 'R 350', 'Fast 15W charging, Qi-compatible, Sleek slim design')">
+            <span class="badge-new">New</span>
+            <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792574201/wireless_charger.png" alt="Wireless Charger" class="product-img">
+          </div>
+          <h3>Wireless Charger</h3>
+          <div class="price">R 350</div>
+          <button class="btn add-to-cart" data-img="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792574201/wireless_charger.png">Add to Bag</button>
+        </div>
+
+        <!-- Smart Glasses 2 -->
+        <div class="card product searchable fade-up" style="animation-delay: 0.5s;" data-category="hardware" data-name="Smart Glasses 2" data-price="1200">
+          <div class="img-container" onclick="openLightbox('https://res.cloudinary.com/mbtt9jfo/image/upload/v1792574199/smartGlasses2.png', 'Smart Glasses (Pro)', 'R 1,200', 'Bluetooth connectivity, Built-in microphone, Open-ear audio')">
+            <span class="badge-new">New</span>
+            <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792574199/smartGlasses2.png" alt="Smart Glasses 2" class="product-img">
+          </div>
+          <h3>Smart Glasses (Pro)</h3>
+          <div class="price">R 1,200</div>
+          <button class="btn add-to-cart" data-img="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792574199/smartGlasses2.png">Add to Bag</button>
+        </div>
+
+        <!-- Smart Glasses 1 -->
+        <div class="card product searchable fade-up" style="animation-delay: 0.6s;" data-category="hardware" data-name="Smart Glasses 1" data-price="950">
+          <div class="img-container" onclick="openLightbox('https://res.cloudinary.com/mbtt9jfo/image/upload/v1792574198/Smart_Glasses1.png', 'Smart Glasses (Classic)', 'R 950', 'UV protection lenses, Bluetooth calling, Lightweight frame')">
+            <span class="badge-new">New</span>
+            <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792574198/Smart_Glasses1.png" alt="Smart Glasses 1" class="product-img">
+          </div>
+          <h3>Smart Glasses (Classic)</h3>
+          <div class="price">R 950</div>
+          <button class="btn add-to-cart" data-img="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792574198/Smart_Glasses1.png">Add to Bag</button>
+        </div>
+
+        <!-- Voice Recorder Pen -->
+        <div class="card product searchable fade-up" style="animation-delay: 0.2s;" data-category="hardware" data-name="Voice Recorder Pen" data-price="600">
+          <div class="img-container" onclick="openLightbox('https://res.cloudinary.com/mbtt9jfo/image/upload/v1792585050/Voice_Recorder_PEN.png', 'Voice Recorder Pen', 'R 600', 'Writes like a normal pen, One-touch voice recording, USB rechargeable')">
+            <span class="badge-new">New</span>
+            <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792585050/Voice_Recorder_PEN.png" alt="Voice Recorder Pen" class="product-img">
+          </div>
+          <h3>Voice Recorder Pen</h3>
+          <div class="price">R 600</div>
+          <button class="btn add-to-cart" data-img="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792585050/Voice_Recorder_PEN.png">Add to Bag</button>
+        </div>
+
+        <!-- Plug & Play (New) -->
+        <div class="card product searchable fade-up" style="animation-delay: 0.3s;" data-category="hardware" data-name="Plug and Play" data-price="450">
+          <div class="img-container" onclick="openLightbox('https://res.cloudinary.com/mbtt9jfo/image/upload/v1792585152/Plug_and_Play.png', 'Plug & Play Device', 'R 450', 'Instant connectivity, No drivers required, Compact & portable design, Plug directly into USB port')">
+            <span class="badge-new">New</span>
+            <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792585152/Plug_and_Play.png" alt="Plug and Play" class="product-img">
+          </div>
+          <h3>Plug & Play Device</h3>
+          <div class="price">R 450</div>
+          <button class="btn add-to-cart" data-img="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792585152/Plug_and_Play.png">Add to Bag</button>
+        </div>
+
+
+        <!-- PRE-OWNED HARDWARE -->
+        
         <!-- Laptop 1 -->
-        <div class="card product searchable fade-up" style="animation-delay: 0.2s;" data-category="hardware" data-name="Dell Laptop" data-price="8500">
-          <div class="img-container">
+        <div class="card product searchable fade-up" style="animation-delay: 0.4s;" data-category="hardware" data-name="Dell Laptop Pre-Owned" data-price="8500">
+          <div class="img-container" onclick="openLightbox('https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405726/Dell_Laptop.jpg', 'Dell Laptop', 'R 8,500', 'Intel Core i5 (11th Gen), 8GB DDR4 RAM, 256GB NVMe SSD, 15.6\" Full HD Display, Windows 11 Pro')">
+            <span class="badge-preowned">Pre-Owned</span>
             <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405726/Dell_Laptop.jpg" alt="Dell Laptop" class="product-img">
           </div>
           <h3>Dell Laptop</h3>
-          
-          <div class="specs-list">
-            <h4>Specifications</h4>
-            <ul>
-              <li>Intel Core i5 (11th Gen)</li>
-              <li>8GB DDR4 RAM</li>
-              <li>256GB NVMe SSD</li>
-              <li>15.6" Full HD Display</li>
-              <li>Windows 11 Pro</li>
-            </ul>
-          </div>
-
           <div class="price">R 8,500</div>
           <button class="btn add-to-cart" data-img="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405726/Dell_Laptop.jpg">Add to Bag</button>
         </div>
 
         <!-- Laptop 2 -->
-        <div class="card product searchable fade-up" style="animation-delay: 0.3s;" data-category="hardware" data-name="Mac PC" data-price="14500">
-          <div class="img-container">
+        <div class="card product searchable fade-up" style="animation-delay: 0.5s;" data-category="hardware" data-name="Mac PC Pre-Owned" data-price="14500">
+          <div class="img-container" onclick="openLightbox('https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405726/Mac_PC.jpg', 'Mac PC', 'R 14,500', 'Apple M1 Chip, 8GB Unified RAM, 256GB SSD, 13.3\" Retina Display, macOS')">
+            <span class="badge-preowned">Pre-Owned</span>
             <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405726/Mac_PC.jpg" alt="Mac PC" class="product-img">
           </div>
           <h3>Mac PC</h3>
-          
-          <div class="specs-list">
-            <h4>Specifications</h4>
-            <ul>
-              <li>Apple M1 Chip</li>
-              <li>8GB Unified RAM</li>
-              <li>256GB SSD</li>
-              <li>13.3" Retina Display</li>
-              <li>macOS</li>
-            </ul>
-          </div>
-
           <div class="price">R 14,500</div>
           <button class="btn add-to-cart" data-img="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405726/Mac_PC.jpg">Add to Bag</button>
         </div>
 
         <!-- Laptop 3 -->
-        <div class="card product searchable fade-up" style="animation-delay: 0.4s;" data-category="hardware" data-name="Curvey Laptop" data-price="9200">
-          <div class="img-container">
+        <div class="card product searchable fade-up" style="animation-delay: 0.6s;" data-category="hardware" data-name="Curvey Laptop Pre-Owned" data-price="9200">
+          <div class="img-container" onclick="openLightbox('https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405725/curvey_2.jpg', 'Curvey Laptop', 'R 9,200', 'AMD Ryzen 5, 16GB RAM, 512GB SSD, 14\" Thin & Light, Windows 11 Home')">
+            <span class="badge-preowned">Pre-Owned</span>
             <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405725/curvey_2.jpg" alt="Curvey Laptop" class="product-img">
           </div>
           <h3>Curvey Laptop</h3>
-          
-          <div class="specs-list">
-            <h4>Specifications</h4>
-            <ul>
-              <li>AMD Ryzen 5</li>
-              <li>16GB RAM</li>
-              <li>512GB SSD</li>
-              <li>14" Thin & Light</li>
-              <li>Windows 11 Home</li>
-            </ul>
-          </div>
-
           <div class="price">R 9,200</div>
           <button class="btn add-to-cart" data-img="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405725/curvey_2.jpg">Add to Bag</button>
         </div>
 
         <!-- Monitor 1 -->
-        <div class="card product searchable fade-up" style="animation-delay: 0.5s;" data-category="hardware" data-name="Curvey Monitor" data-price="3200">
-          <div class="img-container">
+        <div class="card product searchable fade-up" style="animation-delay: 0.2s;" data-category="hardware" data-name="Curvey Monitor Pre-Owned" data-price="3200">
+          <div class="img-container" onclick="openLightbox('https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405725/curvey_Monitor.jpg', 'Curvey Monitor', 'R 3,200', '27\" Curved Display, 1920 x 1080 (FHD), 75Hz Refresh Rate, HDMI & DisplayPort, Eye-care technology')">
+            <span class="badge-preowned">Pre-Owned</span>
             <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405725/curvey_Monitor.jpg" alt="Curvey Monitor" class="product-img">
           </div>
           <h3>Curvey Monitor</h3>
-          
-          <div class="specs-list">
-            <h4>Specifications</h4>
-            <ul>
-              <li>27" Curved Display</li>
-              <li>1920 x 1080 (FHD)</li>
-              <li>75Hz Refresh Rate</li>
-              <li>HDMI & DisplayPort</li>
-              <li>Eye-care technology</li>
-            </ul>
-          </div>
-
           <div class="price">R 3,200</div>
           <button class="btn add-to-cart" data-img="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405725/curvey_Monitor.jpg">Add to Bag</button>
         </div>
 
         <!-- Monitor 2 -->
-        <div class="card product searchable fade-up" style="animation-delay: 0.6s;" data-category="hardware" data-name="Dell Monitor" data-price="2400">
-          <div class="img-container">
+        <div class="card product searchable fade-up" style="animation-delay: 0.3s;" data-category="hardware" data-name="Dell Monitor Pre-Owned" data-price="2400">
+          <div class="img-container" onclick="openLightbox('https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405727/dell_monitor.jpg', 'Dell Monitor', 'R 2,400', '24\" Flat Screen, 1920 x 1080 (FHD), 60Hz Refresh Rate, VGA & HDMI, Height adjustable stand')">
+            <span class="badge-preowned">Pre-Owned</span>
             <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405727/dell_monitor.jpg" alt="Dell Monitor" class="product-img">
           </div>
           <h3>Dell Monitor</h3>
-          
-          <div class="specs-list">
-            <h4>Specifications</h4>
-            <ul>
-              <li>24" Flat Screen</li>
-              <li>1920 x 1080 (FHD)</li>
-              <li>60Hz Refresh Rate</li>
-              <li>VGA & HDMI</li>
-              <li>Height adjustable stand</li>
-            </ul>
-          </div>
-
           <div class="price">R 2,400</div>
           <button class="btn add-to-cart" data-img="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405727/dell_monitor.jpg">Add to Bag</button>
         </div>
 
         <!-- Keyboard 1 -->
-        <div class="card product searchable fade-up" style="animation-delay: 0.2s;" data-category="hardware" data-name="Keyboard R250" data-price="250">
-          <div class="img-container">
+        <div class="card product searchable fade-up" style="animation-delay: 0.4s;" data-category="hardware" data-name="Keyboard R250" data-price="250">
+          <div class="img-container" onclick="openLightbox('https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405725/keyboard_R250.png', 'Standard Keyboard', 'R 250', 'Standard layout, Durable keys, Plug and play')">
             <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405725/keyboard_R250.png" alt="Keyboard R250" class="product-img">
           </div>
           <h3>Standard Keyboard</h3>
@@ -379,8 +758,8 @@
         </div>
 
         <!-- Keyboard 2 -->
-        <div class="card product searchable fade-up" style="animation-delay: 0.3s;" data-category="hardware" data-name="Standard Keyboard" data-price="350">
-          <div class="img-container">
+        <div class="card product searchable fade-up" style="animation-delay: 0.5s;" data-category="hardware" data-name="Standard Keyboard" data-price="350">
+          <div class="img-container" onclick="openLightbox('https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405726/keyboard.jpg', 'Reliable Keyboard', 'R 350', 'Quiet typing, Spill-resistant, USB connection')">
             <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405726/keyboard.jpg" alt="Standard Keyboard" class="product-img">
           </div>
           <h3>Reliable Keyboard</h3>
@@ -389,8 +768,8 @@
         </div>
 
         <!-- Keyboard 3 -->
-        <div class="card product searchable fade-up" style="animation-delay: 0.4s;" data-category="hardware" data-name="Keyboard 4" data-price="650">
-          <div class="img-container">
+        <div class="card product searchable fade-up" style="animation-delay: 0.6s;" data-category="hardware" data-name="Keyboard 4" data-price="650">
+          <div class="img-container" onclick="openLightbox('https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405726/keyboard4.jpg', 'Premium Keyboard', 'R 650', 'Mechanical feel, RGB backlighting, Ergonomic design')">
             <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405726/keyboard4.jpg" alt="Keyboard 4" class="product-img">
           </div>
           <h3>Premium Keyboard</h3>
@@ -399,8 +778,8 @@
         </div>
 
         <!-- Chair -->
-        <div class="card product searchable fade-up" style="animation-delay: 0.5s;" data-category="hardware" data-name="Office Chair" data-price="1800">
-          <div class="img-container">
+        <div class="card product searchable fade-up" style="animation-delay: 0.2s;" data-category="hardware" data-name="Office Chair" data-price="1800">
+          <div class="img-container" onclick="openLightbox('https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405725/gchair_1.jpg', 'Ergonomic Office Chair', 'R 1,800', 'Lumbar support, Adjustable height, Breathable mesh')">
             <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405725/gchair_1.jpg" alt="Office Chair" class="product-img">
           </div>
           <h3>Ergonomic Office Chair</h3>
@@ -409,30 +788,19 @@
         </div>
 
         <!-- PC Setup 2 -->
-        <div class="card product searchable fade-up" style="animation-delay: 0.6s;" data-category="hardware" data-name="PC Setup" data-price="12000">
-          <div class="img-container">
+        <div class="card product searchable fade-up" style="animation-delay: 0.3s;" data-category="hardware" data-name="PC Setup Pre-Owned" data-price="12000">
+          <div class="img-container" onclick="openLightbox('https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405728/PC_SETUP2.jpg', 'Complete PC Setup', 'R 12,000', 'Intel Core i7, 16GB RAM, 1TB HDD + 256GB SSD, Includes Monitor & Peripherals, Windows 11 Pro')">
+            <span class="badge-preowned">Pre-Owned</span>
             <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405728/PC_SETUP2.jpg" alt="PC Setup" class="product-img">
           </div>
           <h3>Complete PC Setup</h3>
-          
-          <div class="specs-list">
-            <h4>Specifications</h4>
-            <ul>
-              <li>Intel Core i7</li>
-              <li>16GB RAM</li>
-              <li>1TB HDD + 256GB SSD</li>
-              <li>Includes Monitor & Peripherals</li>
-              <li>Windows 11 Pro</li>
-            </ul>
-          </div>
-
           <div class="price">R 12,000</div>
           <button class="btn add-to-cart" data-img="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405728/PC_SETUP2.jpg">Add to Bag</button>
         </div>
 
         <!-- Controller 1 -->
-        <div class="card product searchable fade-up" style="animation-delay: 0.2s;" data-category="hardware" data-name="PS5 Controller Blue" data-price="1200">
-          <div class="img-container">
+        <div class="card product searchable fade-up" style="animation-delay: 0.4s;" data-category="hardware" data-name="PS5 Controller Blue" data-price="1200">
+          <div class="img-container" onclick="openLightbox('https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405729/js1.jpg', 'PS5 DualSense Controller', 'R 1,200', 'Haptic feedback, Adaptive triggers, Built-in microphone')">
             <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405729/js1.jpg" alt="PS5 Controller" class="product-img">
           </div>
           <h3>PS5 DualSense Controller</h3>
@@ -441,8 +809,8 @@
         </div>
 
         <!-- Controller 2 -->
-        <div class="card product searchable fade-up" style="animation-delay: 0.3s;" data-category="hardware" data-name="PS5 Controllers Dual" data-price="2400">
-          <div class="img-container">
+        <div class="card product searchable fade-up" style="animation-delay: 0.5s;" data-category="hardware" data-name="PS5 Controllers Dual" data-price="2400">
+          <div class="img-container" onclick="openLightbox('https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405725/j2.jpg', 'PS5 Dual Controllers', 'R 2,400', 'Includes 2 controllers, Perfect for multiplayer, Wireless connectivity')">
             <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405725/j2.jpg" alt="PS5 Controllers" class="product-img">
           </div>
           <h3>PS5 Dual Controllers</h3>
@@ -451,8 +819,8 @@
         </div>
 
         <!-- Controller 3 -->
-        <div class="card product searchable fade-up" style="animation-delay: 0.4s;" data-category="hardware" data-name="PS5 Controller White" data-price="1200">
-          <div class="img-container">
+        <div class="card product searchable fade-up" style="animation-delay: 0.6s;" data-category="hardware" data-name="PS5 Controller White" data-price="1200">
+          <div class="img-container" onclick="openLightbox('https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405725/j3.jpg', 'PS5 DualSense (White)', 'R 1,200', 'Haptic feedback, Adaptive triggers, Built-in microphone')">
             <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405725/j3.jpg" alt="PS5 Controller White" class="product-img">
           </div>
           <h3>PS5 DualSense (White)</h3>
@@ -469,74 +837,66 @@
       <div class="g" id="setupsGrid">
         
         <div class="card product searchable fade-up" style="animation-delay: 0.2s;" data-category="setups" data-name="Setup Idea 1">
-          <div class="img-container">
+          <div class="img-container" onclick="openLightbox('https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405729/setup8.jpg', 'Modern Workspace Idea', 'Get a Free Quote', 'Clean & minimalist design, Perfect for home offices, Customizable to your space.')">
             <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405729/setup8.jpg" alt="Setup Idea 1" class="product-img">
           </div>
           <h3>Modern Workspace Idea</h3>
-          <div class="price" style="color: var(--muted); font-size: 1.2rem;">Custom Quote</div>
           <a href="contact.html" class="btn">Get a Free Quote</a>
         </div>
 
         <div class="card product searchable fade-up" style="animation-delay: 0.3s;" data-category="setups" data-name="Setup Idea 3">
-          <div class="img-container">
+          <div class="img-container" onclick="openLightbox('https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405729/setup_7.jpg', 'Dual-Screen Setup', 'Get a Free Quote', 'Perfect for multitasking, Dual monitor ergonomics, Customizable to your space.')">
             <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405729/setup_7.jpg" alt="Setup 3" class="product-img">
           </div>
           <h3>Dual-Screen Setup</h3>
-          <div class="price" style="color: var(--muted); font-size: 1.2rem;">Custom Quote</div>
           <a href="contact.html" class="btn">Get a Free Quote</a>
         </div>
 
         <div class="card product searchable fade-up" style="animation-delay: 0.4s;" data-category="setups" data-name="Setup Idea 4">
-          <div class="img-container">
+          <div class="img-container" onclick="openLightbox('https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405728/set_up_idead_1.jpg', 'Executive Desk Setup', 'Get a Free Quote', 'Formal and professional, High-end materials, Customizable to your space.')">
             <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405728/set_up_idead_1.jpg" alt="Setup 4" class="product-img">
           </div>
           <h3>Executive Desk Setup</h3>
-          <div class="price" style="color: var(--muted); font-size: 1.2rem;">Custom Quote</div>
           <a href="contact.html" class="btn">Get a Free Quote</a>
         </div>
 
         <div class="card product searchable fade-up" style="animation-delay: 0.5s;" data-category="setups" data-name="Setup Idea 7">
-          <div class="img-container">
+          <div class="img-container" onclick="openLightbox('https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405729/setup4.jpg', 'Compact Home Office', 'Get a Free Quote', 'Space-saving design, Perfect for small rooms, Customizable to your space.')">
             <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405729/setup4.jpg" alt="Setup 7" class="product-img">
           </div>
           <h3>Compact Home Office</h3>
-          <div class="price" style="color: var(--muted); font-size: 1.2rem;">Custom Quote</div>
           <a href="contact.html" class="btn">Get a Free Quote</a>
         </div>
 
         <div class="card product searchable fade-up" style="animation-delay: 0.6s;" data-category="setups" data-name="Setup Idea 8">
-          <div class="img-container">
+          <div class="img-container" onclick="openLightbox('https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405728/setup3.jpg', 'Creative Studio Setup', 'Get a Free Quote', 'Inspiring and tech-forward, Ideal for creators, Customizable to your space.')">
             <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405728/setup3.jpg" alt="Setup 8" class="product-img">
           </div>
           <h3>Creative Studio Setup</h3>
-          <div class="price" style="color: var(--muted); font-size: 1.2rem;">Custom Quote</div>
           <a href="contact.html" class="btn">Get a Free Quote</a>
         </div>
 
         <div class="card product searchable fade-up" style="animation-delay: 0.2s;" data-category="setups" data-name="Office Setup 1">
-          <div class="img-container">
+          <div class="img-container" onclick="openLightbox('https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405728/offics6.jpg', 'Classic Office Workspace', 'Get a Free Quote', 'Traditional layout, Durable furniture, Customizable to your space.')">
             <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405728/offics6.jpg" alt="Office Setup 1" class="product-img">
           </div>
           <h3>Classic Office Workspace</h3>
-          <div class="price" style="color: var(--muted); font-size: 1.2rem;">Custom Quote</div>
           <a href="contact.html" class="btn">Get a Free Quote</a>
         </div>
 
         <div class="card product searchable fade-up" style="animation-delay: 0.3s;" data-category="setups" data-name="Office Setup 2">
-          <div class="img-container">
+          <div class="img-container" onclick="openLightbox('https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405728/PC_SETUP2.jpg', 'Open Plan Workstation', 'Get a Free Quote', 'Great for collaboration, Modern aesthetic, Customizable to your space.')">
             <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405728/PC_SETUP2.jpg" alt="Office Setup 2" class="product-img">
           </div>
           <h3>Open Plan Workstation</h3>
-          <div class="price" style="color: var(--muted); font-size: 1.2rem;">Custom Quote</div>
           <a href="contact.html" class="btn">Get a Free Quote</a>
         </div>
 
         <div class="card product searchable fade-up" style="animation-delay: 0.4s;" data-category="setups" data-name="Office Setup 3">
-          <div class="img-container">
+          <div class="img-container" onclick="openLightbox('https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405727/office_setup3.jpg', 'Ergonomic Setup', 'Get a Free Quote', 'Prioritizes comfort, Supports good posture, Customizable to your space.')">
             <img src="https://res.cloudinary.com/mbtt9jfo/image/upload/v1792405727/office_setup3.jpg" alt="Office Setup 3" class="product-img">
           </div>
           <h3>Ergonomic Setup</h3>
-          <div class="price" style="color: var(--muted); font-size: 1.2rem;">Custom Quote</div>
           <a href="contact.html" class="btn">Get a Free Quote</a>
         </div>
 
@@ -545,10 +905,54 @@
   </section>
 </main>
 
+<!-- FLOATING RENT A PC BUTTON -->
+<button class="rent-pc-btn" id="openRental">
+  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+  Rent a PC
+</button>
+
+<!-- RENTAL MODAL -->
+<div class="rental-modal" id="rentalModal">
+  <div class="rental-content">
+    <button class="lightbox-close" onclick="closeRental()" style="top: 10px; right: 10px; background: #f4f6f8; color: var(--ink);">&times;</button>
+    <h2>Rent a Laptop</h2>
+    <p>Need a device for a short project, a presentation, or a temporary team member? We offer flexible laptop rentals. Check availability in your area.</p>
+    
+    <div class="rental-options">
+      <div class="rental-option">
+        <div>
+          <h4>Standard Office Laptop</h4>
+          <span>Perfect for admin & email (i5, 8GB RAM)</span>
+        </div>
+        <button onclick="requestRental('Standard Office Laptop')" class="btn sm" style="background: var(--accent); color: #fff;">Check Availability</button>
+      </div>
+      <div class="rental-option">
+        <div>
+          <h4>High-Performance Laptop</h4>
+          <span>For design & heavy multitasking (i7, 16GB RAM)</span>
+        </div>
+        <button onclick="requestRental('High-Performance Laptop')" class="btn sm" style="background: var(--accent); color: #fff;">Check Availability</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- LIGHTBOX MODAL -->
-<div class="lightbox" id="lightbox">
-  <span class="lightbox-close">&times;</span>
-  <img src="" alt="Zoomed Image" id="lightboxImg">
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+  <div class="lightbox-content" onclick="event.stopPropagation()">
+    <div class="lightbox-img-wrapper">
+      <img src="" alt="Zoomed Image" id="lightboxImg">
+    </div>
+    <div class="lightbox-info">
+      <h3 id="lightboxTitle"></h3>
+      <div class="lightbox-price" id="lightboxPrice"></div>
+      <div class="lightbox-specs" id="lightboxSpecsContainer">
+        <h4>Specifications</h4>
+        <ul id="lightboxSpecs"></ul>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- SHOPPING CART PANEL -->
@@ -562,9 +966,19 @@
     <p class="muted" style="text-align:center; margin-top: 20px;" id="emptyCartMsg">Your bag is empty.</p>
   </div>
   <div class="cart-footer">
-    <div class="cart-total">
-      <span>Total:</span>
-      <span id="cartTotal">R 0</span>
+    <div class="cart-breakdown">
+      <div class="cart-row">
+        <span>Subtotal:</span>
+        <span id="cartSubtotal">R 0</span>
+      </div>
+      <div class="cart-row">
+        <span>Delivery:</span>
+        <span id="cartDelivery">R 100</span>
+      </div>
+      <div class="cart-row total">
+        <span>Total:</span>
+        <span id="cartTotal">R 0</span>
+      </div>
     </div>
     <button class="checkout-btn" id="checkoutBtn">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
@@ -588,7 +1002,7 @@
       <a href="contact.html">Contact</a>
     </div>
     <div>
-      <a href="tel:+27833842647">083 384 2647</a>
+      <a href="tel:+27680458298">068 045 8298</a>
       <a href="mailto:tyrontshabalala64@gmail.com">tyrontshabalala64@gmail.com</a>
       <a href="https://github.com/tyrontshabalala64-droid" target="_blank" rel="noopener">GitHub</a>
       <a href="https://www.linkedin.com/in/vuako-tshabalala-975878266/" target="_blank" rel="noopener">LinkedIn</a>
@@ -597,32 +1011,70 @@
   <p class="w copy">&copy; 2026 A+ Tech. All rights reserved.</p>
 </footer>
 
-<a class="wa" href="https://wa.me/27833842647" target="_blank" rel="noopener">Chat on WhatsApp</a>
+<a class="wa" href="https://wa.me/27680458298" target="_blank" rel="noopener">Chat on WhatsApp</a>
 
 <!-- JAVASCRIPT LOGIC -->
 <script>
-  // --- 1. ZOOM / LIGHTBOX ---
+  // --- 1. ZOOM / LIGHTBOX WITH SPECS ---
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightboxImg');
-  const productImages = document.querySelectorAll('.product-img');
-  const closeBtn = document.querySelector('.lightbox-close');
+  const lightboxTitle = document.getElementById('lightboxTitle');
+  const lightboxPrice = document.getElementById('lightboxPrice');
+  const lightboxSpecs = document.getElementById('lightboxSpecs');
+  const lightboxSpecsContainer = document.getElementById('lightboxSpecsContainer');
 
-  productImages.forEach(img => {
-    img.addEventListener('click', () => {
-      lightbox.classList.add('active');
-      lightboxImg.src = img.src;
-    });
+  window.openLightbox = function(imgSrc, title, price, specsString) {
+    lightboxImg.src = imgSrc;
+    lightboxTitle.innerText = title;
+    lightboxPrice.innerText = price;
+    
+    // Clear old specs
+    lightboxSpecs.innerHTML = '';
+    
+    if (specsString) {
+      const specsArray = specsString.split(',');
+      specsArray.forEach(spec => {
+        const li = document.createElement('li');
+        li.innerText = spec.trim();
+        lightboxSpecs.appendChild(li);
+      });
+      lightboxSpecsContainer.style.display = 'block';
+    } else {
+      lightboxSpecsContainer.style.display = 'none';
+    }
+
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  window.closeLightbox = function(event) {
+    if (event) event.stopPropagation();
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', (e) => { 
+    if (e.key === 'Escape') closeLightbox(); 
   });
 
-  function closeLightbox() {
-    lightbox.classList.remove('active');
-    lightboxImg.src = '';
-  }
-  lightbox.addEventListener('click', (e) => { if (e.target !== lightboxImg) closeLightbox(); });
-  closeBtn.addEventListener('click', closeLightbox);
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+  // --- 2. RENTAL MODAL LOGIC ---
+  const rentalModal = document.getElementById('rentalModal');
+  
+  document.getElementById('openRental').addEventListener('click', () => {
+    rentalModal.classList.add('active');
+  });
 
-  // --- 2. SEARCH AND FILTERS ---
+  window.closeRental = function() {
+    rentalModal.classList.remove('active');
+  }
+
+  window.requestRental = function(laptopType) {
+    const message = `Hi A+ Tech, I would like to rent a ${laptopType}. Are there any available in my area?`;
+    const phone = "27680458298";
+    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+  }
+
+  // --- 3. SEARCH AND FILTERS ---
   const searchInput = document.getElementById('searchInput');
   const filterBtns = document.querySelectorAll('.filter-btn');
   const searchableItems = document.querySelectorAll('.searchable');
@@ -653,16 +1105,14 @@
 
       if (matchesSearch && matchesCategory) {
         item.classList.remove('hidden');
-        // Re-trigger animation
         item.style.animation = 'none';
-        item.offsetHeight; /* trigger reflow */
+        item.offsetHeight; 
         item.style.animation = '';
       } else {
         item.classList.add('hidden');
       }
     });
 
-    // Toggle Headings
     const hardwareGrid = document.getElementById('hardwareGrid');
     const setupsGrid = document.getElementById('setupsGrid');
     const hardwareVisible = Array.from(hardwareGrid.children).some(child => !child.classList.contains('hidden'));
@@ -673,7 +1123,7 @@
     document.getElementById('setupsSubtext').style.display = setupsVisible ? 'block' : 'none';
   }
 
-  // --- 3. SHOPPING CART LOGIC ---
+  // --- 4. SHOPPING CART LOGIC WITH DELIVERY FEE ---
   let cart = JSON.parse(localStorage.getItem('aplusCart')) || [];
   const cartPanel = document.getElementById('cartPanel');
   const cartOverlay = document.getElementById('cartOverlay');
@@ -681,13 +1131,16 @@
   const closeCartBtn = document.getElementById('closeCart');
   const cartItemsContainer = document.getElementById('cartItems');
   const cartCount = document.getElementById('cartCount');
-  const cartTotal = document.getElementById('cartTotal');
-  const emptyCartMsg = document.getElementById('emptyCartMsg');
+  
+  const cartSubtotalEl = document.getElementById('cartSubtotal');
+  const cartDeliveryEl = document.getElementById('cartDelivery');
+  const cartTotalEl = document.getElementById('cartTotal');
   const checkoutBtn = document.getElementById('checkoutBtn');
 
   function toggleCart() {
     cartPanel.classList.toggle('open');
     cartOverlay.classList.toggle('active');
+    document.body.style.overflow = cartPanel.classList.contains('open') ? 'hidden' : '';
   }
 
   openCartBtn.addEventListener('click', toggleCart);
@@ -723,14 +1176,14 @@
 
   function updateCartUI() {
     cartItemsContainer.innerHTML = '';
-    let total = 0;
+    let subtotal = 0;
     let count = 0;
 
     if (cart.length === 0) {
       cartItemsContainer.innerHTML = '<p class="muted" style="text-align:center; margin-top: 20px;">Your bag is empty.</p>';
     } else {
       cart.forEach((item, index) => {
-        total += item.price * item.qty;
+        subtotal += item.price * item.qty;
         count += item.qty;
         
         const itemEl = document.createElement('div');
@@ -747,8 +1200,26 @@
       });
     }
 
+    // Calculate Delivery Fee
+    let deliveryFee = 0;
+    if (subtotal > 0 && subtotal < 500) {
+      deliveryFee = 100;
+      cartDeliveryEl.innerText = 'R 100';
+      cartDeliveryEl.classList.remove('free-delivery');
+    } else if (subtotal >= 500) {
+      deliveryFee = 0;
+      cartDeliveryEl.innerText = 'Free';
+      cartDeliveryEl.classList.add('free-delivery');
+    } else {
+      cartDeliveryEl.innerText = 'R 0';
+      cartDeliveryEl.classList.remove('free-delivery');
+    }
+
+    const finalTotal = subtotal + deliveryFee;
+
     cartCount.innerText = count;
-    cartTotal.innerText = `R ${total.toLocaleString()}`;
+    cartSubtotalEl.innerText = `R ${subtotal.toLocaleString()}`;
+    cartTotalEl.innerText = `R ${finalTotal.toLocaleString()}`;
   }
 
   window.removeFromCart = function(index) {
@@ -764,22 +1235,24 @@
       return;
     }
 
-    let message = "Hi A+ Tech, I would like to order the following items from your website:\n\n";
-    let total = 0;
+    let subtotal = 0;
+    cart.forEach(item => { subtotal += item.price * item.qty; });
+    let deliveryFee = subtotal < 500 ? 100 : 0;
+    let finalTotal = subtotal + deliveryFee;
 
+    let message = "Hi A+ Tech, I would like to order the following items from your website:\n\n";
+    
     cart.forEach(item => {
       message += `• ${item.name} (x${item.qty}) - R ${(item.price * item.qty).toLocaleString()}\n`;
-      total += item.price * item.qty;
     });
 
-    message += `\n*Total: R ${total.toLocaleString()}*\n\n`;
-    message += "Please let me know how to proceed with payment and delivery.";
+    message += `\nSubtotal: R ${subtotal.toLocaleString()}\n`;
+    message += `Delivery: ${deliveryFee === 0 ? 'Free' : 'R ' + deliveryFee}\n`;
+    message += `*Total: R ${finalTotal.toLocaleString()}*\n\n`;
+    message += "Please let me know how to proceed with payment.";
 
-    const phone = "27833842647";
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/${phone}?text=${encodedMessage}`;
-    
-    window.open(whatsappUrl, '_blank');
+    const phone = "27680458298";
+    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
   });
 
   // Initialize UI on load
